@@ -8,12 +8,8 @@
 
     public class GameFifteen
     {
-        private const int MatrixLength = 4;
-        private const string HorizontalBorder = " -------------";
-        private const string VerticalBorder = "|";
-
         static Random randomNumber = new Random();
-        static int[,] matrixElements = new int[MatrixLength, MatrixLength] 
+        static int[,] matrixElements = new int[Constants.MatrixLength, Constants.MatrixLength] 
                                                 { 
                                                 { 1, 2, 3, 4 },
                                                 { 5, 6, 7, 8 }, 
@@ -22,7 +18,7 @@
                                                 };
         static int emptyRow = 3;
         static int emptyCol = 3;
-        static int[,] currentMatrix = new int[MatrixLength, MatrixLength]
+        static int[,] currentMatrix = new int[Constants.MatrixLength, Constants.MatrixLength]
                                                 {
                                                 { 1, 2, 3, 4 }, 
                                                 { 5, 6, 7, 8 },
@@ -37,9 +33,9 @@
         {
             int value = 1;
 
-            for (int i = 0; i < MatrixLength; i++)
+            for (int i = 0; i < Constants.MatrixLength; i++)
             {
-                for (int j = 0; j < MatrixLength; j++)
+                for (int j = 0; j < Constants.MatrixLength; j++)
                 {
                     currentMatrix[i, j] = value;
                     value++;
@@ -73,13 +69,13 @@
 
         internal static void PrintMatrix()
         {
-            Console.WriteLine(HorizontalBorder);
+            Console.WriteLine(Constants.HorizontalBorder);
 
-            for (int i = 0; i < MatrixLength; i++)
+            for (int i = 0; i < Constants.MatrixLength; i++)
             {
-                Console.Write(VerticalBorder);
+                Console.Write(Constants.VerticalBorder);
 
-                for (int j = 0; j < MatrixLength; j++)
+                for (int j = 0; j < Constants.MatrixLength; j++)
                 {
                     if (currentMatrix[i, j] <= 9)
                     {
@@ -97,14 +93,14 @@
                         }
                     }
 
-                    if (j == MatrixLength - 1)
+                    if (j == Constants.MatrixLength - 1)
                     {
-                        Console.Write(VerticalBorder + Environment.NewLine);
+                        Console.WriteLine(Constants.VerticalBorder);
                     }
                 }
             }
 
-            Console.WriteLine(HorizontalBorder);
+            Console.WriteLine(Constants.HorizontalBorder);
         }
 
         internal static void PrintWelcome()
@@ -141,7 +137,7 @@
 
         private static bool IsOutOfMatrix(int row, int col)
         {
-            if (row >= MatrixLength || row < 0 || col < 0 || col >= MatrixLength)
+            if (row >= Constants.MatrixLength || row < 0 || col < 0 || col >= Constants.MatrixLength)
             {
                 return true;
             }
@@ -160,9 +156,9 @@
 
         private static bool IsEqualMatrix()
         {
-            for (int i = 0; i < MatrixLength; i++)
+            for (int i = 0; i < Constants.MatrixLength; i++)
             {
-                for (int j = 0; j < MatrixLength; j++)
+                for (int j = 0; j < Constants.MatrixLength; j++)
                 {
                     if (currentMatrix[i, j] != matrixElements[i, j])
                     {
