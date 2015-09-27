@@ -6,7 +6,6 @@ namespace GameFifteen.Logic
 {
     public class GameFifteen
     {
-        static Random randomNumber = new Random();
         static int[,] matrixElements = new int[Constants.MatrixLength, Constants.MatrixLength] 
                                                 { 
                                                 { 1, 2, 3, 4 },
@@ -40,6 +39,7 @@ namespace GameFifteen.Logic
                 }
             }
 
+            Random randomNumber = new Random();
             int randomMoves = randomNumber.Next(10, 21);
 
             for (int i = 0; i < randomMoves; i++)
