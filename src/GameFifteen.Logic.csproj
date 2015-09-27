@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{587A134D-D632-4EB1-B343-0B3A11DDDDF5}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GameFifteen.Logic</RootNamespace>
     <AssemblyName>GameFifteen.Logic</AssemblyName>
@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PowerCollections">
       <HintPath>.\PowerCollections.dll</HintPath>
@@ -47,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
-    <Compile Include="MainGameFifteen.cs" />
     <Compile Include="GameFifteen.cs" />
   </ItemGroup>
   <ItemGroup>
