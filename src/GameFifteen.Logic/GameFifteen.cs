@@ -6,13 +6,6 @@ namespace GameFifteen.Logic
 {
     public class GameFifteen
     {
-        static int[,] matrixElements = new int[Constants.MatrixLength, Constants.MatrixLength] 
-                                                { 
-                                                { 1, 2, 3, 4 },
-                                                { 5, 6, 7, 8 }, 
-                                                { 9, 10, 11, 12 },
-                                                { 13, 14, 15, 16 } 
-                                                };
         static int emptyRow = 3;
         static int emptyCol = 3;
         static int[,] currentMatrix = new int[Constants.MatrixLength, Constants.MatrixLength]
@@ -22,25 +15,26 @@ namespace GameFifteen.Logic
                                                 { 9, 10, 11, 12 },
                                                 { 13, 14, 15, 16 } 
                                                 };
-        static int[] dirRow = new int[4] { -1, 0, 1, 0 };
-        static int[] dirCol = new int[4] { 0, 1, 0, -1 };
+
         static OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
 
         public static void GenerateMatrix()
         {
-            int value = 1;
+            //int value = 1;
 
-            for (int i = 0; i < Constants.MatrixLength; i++)
-            {
-                for (int j = 0; j < Constants.MatrixLength; j++)
-                {
-                    currentMatrix[i, j] = value;
-                    value++;
-                }
-            }
+            //for (int i = 0; i < Constants.MatrixLength; i++)
+            //{
+            //    for (int j = 0; j < Constants.MatrixLength; j++)
+            //    {
+            //        currentMatrix[i, j] = value;
+            //        value++;
+            //    }
+            //}
 
             var randomNumber = new Random();
             int randomMoves = randomNumber.Next(10, 21);
+            int[] dirRow = new int[4] { -1, 0, 1, 0 };
+            int[] dirCol = new int[4] { 0, 1, 0, -1 };
 
             for (int i = 0; i < randomMoves; i++)
             {
@@ -154,6 +148,14 @@ namespace GameFifteen.Logic
 
         private static bool IsEqualMatrix()
         {
+            int[,] matrixElements = new int[Constants.MatrixLength, Constants.MatrixLength] 
+                                                { 
+                                                { 1, 2, 3, 4 },
+                                                { 5, 6, 7, 8 }, 
+                                                { 9, 10, 11, 12 },
+                                                { 13, 14, 15, 16 } 
+                                                };
+
             for (int i = 0; i < Constants.MatrixLength; i++)
             {
                 for (int j = 0; j < Constants.MatrixLength; j++)
@@ -281,6 +283,8 @@ namespace GameFifteen.Logic
                     {
                         int newRow = 0;
                         int newCol = 0;
+                        int[] dirRow = new int[4] { -1, 0, 1, 0 };
+                        int[] dirCol = new int[4] { 0, 1, 0, -1 };
 
                         for (int i = 0; i < 4; i++)
                         {
