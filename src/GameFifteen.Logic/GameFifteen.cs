@@ -18,19 +18,8 @@ namespace GameFifteen.Logic
 
         static OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
 
-        public static void GenerateMatrix()
+        public static void ShuffleMatrix()
         {
-            //int value = 1;
-
-            //for (int i = 0; i < Constants.MatrixLength; i++)
-            //{
-            //    for (int j = 0; j < Constants.MatrixLength; j++)
-            //    {
-            //        currentMatrix[i, j] = value;
-            //        value++;
-            //    }
-            //}
-
             var randomNumber = new Random();
             int randomMoves = randomNumber.Next(10, 21);
             int[] dirRow = new int[4] { -1, 0, 1, 0 };
@@ -55,7 +44,7 @@ namespace GameFifteen.Logic
 
             if (IsEqualMatrix())
             {
-                GenerateMatrix();
+                ShuffleMatrix();
             }
         }
 
@@ -114,7 +103,7 @@ namespace GameFifteen.Logic
                 {
                     GameWon(moves);
                     Print();
-                    GenerateMatrix();
+                    ShuffleMatrix();
                     PrintWelcome();
                     PrintMatrix();
                     moves = 0;
@@ -259,7 +248,7 @@ namespace GameFifteen.Logic
             {
                 case "restart":
                     moves = 0;
-                    GenerateMatrix();
+                    ShuffleMatrix();
                     PrintWelcome();
                     PrintMatrix();
                     break;

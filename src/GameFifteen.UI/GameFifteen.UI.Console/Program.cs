@@ -6,7 +6,7 @@
     {
         static void Main()
         {
-            GameFifteen.GenerateMatrix();
+            GameFifteen.ShuffleMatrix();
             GameFifteen.PrintWelcome();
             GameFifteen.PrintMatrix();
             GameFifteen.MainAlgorithm();
