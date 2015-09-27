@@ -48,7 +48,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\GameFifteen.Logic.csproj">
+    <ProjectReference Include="..\..\GameFifteen.Logic\GameFifteen.Logic.csproj">
       <Project>{587a134d-d632-4eb1-b343-0b3a11ddddf5}</Project>
       <Name>GameFifteen.Logic</Name>
     </ProjectReference>

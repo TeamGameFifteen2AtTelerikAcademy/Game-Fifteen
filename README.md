@@ -22,3 +22,4 @@ MainAlgorithm internal.
 13. Intruduce static class Constants
 14. Renamed solution and project name
 15. Introduced GameFifteen.UI.Console project
+16. Changed the type of GameFifteen.Logic project to class library and deleted the MainGameFifteen class from it
