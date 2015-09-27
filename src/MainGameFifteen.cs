@@ -1,4 +1,4 @@
-﻿namespace GameFifteen
+﻿namespace GameFifteen.Logic
 {
     class MainGameFifteen
     {

@@ -1,4 +1,4 @@
-﻿namespace GameFifteen
+﻿namespace GameFifteen.Logic
 {
     internal static class Constants
     {

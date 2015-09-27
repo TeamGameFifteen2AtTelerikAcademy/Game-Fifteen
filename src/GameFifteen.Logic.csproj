@@ -8,8 +8,8 @@
     <ProjectGuid>{587A134D-D632-4EB1-B343-0B3A11DDDDF5}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameFifteen</RootNamespace>
-    <AssemblyName>GameFifteen</AssemblyName>
+    <RootNamespace>GameFifteen.Logic</RootNamespace>
+    <AssemblyName>GameFifteen.Logic</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
