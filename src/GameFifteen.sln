@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFifteen.Logic", "GameFi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameFifteen.UI", "GameFifteen.UI", "{E6544E15-CD14-4939-A5F2-83E6543C06D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFifteen.UI.Console", "..\GameFifteen.UI.Console\GameFifteen.UI.Console.csproj", "{EE3D65DC-FE61-4174-A231-F297BED368F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFifteen.UI.Console", "GameFifteen.UI\GameFifteen.UI.Console\GameFifteen.UI.Console.csproj", "{EE3D65DC-FE61-4174-A231-F297BED368F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
