@@ -10,13 +10,13 @@ namespace GameFifteen.Logic
         static int emptyCol = 3;
         static int[,] currentMatrix = new int[Constants.MatrixLength, Constants.MatrixLength]
                                                 {
-                                                { 1, 2, 3, 4 }, 
+                                                { 1, 2, 3, 4 },
                                                 { 5, 6, 7, 8 },
                                                 { 9, 10, 11, 12 },
-                                                { 13, 14, 15, 16 } 
+                                                { 13, 14, 15, 16 }
                                                 };
 
-        static OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
+        //static OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
 
         public static void ShuffleMatrix()
         {
@@ -92,21 +92,22 @@ namespace GameFifteen.Logic
 
         public static void MainAlgorithm()
         {
-            GameFifteen.ShuffleMatrix();
-            GameFifteen.PrintWelcome();
-            GameFifteen.PrintMatrix();
+            ShuffleMatrix();
+            PrintWelcome();
+            PrintMatrix();
 
             int moves = 0;
             Console.Write("Enter a number to move: ");
             string inputString = Console.ReadLine();
 
+            OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
             while (inputString.CompareTo("exit") != 0)
             {
-                ExecuteComand(inputString, ref moves);
+                ExecuteComand(inputString, ref moves, scoreboard);
                 if (IsEqualMatrix())
                 {
-                    GameWon(moves);
-                    Print();
+                    GameWon(moves, scoreboard);
+                    PrintScoreboard(scoreboard);
                     ShuffleMatrix();
                     PrintWelcome();
                     PrintMatrix();
@@ -116,8 +117,6 @@ namespace GameFifteen.Logic
                 Console.Write("Enter a number to move: ");
                 inputString = Console.ReadLine();
             }
-
-            Console.WriteLine("Good bye!");
         }
 
         private static bool IsOutOfMatrix(int row, int col)
@@ -163,7 +162,7 @@ namespace GameFifteen.Logic
             return true;
         }
 
-        private static bool IsGoesOnBoard(int moves)
+        private static bool IsGoesOnBoard(int moves, OrderedMultiDictionary<int, string> scoreboard)
         {
             foreach (var score in scoreboard)
             {
@@ -176,7 +175,7 @@ namespace GameFifteen.Logic
             return false;
         }
 
-        private static void RemoveLastScore()
+        private static void RemoveLastScore(OrderedMultiDictionary<int, string> scoreboard)
         {
             if (scoreboard.Last().Value.Count > 0)
             {
@@ -192,7 +191,7 @@ namespace GameFifteen.Logic
             }
         }
 
-        private static void GameWon(int moves)
+        private static void GameWon(int moves, OrderedMultiDictionary<int, string> scoreboard)
         {
             Console.WriteLine("Congratulations! You won the game in {0} moves.", moves);
             int scorersCount = 0;
@@ -204,26 +203,26 @@ namespace GameFifteen.Logic
 
             if (scorersCount == 5)
             {
-                if (IsGoesOnBoard(moves))
+                if (IsGoesOnBoard(moves, scoreboard))
                 {
-                    RemoveLastScore();
-                    Points(moves);
+                    RemoveLastScore(scoreboard);
+                    Points(moves, scoreboard);
                 }
             }
             else
             {
-                Points(moves);
+                Points(moves, scoreboard);
             }
         }
 
-        private static void Points(int moves)
+        private static void Points(int moves, OrderedMultiDictionary<int, string> scoreboard)
         {
             Console.Write("Please enter your name for the top scoreboard: ");
             string name = Console.ReadLine();
             scoreboard.Add(moves, name);
         }
 
-        private static void Print()
+        private static void PrintScoreboard(OrderedMultiDictionary<int, string> scoreboard)
         {
             if (scoreboard.Count == 0)
             {
@@ -246,7 +245,7 @@ namespace GameFifteen.Logic
             Console.WriteLine();
         }
 
-        private static void ExecuteComand(string inputString, ref int moves)
+        private static void ExecuteComand(string inputString, ref int moves, OrderedMultiDictionary<int, string> scoreboard)
         {
             switch (inputString)
             {
@@ -258,7 +257,7 @@ namespace GameFifteen.Logic
                     break;
 
                 case "top":
-                    Print();
+                    PrintScoreboard(scoreboard);
                     PrintMatrix();
                     break;
 
