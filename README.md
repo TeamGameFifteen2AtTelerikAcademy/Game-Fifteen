@@ -24,3 +24,5 @@ MainAlgorithm internal.
 15. Introduced GameFifteen.UI.Console project
 16. Changed the type of GameFifteen.Logic project to class library and deleted the MainGameFifteen class from it
 17. Moved the logic to GameFifteen.Logic folder
+18. Moved static field Random randomNumber to local variable in GenerateMatrix method
+19. Changed the solution platform to 'Any CPU' to avoid the warning for possible platform incompatibility

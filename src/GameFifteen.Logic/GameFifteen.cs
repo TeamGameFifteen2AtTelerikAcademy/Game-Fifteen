@@ -39,7 +39,7 @@ namespace GameFifteen.Logic
                 }
             }
 
-            Random randomNumber = new Random();
+            var randomNumber = new Random();
             int randomMoves = randomNumber.Next(10, 21);
 
             for (int i = 0; i < randomMoves; i++)
