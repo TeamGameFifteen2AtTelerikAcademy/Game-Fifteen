@@ -26,3 +26,7 @@ MainAlgorithm internal.
 17. Moved the logic to GameFifteen.Logic folder
 18. Moved static field Random randomNumber to local variable in GenerateMatrix method
 19. Changed the solution platform to 'Any CPU' to avoid the warning for possible platform incompatibility
+20. Removed unnecessary for loops in GenerateMatrix method
+21. Renamed method GenerateMatrix to ShuffleMatrix
+22. Moved the calling of ShuffleMatrix, PrintWelcome and PrintMatrix to MainAlgorithm
+23. Moved static field scoreboard to MainAlgorithm

@@ -16,8 +16,6 @@ namespace GameFifteen.Logic
                                                 { 13, 14, 15, 16 }
                                                 };
 
-        //static OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
-
         public static void ShuffleMatrix()
         {
             var randomNumber = new Random();
