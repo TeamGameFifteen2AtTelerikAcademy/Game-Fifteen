@@ -20,3 +20,5 @@ MainAlgorithm internal.
 11. Add constant HorizontalBorder and VerticalBorder.
 12. Make class  MainGameFifteen and move Main method in it.
 13. Intruduce static class Constants
+14. Renamed solution and project name
+15. Introduced GameFifteen.UI.Console project

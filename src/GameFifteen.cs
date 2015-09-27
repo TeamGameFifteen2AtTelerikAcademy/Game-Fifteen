@@ -27,7 +27,7 @@ namespace GameFifteen.Logic
         static int[] dirCol = new int[4] { 0, 1, 0, -1 };
         static OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
 
-        internal static void GenerateMatrix()
+        public static void GenerateMatrix()
         {
             int value = 1;
 
@@ -65,7 +65,7 @@ namespace GameFifteen.Logic
             }
         }
 
-        internal static void PrintMatrix()
+        public static void PrintMatrix()
         {
             Console.WriteLine(Constants.HorizontalBorder);
 
@@ -101,13 +101,13 @@ namespace GameFifteen.Logic
             Console.WriteLine(Constants.HorizontalBorder);
         }
 
-        internal static void PrintWelcome()
+        public static void PrintWelcome()
         {
             Console.WriteLine("Welcome to the game “15”. Please try to arrange the numbers sequentially.\n" +
             "Use 'top' to view the top scoreboard, 'restart' to start a new game and \n'exit' to quit the game.");
         }
 
-        internal static void MainAlgorithm()
+        public static void MainAlgorithm()
         {
             int moves = 0;
             Console.Write("Enter a number to move: ");
