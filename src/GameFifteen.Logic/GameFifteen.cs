@@ -92,6 +92,10 @@ namespace GameFifteen.Logic
 
         public static void MainAlgorithm()
         {
+            GameFifteen.ShuffleMatrix();
+            GameFifteen.PrintWelcome();
+            GameFifteen.PrintMatrix();
+
             int moves = 0;
             Console.Write("Enter a number to move: ");
             string inputString = Console.ReadLine();

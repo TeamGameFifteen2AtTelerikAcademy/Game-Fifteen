@@ -6,9 +6,6 @@
     {
         static void Main()
         {
-            GameFifteen.ShuffleMatrix();
-            GameFifteen.PrintWelcome();
-            GameFifteen.PrintMatrix();
             GameFifteen.MainAlgorithm();
         }
     }
