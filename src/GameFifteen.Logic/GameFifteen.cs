@@ -10,7 +10,7 @@ namespace GameFifteen.Logic
     {
         private int emptyRow = 3;
         private int emptyCol = 3;
-        private int[,] currentMatrix = new int[Constants.MatrixLength, Constants.MatrixLength]
+        private int[,] currentMatrix = new int[,]
                                                 {
                                                 { 1, 2, 3, 4 },
                                                 { 5, 6, 7, 8 },
@@ -52,11 +52,11 @@ namespace GameFifteen.Logic
         {
             Console.WriteLine(Constants.HorizontalBorder);
 
-            for (int i = 0; i < Constants.MatrixLength; i++)
+            for (int i = 0; i < this.currentMatrix.GetLength(0); i++)
             {
                 Console.Write(Constants.VerticalBorder);
 
-                for (int j = 0; j < Constants.MatrixLength; j++)
+                for (int j = 0; j < this.currentMatrix.GetLength(1); j++)
                 {
                     if (currentMatrix[i, j] <= 9)
                     {
@@ -74,7 +74,7 @@ namespace GameFifteen.Logic
                         }
                     }
 
-                    if (j == Constants.MatrixLength - 1)
+                    if (j == this.currentMatrix.GetLength(1) - 1)
                     {
                         Console.WriteLine(Constants.VerticalBorder);
                     }
@@ -112,7 +112,7 @@ namespace GameFifteen.Logic
                 result.AppendLine(Constants.VerticalBorder);
             }
 
-            result.AppendLine(Constants.HorizontalBorder);
+            result.Append(Constants.HorizontalBorder);
 
             return result.ToString();
         }
@@ -125,7 +125,7 @@ namespace GameFifteen.Logic
 
         private bool IsOutOfMatrix(int row, int col)
         {
-            if (row >= Constants.MatrixLength || row < 0 || col < 0 || col >= Constants.MatrixLength)
+            if (row >= this.currentMatrix.GetLength(0) || row < 0 || col < 0 || col >= this.currentMatrix.GetLength(1))
             {
                 return true;
             }
@@ -144,7 +144,7 @@ namespace GameFifteen.Logic
 
         public bool IsEqualMatrix()
         {
-            int[,] matrixElements = new int[Constants.MatrixLength, Constants.MatrixLength] 
+            int[,] matrixElements = new int[,] 
                                                 { 
                                                 { 1, 2, 3, 4 },
                                                 { 5, 6, 7, 8 }, 
@@ -152,9 +152,9 @@ namespace GameFifteen.Logic
                                                 { 13, 14, 15, 16 } 
                                                 };
 
-            for (int i = 0; i < Constants.MatrixLength; i++)
+            for (int i = 0; i < this.currentMatrix.GetLength(0); i++)
             {
-                for (int j = 0; j < Constants.MatrixLength; j++)
+                for (int j = 0; j < this.currentMatrix.GetLength(1); j++)
                 {
                     if (currentMatrix[i, j] != matrixElements[i, j])
                     {

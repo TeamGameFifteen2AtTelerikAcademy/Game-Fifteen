@@ -5,8 +5,9 @@
         public static void Main()
         {
             var printer = new Printer();
+            var reader = new Reader();
 
-            new Engine(printer).Run();
+            new Engine(printer, reader).Run();
         }
     }
 }

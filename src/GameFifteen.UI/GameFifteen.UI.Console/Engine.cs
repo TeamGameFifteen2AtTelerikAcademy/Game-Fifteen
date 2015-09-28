@@ -1,39 +1,41 @@
-﻿using GameFifteen.Logic.Common;
-
-namespace GameFifteen.UI.Console
+﻿namespace GameFifteen.UI.Console
 {
-    using System;
     using Wintellect.PowerCollections;
+
     using GameFifteen.Logic;
+    using GameFifteen.Logic.Common;
+
     internal class Engine
     {
         private readonly IPrinter printer;
+        private readonly IReader reader;
 
-        public Engine(IPrinter printer)
+        public Engine(IPrinter printer, IReader reader)
         {
             Validator.ValidateIsNotNull(printer, "printer");
+            Validator.ValidateIsNotNull(reader, "reader");
 
             this.printer = printer;
+            this.reader = reader;
         }
 
         public void Run()
         {
+            // TODO: Make gameFifteen private field of type some interface
             var gameFifteen = new GameFifteen();
 
             gameFifteen.ShuffleMatrix();
 
-            //gameFifteen.PrintWelcome();
-            this.printer.Print(Constants.WellcomeMessage);
+            this.printer.PrintLine(Constants.WellcomeMessage);
 
-            //gameFifteen.PrintMatrix();
-            this.printer.Print(gameFifteen.ToString());
+            this.printer.PrintLine(gameFifteen.ToString());
 
-            int moves = 0;
-            Console.Write("Enter a number to move: ");
-            string inputString = Console.ReadLine();
+            this.printer.Print(Constants.EnterCommandMessage);
+            string inputString = this.reader.ReadLine();
 
             // TODO: extract class Scoreboard
             OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
+            int moves = 0;
             while (inputString.CompareTo("exit") != 0)
             {
                 gameFifteen.ExecuteComand(inputString, ref moves, scoreboard);
@@ -47,11 +49,11 @@ namespace GameFifteen.UI.Console
                     moves = 0;
                 }
 
-                Console.Write("Enter a number to move: ");
-                inputString = Console.ReadLine();
+                this.printer.Print(Constants.EnterCommandMessage);
+                inputString = this.reader.ReadLine();
             }
 
-            Console.WriteLine("Good bye!");
+            this.printer.PrintLine(Constants.GoodbyeMessage);
         }
     }
 }

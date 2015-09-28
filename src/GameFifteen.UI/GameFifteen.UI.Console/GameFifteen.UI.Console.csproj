@@ -47,9 +47,11 @@
   <ItemGroup>
     <Compile Include="Engine.cs" />
     <Compile Include="IPrinter.cs" />
+    <Compile Include="IReader.cs" />
     <Compile Include="Printer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

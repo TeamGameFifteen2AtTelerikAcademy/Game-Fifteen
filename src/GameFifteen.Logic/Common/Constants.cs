@@ -9,7 +9,6 @@
         public const string CannotBeNullFormat = "{0} cannot be null!";
 
         // Matrix
-        public const int MatrixLength = 4;
         public const string HorizontalBorder = " -------------";
         public const string VerticalBorder = "|";
 
@@ -19,6 +18,8 @@
         public const string ScoreboardFormat = "{0}. {1} --> {2} moves";
 
         // User messages
+        public const string EnterCommandMessage = "Enter a number to move: ";
+        public const string GoodbyeMessage = "Good bye!";
         public static readonly string WellcomeMessage =
             "Welcome to the game “15”. Please try to arrange the numbers sequentially." + Environment.NewLine +
             "Use 'top' to view the top scoreboard, 'restart' to start a new game and" + Environment.NewLine +
