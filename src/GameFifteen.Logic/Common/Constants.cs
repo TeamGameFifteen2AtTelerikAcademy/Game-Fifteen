@@ -19,6 +19,7 @@
 
         // User messages
         public const string EnterCommandMessage = "Enter a number to move: ";
+        public const string CongratulationsMessageFormat = "Congratulations! You won the game in {0} moves.";
         public const string GoodbyeMessage = "Good bye!";
         public static readonly string WellcomeMessage =
             "Welcome to the game “15”. Please try to arrange the numbers sequentially." + Environment.NewLine +

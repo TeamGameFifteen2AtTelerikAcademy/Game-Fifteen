@@ -36,16 +36,27 @@
             // TODO: extract class Scoreboard
             OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
             int moves = 0;
+
             while (inputString.CompareTo("exit") != 0)
             {
+                // TODO: inline ExecuteComand method here and refactor it
                 gameFifteen.ExecuteComand(inputString, ref moves, scoreboard);
+
                 if (gameFifteen.IsEqualMatrix())
                 {
+                    //Console.WriteLine("Congratulations! You won the game in {0} moves.", moves);
+                    this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, moves));
                     gameFifteen.GameWon(moves, scoreboard);
-                    gameFifteen.PrintScoreboard(scoreboard);
+
+                    // TODO: this scoreboard string will come from another class, not gameFifteen
+                    this.printer.Print(gameFifteen.PrintScoreboard(scoreboard));
+
                     gameFifteen.ShuffleMatrix();
+
                     gameFifteen.PrintWelcome();
-                    gameFifteen.PrintMatrix();
+
+                    this.printer.PrintLine(gameFifteen.ToString());
+
                     moves = 0;
                 }
 
