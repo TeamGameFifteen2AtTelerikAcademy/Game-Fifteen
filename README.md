@@ -34,3 +34,5 @@ MainAlgorithm internal.
 25. Moved logic of MainAlgorithm to Engine.Run method
 26. Intruduced IPrinter, Printer and Validator
 27. Introduced IReader and Reader
+28. Removed PrintMatrix method
+29. Inlined ExecuteComand method in Engine.Run, still needs refactoring
