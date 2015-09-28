@@ -30,3 +30,4 @@ MainAlgorithm internal.
 21. Renamed method GenerateMatrix to ShuffleMatrix
 22. Moved the calling of ShuffleMatrix, PrintWelcome and PrintMatrix to MainAlgorithm
 23. Moved static field scoreboard to MainAlgorithm
+24. Introduced Engine class

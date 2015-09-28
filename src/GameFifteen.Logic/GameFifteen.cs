@@ -88,36 +88,36 @@ namespace GameFifteen.Logic
             "Use 'top' to view the top scoreboard, 'restart' to start a new game and \n'exit' to quit the game.");
         }
 
-        public void MainAlgorithm()
-        {
-            ShuffleMatrix();
-            PrintWelcome();
-            PrintMatrix();
+        //public void MainAlgorithm()
+        //{
+        //    ShuffleMatrix();
+        //    PrintWelcome();
+        //    PrintMatrix();
 
-            int moves = 0;
-            Console.Write("Enter a number to move: ");
-            string inputString = Console.ReadLine();
+        //    int moves = 0;
+        //    Console.Write("Enter a number to move: ");
+        //    string inputString = Console.ReadLine();
 
-            OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
-            while (inputString.CompareTo("exit") != 0)
-            {
-                ExecuteComand(inputString, ref moves, scoreboard);
-                if (IsEqualMatrix())
-                {
-                    GameWon(moves, scoreboard);
-                    PrintScoreboard(scoreboard);
-                    ShuffleMatrix();
-                    PrintWelcome();
-                    PrintMatrix();
-                    moves = 0;
-                }
+        //    OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
+        //    while (inputString.CompareTo("exit") != 0)
+        //    {
+        //        ExecuteComand(inputString, ref moves, scoreboard);
+        //        if (IsEqualMatrix())
+        //        {
+        //            GameWon(moves, scoreboard);
+        //            PrintScoreboard(scoreboard);
+        //            ShuffleMatrix();
+        //            PrintWelcome();
+        //            PrintMatrix();
+        //            moves = 0;
+        //        }
 
-                Console.Write("Enter a number to move: ");
-                inputString = Console.ReadLine();
-            }
+        //        Console.Write("Enter a number to move: ");
+        //        inputString = Console.ReadLine();
+        //    }
 
-            Console.WriteLine("Good bye!");
-        }
+        //    Console.WriteLine("Good bye!");
+        //}
 
         private bool IsOutOfMatrix(int row, int col)
         {
@@ -138,7 +138,7 @@ namespace GameFifteen.Logic
             emptyCol = newCol;
         }
 
-        private bool IsEqualMatrix()
+        public bool IsEqualMatrix()
         {
             int[,] matrixElements = new int[Constants.MatrixLength, Constants.MatrixLength] 
                                                 { 
@@ -191,7 +191,7 @@ namespace GameFifteen.Logic
             }
         }
 
-        private void GameWon(int moves, OrderedMultiDictionary<int, string> scoreboard)
+        public void GameWon(int moves, OrderedMultiDictionary<int, string> scoreboard)
         {
             Console.WriteLine("Congratulations! You won the game in {0} moves.", moves);
             int scorersCount = 0;
@@ -222,7 +222,7 @@ namespace GameFifteen.Logic
             scoreboard.Add(moves, name);
         }
 
-        private void PrintScoreboard(OrderedMultiDictionary<int, string> scoreboard)
+        public void PrintScoreboard(OrderedMultiDictionary<int, string> scoreboard)
         {
             if (scoreboard.Count == 0)
             {
@@ -245,7 +245,7 @@ namespace GameFifteen.Logic
             Console.WriteLine();
         }
 
-        private void ExecuteComand(string inputString, ref int moves, OrderedMultiDictionary<int, string> scoreboard)
+        public void ExecuteComand(string inputString, ref int moves, OrderedMultiDictionary<int, string> scoreboard)
         {
             switch (inputString)
             {
