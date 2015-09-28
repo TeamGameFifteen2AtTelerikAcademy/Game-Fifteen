@@ -67,7 +67,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Validator.cs" />
     <Compile Include="GameFifteen.cs" />
     <Compile Include="Scoreboard.cs" />
   </ItemGroup>

@@ -31,3 +31,5 @@ MainAlgorithm internal.
 22. Moved the calling of ShuffleMatrix, PrintWelcome and PrintMatrix to MainAlgorithm
 23. Moved static field scoreboard to MainAlgorithm
 24. Introduced Engine class
+25. Moved logic of MainAlgorithm to Engine.Run method
+26. Intruduced IPrinter, Printer and Validator

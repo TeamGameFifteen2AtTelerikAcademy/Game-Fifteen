@@ -1,10 +1,12 @@
 ﻿namespace GameFifteen.UI.Console
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        public static void Main()
         {
-            new Engine().Run();
+            var printer = new Printer();
+
+            new Engine(printer).Run();
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
+using GameFifteen.Logic.Common;
 using Wintellect.PowerCollections;
 
 namespace GameFifteen.Logic
@@ -82,42 +84,44 @@ namespace GameFifteen.Logic
             Console.WriteLine(Constants.HorizontalBorder);
         }
 
+        public override string ToString()
+        {
+            var result = new StringBuilder();
+            result.AppendLine(Constants.HorizontalBorder);
+            for (int i = 0; i < this.currentMatrix.GetLength(0); i++)
+            {
+                result.Append(Constants.VerticalBorder);
+                for (int j = 0; j < this.currentMatrix.GetLength(1); j++)
+                {
+                    if (this.currentMatrix[i, j] <= 9)
+                    {
+                        result.Append(string.Format("  {0}", currentMatrix[i, j]));
+                    }
+                    else
+                    {
+                        if (this.currentMatrix[i, j] == 16)
+                        {
+                            result.Append("   ");
+                        }
+                        else
+                        {
+                            result.Append(string.Format(" {0}", currentMatrix[i, j]));
+                        }
+                    }
+                }
+                result.AppendLine(Constants.VerticalBorder);
+            }
+
+            result.AppendLine(Constants.HorizontalBorder);
+
+            return result.ToString();
+        }
+
         public void PrintWelcome()
         {
             Console.WriteLine("Welcome to the game “15”. Please try to arrange the numbers sequentially.\n" +
             "Use 'top' to view the top scoreboard, 'restart' to start a new game and \n'exit' to quit the game.");
         }
-
-        //public void MainAlgorithm()
-        //{
-        //    ShuffleMatrix();
-        //    PrintWelcome();
-        //    PrintMatrix();
-
-        //    int moves = 0;
-        //    Console.Write("Enter a number to move: ");
-        //    string inputString = Console.ReadLine();
-
-        //    OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
-        //    while (inputString.CompareTo("exit") != 0)
-        //    {
-        //        ExecuteComand(inputString, ref moves, scoreboard);
-        //        if (IsEqualMatrix())
-        //        {
-        //            GameWon(moves, scoreboard);
-        //            PrintScoreboard(scoreboard);
-        //            ShuffleMatrix();
-        //            PrintWelcome();
-        //            PrintMatrix();
-        //            moves = 0;
-        //        }
-
-        //        Console.Write("Enter a number to move: ");
-        //        inputString = Console.ReadLine();
-        //    }
-
-        //    Console.WriteLine("Good bye!");
-        //}
 
         private bool IsOutOfMatrix(int row, int col)
         {
@@ -253,12 +257,14 @@ namespace GameFifteen.Logic
                     moves = 0;
                     ShuffleMatrix();
                     PrintWelcome();
-                    PrintMatrix();
+                    // PrintMatrix();
+                    Console.WriteLine(this);
                     break;
 
                 case "top":
                     PrintScoreboard(scoreboard);
-                    PrintMatrix();
+                    // PrintMatrix();
+                    Console.WriteLine(this);
                     break;
 
                 default:
@@ -297,7 +303,8 @@ namespace GameFifteen.Logic
                             {
                                 MoveEmptyCell(newRow, newCol);
                                 moves++;
-                                PrintMatrix();
+                                //PrintMatrix();
+                                Console.WriteLine(this);
                                 break;
                             }
 

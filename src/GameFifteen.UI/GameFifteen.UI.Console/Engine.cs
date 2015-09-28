@@ -1,17 +1,32 @@
-﻿namespace GameFifteen.UI.Console
+﻿using GameFifteen.Logic.Common;
+
+namespace GameFifteen.UI.Console
 {
     using System;
     using Wintellect.PowerCollections;
     using GameFifteen.Logic;
     internal class Engine
     {
+        private readonly IPrinter printer;
+
+        public Engine(IPrinter printer)
+        {
+            Validator.ValidateIsNotNull(printer, "printer");
+
+            this.printer = printer;
+        }
+
         public void Run()
         {
             var gameFifteen = new GameFifteen();
 
             gameFifteen.ShuffleMatrix();
-            gameFifteen.PrintWelcome();
-            gameFifteen.PrintMatrix();
+
+            //gameFifteen.PrintWelcome();
+            this.printer.Print(Constants.WellcomeMessage);
+
+            //gameFifteen.PrintMatrix();
+            this.printer.Print(gameFifteen.ToString());
 
             int moves = 0;
             Console.Write("Enter a number to move: ");

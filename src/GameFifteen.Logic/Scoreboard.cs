@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using GameFifteen.Logic.Common;
 
 namespace GameFifteen.Logic
 {

@@ -1,0 +1,27 @@
+﻿namespace GameFifteen.Logic.Common
+{
+    using System;
+
+    public static class Constants
+    {
+        // Validator
+        public const string ArgumentName = "Argument name";
+        public const string CannotBeNullFormat = "{0} cannot be null!";
+
+        // Matrix
+        public const int MatrixLength = 4;
+        public const string HorizontalBorder = " -------------";
+        public const string VerticalBorder = "|";
+
+        // Scoreboard
+        public const string Scoreboard = "Scoreboard:";
+        public const string ScoreboardIsEmpty = "Scoreboard is empty";
+        public const string ScoreboardFormat = "{0}. {1} --> {2} moves";
+
+        // User messages
+        public static readonly string WellcomeMessage =
+            "Welcome to the game “15”. Please try to arrange the numbers sequentially." + Environment.NewLine +
+            "Use 'top' to view the top scoreboard, 'restart' to start a new game and" + Environment.NewLine +
+            "'exit' to quit the game.";
+    }
+}
