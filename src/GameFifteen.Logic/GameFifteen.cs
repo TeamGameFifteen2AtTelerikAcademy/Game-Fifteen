@@ -6,9 +6,9 @@ namespace GameFifteen.Logic
 {
     public class GameFifteen
     {
-        static int emptyRow = 3;
-        static int emptyCol = 3;
-        static int[,] currentMatrix = new int[Constants.MatrixLength, Constants.MatrixLength]
+        private int emptyRow = 3;
+        private int emptyCol = 3;
+        private int[,] currentMatrix = new int[Constants.MatrixLength, Constants.MatrixLength]
                                                 {
                                                 { 1, 2, 3, 4 },
                                                 { 5, 6, 7, 8 },
@@ -16,7 +16,7 @@ namespace GameFifteen.Logic
                                                 { 13, 14, 15, 16 }
                                                 };
 
-        public static void ShuffleMatrix()
+        public void ShuffleMatrix()
         {
             var randomNumber = new Random();
             int randomMoves = randomNumber.Next(10, 21);
@@ -46,7 +46,7 @@ namespace GameFifteen.Logic
             }
         }
 
-        public static void PrintMatrix()
+        public void PrintMatrix()
         {
             Console.WriteLine(Constants.HorizontalBorder);
 
@@ -82,13 +82,13 @@ namespace GameFifteen.Logic
             Console.WriteLine(Constants.HorizontalBorder);
         }
 
-        public static void PrintWelcome()
+        public void PrintWelcome()
         {
             Console.WriteLine("Welcome to the game “15”. Please try to arrange the numbers sequentially.\n" +
             "Use 'top' to view the top scoreboard, 'restart' to start a new game and \n'exit' to quit the game.");
         }
 
-        public static void MainAlgorithm()
+        public void MainAlgorithm()
         {
             ShuffleMatrix();
             PrintWelcome();
@@ -115,9 +115,11 @@ namespace GameFifteen.Logic
                 Console.Write("Enter a number to move: ");
                 inputString = Console.ReadLine();
             }
+
+            Console.WriteLine("Good bye!");
         }
 
-        private static bool IsOutOfMatrix(int row, int col)
+        private bool IsOutOfMatrix(int row, int col)
         {
             if (row >= Constants.MatrixLength || row < 0 || col < 0 || col >= Constants.MatrixLength)
             {
@@ -127,7 +129,7 @@ namespace GameFifteen.Logic
             return false;
         }
 
-        private static void MoveEmptyCell(int newRow, int newCol)
+        private void MoveEmptyCell(int newRow, int newCol)
         {
             int swapValue = currentMatrix[newRow, newCol];
             currentMatrix[newRow, newCol] = 16;
@@ -136,7 +138,7 @@ namespace GameFifteen.Logic
             emptyCol = newCol;
         }
 
-        private static bool IsEqualMatrix()
+        private bool IsEqualMatrix()
         {
             int[,] matrixElements = new int[Constants.MatrixLength, Constants.MatrixLength] 
                                                 { 
@@ -160,7 +162,7 @@ namespace GameFifteen.Logic
             return true;
         }
 
-        private static bool IsGoesOnBoard(int moves, OrderedMultiDictionary<int, string> scoreboard)
+        private bool IsGoesOnBoard(int moves, OrderedMultiDictionary<int, string> scoreboard)
         {
             foreach (var score in scoreboard)
             {
@@ -173,7 +175,7 @@ namespace GameFifteen.Logic
             return false;
         }
 
-        private static void RemoveLastScore(OrderedMultiDictionary<int, string> scoreboard)
+        private void RemoveLastScore(OrderedMultiDictionary<int, string> scoreboard)
         {
             if (scoreboard.Last().Value.Count > 0)
             {
@@ -189,7 +191,7 @@ namespace GameFifteen.Logic
             }
         }
 
-        private static void GameWon(int moves, OrderedMultiDictionary<int, string> scoreboard)
+        private void GameWon(int moves, OrderedMultiDictionary<int, string> scoreboard)
         {
             Console.WriteLine("Congratulations! You won the game in {0} moves.", moves);
             int scorersCount = 0;
@@ -213,14 +215,14 @@ namespace GameFifteen.Logic
             }
         }
 
-        private static void Points(int moves, OrderedMultiDictionary<int, string> scoreboard)
+        private void Points(int moves, OrderedMultiDictionary<int, string> scoreboard)
         {
             Console.Write("Please enter your name for the top scoreboard: ");
             string name = Console.ReadLine();
             scoreboard.Add(moves, name);
         }
 
-        private static void PrintScoreboard(OrderedMultiDictionary<int, string> scoreboard)
+        private void PrintScoreboard(OrderedMultiDictionary<int, string> scoreboard)
         {
             if (scoreboard.Count == 0)
             {
@@ -243,7 +245,7 @@ namespace GameFifteen.Logic
             Console.WriteLine();
         }
 
-        private static void ExecuteComand(string inputString, ref int moves, OrderedMultiDictionary<int, string> scoreboard)
+        private void ExecuteComand(string inputString, ref int moves, OrderedMultiDictionary<int, string> scoreboard)
         {
             switch (inputString)
             {

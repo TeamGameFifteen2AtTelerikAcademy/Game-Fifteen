@@ -8,8 +8,10 @@
     {
         static void Main()
         {
-            GameFifteen.MainAlgorithm();
-            Console.WriteLine("Good bye!");
+            new Engine().Run();
+
+            //GameFifteen.MainAlgorithm();
+            //Console.WriteLine("Good bye!");
         }
     }
 }

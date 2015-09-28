@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="GameFifteen.cs" />
+    <Compile Include="Scoreboard.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
