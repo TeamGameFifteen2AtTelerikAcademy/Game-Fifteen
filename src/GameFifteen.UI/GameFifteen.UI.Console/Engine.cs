@@ -2,17 +2,18 @@
 {
     using GameFifteen.Logic;
     using GameFifteen.Logic.Common;
+    using GameFifteen.Logic.Contracts;
 
     internal class Engine
     {
         //TODO: Create IGame interface
         private readonly GameFifteen gameFifteen;
         //TODO: Create IScoreboard interface
-        private readonly Scoreboard scoreboard;
+        private readonly IScoreboard scoreboard;
         private readonly IPrinter printer;
         private readonly IReader reader;
 
-        public Engine(GameFifteen gameFifteen, Scoreboard scoreboard, IPrinter printer, IReader reader)
+        public Engine(GameFifteen gameFifteen, IScoreboard scoreboard, IPrinter printer, IReader reader)
         {
             Validator.ValidateIsNotNull(gameFifteen, "gameFifteen");
             Validator.ValidateIsNotNull(scoreboard, "scoreboard");
@@ -110,27 +111,14 @@
 
                 if (this.gameFifteen.IsEqualMatrix())
                 {
-                    this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, moves));
-                    //this.gameFifteen.GameWon(moves, scoreboard);
+                    this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, moves)); 
 
-
-                    if (this.scoreboard.scoreboard.Count == 5)
+                    if (this.scoreboard.IsInTopScores(moves))
                     {
-                        if (this.scoreboard.IsGoesOnBoard(moves))
-                        {
-                            this.scoreboard.RemoveLastScore();
-
                             this.printer.Print(Constants.EnterNameMessage);
                             string name = this.reader.ReadLine();
-                            this.scoreboard.scoreboard.Add(moves, name);
-                        }
-                    }
-                    else
-                    {
-                        this.printer.Print(Constants.EnterNameMessage);
-                        string name = this.reader.ReadLine();
-                        this.scoreboard.scoreboard.Add(moves, name);
-                    }
+                            this.scoreboard.Add(moves, name);                   
+                    }                   
 
                     this.printer.Print(this.scoreboard);
 

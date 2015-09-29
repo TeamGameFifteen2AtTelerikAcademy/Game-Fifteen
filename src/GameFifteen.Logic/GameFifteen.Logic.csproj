@@ -69,7 +69,10 @@
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Validator.cs" />
+    <Compile Include="Contracts\IScore.cs" />
+    <Compile Include="Contracts\IScoreboard.cs" />
     <Compile Include="GameFifteen.cs" />
+    <Compile Include="Score.cs" />
     <Compile Include="Scoreboard.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,44 +1,53 @@
-﻿namespace GameFifteen.Logic
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using GameFifteen.Logic.Contracts;
+using GameFifteen.Logic.Common;
+
+namespace GameFifteen.Logic
 {
-    using System;
-    using System.Linq;
-    using System.Text;
-
-    using Wintellect.PowerCollections;
-
-    using Common;
-
-    public class Scoreboard
+    public class Scoreboard : IScoreboard
     {
-        public readonly OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
+        private List<IScore> scoreboard;
 
-        public bool IsGoesOnBoard(int moves)
+        public Scoreboard()
         {
-            foreach (var score in this.scoreboard)
+            this.scoreboard = new List<IScore>();
+        }
+
+        public void Add(int moves, string playerName)
+        {
+            if (!IsInTopScores(moves))
             {
-                if (moves < score.Key)
-                {
-                    return true;
-                }
+                return; //TODO: DO SOMETHING ELSE
+            }
+
+            var newScore = new Score(moves, playerName);
+
+            this.scoreboard.Add(newScore);
+            this.scoreboard = this.scoreboard
+                .OrderBy(score => score.Moves)
+                .Take(Constants.ScoreboardMaxCount)
+                .ToList();
+        }
+
+        public bool IsInTopScores(int moves)
+        {
+            if (this.scoreboard.Count() < Constants.ScoreboardMaxCount)
+            {
+                return true;
+            }
+
+            int mostMovesYet = this.scoreboard.Last().Moves;
+
+            if (moves < mostMovesYet)
+            {
+                return true;
             }
 
             return false;
-        }
-
-        public void RemoveLastScore()
-        {
-            if (scoreboard.Last().Value.Count > 0)
-            {
-                string[] values = new string[scoreboard.Last().Value.Count];
-                scoreboard.Last().Value.CopyTo(values, 0);
-                scoreboard.Last().Value.Remove(values.Last());
-            }
-            else
-            {
-                int[] keys = new int[scoreboard.Count];
-                scoreboard.Keys.CopyTo(keys, 0);
-                scoreboard.Remove(keys.Last());
-            }
         }
 
         public override string ToString()
@@ -52,9 +61,9 @@
             result.Append(Environment.NewLine);
 
             int index = 1;
-            foreach (var keyValuePair in this.scoreboard)
+            foreach (var score in this.scoreboard)
             {
-                result.AppendLine(string.Format(Constants.ScoreboardFormat, index, keyValuePair.Value, keyValuePair.Key));
+                result.AppendLine(string.Format(Constants.ScoreboardFormat, index, score.PlayerNeme, score.Moves));
                 index++;
             }
 
