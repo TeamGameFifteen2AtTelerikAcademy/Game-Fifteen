@@ -4,14 +4,14 @@
 
     internal class Printer : IPrinter
     {
-        public void Print(string message)
+        public void Print(object obj)
         {
-            Console.Write(message);
+            Console.Write(obj);
         }
 
-        public void PrintLine(string message)
+        public void PrintLine(object obj)
         {
-            Console.WriteLine(message);
+            Console.WriteLine(obj);
         }
     }
 }

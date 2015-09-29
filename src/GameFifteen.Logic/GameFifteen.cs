@@ -10,13 +10,12 @@ namespace GameFifteen.Logic
     {
         public int emptyRow = 3;
         public int emptyCol = 3;
-        public int[,] currentMatrix = new int[,]
-                                                {
-                                                { 1, 2, 3, 4 },
-                                                { 5, 6, 7, 8 },
-                                                { 9, 10, 11, 12 },
-                                                { 13, 14, 15, 16 }
-                                                };
+        public int[,] currentMatrix = {
+                                        { 1, 2, 3, 4 },
+                                        { 5, 6, 7, 8 },
+                                        { 9, 10, 11, 12 },
+                                        { 13, 14, 15, 16 }
+                                      };
 
         public void ShuffleMatrix()
         {
@@ -79,12 +78,6 @@ namespace GameFifteen.Logic
             result.Append(Constants.HorizontalBorder);
 
             return result.ToString();
-        }
-
-        public void PrintWelcome()
-        {
-            Console.WriteLine("Welcome to the game “15”. Please try to arrange the numbers sequentially.\n" +
-            "Use 'top' to view the top scoreboard, 'restart' to start a new game and \n'exit' to quit the game.");
         }
 
         public bool IsOutOfMatrix(int row, int col)
@@ -200,77 +193,5 @@ namespace GameFifteen.Logic
 
             return result.ToString();
         }
-
-        //public void ExecuteComand(string inputString, ref int moves, OrderedMultiDictionary<int, string> scoreboard)
-        //{
-        //    switch (inputString)
-        //    {
-        //        case "restart":
-        //            moves = 0;
-        //            ShuffleMatrix();
-        //            PrintWelcome();
-        //            Console.WriteLine(this);
-        //            break;
-
-        //        case "top":
-        //            Console.Write(PrintScoreboard(scoreboard));
-        //            Console.WriteLine(this);
-        //            break;
-
-        //        default:
-        //            int number = 0;
-        //            bool isNumber = int.TryParse(inputString, out number);
-
-        //            if (!isNumber)
-        //            {
-        //                Console.WriteLine("Invalid comand!");
-        //                break;
-        //            }
-
-        //            if (number < 16 && number > 0)
-        //            {
-        //                int newRow = 0;
-        //                int newCol = 0;
-        //                int[] dirRow = new int[4] { -1, 0, 1, 0 };
-        //                int[] dirCol = new int[4] { 0, 1, 0, -1 };
-
-        //                for (int i = 0; i < 4; i++)
-        //                {
-        //                    newRow = emptyRow + dirRow[i];
-        //                    newCol = emptyCol + dirCol[i];
-
-        //                    if (IsOutOfMatrix(newRow, newCol))
-        //                    {
-        //                        if (i == 3)
-        //                        {
-        //                            Console.WriteLine("Invalid move");
-        //                        }
-
-        //                        continue;
-        //                    }
-
-        //                    if (currentMatrix[newRow, newCol] == number)
-        //                    {
-        //                        MoveEmptyCell(newRow, newCol);
-        //                        moves++;
-        //                        Console.WriteLine(this);
-        //                        break;
-        //                    }
-
-        //                    if (i == 3)
-        //                    {
-        //                        Console.WriteLine("Invalid move");
-        //                    }
-        //                }
-        //            }
-        //            else
-        //            {
-        //                Console.WriteLine("Invalid move");
-        //                break;
-        //            }
-
-        //            break;
-        //    }
-        //}
     }
 }

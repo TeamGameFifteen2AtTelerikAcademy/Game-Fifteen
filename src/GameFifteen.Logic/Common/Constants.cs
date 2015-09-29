@@ -19,6 +19,8 @@
 
         // User messages
         public const string EnterCommandMessage = "Enter a number to move: ";
+        public const string InvalidCommandMessage = "Invalid command!";
+        public const string InvalidMoveMessage = "Invalid move!";
         public const string CongratulationsMessageFormat = "Congratulations! You won the game in {0} moves.";
         public const string GoodbyeMessage = "Good bye!";
         public static readonly string WellcomeMessage =

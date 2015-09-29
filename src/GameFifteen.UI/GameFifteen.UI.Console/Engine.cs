@@ -1,7 +1,5 @@
 ﻿namespace GameFifteen.UI.Console
 {
-    using System;
-
     using Wintellect.PowerCollections;
 
     using GameFifteen.Logic;
@@ -30,7 +28,7 @@
             this.gameFifteen.ShuffleMatrix();
 
             this.printer.PrintLine(Constants.WellcomeMessage);
-            this.printer.PrintLine(this.gameFifteen.ToString());
+            this.printer.PrintLine(this.gameFifteen);
 
             this.printer.Print(Constants.EnterCommandMessage);
             string inputString = this.reader.ReadLine();
@@ -41,22 +39,18 @@
 
             while (inputString.CompareTo("exit") != 0)
             {
-                // TODO: inline ExecuteComand method here and refactor it
-                //this.gameFifteen.ExecuteComand(inputString, ref moves, scoreboard);
-
-
                 switch (inputString)
                 {
                     case "restart":
                         moves = 0;
                         this.gameFifteen.ShuffleMatrix();
-                        this.gameFifteen.PrintWelcome();
-                        Console.WriteLine(this.gameFifteen);
+                        this.printer.PrintLine(Constants.WellcomeMessage);
+                        this.printer.PrintLine(this.gameFifteen.ToString());
                         break;
 
                     case "top":
-                        Console.Write(this.gameFifteen.PrintScoreboard(scoreboard));
-                        Console.WriteLine(this.gameFifteen);
+                        this.printer.Print(this.gameFifteen.PrintScoreboard(scoreboard));
+                        this.printer.PrintLine(this.gameFifteen);
                         break;
 
                     default:
@@ -65,7 +59,7 @@
 
                         if (!isNumber)
                         {
-                            Console.WriteLine("Invalid comand!");
+                            this.printer.PrintLine(Constants.InvalidCommandMessage);
                             break;
                         }
 
@@ -85,7 +79,7 @@
                                 {
                                     if (i == 3)
                                     {
-                                        Console.WriteLine("Invalid move");
+                                        this.printer.PrintLine(Constants.InvalidMoveMessage);
                                     }
 
                                     continue;
@@ -95,19 +89,19 @@
                                 {
                                     this.gameFifteen.MoveEmptyCell(newRow, newCol);
                                     moves++;
-                                    Console.WriteLine(this.gameFifteen);
+                                    this.printer.PrintLine(this.gameFifteen);
                                     break;
                                 }
 
                                 if (i == 3)
                                 {
-                                    Console.WriteLine("Invalid move");
+                                    this.printer.PrintLine(Constants.InvalidMoveMessage);
                                 }
                             }
                         }
                         else
                         {
-                            Console.WriteLine("Invalid move");
+                            this.printer.PrintLine(Constants.InvalidMoveMessage);
                             break;
                         }
 

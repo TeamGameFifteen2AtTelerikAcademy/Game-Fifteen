@@ -2,8 +2,8 @@
 {
     internal interface IPrinter
     {
-        void Print(string message);
+        void Print(object obj);
 
-        void PrintLine(string message);
+        void PrintLine(object obj);
     }
 }

@@ -36,3 +36,4 @@ MainAlgorithm internal.
 27. Introduced IReader and Reader
 28. Removed PrintMatrix method
 29. Inlined ExecuteComand method in Engine.Run, still needs refactoring
+30. System.Console dependency removed from Engine
