@@ -35,10 +35,7 @@
             this.printer.Print(Constants.EnterCommandMessage);
             string inputString = this.reader.ReadLine();
 
-            // TODO: extract class Scoreboard
-            //OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
             int moves = 0;
-
             while (inputString.CompareTo("exit") != 0)
             {
                 switch (inputString)
@@ -135,8 +132,6 @@
                         this.scoreboard.scoreboard.Add(moves, name);
                     }
 
-
-                    // TODO: this scoreboard string will come from another class, not gameFifteen
                     this.printer.Print(this.scoreboard);
 
                     this.gameFifteen.ShuffleMatrix();
