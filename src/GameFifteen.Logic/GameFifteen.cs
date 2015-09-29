@@ -1,11 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using GameFifteen.Logic.Common;
-using Wintellect.PowerCollections;
-
-namespace GameFifteen.Logic
+﻿namespace GameFifteen.Logic
 {
+    using System;
+    using System.Text;
+
+    using Common;
+
     public class GameFifteen
     {
         public int emptyRow = 3;
@@ -120,78 +119,6 @@ namespace GameFifteen.Logic
             }
 
             return true;
-        }
-
-        private bool IsGoesOnBoard(int moves, OrderedMultiDictionary<int, string> scoreboard)
-        {
-            foreach (var score in scoreboard)
-            {
-                if (moves < score.Key)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private void RemoveLastScore(OrderedMultiDictionary<int, string> scoreboard)
-        {
-            if (scoreboard.Last().Value.Count > 0)
-            {
-                string[] values = new string[scoreboard.Last().Value.Count];
-                scoreboard.Last().Value.CopyTo(values, 0);
-                scoreboard.Last().Value.Remove(values.Last());
-            }
-            else
-            {
-                int[] keys = new int[scoreboard.Count];
-                scoreboard.Keys.CopyTo(keys, 0);
-                scoreboard.Remove(keys.Last());
-            }
-        }
-
-        public void GameWon(int moves, OrderedMultiDictionary<int, string> scoreboard)
-        {
-            if (scoreboard.Count == 5)
-            {
-                if (IsGoesOnBoard(moves, scoreboard))
-                {
-                    RemoveLastScore(scoreboard);
-                    Points(moves, scoreboard);
-                }
-            }
-            else
-            {
-                Points(moves, scoreboard);
-            }
-        }
-
-        private void Points(int moves, OrderedMultiDictionary<int, string> scoreboard)
-        {
-            Console.Write("Please enter your name for the top scoreboard: ");
-            string name = Console.ReadLine();
-            scoreboard.Add(moves, name);
-        }
-
-        public string PrintScoreboard(OrderedMultiDictionary<int, string> scoreboard)
-        {
-            if (scoreboard.Count == 0)
-            {
-                return Constants.ScoreboardIsEmpty + Environment.NewLine;
-            }
-
-            var result = new StringBuilder();
-            result.AppendLine(Constants.Scoreboard);
-
-            int index = 1;
-            foreach (var keyValuePair in scoreboard)
-            {
-                result.AppendLine(string.Format(Constants.ScoreboardFormat, index, keyValuePair.Value, keyValuePair.Key));
-                index++;
-            }
-
-            return result.ToString();
         }
     }
 }

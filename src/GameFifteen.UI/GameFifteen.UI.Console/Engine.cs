@@ -1,7 +1,5 @@
 ﻿namespace GameFifteen.UI.Console
 {
-    using Wintellect.PowerCollections;
-
     using GameFifteen.Logic;
     using GameFifteen.Logic.Common;
 
@@ -9,16 +7,20 @@
     {
         //TODO: Create IGame interface
         private readonly GameFifteen gameFifteen;
+        //TODO: Create IScoreboard interface
+        private readonly Scoreboard scoreboard;
         private readonly IPrinter printer;
         private readonly IReader reader;
 
-        public Engine(GameFifteen gameFifteen, IPrinter printer, IReader reader)
+        public Engine(GameFifteen gameFifteen, Scoreboard scoreboard, IPrinter printer, IReader reader)
         {
             Validator.ValidateIsNotNull(gameFifteen, "gameFifteen");
+            Validator.ValidateIsNotNull(scoreboard, "scoreboard");
             Validator.ValidateIsNotNull(printer, "printer");
             Validator.ValidateIsNotNull(reader, "reader");
 
             this.gameFifteen = gameFifteen;
+            this.scoreboard = scoreboard;
             this.printer = printer;
             this.reader = reader;
         }
@@ -34,7 +36,7 @@
             string inputString = this.reader.ReadLine();
 
             // TODO: extract class Scoreboard
-            OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
+            //OrderedMultiDictionary<int, string> scoreboard = new OrderedMultiDictionary<int, string>(true);
             int moves = 0;
 
             while (inputString.CompareTo("exit") != 0)
@@ -49,7 +51,7 @@
                         break;
 
                     case "top":
-                        this.printer.Print(this.gameFifteen.PrintScoreboard(scoreboard));
+                        this.printer.Print(this.scoreboard);
                         this.printer.PrintLine(this.gameFifteen);
                         break;
 
@@ -112,10 +114,30 @@
                 if (this.gameFifteen.IsEqualMatrix())
                 {
                     this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, moves));
-                    this.gameFifteen.GameWon(moves, scoreboard);
+                    //this.gameFifteen.GameWon(moves, scoreboard);
+
+
+                    if (this.scoreboard.scoreboard.Count == 5)
+                    {
+                        if (this.scoreboard.IsGoesOnBoard(moves))
+                        {
+                            this.scoreboard.RemoveLastScore();
+
+                            this.printer.Print(Constants.EnterNameMessage);
+                            string name = this.reader.ReadLine();
+                            this.scoreboard.scoreboard.Add(moves, name);
+                        }
+                    }
+                    else
+                    {
+                        this.printer.Print(Constants.EnterNameMessage);
+                        string name = this.reader.ReadLine();
+                        this.scoreboard.scoreboard.Add(moves, name);
+                    }
+
 
                     // TODO: this scoreboard string will come from another class, not gameFifteen
-                    this.printer.Print(this.gameFifteen.PrintScoreboard(scoreboard));
+                    this.printer.Print(this.scoreboard);
 
                     this.gameFifteen.ShuffleMatrix();
 
