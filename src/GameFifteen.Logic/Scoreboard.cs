@@ -1,33 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using GameFifteen.Logic.Contracts;
-using GameFifteen.Logic.Common;
-
-namespace GameFifteen.Logic
+﻿namespace GameFifteen.Logic
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+        
+    using Common;
+    using Contracts;
+
     public class Scoreboard : IScoreboard
     {
-        private List<IScore> scoreboard;
+        private IList<IScore> topScores;
 
         public Scoreboard()
         {
-            this.scoreboard = new List<IScore>();
+            this.TopScores = new List<IScore>();
+        }  
+
+        private IList<IScore> TopScores
+        {
+            get
+            {
+                return this.topScores;
+            }
+
+            set
+            {
+                this.topScores = value;
+            }
         }
 
         public void Add(int moves, string playerName)
         {
-            if (!IsInTopScores(moves))
+            if (!this.IsInTopScores(moves))
             {
-                return; //TODO: DO SOMETHING ELSE
+                return; // TODO: DO SOMETHING ELSE
             }
 
             var newScore = new Score(moves, playerName);
 
-            this.scoreboard.Add(newScore);
-            this.scoreboard = this.scoreboard
+            this.TopScores.Add(newScore);
+            this.TopScores = this.TopScores
                 .OrderBy(score => score.Moves)
                 .Take(Constants.ScoreboardMaxCount)
                 .ToList();
@@ -35,12 +48,12 @@ namespace GameFifteen.Logic
 
         public bool IsInTopScores(int moves)
         {
-            if (this.scoreboard.Count() < Constants.ScoreboardMaxCount)
+            if (this.TopScores.Count() < Constants.ScoreboardMaxCount)
             {
                 return true;
             }
 
-            int mostMovesYet = this.scoreboard.Last().Moves;
+            int mostMovesYet = this.TopScores.Last().Moves;
 
             if (moves < mostMovesYet)
             {
@@ -52,7 +65,7 @@ namespace GameFifteen.Logic
 
         public override string ToString()
         {
-            if (this.scoreboard.Count == 0)
+            if (this.TopScores.Count == 0)
             {
                 return Constants.ScoreboardIsEmpty + Environment.NewLine;
             }
@@ -61,7 +74,7 @@ namespace GameFifteen.Logic
             result.Append(Environment.NewLine);
 
             int index = 1;
-            foreach (var score in this.scoreboard)
+            foreach (var score in this.TopScores)
             {
                 result.AppendLine(string.Format(Constants.ScoreboardFormat, index, score.PlayerNeme, score.Moves));
                 index++;

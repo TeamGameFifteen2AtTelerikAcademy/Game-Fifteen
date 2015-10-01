@@ -29,6 +29,5 @@
             "Welcome to the game “15”. Please try to arrange the numbers sequentially." + Environment.NewLine +
             "Use 'top' to view the top scoreboard, 'restart' to start a new game and" + Environment.NewLine +
             "'exit' to quit the game.";
-
     }
 }

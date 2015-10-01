@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using GameFifteen.Logic.Contracts;
-
-namespace GameFifteen.Logic
+﻿namespace GameFifteen.Logic
 {
+    using System;
+
+    using Contracts;
+
     public class Score : IScore, IComparable
     {
         private int moves;
@@ -48,7 +45,7 @@ namespace GameFifteen.Logic
         {
             var otherScore = obj as IScore;
 
-            if(otherScore == null)
+            if (otherScore == null)
             {
                 throw new ArgumentException("Object does not implement IScore");
             }
