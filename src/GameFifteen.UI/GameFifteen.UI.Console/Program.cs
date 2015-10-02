@@ -8,10 +8,10 @@
     {
         public static void Main()
         {
-            var factory = new NumberTileFactory();
+            var factory = new LetterTileFactory();
             var builder = new ClassicPatternFrameBuilder(factory);
             var director = new FrameDirector(builder);
-            var frame = director.ConstructFrame(4, 4);
+            var frame = director.ConstructFrame(5, 6);
 
             var gameFifteen = new Game(frame);
             var scoreboard = new Scoreboard();

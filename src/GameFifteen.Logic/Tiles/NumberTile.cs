@@ -12,10 +12,5 @@
         {
             get { return this.Id.ToString(); }
         }
-
-        public override string ToString()
-        {
-            return this.Label;
-        }
     }
 }

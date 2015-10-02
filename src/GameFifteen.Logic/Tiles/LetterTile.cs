@@ -13,10 +13,5 @@
         {
             get { return Converter.ConvertNumberToLetters(this.Id); }
         }
-
-        public override string ToString()
-        {
-            return this.Label;
-        }
     }
 }

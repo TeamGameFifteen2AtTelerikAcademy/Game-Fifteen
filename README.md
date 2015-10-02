@@ -57,3 +57,4 @@ MainAlgorithm internal.
 48. Introduced frame builders 
 49. Introduced class FrameDirector
 50. Introduced class NullTile
+51. Moved common logic to ToString in Tile class
