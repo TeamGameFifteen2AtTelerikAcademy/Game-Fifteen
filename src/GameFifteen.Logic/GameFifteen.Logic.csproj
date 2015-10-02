@@ -79,6 +79,9 @@
     <Compile Include="Frames\Frame.cs" />
     <Compile Include="Frames\FrameDirector.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Movers\Contracts\IMover.cs" />
+    <Compile Include="Movers\Contracts\Mover.cs" />
+    <Compile Include="Movers\RowColMover.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="Scoreboard.cs" />
     <Compile Include="Tiles\Contracts\ITile.cs" />

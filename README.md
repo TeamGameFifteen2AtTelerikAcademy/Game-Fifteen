@@ -58,3 +58,4 @@ MainAlgorithm internal.
 49. Introduced class FrameDirector
 50. Introduced class NullTile
 51. Moved common logic to ToString in Tile class
+52. Introduced IMover interface, Mover abstract class and RowsColsMover class

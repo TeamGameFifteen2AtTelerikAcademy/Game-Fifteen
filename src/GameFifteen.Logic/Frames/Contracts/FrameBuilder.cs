@@ -19,7 +19,7 @@
                 return this.tileFactory;
             }
 
-            set
+            private set
             {
                 Validator.ValidateIsNotNull(value, "TileFactory");
                 this.tileFactory = value;

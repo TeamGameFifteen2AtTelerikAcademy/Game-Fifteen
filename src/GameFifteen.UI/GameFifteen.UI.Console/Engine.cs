@@ -47,7 +47,7 @@
                         moves = 0;
                         this.gameFifteen.ShuffleMatrix();
                         this.printer.PrintLine(Constants.WellcomeMessage);
-                        this.printer.PrintLine(this.gameFifteen.ToString());
+                        this.printer.PrintLine(this.gameFifteen);
                         break;
 
                     case "top":
