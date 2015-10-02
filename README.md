@@ -49,3 +49,9 @@ MainAlgorithm internal.
 40. Add method ValidateIsPositiveInteger to Validator.cs
 41. Create class LettersTile
 42. Create class NumberTile
+43. Create folder Frames
+44. Create folder Contracts
+45. Introduced interface IFrame
+46. Introduced class Frame implementind interface IFrame
+47. Introduced class FrameBuilder
+48. Introduced frame builders 
