@@ -44,3 +44,8 @@ MainAlgorithm internal.
 35. Create folder Contracts
 36. Create interface ITile
 37. Implement interface ITile with abstract class Tile
+38. Create abstract class TileFactory
+39. Create class Converter 
+40. Add method ValidateIsPositiveInteger to Validator.cs
+41. Create class LettersTile
+42. Create class NumberTile

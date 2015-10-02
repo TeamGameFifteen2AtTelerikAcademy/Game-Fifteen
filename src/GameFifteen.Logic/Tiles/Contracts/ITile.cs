@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace GameFifteen.Logic.Tiles.Contracts
+﻿namespace GameFifteen.Logic.Tiles.Contracts
 {
-    interface Interface1
+    public interface ITile
     {
+        int Id { get; }
+
+        string Label { get; }
     }
 }

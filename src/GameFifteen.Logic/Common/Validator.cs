@@ -11,5 +11,13 @@
                 throw new ArgumentNullException(argumentName, string.Format(Constants.CannotBeNullFormat, argumentName));
             }
         }
+
+        public static void ValidateIsPositiveInteger(int number, string paramName)
+        {
+            if (number <= 0)
+            {
+                throw new ArgumentOutOfRangeException(paramName, paramName + " must be a positive integer");
+            }
+        }
     }
 }

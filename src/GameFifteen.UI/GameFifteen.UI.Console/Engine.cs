@@ -39,6 +39,7 @@
             int moves = 0;
             while (inputString.CompareTo("exit") != 0)
             {
+                // TODO: Command - Mariya
                 switch (inputString)
                 {
                     case "restart":

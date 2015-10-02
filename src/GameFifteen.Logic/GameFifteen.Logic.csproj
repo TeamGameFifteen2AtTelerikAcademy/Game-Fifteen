@@ -68,12 +68,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Convertor.cs" />
     <Compile Include="Common\Validator.cs" />
     <Compile Include="Contracts\IScore.cs" />
     <Compile Include="Contracts\IScoreboard.cs" />
     <Compile Include="GameFifteen.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="Scoreboard.cs" />
+    <Compile Include="Tiles\Contracts\ITile.cs" />
+    <Compile Include="Tiles\Contracts\Tile.cs" />
+    <Compile Include="Tiles\Contracts\TileFactory.cs" />
+    <Compile Include="Tiles\LettersTile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
