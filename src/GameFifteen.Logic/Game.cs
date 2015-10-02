@@ -5,21 +5,31 @@
 
     using Common;
     using Frames.Contracts;
+    using Tiles.Contracts;
+    using Frames;
 
     public class Game
     {
-        public int emptyRow = 3;
-        public int emptyCol = 3;
-        public int[,] currentMatrix = {
-                                        { 1, 2, 3, 4 },
-                                        { 5, 6, 7, 8 },
-                                        { 9, 10, 11, 12 },
-                                        { 13, 14, 15, 16 }
-                                      };
+        public int emptyRow;
+        public int emptyCol;
+        //public int[,] currentMatrix = {
+        //                                { 1, 2, 3, 4 },
+        //                                { 5, 6, 7, 8 },
+        //                                { 9, 10, 11, 12 },
+        //                                { 13, 14, 15, 16 }
+        //                              };
+
+        public ITile[,] currentMatrix;
+        public ITile[,] solvedMatrix;
         private readonly IFrame frame;
+
         public Game(IFrame frame)
         {
-           this.frame = frame;
+            this.frame = frame;
+            this.currentMatrix = this.frame.Tiles;
+            this.solvedMatrix = (ITile[,])this.frame.Tiles.Clone();
+            this.emptyRow = this.frame.Rows -1;
+            this.emptyCol =  this.frame.Cols-1;
         }
 
         public void ShuffleMatrix()
@@ -59,7 +69,7 @@
 
         public bool IsOutOfMatrix(int row, int col)
         {
-            if (row >= this.currentMatrix.GetLength(0) || row < 0 || col < 0 || col >= this.currentMatrix.GetLength(1))
+            if (row >= this.frame.Rows || row < 0 || col < 0 || col >= this.frame.Cols)
             {
                 return true;
             }
@@ -69,8 +79,8 @@
 
         public void MoveEmptyCell(int newRow, int newCol)
         {
-            int swapValue = currentMatrix[newRow, newCol];
-            currentMatrix[newRow, newCol] = 16;
+            var swapValue = currentMatrix[newRow, newCol];
+            currentMatrix[newRow, newCol] = currentMatrix[emptyRow, emptyCol];
             currentMatrix[emptyRow, emptyCol] = swapValue;
             emptyRow = newRow;
             emptyCol = newCol;
@@ -80,16 +90,16 @@
         {
             int[,] matrixElements = {
                                         { 1, 2, 3, 4 },
-                                        { 5, 6, 7, 8 }, 
+                                        { 5, 6, 7, 8 },
                                         { 9, 10, 11, 12 },
-                                        { 13, 14, 15, 16 } 
+                                        { 13, 14, 15, 16 }
                                     };
 
             for (int i = 0; i < this.currentMatrix.GetLength(0); i++)
             {
                 for (int j = 0; j < this.currentMatrix.GetLength(1); j++)
                 {
-                    if (currentMatrix[i, j] != matrixElements[i, j])
+                    if (currentMatrix[i, j].Label !=this.solvedMatrix[i, j].Label)
                     {
                         return false;
                     }
