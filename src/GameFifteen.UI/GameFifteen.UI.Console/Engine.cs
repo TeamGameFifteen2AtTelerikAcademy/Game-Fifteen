@@ -65,7 +65,9 @@
                             break;
                         }
 
-                        if (number < 16 && number > 0)
+                        // TODO: number depends on the size of the frame!
+                        if (number < this.gameFifteen.currentMatrix.GetLength(0) * this.gameFifteen.currentMatrix.GetLength(1)
+                            && number > 0)
                         {
                             int newRow = 0;
                             int newCol = 0;
@@ -79,7 +81,7 @@
 
                                 if (this.gameFifteen.IsOutOfMatrix(newRow, newCol))
                                 {
-                                    if (i == 3)
+                                    if (i == this.gameFifteen.emptyRow)
                                     {
                                         this.printer.PrintLine(Constants.InvalidMoveMessage);
                                     }
@@ -87,7 +89,7 @@
                                     continue;
                                 }
 
-                                if (this.gameFifteen.currentMatrix[newRow, newCol] == number)
+                                if (this.gameFifteen.currentMatrix[newRow, newCol].Label == number.ToString())
                                 {
                                     this.gameFifteen.MoveEmptyCell(newRow, newCol);
                                     moves++;
@@ -95,7 +97,7 @@
                                     break;
                                 }
 
-                                if (i == 3)
+                                if (i == this.gameFifteen.emptyRow)
                                 {
                                     this.printer.PrintLine(Constants.InvalidMoveMessage);
                                 }
@@ -113,14 +115,14 @@
 
                 if (this.gameFifteen.IsEqualMatrix())
                 {
-                    this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, moves)); 
+                    this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, moves));
 
                     if (this.scoreboard.IsInTopScores(moves))
                     {
-                            this.printer.Print(Constants.EnterNameMessage);
-                            string name = this.reader.ReadLine();
-                            this.scoreboard.Add(moves, name);                   
-                    }                   
+                        this.printer.Print(Constants.EnterNameMessage);
+                        string name = this.reader.ReadLine();
+                        this.scoreboard.Add(moves, name);
+                    }
 
                     this.printer.Print(this.scoreboard);
 

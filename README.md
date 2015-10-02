@@ -58,3 +58,5 @@ MainAlgorithm internal.
 49. Introduced class FrameDirector
 50. Introduced class NullTile
 51. Moved common logic to ToString in Tile class
+52. Integrating Game with frames. 
+53. Changed some magic numbers in Engine.
