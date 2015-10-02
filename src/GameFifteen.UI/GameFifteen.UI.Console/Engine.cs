@@ -3,7 +3,6 @@
     using GameFifteen.Logic;
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Contracts;
-    using Logic.Frames.Contracts;
 
     internal class Engine
     {
@@ -56,58 +55,58 @@
                         break;
 
                     default:
-                        int number = 0;
-                        bool isNumber = int.TryParse(inputString, out number);
+                        //int number = 0;
+                        //bool isNumber = int.TryParse(inputString, out number);
 
-                        if (!isNumber)
-                        {
-                            this.printer.PrintLine(Constants.InvalidCommandMessage);
-                            break;
-                        }
+                        //if (!isNumber)
+                        //{
+                        //    this.printer.PrintLine(Constants.InvalidCommandMessage);
+                        //    break;
+                        //}
 
-                        // TODO: number depends on the size of the frame!
-                        if (number < this.gameFifteen.currentMatrix.GetLength(0) * this.gameFifteen.currentMatrix.GetLength(1)
-                            && number > 0)
-                        {
-                            int newRow = 0;
-                            int newCol = 0;
-                            int[] dirRow = new int[4] { -1, 0, 1, 0 };
-                            int[] dirCol = new int[4] { 0, 1, 0, -1 };
+                        //// TODO: number depends on the size of the frame!
+                        //if (number < this.gameFifteen.currentMatrix.GetLength(0) * this.gameFifteen.currentMatrix.GetLength(1)
+                        //    && number > 0)
+                        //{
+                        //    int newRow = 0;
+                        //    int newCol = 0;
+                        //    int[] dirRow = new int[4] { -1, 0, 1, 0 };
+                        //    int[] dirCol = new int[4] { 0, 1, 0, -1 };
 
-                            for (int i = 0; i < 4; i++)
-                            {
-                                newRow = this.gameFifteen.emptyRow + dirRow[i];
-                                newCol = this.gameFifteen.emptyCol + dirCol[i];
+                        //    for (int i = 0; i < 4; i++)
+                        //    {
+                        //        newRow = this.gameFifteen.emptyRow + dirRow[i];
+                        //        newCol = this.gameFifteen.emptyCol + dirCol[i];
 
-                                if (this.gameFifteen.IsOutOfMatrix(newRow, newCol))
-                                {
-                                    if (i == this.gameFifteen.emptyRow)
-                                    {
-                                        this.printer.PrintLine(Constants.InvalidMoveMessage);
-                                    }
+                        //        if (this.gameFifteen.IsOutOfMatrix(newRow, newCol))
+                        //        {
+                        //            if (i == this.gameFifteen.emptyRow)
+                        //            {
+                        //                this.printer.PrintLine(Constants.InvalidMoveMessage);
+                        //            }
 
-                                    continue;
-                                }
+                        //            continue;
+                        //        }
 
-                                if (this.gameFifteen.currentMatrix[newRow, newCol].Label == number.ToString())
-                                {
-                                    this.gameFifteen.MoveEmptyCell(newRow, newCol);
-                                    moves++;
-                                    this.printer.PrintLine(this.gameFifteen);
-                                    break;
-                                }
+                        //        if (this.gameFifteen.currentMatrix[newRow, newCol].Label == number.ToString())
+                        //        {
+                        //            this.gameFifteen.MoveEmptyCell(newRow, newCol);
+                        //            moves++;
+                        //            this.printer.PrintLine(this.gameFifteen);
+                        //            break;
+                        //        }
 
-                                if (i == this.gameFifteen.emptyRow)
-                                {
-                                    this.printer.PrintLine(Constants.InvalidMoveMessage);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            this.printer.PrintLine(Constants.InvalidMoveMessage);
-                            break;
-                        }
+                        //        if (i == this.gameFifteen.emptyRow)
+                        //        {
+                        //            this.printer.PrintLine(Constants.InvalidMoveMessage);
+                        //        }
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    this.printer.PrintLine(Constants.InvalidMoveMessage);
+                        //    break;
+                        //}
 
                         break;
                 }

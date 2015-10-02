@@ -42,6 +42,11 @@
             get { return this.Tiles.GetLength(1); }
         }
 
+        public IFrame Clone()
+        {
+            return new Frame((ITile[,])this.Tiles.Clone());
+        }
+
         public override bool Equals(object obj)
         {
             var other = obj as Frame;

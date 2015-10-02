@@ -1,12 +1,10 @@
 ﻿namespace GameFifteen.Logic
 {
     using System;
-    using System.Text;
 
-    using Common;
     using Frames.Contracts;
     using Tiles.Contracts;
-    using Frames;
+    using GameFifteen.Logic.Movers.Contracts;
 
     public class Game
     {
@@ -21,11 +19,18 @@
 
         public ITile[,] currentMatrix;
         public ITile[,] solvedMatrix;
-        private readonly IFrame frame;
 
-        public Game(IFrame frame)
+        private readonly IFrame framePrototype;
+        private readonly IFrame frame;
+        private readonly IMover mover;
+
+        public Game(IFrame frame, IMover mover)
         {
             this.frame = frame;
+            this.framePrototype = this.frame.Clone();
+
+            this.mover = mover;
+
             this.currentMatrix = this.frame.Tiles;
             this.solvedMatrix = (ITile[,])this.frame.Tiles.Clone();
             this.emptyRow = this.frame.Rows -1;
@@ -34,6 +39,8 @@
 
         public void ShuffleMatrix()
         {
+            //this.mover.Schuffle(frame);
+
             var randomNumber = new Random();
             int randomMoves = randomNumber.Next(10, 21);
             int[] dirRow = new int[4] { -1, 0, 1, 0 };

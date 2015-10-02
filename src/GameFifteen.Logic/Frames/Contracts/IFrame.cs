@@ -9,5 +9,7 @@
         int Rows { get; }
 
         int Cols { get; }
+
+        IFrame Clone();
     }
 }

@@ -61,3 +61,4 @@ MainAlgorithm internal.
 52. Integrating Game with frames. 
 53. Changed some magic numbers in Engine.
 54. Introduced IMover interface, Mover abstract class and RowsColsMover class
+55. Added Clone method to IFrame

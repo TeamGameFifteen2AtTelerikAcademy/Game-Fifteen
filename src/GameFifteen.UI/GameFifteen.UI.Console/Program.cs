@@ -1,8 +1,9 @@
 ﻿namespace GameFifteen.UI.Console
 {
     using GameFifteen.Logic;
-    using Logic.Frames;
-    using Logic.Tiles;
+    using GameFifteen.Logic.Movers;
+    using GameFifteen.Logic.Frames;
+    using GameFifteen.Logic.Tiles;
 
     internal class Program
     {
@@ -13,7 +14,9 @@
             var director = new FrameDirector(builder);
             var frame = director.ConstructFrame(8, 5);
 
-            var gameFifteen = new Game(frame);
+            var mover = new RowColMover();
+
+            var gameFifteen = new Game(frame, mover);
             var scoreboard = new Scoreboard();
             var printer = new Printer();
             var reader = new Reader();
