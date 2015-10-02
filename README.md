@@ -40,3 +40,7 @@ MainAlgorithm internal.
 31. Extracted Scoreboard class, needs refactoring
 32. Refactor Scoreboard
 33. Refactor Scoreboard
+34. Create folder Tiles
+35. Create folder Contracts
+36. Create interface ITile
+37. Implement interface ITile with abstract class Tile
