@@ -55,3 +55,4 @@ MainAlgorithm internal.
 46. Introduced class Frame implementind interface IFrame
 47. Introduced class FrameBuilder
 48. Introduced frame builders 
+49. Introduced class FrameDirector

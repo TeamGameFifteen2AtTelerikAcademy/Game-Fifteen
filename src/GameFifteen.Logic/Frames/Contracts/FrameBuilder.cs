@@ -1,11 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace GameFifteen.Logic.Frames.Contracts
+﻿namespace GameFifteen.Logic.Frames.Contracts
 {
-    interface FrameBuilder
+    using Tiles.Contracts;
+    using Common;
+
+    public abstract class FrameBuilder
     {
+        private TileFactory tileFactory;
+
+        protected FrameBuilder(TileFactory tileFactory)
+        {
+            this.TileFactory = tileFactory;
+        }
+
+        protected TileFactory TileFactory
+        {
+            get
+            {
+                return this.tileFactory;
+            }
+
+            set
+            {
+                Validator.ValidateIsNotNull(value, "TileFactory");
+                this.tileFactory = value;
+            }
+        }
+
+        protected IFrame Frame { get; private set; }
+
+        public void InitializeFrame(int rows, int cols)
+        {
+            var tiles = new ITile[rows, cols];
+
+            this.Frame = new Frame(tiles);
+        }
+
+        public abstract void FillFrameWithTiles();
+
+        public IFrame GetFrame()
+        {
+            return this.Frame;
+        }
+
+        protected void FillTileInFrame(int row, int col)
+        {
+            bool isThisMostBottomRightPosition = row == this.Frame.Rows - 1 && col == this.Frame.Cols - 1;
+            if (isThisMostBottomRightPosition)
+            {
+                this.Frame.Tiles[row, col] = null;
+                return;
+            }
+
+            this.Frame.Tiles[row, col] = this.TileFactory.CreateTile();
+        }
     }
 }

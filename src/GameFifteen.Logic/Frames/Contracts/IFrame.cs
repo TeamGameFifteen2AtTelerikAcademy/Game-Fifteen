@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace GameFifteen.Logic.Frames.Contracts
+﻿namespace GameFifteen.Logic.Frames.Contracts
 {
-    interface IFrame
+    using Tiles.Contracts;
+
+    public interface IFrame
     {
+        ITile[,] Tiles { get; }
+
+        int Rows { get; }
+
+        int Cols { get; }
     }
 }

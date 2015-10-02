@@ -1,11 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace GameFifteen.Logic.Frames
+﻿namespace GameFifteen.Logic.Frames
 {
-    class Class1
+    using Frames.Contracts;
+    using Tiles.Contracts;
+
+    public class ClassicPatternFrameBuilder : FrameBuilder
     {
+        public ClassicPatternFrameBuilder(TileFactory tileFactory) : base(tileFactory)
+        {
+        }
+
+        public override void FillFrameWithTiles()
+        {
+            for (int row = 0; row < this.Frame.Rows; row++)
+            {
+                for (int col = 0; col < this.Frame.Cols; col++)
+                {
+                    this.FillTileInFrame(row, col);
+                }
+            }
+        }
     }
 }

@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace GameFifteen.Logic.Tiles
+﻿namespace GameFifteen.Logic.Tiles
 {
-    class NumberTileFactory
+    using Tiles.Contracts;
+
+    public class NumberTileFactory : TileFactory
     {
+        public override ITile CreateTile()
+        {
+            return new NumberTile(this.GetNextId());
+        }
     }
 }

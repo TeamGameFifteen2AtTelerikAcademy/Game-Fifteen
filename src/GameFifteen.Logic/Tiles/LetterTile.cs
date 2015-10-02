@@ -3,9 +3,9 @@
     using Common;
     using Tiles.Contracts;
 
-    public class LettersTile : Tile, ITile
+    public class LetterTile : Tile, ITile
     {
-        public LettersTile(int id) : base(id)
+        public LetterTile(int id) : base(id)
         {
         }
 

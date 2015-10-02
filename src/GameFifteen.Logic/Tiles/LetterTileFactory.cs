@@ -6,7 +6,7 @@
     {
         public override ITile CreateTile()
         {
-            return new LettersTile(this.GetNextId());
+            return new LetterTile(this.GetNextId());
         }
     }
 }
