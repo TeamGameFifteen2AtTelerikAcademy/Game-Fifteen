@@ -3,17 +3,18 @@
     using GameFifteen.Logic;
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Contracts;
+    using Logic.Frames.Contracts;
 
     internal class Engine
     {
         //TODO: Create IGame interface
-        private readonly GameFifteen gameFifteen;
+        private readonly Game gameFifteen;
         //TODO: Create IScoreboard interface
         private readonly IScoreboard scoreboard;
         private readonly IPrinter printer;
         private readonly IReader reader;
 
-        public Engine(GameFifteen gameFifteen, IScoreboard scoreboard, IPrinter printer, IReader reader)
+        public Engine(Game gameFifteen, IScoreboard scoreboard, IPrinter printer, IReader reader)
         {
             Validator.ValidateIsNotNull(gameFifteen, "gameFifteen");
             Validator.ValidateIsNotNull(scoreboard, "scoreboard");

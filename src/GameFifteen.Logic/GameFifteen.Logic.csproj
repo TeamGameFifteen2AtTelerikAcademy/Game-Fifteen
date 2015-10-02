@@ -78,7 +78,7 @@
     <Compile Include="Frames\Contracts\IFrame.cs" />
     <Compile Include="Frames\Frame.cs" />
     <Compile Include="Frames\FrameDirector.cs" />
-    <Compile Include="GameFifteen.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="Scoreboard.cs" />
     <Compile Include="Tiles\Contracts\ITile.cs" />
@@ -86,6 +86,7 @@
     <Compile Include="Tiles\Contracts\TileFactory.cs" />
     <Compile Include="Tiles\LetterTile.cs" />
     <Compile Include="Tiles\LetterTileFactory.cs" />
+    <Compile Include="Tiles\NullTile.cs" />
     <Compile Include="Tiles\NumberTile.cs" />
     <Compile Include="Tiles\NumberTileFactory.cs" />
   </ItemGroup>

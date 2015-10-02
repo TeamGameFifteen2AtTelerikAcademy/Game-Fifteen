@@ -42,5 +42,10 @@
         {
             return this.Id.GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return this.Label;
+        }
     }
 }

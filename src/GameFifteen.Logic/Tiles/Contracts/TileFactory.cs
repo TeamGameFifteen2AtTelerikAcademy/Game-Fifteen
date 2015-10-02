@@ -6,6 +6,11 @@
 
         public abstract ITile CreateTile();
 
+        public ITile CreateNullTile()
+        {
+            return new NullTile(0);
+        }
+
         protected int GetNextId()
         {
             return this.currentTileId++;

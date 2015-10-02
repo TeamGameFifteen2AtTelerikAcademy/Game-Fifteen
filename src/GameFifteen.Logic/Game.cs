@@ -4,8 +4,9 @@
     using System.Text;
 
     using Common;
+    using Frames.Contracts;
 
-    public class GameFifteen
+    public class Game
     {
         public int emptyRow = 3;
         public int emptyCol = 3;
@@ -15,6 +16,11 @@
                                         { 9, 10, 11, 12 },
                                         { 13, 14, 15, 16 }
                                       };
+        public IFrame frame;
+        public Game(IFrame frame)
+        {
+           this.frame = frame;
+        }
 
         public void ShuffleMatrix()
         {
@@ -48,35 +54,7 @@
 
         public override string ToString()
         {
-            var result = new StringBuilder();
-            result.AppendLine(Constants.HorizontalBorder);
-            for (int i = 0; i < this.currentMatrix.GetLength(0); i++)
-            {
-                result.Append(Constants.VerticalBorder);
-                for (int j = 0; j < this.currentMatrix.GetLength(1); j++)
-                {
-                    if (this.currentMatrix[i, j] <= 9)
-                    {
-                        result.Append(string.Format("  {0}", currentMatrix[i, j]));
-                    }
-                    else
-                    {
-                        if (this.currentMatrix[i, j] == 16)
-                        {
-                            result.Append("   ");
-                        }
-                        else
-                        {
-                            result.Append(string.Format(" {0}", currentMatrix[i, j]));
-                        }
-                    }
-                }
-                result.AppendLine(Constants.VerticalBorder);
-            }
-
-            result.Append(Constants.HorizontalBorder);
-
-            return result.ToString();
+            return this.frame.ToString();
         }
 
         public bool IsOutOfMatrix(int row, int col)

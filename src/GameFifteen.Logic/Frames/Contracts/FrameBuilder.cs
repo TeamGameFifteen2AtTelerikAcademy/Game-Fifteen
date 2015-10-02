@@ -42,12 +42,12 @@
             return this.Frame;
         }
 
-        protected void FillTileInFrame(int row, int col)
+        protected virtual void FillTileInFrame(int row, int col)
         {
             bool isThisMostBottomRightPosition = row == this.Frame.Rows - 1 && col == this.Frame.Cols - 1;
             if (isThisMostBottomRightPosition)
             {
-                this.Frame.Tiles[row, col] = null;
+                this.Frame.Tiles[row, col] = this.TileFactory.CreateNullTile();
                 return;
             }
 

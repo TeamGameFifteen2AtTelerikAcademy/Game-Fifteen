@@ -56,3 +56,4 @@ MainAlgorithm internal.
 47. Introduced class FrameBuilder
 48. Introduced frame builders 
 49. Introduced class FrameDirector
+50. Introduced class NullTile
