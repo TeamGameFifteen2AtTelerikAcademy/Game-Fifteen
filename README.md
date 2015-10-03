@@ -69,3 +69,4 @@ MainAlgorithm internal.
 60. Implemented classes for each command
 61. Executing of commands moved in CommandManager. Implemented ICommand pattern
 62. Introduced WPF UI Application
+63. UI.WPF - Introduced RelayCommand class
