@@ -68,3 +68,4 @@ MainAlgorithm internal.
 59. Introduced interfaces ICommand, ICommandManager, ICommandContext
 60. Implemented classes for each command
 61. Executing of commands moved in CommandManager. Implemented ICommand pattern
+62. Introduced WPF UI Application
