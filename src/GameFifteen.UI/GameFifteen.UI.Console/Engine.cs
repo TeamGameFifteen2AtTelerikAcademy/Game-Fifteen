@@ -2,20 +2,18 @@
 {
     using System;
 
-    using GameFifteen.Logic;
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Contracts;
+    using GameFifteen.Logic.Games.Contracts;
 
     internal class Engine
     {
-        //TODO: Create IGame interface
-        private readonly Game game;
-        //TODO: Create IScoreboard interface
+        private readonly IGame game;
         private readonly IScoreboard scoreboard;
         private readonly IPrinter printer;
         private readonly IReader reader;
 
-        public Engine(Game game, IScoreboard scoreboard, IPrinter printer, IReader reader)
+        public Engine(IGame game, IScoreboard scoreboard, IPrinter printer, IReader reader)
         {
             Validator.ValidateIsNotNull(game, "gameFifteen");
             Validator.ValidateIsNotNull(scoreboard, "scoreboard");
@@ -30,7 +28,8 @@
 
         public void Run()
         {
-            this.game.ShuffleMatrix();
+            // TODO: Totally refactor this old logic. Think after a good sleep which sub methods Run will call and how
+            this.game.Shuffle();
 
             this.printer.PrintLine(Constants.WellcomeMessage);
             this.printer.PrintLine(this.game);
@@ -46,7 +45,7 @@
                 {
                     case "restart":
                         playerMovesCount = 0;
-                        this.game.ShuffleMatrix();
+                        this.game.Shuffle();
                         this.printer.PrintLine(Constants.WellcomeMessage);
                         this.printer.PrintLine(this.game);
                         break;
@@ -135,7 +134,7 @@
 
                     this.printer.Print(this.scoreboard);
 
-                    this.game.ShuffleMatrix();
+                    this.game.Shuffle();
 
                     this.printer.PrintLine(Constants.WellcomeMessage);
 

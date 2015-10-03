@@ -3,6 +3,7 @@
     using GameFifteen.Logic;
     using GameFifteen.Logic.Movers;
     using GameFifteen.Logic.Frames;
+    using GameFifteen.Logic.Games;
     using GameFifteen.Logic.Tiles;
 
     internal class Program
@@ -15,12 +16,12 @@
             var frame = director.ConstructFrame(4, 4);
 
             var mover = new RowColMover();
-
+            // TODO: GameInitializator class needs to be introduced
             var gameFifteen = new Game(frame, mover);
             var scoreboard = new Scoreboard();
             var printer = new Printer();
             var reader = new Reader();
-
+            // TODO: Create abstract Engine class to implement the Template Method Pattern -> Run method
             new Engine(gameFifteen, scoreboard, printer, reader).Run();
         }
     }

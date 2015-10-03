@@ -1,12 +1,10 @@
-﻿namespace GameFifteen.Logic
+﻿namespace GameFifteen.Logic.Games
 {
-    using System;
-
-    using Frames.Contracts;
-    using Tiles.Contracts;
+    using GameFifteen.Logic.Frames.Contracts;
+    using GameFifteen.Logic.Games.Contracts;
     using GameFifteen.Logic.Movers.Contracts;
 
-    public class Game
+    public class Game : IGame
     {
         //public int emptyRow;
         //public int emptyCol;
@@ -26,8 +24,8 @@
 
         public Game(IFrame frame, IMover mover)
         {
-            this.frame = frame;
-            this.framePrototype = this.frame.Clone();
+            this.framePrototype = frame;
+            this.frame = this.framePrototype.Clone();
 
             this.mover = mover;
 
@@ -50,7 +48,7 @@
             this.mover.Move(tileLabel, this.frame);
         }
 
-        public void ShuffleMatrix()
+        public void Shuffle()
         {
             do
             {

@@ -63,3 +63,4 @@ MainAlgorithm internal.
 54. Introduced IMover interface, Mover abstract class and RowsColsMover class
 55. Added Clone method to IFrame
 56. Implemented IMover in Game class
+57. Game class moved to Games folder and implements IGame
