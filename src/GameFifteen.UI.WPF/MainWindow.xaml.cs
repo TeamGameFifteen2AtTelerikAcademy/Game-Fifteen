@@ -26,7 +26,7 @@ namespace GameFifteen.UI.WPF
         {
             InitializeComponent();
             ViewSwitcher.PageSwitcher = this;
-            // TODO: Switch to PreGameView when rdy
+            ViewSwitcher.Switch(ViewSelector.PreGame);
         }
 
         public void Navigate(UserControl nextPage)

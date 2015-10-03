@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameFifteen.UI", "GameFifteen.UI", "{E6544E15-CD14-4939-A5F2-83E6543C06D2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFifteen.UI.Console", "GameFifteen.UI\GameFifteen.UI.Console\GameFifteen.UI.Console.csproj", "{EE3D65DC-FE61-4174-A231-F297BED368F2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFifteen.Logic", "GameFifteen.Logic\GameFifteen.Logic.csproj", "{587A134D-D632-4EB1-B343-0B3A11DDDDF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFifteen.UI.WPF", "GameFifteen.UI.WPF\GameFifteen.UI.WPF.csproj", "{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,11 +43,24 @@ Global
 		{587A134D-D632-4EB1-B343-0B3A11DDDDF5}.Release|Mixed Platforms.Build.0 = Release|x86
 		{587A134D-D632-4EB1-B343-0B3A11DDDDF5}.Release|x86.ActiveCfg = Release|x86
 		{587A134D-D632-4EB1-B343-0B3A11DDDDF5}.Release|x86.Build.0 = Release|x86
+		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Debug|x86.Build.0 = Debug|Any CPU
+		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Release|x86.ActiveCfg = Release|Any CPU
+		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EE3D65DC-FE61-4174-A231-F297BED368F2} = {E6544E15-CD14-4939-A5F2-83E6543C06D2}
+		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00} = {E6544E15-CD14-4939-A5F2-83E6543C06D2}
 	EndGlobalSection
 EndGlobal
