@@ -1,5 +1,8 @@
 ﻿namespace GameFifteen.Logic.Movers
 {
+    using System;
+    using System.Collections.Generic;
+
     using GameFifteen.Logic.Frames.Contracts;
     using GameFifteen.Logic.Movers.Contracts;
 
@@ -43,9 +46,16 @@
             }
         }
 
-        public override void Schuffle(IFrame frame)
+        public override void Shuffle(IFrame frame)
         {
-            throw new System.NotImplementedException();
+            var random = new Random();
+            int randomMoves = frame.Rows * frame.Cols;
+            for (int i = 0; i < randomMoves; i++)
+            {
+                var movableTileLabels = this.GetCurrentMovableTileLabels(frame);
+                var tileToMove = movableTileLabels[random.Next(movableTileLabels.Count)];
+                this.Move(tileToMove, frame);
+            }
         }
 
         private void MoveTilesOnRow(IFrame frame, Position nullTilePosition, Position tilePosition)
@@ -110,6 +120,40 @@
                 this.SwapTwoTilesInFrameByPosition(frame, nullTilePosition, upTilePosition);
                 nullTilePosition = upTilePosition;
             }
+        }
+
+        private List<string> GetCurrentMovableTileLabels(IFrame frame)
+        {
+            var result = new List<string>();
+
+            var nullTilePosition = this.FindTilePosition(string.Empty, frame);
+
+            if (this.NotFoundPosition == nullTilePosition)
+            {
+                return result;
+            }
+
+            for (int row = 0; row < frame.Rows; row++)
+            {
+                if (row == nullTilePosition.Row)
+                {
+                    continue;
+                }
+
+                result.Add(frame.Tiles[row, nullTilePosition.Col].Label);
+            }
+
+            for (int col = 0; col < frame.Cols; col++)
+            {
+                if (col == nullTilePosition.Col)
+                {
+                    continue;
+                }
+
+                result.Add(frame.Tiles[nullTilePosition.Row, col].Label);
+            }
+
+            return result;
         }
     }
 }

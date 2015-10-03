@@ -9,10 +9,10 @@
     {
         public static void Main()
         {
-            var factory = new LetterTileFactory ();
+            var factory = new NumberTileFactory();
             var builder = new ClassicPatternFrameBuilder(factory);
             var director = new FrameDirector(builder);
-            var frame = director.ConstructFrame(8, 5);
+            var frame = director.ConstructFrame(4, 4);
 
             var mover = new RowColMover();
 

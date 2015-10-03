@@ -8,7 +8,7 @@
 
         public abstract void Move(string tileLabel, Frames.Contracts.IFrame frame);
 
-        public abstract void Schuffle(Frames.Contracts.IFrame frame);
+        public abstract void Shuffle(Frames.Contracts.IFrame frame);
 
         protected Position FindTilePosition(string tileLabel, IFrame frame)
         {

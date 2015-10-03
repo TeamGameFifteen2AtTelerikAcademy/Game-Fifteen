@@ -1,5 +1,7 @@
 ﻿namespace GameFifteen.UI.Console
 {
+    using System;
+
     using GameFifteen.Logic;
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Contracts;
@@ -7,20 +9,20 @@
     internal class Engine
     {
         //TODO: Create IGame interface
-        private readonly Game gameFifteen;
+        private readonly Game game;
         //TODO: Create IScoreboard interface
         private readonly IScoreboard scoreboard;
         private readonly IPrinter printer;
         private readonly IReader reader;
 
-        public Engine(Game gameFifteen, IScoreboard scoreboard, IPrinter printer, IReader reader)
+        public Engine(Game game, IScoreboard scoreboard, IPrinter printer, IReader reader)
         {
-            Validator.ValidateIsNotNull(gameFifteen, "gameFifteen");
+            Validator.ValidateIsNotNull(game, "gameFifteen");
             Validator.ValidateIsNotNull(scoreboard, "scoreboard");
             Validator.ValidateIsNotNull(printer, "printer");
             Validator.ValidateIsNotNull(reader, "reader");
 
-            this.gameFifteen = gameFifteen;
+            this.game = game;
             this.scoreboard = scoreboard;
             this.printer = printer;
             this.reader = reader;
@@ -28,33 +30,41 @@
 
         public void Run()
         {
-            this.gameFifteen.ShuffleMatrix();
+            this.game.ShuffleMatrix();
 
             this.printer.PrintLine(Constants.WellcomeMessage);
-            this.printer.PrintLine(this.gameFifteen);
+            this.printer.PrintLine(this.game);
 
             this.printer.Print(Constants.EnterCommandMessage);
-            string inputString = this.reader.ReadLine();
+            string playerCommand = this.reader.ReadLine();
 
-            int moves = 0;
-            while (inputString.CompareTo("exit") != 0)
+            int playerMovesCount = 0;
+            while (playerCommand != "exit")
             {
                 // TODO: Command - Mariya
-                switch (inputString)
+                switch (playerCommand)
                 {
                     case "restart":
-                        moves = 0;
-                        this.gameFifteen.ShuffleMatrix();
+                        playerMovesCount = 0;
+                        this.game.ShuffleMatrix();
                         this.printer.PrintLine(Constants.WellcomeMessage);
-                        this.printer.PrintLine(this.gameFifteen);
+                        this.printer.PrintLine(this.game);
                         break;
 
                     case "top":
                         this.printer.Print(this.scoreboard);
-                        this.printer.PrintLine(this.gameFifteen);
+                        this.printer.PrintLine(this.game);
                         break;
 
                     default:
+                        try
+                        {
+                            // TODO: make Move throw when nothing to move.
+                            this.game.Move(playerCommand);
+                        }
+                        catch (Exception)
+                        {
+                        }
                         //int number = 0;
                         //bool isNumber = int.TryParse(inputString, out number);
 
@@ -112,30 +122,30 @@
                 }
 
 
-                if (this.gameFifteen.IsEqualMatrix())
+                if (this.game.IsSolved)
                 {
-                    this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, moves));
+                    this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, playerMovesCount));
 
-                    if (this.scoreboard.IsInTopScores(moves))
+                    if (this.scoreboard.IsInTopScores(playerMovesCount))
                     {
                         this.printer.Print(Constants.EnterNameMessage);
                         string name = this.reader.ReadLine();
-                        this.scoreboard.Add(moves, name);
+                        this.scoreboard.Add(playerMovesCount, name);
                     }
 
                     this.printer.Print(this.scoreboard);
 
-                    this.gameFifteen.ShuffleMatrix();
+                    this.game.ShuffleMatrix();
 
                     this.printer.PrintLine(Constants.WellcomeMessage);
 
-                    this.printer.PrintLine(this.gameFifteen.ToString());
+                    this.printer.PrintLine(this.game.ToString());
 
-                    moves = 0;
+                    playerMovesCount = 0;
                 }
 
                 this.printer.Print(Constants.EnterCommandMessage);
-                inputString = this.reader.ReadLine();
+                playerCommand = this.reader.ReadLine();
             }
 
             this.printer.PrintLine(Constants.GoodbyeMessage);

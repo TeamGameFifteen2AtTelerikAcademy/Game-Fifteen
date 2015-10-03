@@ -6,6 +6,6 @@
     {
         void Move(string tileLabel, IFrame frame);
 
-        void Schuffle(IFrame frame);
+        void Shuffle(IFrame frame);
     }
 }
