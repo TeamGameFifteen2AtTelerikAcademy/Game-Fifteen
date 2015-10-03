@@ -1,4 +1,6 @@
-﻿namespace GameFifteen.Logic.Games.Contracts
+﻿using GameFifteen.Logic.Contracts;
+
+namespace GameFifteen.Logic.Games.Contracts
 {
     public interface IGame
     {
@@ -7,5 +9,7 @@
         void Move(string tileLabel);
 
         void Shuffle();
+
+        IScoreboard Scoreboard { get; set; }
     }
 }

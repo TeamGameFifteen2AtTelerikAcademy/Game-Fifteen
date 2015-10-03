@@ -1,6 +1,6 @@
-﻿namespace GameFifteen.UI.Console
+﻿namespace GameFifteen.Logic
 {
-    internal interface IPrinter
+    public interface IPrinter
     {
         void Print(object obj);
 

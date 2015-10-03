@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandContext.cs" />
+    <Compile Include="CommandManager.cs" />
+    <Compile Include="Commands\MoveCommand.cs" />
+    <Compile Include="Commands\RestartCommand.cs" />
+    <Compile Include="Commands\ShowScoresCommand.cs" />
     <Compile Include="Engine.cs" />
-    <Compile Include="IPrinter.cs" />
     <Compile Include="IReader.cs" />
     <Compile Include="Printer.cs" />
     <Compile Include="Program.cs" />

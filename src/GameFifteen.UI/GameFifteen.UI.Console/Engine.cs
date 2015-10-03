@@ -5,25 +5,29 @@
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Contracts;
     using GameFifteen.Logic.Games.Contracts;
+    using Logic.Commands;
+    using Logic;
 
     internal class Engine
     {
         private readonly IGame game;
-        private readonly IScoreboard scoreboard;
-        private readonly IPrinter printer;
+        private readonly Logic.IPrinter printer;
         private readonly IReader reader;
+        private readonly ICommandManager commandManager;
+        private readonly ICommandContext context;
 
-        public Engine(IGame game, IScoreboard scoreboard, IPrinter printer, IReader reader)
+        public Engine(IGame game,  IPrinter printer, IReader reader, ICommandManager commandManager)
         {
             Validator.ValidateIsNotNull(game, "gameFifteen");
-            Validator.ValidateIsNotNull(scoreboard, "scoreboard");
+            Validator.ValidateIsNotNull(game.Scoreboard, "scoreboard");
             Validator.ValidateIsNotNull(printer, "printer");
             Validator.ValidateIsNotNull(reader, "reader");
 
             this.game = game;
-            this.scoreboard = scoreboard;
             this.printer = printer;
             this.reader = reader;
+            this.commandManager = commandManager;
+            this.context = new CommandContext(this.game, this.printer);
         }
 
         public void Run()
@@ -36,103 +40,27 @@
 
             this.printer.Print(Constants.EnterCommandMessage);
             string playerCommand = this.reader.ReadLine();
-
+            Console.WriteLine("Run");
             int playerMovesCount = 0;
-            while (playerCommand != "exit")
+            while (!this.game.IsSolved)
             {
                 // TODO: Command - Mariya
-                switch (playerCommand)
-                {
-                    case "restart":
-                        playerMovesCount = 0;
-                        this.game.Shuffle();
-                        this.printer.PrintLine(Constants.WellcomeMessage);
-                        this.printer.PrintLine(this.game);
-                        break;
-
-                    case "top":
-                        this.printer.Print(this.scoreboard);
-                        this.printer.PrintLine(this.game);
-                        break;
-
-                    default:
-                        try
-                        {
-                            // TODO: make Move throw when nothing to move.
-                            this.game.Move(playerCommand);
-                        }
-                        catch (Exception)
-                        {
-                        }
-                        //int number = 0;
-                        //bool isNumber = int.TryParse(inputString, out number);
-
-                        //if (!isNumber)
-                        //{
-                        //    this.printer.PrintLine(Constants.InvalidCommandMessage);
-                        //    break;
-                        //}
-
-                        //// TODO: number depends on the size of the frame!
-                        //if (number < this.gameFifteen.currentMatrix.GetLength(0) * this.gameFifteen.currentMatrix.GetLength(1)
-                        //    && number > 0)
-                        //{
-                        //    int newRow = 0;
-                        //    int newCol = 0;
-                        //    int[] dirRow = new int[4] { -1, 0, 1, 0 };
-                        //    int[] dirCol = new int[4] { 0, 1, 0, -1 };
-
-                        //    for (int i = 0; i < 4; i++)
-                        //    {
-                        //        newRow = this.gameFifteen.emptyRow + dirRow[i];
-                        //        newCol = this.gameFifteen.emptyCol + dirCol[i];
-
-                        //        if (this.gameFifteen.IsOutOfMatrix(newRow, newCol))
-                        //        {
-                        //            if (i == this.gameFifteen.emptyRow)
-                        //            {
-                        //                this.printer.PrintLine(Constants.InvalidMoveMessage);
-                        //            }
-
-                        //            continue;
-                        //        }
-
-                        //        if (this.gameFifteen.currentMatrix[newRow, newCol].Label == number.ToString())
-                        //        {
-                        //            this.gameFifteen.MoveEmptyCell(newRow, newCol);
-                        //            moves++;
-                        //            this.printer.PrintLine(this.gameFifteen);
-                        //            break;
-                        //        }
-
-                        //        if (i == this.gameFifteen.emptyRow)
-                        //        {
-                        //            this.printer.PrintLine(Constants.InvalidMoveMessage);
-                        //        }
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    this.printer.PrintLine(Constants.InvalidMoveMessage);
-                        //    break;
-                        //}
-
-                        break;
-                }
-
+                this.context.SelectedTileLabel = playerCommand;
+                this.commandManager.GetCommand(playerCommand).Execute(this.context);
+            
 
                 if (this.game.IsSolved)
                 {
                     this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, playerMovesCount));
 
-                    if (this.scoreboard.IsInTopScores(playerMovesCount))
+                    if (this.game.Scoreboard.IsInTopScores(playerMovesCount))
                     {
                         this.printer.Print(Constants.EnterNameMessage);
                         string name = this.reader.ReadLine();
-                        this.scoreboard.Add(playerMovesCount, name);
+                        this.game.Scoreboard.Add(playerMovesCount, name);
                     }
 
-                    this.printer.Print(this.scoreboard);
+                    this.printer.Print(this.game.Scoreboard);
 
                     this.game.Shuffle();
 

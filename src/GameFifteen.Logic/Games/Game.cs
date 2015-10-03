@@ -1,5 +1,6 @@
 ﻿namespace GameFifteen.Logic.Games
 {
+    using Logic.Contracts;
     using GameFifteen.Logic.Frames.Contracts;
     using GameFifteen.Logic.Games.Contracts;
     using GameFifteen.Logic.Movers.Contracts;
@@ -22,12 +23,13 @@
         private readonly IFrame frame;
         private readonly IMover mover;
 
-        public Game(IFrame frame, IMover mover)
+        public Game(IFrame frame, IMover mover, IScoreboard scoreboard)
         {
             this.framePrototype = frame;
             this.frame = this.framePrototype.Clone();
 
             this.mover = mover;
+            this.Scoreboard = scoreboard;
 
             //this.currentMatrix = this.frame.Tiles;
             //this.solvedMatrix = (ITile[,])this.frame.Tiles.Clone();
@@ -42,6 +44,8 @@
                 return this.frame.Equals(this.framePrototype);
             }
         }
+
+        public IScoreboard Scoreboard { get; set; }
 
         public void Move(string tileLabel)
         {

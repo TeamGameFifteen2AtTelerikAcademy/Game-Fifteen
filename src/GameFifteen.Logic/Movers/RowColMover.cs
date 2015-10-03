@@ -32,15 +32,16 @@
             {
                 return;
             }
-
+           
             if (nullTilePosition.Row == tilePosition.Row)
             {
+               
                 this.MoveTilesOnRow(frame, nullTilePosition, tilePosition);
                 return;
             }
 
             if (nullTilePosition.Col == tilePosition.Col)
-            {
+            {                
                 this.MoveTilesOnCol(frame, nullTilePosition, tilePosition);
                 return;
             }

@@ -64,3 +64,7 @@ MainAlgorithm internal.
 55. Added Clone method to IFrame
 56. Implemented IMover in Game class
 57. Game class moved to Games folder and implements IGame
+58. Holding of instance of Scoreboard moved to Game (as public property)
+59. Introduced interfaces ICommand, ICommandManager, ICommandContext
+60. Implemented classes for each command
+61. Executing of commands moved in CommandManager. Implemented ICommand pattern

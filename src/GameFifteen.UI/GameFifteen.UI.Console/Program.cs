@@ -13,16 +13,18 @@
             var factory = new NumberTileFactory();
             var builder = new ClassicPatternFrameBuilder(factory);
             var director = new FrameDirector(builder);
-            var frame = director.ConstructFrame(4, 4);
+            var frame = director.ConstructFrame(3, 3);
+            var commandManager = new CommandManager();
 
             var mover = new RowColMover();
             // TODO: GameInitializator class needs to be introduced
-            var gameFifteen = new Game(frame, mover);
+          
             var scoreboard = new Scoreboard();
+            var gameFifteen = new Game(frame, mover, scoreboard);
             var printer = new Printer();
             var reader = new Reader();
             // TODO: Create abstract Engine class to implement the Template Method Pattern -> Run method
-            new Engine(gameFifteen, scoreboard, printer, reader).Run();
+            new Engine(gameFifteen, printer, reader, commandManager).Run();
         }
     }
 }
