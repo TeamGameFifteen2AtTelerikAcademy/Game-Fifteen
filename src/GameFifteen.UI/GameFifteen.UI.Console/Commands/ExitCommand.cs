@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameFifteen.UI.Console.Commands
+﻿namespace GameFifteen.UI.Console.Commands
 {
-    class ExitCommand
+    using System;
+    using Logic.Commands;
+    using Logic.Common;
+
+    class ExitCommand : ICommand
     {
+        public void Execute(ICommandContext context)
+        {
+          context.Printer.PrintLine(Constants.GoodbyeMessage);
+            Environment.Exit(0);     
+        }
     }
 }
