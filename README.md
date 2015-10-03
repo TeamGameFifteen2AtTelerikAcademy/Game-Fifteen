@@ -70,3 +70,4 @@ MainAlgorithm internal.
 61. Executing of commands moved in CommandManager. Implemented ICommand pattern
 62. Introduced WPF UI Application
 63. UI.WPF - Introduced RelayCommand class
+64. UI.WPF - Introduced ISwitchable interface, Helpers - ViewSwitcher (yet static class); MainWindol.xaml.cs - added methods to navigate with ViewSwitcher
