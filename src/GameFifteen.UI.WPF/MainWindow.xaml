@@ -6,6 +6,6 @@
         xmlns:local="clr-namespace:GameFifteen.UI.WPF"
         xmlns:vm="clr-namespace:GameFifteen.UI.WPF.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="600"
+        Title="MainWindow" Height="625" Width="600"
         >
 </Window>

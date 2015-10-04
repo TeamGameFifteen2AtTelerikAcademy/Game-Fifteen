@@ -23,9 +23,9 @@
                             FontSize="20" Padding="10"
                             Command="{Binding SwitchView}" 
                             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-                    <Button x:Name="ButtonBuildMatrix" Content="Start"  
+                    <Button x:Name="ButtonBuildMatrix" Content="New Game"  
                             FontSize="20" Padding="10" 
-                            Command="{Binding BuildMatrix}"  />
+                            Command="{Binding InitializeGame}"  />
                     <Label Content="{Binding Moves}"   
                            DockPanel.Dock="Right" 
                            FontSize="20" Padding="10"/>
@@ -39,7 +39,7 @@
                 </DockPanel>
             </Grid>
             <Grid>
-                <ItemsControl x:Name="fra" ItemsSource="{Binding Frame}">
+                <ItemsControl x:Name="fra" ItemsSource="{Binding Tiles}">
                     <ItemsControl.ItemsPanel >
                         <ItemsPanelTemplate>
                             <Grid                            
@@ -64,7 +64,7 @@
                     </ItemsControl.ItemsPanel>                    
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button  Content="{Binding Id}" Width="100" Height="100"                               
+                            <Button  Content="{Binding Label}" Width="100" Height="100"                               
                                      Command="{Binding Path=DataContext.MoveTile, 
                                         RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
