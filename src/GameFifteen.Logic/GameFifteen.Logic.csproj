@@ -81,7 +81,6 @@
     <Compile Include="Frames\PatternType.cs" />
     <Compile Include="Games\Contracts\IGame.cs" />
     <Compile Include="Games\Game.cs" />
-    <Compile Include="IPrinter.cs" />
     <Compile Include="Movers\Contracts\IMover.cs" />
     <Compile Include="Movers\Contracts\Mover.cs" />
     <Compile Include="Movers\RowColMover.cs" />

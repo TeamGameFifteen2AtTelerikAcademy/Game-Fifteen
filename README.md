@@ -76,3 +76,4 @@ MainAlgorithm internal.
 67. UI.WPF - Introduced ClassicGameView xaml
 68. UI.WPF - ClassicGameViewModel class added (yet empty); Icommand switchViewCommand extracted to ViewModelBase; some xaml views changes
 69. Finished refactoring in Logic for now
+70. Moved IPrinter back to UI.Console project

@@ -6,7 +6,7 @@
     {
         IGame Game { get; set; }
         // TODO: get thr printer out of here. Return message instead. 
-        IPrinter Printer { get; set; }
+        //IPrinter Printer { get; set; }
 
         string SelectedTileLabel { get; set;}
     }

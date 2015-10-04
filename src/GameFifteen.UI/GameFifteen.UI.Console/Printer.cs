@@ -2,7 +2,7 @@
 {
     using System;
 
-    internal class Printer : Logic.IPrinter
+    internal class Printer : IPrinter
     {
         public void Print(object obj)
         {

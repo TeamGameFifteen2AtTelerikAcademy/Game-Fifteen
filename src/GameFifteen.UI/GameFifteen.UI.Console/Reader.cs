@@ -2,7 +2,7 @@
 {
     using System;
 
-    class Reader : IReader
+    internal class Reader : IReader
     {
         public string ReadLine()
         {
