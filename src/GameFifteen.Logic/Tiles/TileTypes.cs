@@ -1,6 +1,6 @@
 ﻿namespace GameFifteen.Logic.Tiles
 {
-    public enum TileType
+    public enum TileTypes
     {
         Number,
         Letter

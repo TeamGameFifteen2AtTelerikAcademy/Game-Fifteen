@@ -1,6 +1,5 @@
 ﻿namespace GameFifteen.Logic.Movers
 {
-    using System;
     using System.Collections.Generic;
 
     using GameFifteen.Logic.Frames.Contracts;
@@ -10,54 +9,27 @@
     {
         public override bool Move(string tileLabel, IFrame frame)
         {
-            // Prevent moving the null tile.
-            if (string.IsNullOrWhiteSpace(tileLabel))
-            {
-                return false;
-            }
-
-            var nullTilePosition = this.FindTilePosition(string.Empty, frame);
-
-            // If there isn't null tile in the frame we cannot move anything.
-            if (this.NotFoundPosition == nullTilePosition)
+            if (!base.Move(tileLabel, frame))
             {
                 return false;
             }
 
             var tilePosition = this.FindTilePosition(tileLabel, frame);
+            var nullTilePosition = this.FindTilePosition(string.Empty, frame);
 
-            // If the tile is not found in the frame we cannot move it.
-            if (this.NotFoundPosition == tilePosition)
-            {
-                return false;
-            }
-           
             if (nullTilePosition.Row == tilePosition.Row)
             {
-               
                 this.MoveTilesOnRow(frame, nullTilePosition, tilePosition);
                 return true;
             }
 
             if (nullTilePosition.Col == tilePosition.Col)
-            {                
+            {
                 this.MoveTilesOnCol(frame, nullTilePosition, tilePosition);
                 return true;
             }
 
             return false;
-        }
-
-        public override void Shuffle(IFrame frame)
-        {
-            var random = new Random();
-            int randomMoves = frame.Rows * frame.Cols;
-            for (int i = 0; i < randomMoves; i++)
-            {
-                var movableTileLabels = this.GetCurrentMovableTileLabels(frame);
-                var tileToMove = movableTileLabels[random.Next(movableTileLabels.Count)];
-                this.Move(tileToMove, frame);
-            }
         }
 
         private void MoveTilesOnRow(IFrame frame, Position nullTilePosition, Position tilePosition)
@@ -124,7 +96,7 @@
             }
         }
 
-        private List<string> GetCurrentMovableTileLabels(IFrame frame)
+        protected override List<string> GetCurrentMovableTileLabels(IFrame frame)
         {
             var result = new List<string>();
 
