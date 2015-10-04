@@ -1,40 +1,22 @@
-﻿namespace GameFifteen.Logic
+﻿namespace GameFifteen.Logic.Scoreboards
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-        
-    using Common;
-    using Contracts;
+
+    using GameFifteen.Logic.Common;
+    using GameFifteen.Logic.Scoreboards.Contracts;
 
     public class Scoreboard : IScoreboard
     {
-        private IList<IScore> topScores;
-
-        public Scoreboard()
-        {
-            this.TopScores = new List<IScore>();
-        }  
-
-        private IList<IScore> TopScores
-        {
-            get
-            {
-                return this.topScores;
-            }
-
-            set
-            {
-                this.topScores = value;
-            }
-        }
+        protected IList<Score> TopScores = new List<Score>();
 
         public void Add(int moves, string playerName)
         {
             if (!this.IsInTopScores(moves))
             {
-                return; // TODO: DO SOMETHING ELSE
+                return;
             }
 
             var newScore = new Score(moves, playerName);
@@ -81,6 +63,19 @@
             }
 
             return result.ToString();
+        }
+
+        protected class Score
+        {
+            public Score(int moves, string playerName)
+            {
+                this.Moves = moves;
+                this.PlayerNeme = playerName;
+            }
+
+            public int Moves { get; private set; }
+
+            public string PlayerNeme { get; private set; }
         }
     }
 }

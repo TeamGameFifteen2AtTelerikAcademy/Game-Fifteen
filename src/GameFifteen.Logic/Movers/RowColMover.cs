@@ -8,13 +8,12 @@
 
     public class RowColMover : Mover
     {
-        public override void Move(string tileLabel, IFrame frame)
+        public override bool Move(string tileLabel, IFrame frame)
         {
-            // TODO: consider throwing in these checks and catch the exception in the caller in order to prevent playerMoves incrementation.
             // Prevent moving the null tile.
             if (string.IsNullOrWhiteSpace(tileLabel))
             {
-                return;
+                return false;
             }
 
             var nullTilePosition = this.FindTilePosition(string.Empty, frame);
@@ -22,7 +21,7 @@
             // If there isn't null tile in the frame we cannot move anything.
             if (this.NotFoundPosition == nullTilePosition)
             {
-                return;
+                return false;
             }
 
             var tilePosition = this.FindTilePosition(tileLabel, frame);
@@ -30,21 +29,23 @@
             // If the tile is not found in the frame we cannot move it.
             if (this.NotFoundPosition == tilePosition)
             {
-                return;
+                return false;
             }
            
             if (nullTilePosition.Row == tilePosition.Row)
             {
                
                 this.MoveTilesOnRow(frame, nullTilePosition, tilePosition);
-                return;
+                return true;
             }
 
             if (nullTilePosition.Col == tilePosition.Col)
             {                
                 this.MoveTilesOnCol(frame, nullTilePosition, tilePosition);
-                return;
+                return true;
             }
+
+            return false;
         }
 
         public override void Shuffle(IFrame frame)

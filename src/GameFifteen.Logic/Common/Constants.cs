@@ -18,6 +18,14 @@
         public const string ScoreboardFormat = "{0}. {1} --> {2} moves";
         public const int ScoreboardMaxCount = 5;
 
+        // GameInitializator
+        public const string TileTypeQuestion = "What type of tiles would you like: Number or Letter: ";
+        public const string PatternTypeQuestion = "What type of pattern would you like: Classic or Column: ";
+
+        public const string RowsQuestion = "How many rows would you like: ";
+
+        public const string ColsQuestion = "How many cols would you like: ";
+
         // User messages
         public const string EnterCommandMessage = "Enter a number to move: ";
         public const string InvalidCommandMessage = "Invalid command!";
@@ -27,8 +35,8 @@
         public const string GoodbyeMessage = "Good bye!";
         public static readonly string WellcomeMessage =
             "Welcome to the game “15”. Please try to arrange the numbers sequentially." + Environment.NewLine +
-            "Use 'top' to view the top scoreboard, 'restart' to start a new game and" + Environment.NewLine +
-            "'exit' to quit the game.";
+            "Use 'Top' to view the top scoreboard, 'Restart' to start a new game and" + Environment.NewLine +
+            "'Exit' to quit the game.";
 
         // Convertor
         public const int EnglishAlphabetLettersCount = 26;

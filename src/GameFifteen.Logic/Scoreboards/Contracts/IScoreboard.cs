@@ -1,4 +1,4 @@
-﻿namespace GameFifteen.Logic.Contracts
+﻿namespace GameFifteen.Logic.Scoreboards.Contracts
 {
     public interface IScoreboard
     {

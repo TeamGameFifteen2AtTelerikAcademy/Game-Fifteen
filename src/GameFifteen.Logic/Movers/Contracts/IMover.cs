@@ -4,7 +4,7 @@
 
     public interface IMover
     {
-        void Move(string tileLabel, IFrame frame);
+        bool Move(string tileLabel, IFrame frame);
 
         void Shuffle(IFrame frame);
     }

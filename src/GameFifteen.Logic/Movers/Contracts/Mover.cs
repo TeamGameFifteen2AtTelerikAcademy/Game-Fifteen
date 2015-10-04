@@ -6,7 +6,7 @@
     {
         protected readonly Position NotFoundPosition = new Position(-1, -1);
 
-        public abstract void Move(string tileLabel, Frames.Contracts.IFrame frame);
+        public abstract bool Move(string tileLabel, IFrame frame);
 
         public abstract void Shuffle(Frames.Contracts.IFrame frame);
 

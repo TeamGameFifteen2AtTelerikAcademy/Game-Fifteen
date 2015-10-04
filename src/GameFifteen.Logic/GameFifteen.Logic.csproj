@@ -70,22 +70,23 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Convertor.cs" />
     <Compile Include="Common\Validator.cs" />
-    <Compile Include="Contracts\IScore.cs" />
-    <Compile Include="Contracts\IScoreboard.cs" />
+    <Compile Include="Scoreboards\Contracts\IScore.cs" />
+    <Compile Include="Scoreboards\Contracts\IScoreboard.cs" />
     <Compile Include="Frames\ColumnsPatternFrameBuilder.cs" />
     <Compile Include="Frames\ClassicPatternFrameBuilder.cs" />
     <Compile Include="Frames\Contracts\FrameBuilder.cs" />
     <Compile Include="Frames\Contracts\IFrame.cs" />
     <Compile Include="Frames\Frame.cs" />
     <Compile Include="Frames\FrameDirector.cs" />
+    <Compile Include="Frames\PatternType.cs" />
     <Compile Include="Games\Contracts\IGame.cs" />
     <Compile Include="Games\Game.cs" />
     <Compile Include="IPrinter.cs" />
     <Compile Include="Movers\Contracts\IMover.cs" />
     <Compile Include="Movers\Contracts\Mover.cs" />
     <Compile Include="Movers\RowColMover.cs" />
-    <Compile Include="Score.cs" />
-    <Compile Include="Scoreboard.cs" />
+    <Compile Include="Scoreboards\Score.cs" />
+    <Compile Include="Scoreboards\Scoreboard.cs" />
     <Compile Include="Tiles\Contracts\ITile.cs" />
     <Compile Include="Tiles\Contracts\Tile.cs" />
     <Compile Include="Tiles\Contracts\TileFactory.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Tiles\NullTile.cs" />
     <Compile Include="Tiles\NumberTile.cs" />
     <Compile Include="Tiles\NumberTileFactory.cs" />
+    <Compile Include="Tiles\TileType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
