@@ -73,3 +73,4 @@ MainAlgorithm internal.
 64. UI.WPF - Introduced ISwitchable interface, Helpers - ViewSwitcher (yet static class); MainWindol.xaml.cs - added methods to navigate with ViewSwitcher
 65. UI.WPF - Introduced ViewModelBase class
 66. UI.WPF - Introduced Viewes and ViewModels -PreGameViewModel class, PreGameView xaml UserController; Helpers - ViewSelector class
+67. UI.WPF - Introduced ClassicGameView xaml
