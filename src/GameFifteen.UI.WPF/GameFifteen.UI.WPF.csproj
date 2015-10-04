@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\ViewSelector.cs" />
+    <Compile Include="ViewModels\ClassicGameViewModel.cs" />
     <Compile Include="ViewModels\PreGameViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\ClassicGameVIew.xaml.cs">

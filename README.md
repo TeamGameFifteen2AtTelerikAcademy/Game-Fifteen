@@ -74,3 +74,4 @@ MainAlgorithm internal.
 65. UI.WPF - Introduced ViewModelBase class
 66. UI.WPF - Introduced Viewes and ViewModels -PreGameViewModel class, PreGameView xaml UserController; Helpers - ViewSelector class
 67. UI.WPF - Introduced ClassicGameView xaml
+68. UI.WPF - ClassicGameViewModel class added (yet empty); Icommand switchViewCommand extracted to ViewModelBase; some xaml views changes

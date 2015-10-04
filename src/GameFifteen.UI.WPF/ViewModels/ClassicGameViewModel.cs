@@ -11,7 +11,7 @@
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    public class PreGameViewModel : ViewModelBase
+    public class ClassicGameViewModel : ViewModelBase
     {
     }
 }

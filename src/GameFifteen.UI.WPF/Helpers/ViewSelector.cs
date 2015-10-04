@@ -7,6 +7,7 @@
     public static class ViewSelector
     {
         private static PreGameView preGame;
+        private static ClassicGameVIew classicGame;
         
         public static UserControl PreGame
         {
@@ -18,6 +19,19 @@
                 }
 
                 return preGame;
+            }
+        }
+
+        public static UserControl ClassicGame
+        {
+            get
+            {
+                if (classicGame == null)
+                {
+                    classicGame = new ClassicGameVIew();
+                }
+
+                return classicGame;
             }
         }
     }

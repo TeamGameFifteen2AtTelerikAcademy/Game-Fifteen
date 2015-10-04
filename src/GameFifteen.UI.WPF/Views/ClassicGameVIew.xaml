@@ -6,7 +6,11 @@
              xmlns:local="clr-namespace:GameFifteen.UI.WPF.Views"
              xmlns:vms="clr-namespace:GameFifteen.UI.WPF.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="600">
+             d:DesignHeight="600" d:DesignWidth="600"
+             >
+    <UserControl.DataContext>
+        <vms:ClassicGameViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <StackPanel>
             <Grid>
