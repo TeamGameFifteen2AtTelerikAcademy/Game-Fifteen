@@ -47,6 +47,7 @@
     <Compile Include="Commands\MoveCommand.cs" />
     <Compile Include="Commands\RestartCommand.cs" />
     <Compile Include="Commands\ShowScoresCommand.cs" />
+    <Compile Include="Commands\UndoCommand.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="EngineTemplate.cs" />
     <Compile Include="GameInitializator.cs" />

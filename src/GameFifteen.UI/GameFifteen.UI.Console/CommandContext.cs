@@ -2,15 +2,19 @@
 {
     using GameFifteen.Logic.Commands;
     using GameFifteen.Logic.Games.Contracts;
+    using Logic.Memento;
     using GameFifteen.Logic.Scoreboards.Contracts;
 
     public class CommandContext : ICommandContext
     {
-        public CommandContext(IGame game, IScoreboard scoreboard)
+        public CommandContext(IGame game, IScoreboard scoreboard, IMemento boardHistory)
         {
             this.Game = game;
             this.ScoreboardInfo = scoreboard;
+            this.BoardHistory = boardHistory;
         }
+
+        public IMemento BoardHistory { get; set; }
 
         public IScoreboard ScoreboardInfo { get; set; }
 
