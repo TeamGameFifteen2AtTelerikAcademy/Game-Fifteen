@@ -26,6 +26,7 @@
         {
             var random = new Random();
             int tilesCount = frame.Rows * frame.Cols;
+
             // Make odd number of random moves in order to have shuffled frame for sure.
             int randomMoves = tilesCount % 2 == 0 ? tilesCount - 1 : tilesCount;
             for (int i = 0; i < randomMoves; i++)

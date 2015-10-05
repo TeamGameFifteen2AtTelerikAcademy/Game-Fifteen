@@ -7,6 +7,11 @@
         // Validator
         public const string ArgumentName = "Argument name";
         public const string CannotBeNullFormat = "{0} cannot be null!";
+        public const string MustBeAPositiveInteger = " must be a positive integer";
+        public const string MustBeEqualOrGreaterThanFormat = "{0} must be equal or greater than {1}";
+
+        // Convertor
+        public const int EnglishAlphabetLettersCount = 26;
 
         // Matrix
         public const string HorizontalBorder = " -------------";
@@ -36,8 +41,5 @@
             "Welcome to the game “15”. Please try to arrange the numbers sequentially." + Environment.NewLine +
             "Use 'Top' to view the top scoreboard, 'Restart' to start a new game and" + Environment.NewLine +
             "'Exit' to quit the game.";
-
-        // Convertor
-        public const int EnglishAlphabetLettersCount = 26;
     }
 }
