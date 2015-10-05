@@ -55,13 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\GameSettingsInicialisator.cs" />
+    <Compile Include="Helpers\SettingsKeeper.cs" />
     <Compile Include="Helpers\ViewSelector.cs" />
-    <Compile Include="ViewModels\ClassicGameViewModel.cs" />
+    <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\PreGameViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\ClassicGameVIew.xaml.cs">
-      <DependentUpon>ClassicGameVIew.xaml</DependentUpon>
+    <Compile Include="Views\GameVIew.xaml.cs">
+      <DependentUpon>GameVIew.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GameSettingsView.xaml.cs">
+      <DependentUpon>GameSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\GameSettingsViewModel.cs" />
     <Compile Include="Views\PreGameView.xaml.cs">
       <DependentUpon>PreGameView.xaml</DependentUpon>
     </Compile>
@@ -80,7 +86,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\ClassicGameVIew.xaml">
+    <Page Include="Views\GameVIew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,7 +126,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GameFifteen.Logic\GameFifteen.Logic.csproj">
+      <Project>{587a134d-d632-4eb1-b343-0b3a11ddddf5}</Project>
+      <Name>GameFifteen.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

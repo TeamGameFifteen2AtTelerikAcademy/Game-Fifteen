@@ -6,13 +6,14 @@ namespace GameFifteen.Logic.Games.Contracts
     public interface IGame
     {
         bool IsSolved { get; }
+        IFrame Frame { get; }
 
-        IFrame Board { get; }
+        IFrame FramePrototype { get; }
+
+       // IFrame Board { get; }
 
         bool Move(string tileLabel);
 
         void Shuffle();
-
-        //IScoreboard Scoreboard { get; set; }
     }
 }

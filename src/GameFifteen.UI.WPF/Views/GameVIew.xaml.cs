@@ -5,9 +5,9 @@
     /// <summary>
     /// Interaction logic for ClassicGameVIew.xaml
     /// </summary>
-    public partial class ClassicGameVIew : UserControl
+    public partial class GameView : UserControl
     {
-        public ClassicGameVIew()
+        public GameView()
         {
             InitializeComponent();
         }
