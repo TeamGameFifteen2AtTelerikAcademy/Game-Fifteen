@@ -22,10 +22,13 @@
                 this.NotFoundPosition == nullTilePosition);
         }
 
-        public void Shuffle(Frames.Contracts.IFrame frame)
+        public void Shuffle(IFrame frame)
         {
             var random = new Random();
-            int randomMoves = frame.Rows * frame.Cols;
+            int tilesCount = frame.Rows * frame.Cols;
+
+            // Make odd number of random moves in order to have shuffled frame for sure.
+            int randomMoves = tilesCount % 2 == 0 ? tilesCount - 1 : tilesCount;
             for (int i = 0; i < randomMoves; i++)
             {
                 var movableTileLabels = this.GetCurrentMovableTileLabels(frame);
@@ -70,9 +73,15 @@
                 this.Col = col;
             }
 
-            public int Row { get; private set; }
+            public int Row
+            {
+                get; private set;
+            }
 
-            public int Col { get; private set; }
+            public int Col
+            {
+                get; private set;
+            }
 
             public static bool operator ==(Position firstPosition, Position secondPosition)
             {

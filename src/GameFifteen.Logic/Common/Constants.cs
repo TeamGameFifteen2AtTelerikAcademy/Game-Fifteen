@@ -7,6 +7,11 @@
         // Validator
         public const string ArgumentName = "Argument name";
         public const string CannotBeNullFormat = "{0} cannot be null!";
+        public const string MustBeAPositiveInteger = " must be a positive integer";
+        public const string MustBeEqualOrGreaterThanFormat = "{0} must be equal or greater than {1}";
+
+        // Convertor
+        public const int EnglishAlphabetLettersCount = 26;
 
         // Matrix
         public const string HorizontalBorder = " -------------";
@@ -19,11 +24,11 @@
         public const int ScoreboardMaxCount = 5;
 
         // GameInitializator
-        public const string TileTypeQuestion = "What type of tiles would you like: Number or Letter: ";
-        public const string PatternTypeQuestion = "What type of pattern would you like: Classic or Column: ";
-        public const string MoverTypesQuestion = "How would you like to move the tiles: Classic or RowCol: ";
-        public const string RowsQuestion = "How many rows would you like: ";
-        public const string ColsQuestion = "How many cols would you like: ";
+        public const string TileTypeQuestion = "What type of tiles would you like?\n\rNumber or Letter: ";
+        public const string PatternTypeQuestion = "What type of pattern would you like?\n\rClassic or Column: ";
+        public const string MoverTypesQuestion = "How would you like to move the tiles?\n\rClassic or RowCol: ";
+        public const string RowsQuestion = "How many rows would you like? ";
+        public const string ColsQuestion = "How many cols would you like? ";
 
         // User messages
         public const string EnterCommandMessage = "Enter a number to move: ";
@@ -36,8 +41,5 @@
             "Welcome to the game “15”. Please try to arrange the numbers sequentially." + Environment.NewLine +
             "Use 'Top' to view the top scoreboard, 'Restart' to start a new game and" + Environment.NewLine +
             "'Exit' to quit the game.";
-
-        // Convertor
-        public const int EnglishAlphabetLettersCount = 26;
     }
 }
