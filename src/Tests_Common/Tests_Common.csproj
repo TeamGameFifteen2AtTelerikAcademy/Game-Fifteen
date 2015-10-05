@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ConvertorTest.cs" />
     <Compile Include="ValidatorTest.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
