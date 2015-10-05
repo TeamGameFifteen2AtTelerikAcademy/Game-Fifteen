@@ -5,6 +5,7 @@
 
     using Commands;
     using Helpers;
+    using System.Windows.Controls;
 
     public class GameSettingsViewModel : ViewModelBase
     {
@@ -13,6 +14,9 @@
         private string tile;
         private string pattern;
         private string mover;
+        
+        private ObservableCollection<string> rowsPossibilities;
+        private ObservableCollection<string> colsPossibilities;
         private ObservableCollection<string> tileTypes;
         private ObservableCollection<string> patternTypes;
         private ObservableCollection<string> moverTypes;
@@ -106,6 +110,31 @@
                 this.mover = value;
             }
         }
+        public ObservableCollection<string> RowsPossibilities
+        {
+            get
+            {
+                if (this.rowsPossibilities == null)
+                {
+                    this.rowsPossibilities = new ObservableCollection<string>() { "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+                }
+
+                return this.rowsPossibilities;
+            }
+        }
+
+        public ObservableCollection<string> ColsPossibilities
+        {
+            get
+            {
+                if (this.colsPossibilities == null)
+                {
+                    this.colsPossibilities = new ObservableCollection<string>() { "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+                }
+
+                return this.colsPossibilities;
+            }
+        }
 
         public ObservableCollection<string> TileTypes
         {
@@ -180,6 +209,6 @@
 
             ViewSwitcher.Switch(ViewSelector.ClassicGame);           
             
-        }
+        }       
     }
 }

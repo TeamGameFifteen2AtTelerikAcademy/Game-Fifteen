@@ -10,18 +10,30 @@
     <UserControl.DataContext>
         <vms:GameSettingsViewModel/>
     </UserControl.DataContext>
-    <Grid>       
+    <Grid>
         <StackPanel>
             <Label>
                 SELECT YOUR CUSTOM GAME SETTINGS
             </Label>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Content="Select Rows" />
-                <TextBox Text="{Binding Rows}" Width="50" TextAlignment="Right"/>
+                <ComboBox x:Name="comboBoxSelectRows" 
+                          HorizontalAlignment="Left" 
+                          VerticalAlignment="Top" 
+                          Width="auto"
+                          ItemsSource="{Binding RowsPossibilities}"
+                          SelectedItem="{Binding Rows}">
+                </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Content="Select Cols" />
-                <TextBox Text="{Binding Cols}" Width="50" TextAlignment="Right"/>
+                <ComboBox x:Name="comboBoxSelectCols" 
+                          HorizontalAlignment="Left" 
+                          VerticalAlignment="Top" 
+                          Width="auto"
+                          ItemsSource="{Binding ColsPossibilities}"
+                          SelectedItem="{Binding Cols}">
+                </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Content="Select Tile Type" />
@@ -29,24 +41,24 @@
                           HorizontalAlignment="Left" 
                           VerticalAlignment="Top" 
                           Width="auto"
-                          ItemsSource="{Binding TileTypes }"
-                          SelectedItem="{Binding Tile}">                    
+                          ItemsSource="{Binding TileTypes}"
+                          SelectedItem="{Binding Tile}">
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Content="Select Pattern" />
                 <ComboBox x:Name="comboBoxSelectFramePattern" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" 
-                          ItemsSource="{Binding PatternTypes }"
+                          ItemsSource="{Binding PatternTypes}"
                           SelectedItem="{Binding Pattern}">
-                    
+
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Content="Select Mover Type" />
                 <ComboBox x:Name="comboBoxSelectMoverType" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" 
-                          ItemsSource="{Binding MoverTypes }"
+                          ItemsSource="{Binding MoverTypes}"
                           SelectedItem="{Binding Mover}">
-                    
+
                 </ComboBox>
             </StackPanel>
             <Button  x:Name="ButtonGoToNewCustomGame" 

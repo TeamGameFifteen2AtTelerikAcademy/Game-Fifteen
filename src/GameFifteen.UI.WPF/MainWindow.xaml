@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:GameFifteen.UI.WPF"
         xmlns:vm="clr-namespace:GameFifteen.UI.WPF.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="625" Width="600"
+        Title="MainWindow" Height="625" Width="900"        
         >
+    <Window.Background>
+        <ImageBrush ImageSource="Resources\background.png"/>
+    </Window.Background>
+   
 </Window>
