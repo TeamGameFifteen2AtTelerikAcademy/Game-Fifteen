@@ -7,14 +7,14 @@ namespace GameFifteen.Logic.Games.Contracts
     {
         bool IsSolved { get; }
 
-        IFrame Frame { get; }
+        IFrame Frame { get; set; }
 
         IFrame FramePrototype { get; }
 
-        bool Move(string tileLabel);        
+       // IFrame Board { get; }
+
+        bool Move(string tileLabel);
 
         void Shuffle();
-
-        //IScoreboard Scoreboard { get; set; }
     }
 }
