@@ -44,7 +44,8 @@
             {
                 return this.frame.Equals(this.framePrototype);
             }
-        }        
+        }
+
 
         public bool Move(string tileLabel)
         {
@@ -58,11 +59,6 @@
                 this.mover.Shuffle(this.frame);
             }
             while (this.IsSolved);
-        }
-
-        public override string ToString()
-        {
-            return this.frame.ToString();
-        }
+        }               
     }
 }
