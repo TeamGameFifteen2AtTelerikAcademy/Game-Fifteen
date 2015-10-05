@@ -59,7 +59,6 @@
     <Compile Include="Helpers\SettingsKeeper.cs" />
     <Compile Include="Helpers\ViewSelector.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
-    <Compile Include="ViewModels\GameWPFViewModel.cs" />
     <Compile Include="ViewModels\PreGameViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\GameVIew.xaml.cs">

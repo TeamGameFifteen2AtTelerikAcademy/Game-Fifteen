@@ -13,17 +13,18 @@
 
     using Commands;
     using Helpers;
+    using Logic.Games.Contracts;
+    using Logic.Games;
 
     public class GameViewModel : ViewModelBase
     {
-        private GameWPFViewModel game;
+        private IGame game;
         private IScoreboard scoreboard;
         private TileFactory tileFactory;
         private FrameBuilder frameBuilder;
         private FrameDirector director;
         private GameSettingsInicialisator settingsInicializator;
         private IMover mover;
-        private IFrame frame;
         private IFrame targetFrame;
         private int rows;
         private int cols;
@@ -127,18 +128,17 @@
 
             this.director = new FrameDirector(frameBuilder);           
 
-            this.targetFrame = director.ConstructFrame(rows, cols);
+            var newFrame = director.ConstructFrame(rows, cols);
 
-            this.game = new GameWPFViewModel(targetFrame, mover);
+            this.game = new Game(newFrame, mover);
             this.game.Shuffle();
 
-            this.scoreboard = new Scoreboard();
+            this.scoreboard = new Scoreboard();            
+            this.Moves = 0;
 
-            this.frame = this.game.Frame;
-                        this.Moves = 0;
             this.tiles = new ObservableCollection<ITile>();
 
-            this.SincFrameTilesWithObservableTiles(this.tiles, this.frame);
+            this.SincFrameTilesWithObservableTiles(this.tiles, this.game.Frame);
             this.OnPropertyChanged("Tiles");
             this.OnPropertyChanged("Rows");
             this.OnPropertyChanged("Cols");
@@ -152,7 +152,7 @@
 
             this.game.Move(label);
 
-            this.SincFrameTilesWithObservableTiles(this.tiles, this.frame);
+            this.SincFrameTilesWithObservableTiles(this.tiles, this.game.Frame);
             this.OnPropertyChanged("Tiles");
             this.OnPropertyChanged("Moves");
 
