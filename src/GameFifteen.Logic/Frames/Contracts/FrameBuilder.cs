@@ -1,7 +1,7 @@
 ﻿namespace GameFifteen.Logic.Frames.Contracts
 {
-    using Tiles.Contracts;
     using Common;
+    using Tiles.Contracts;
 
     public abstract class FrameBuilder
     {
@@ -26,7 +26,10 @@
             }
         }
 
-        protected IFrame Frame { get; private set; }
+        protected IFrame Frame
+        {
+            get; private set;
+        }
 
         public void InitializeFrame(int rows, int cols)
         {

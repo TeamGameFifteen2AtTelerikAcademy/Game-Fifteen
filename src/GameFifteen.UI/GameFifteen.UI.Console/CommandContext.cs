@@ -1,20 +1,27 @@
-﻿//using GameFifteen.Logic.Commands;
-//using GameFifteen.Logic.Games.Contracts;
+﻿namespace GameFifteen.UI.Console
+{
+    using GameFifteen.Logic.Commands;
+    using GameFifteen.Logic.Games.Contracts;
+    using Logic.Memento;
+    using GameFifteen.Logic.Scoreboards.Contracts;
 
-//namespace GameFifteen.UI.Console
-//{
-//    public class CommandContext : ICommandContext
-//    {
-//        public CommandContext(IGame game, IPrinter printer)
-//        {
-//            this.Game = game;
-//            this.Printer = printer;
-//        }
+    public class CommandContext : ICommandContext
+    {
+        public CommandContext(IGame game, IScoreboard scoreboard, IMemento boardHistory)
+        {
+            this.Game = game;
+            this.ScoreboardInfo = scoreboard;
+            this.BoardHistory = boardHistory;
+        }
 
-//        public IGame Game { get; set; }
+        public IMemento BoardHistory { get; set; }
 
-//        public IPrinter Printer { get; set; }
+        public IScoreboard ScoreboardInfo { get; set; }
 
-//        public string SelectedTileLabel { get; set; }
-//    }
-//}
+        public IGame Game { get; set; }        
+
+        public string Message { get; set; }
+
+        public string SelectedTileLabel { get; set; }       
+    }
+}

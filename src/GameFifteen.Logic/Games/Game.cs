@@ -9,7 +9,7 @@
     public class Game : IGame
     {
         private readonly IFrame framePrototype;
-        private readonly IFrame frame;
+        private IFrame frame;
         private readonly IMover mover;
 
         public Game(IFrame frame, IMover mover)
@@ -26,7 +26,11 @@
         {
             get
             {
-                return this.frame.Clone(); ;
+                return this.frame;
+            }
+            set
+            {
+                this.frame = value;
             }
         }
 
@@ -44,7 +48,8 @@
             {
                 return this.frame.Equals(this.framePrototype);
             }
-        }        
+        }
+
 
         public bool Move(string tileLabel)
         {
@@ -58,11 +63,6 @@
                 this.mover.Shuffle(this.frame);
             }
             while (this.IsSolved);
-        }
-
-        public override string ToString()
-        {
-            return this.frame.ToString();
-        }
+        }               
     }
 }

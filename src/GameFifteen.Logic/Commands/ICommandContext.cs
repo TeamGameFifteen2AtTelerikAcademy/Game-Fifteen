@@ -1,13 +1,19 @@
 ﻿namespace GameFifteen.Logic.Commands
 {
-    using GameFifteen.Logic.Games.Contracts;
+    using Memento;
+    using Games.Contracts;
+    using Scoreboards.Contracts;
 
     public interface ICommandContext
     {
         IGame Game { get; set; }
-        // TODO: get thr printer out of here. Return message instead. 
-        //IPrinter Printer { get; set; }
 
-        string SelectedTileLabel { get; set;}
+        IMemento BoardHistory { get; set; }
+
+        IScoreboard ScoreboardInfo { get; set; }
+
+        string Message { get; set; }
+
+        string SelectedTileLabel { get; set; }
     }
 }
