@@ -12,18 +12,31 @@ namespace Tests_Common
           "Argument name cannot be null!")]
         public void NullArgumentInMehodValidateIsNotNull()
         {
-            Validator.ValidateIsNotNull(null, Constants.ArgumentName);
+            Validator.ValidateIsNotNull(null);
+        }
+
+        [TestMethod]
+        public void ExpectNotToThrowWhenObjectIsPassedToMethodValidateIsNotNull()
+        {
+            Validator.ValidateIsNotNull(new object());
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException),
-          "Parametar must be a positive integer")]
+          "Parameter must be a positive integer")]
         public void NegativeIntegerLikeParameterInMehodValidateIsPositiveInteger()
         {
-            int numberNegative = -1;
-            string name = "Parametar";
-            Validator.ValidateIsNotNull(numberNegative, name);
+            const int NumberNegative = -1;
+            const string Name = "Parameter";
+            Validator.ValidateIsPositiveInteger(NumberNegative, Name);
         }
-        
+
+        [TestMethod]
+        public void ExpectNotToThrowWhenPositiveIntegerIsPassedToValidateIsPositiveInteger()
+        {
+            const int NumberPositiove = 1;
+            const string Name = "Parameter";
+            Validator.ValidateIsPositiveInteger(NumberPositiove, Name);
+        }
     }
 }
