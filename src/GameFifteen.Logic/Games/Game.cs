@@ -44,17 +44,7 @@
             {
                 return this.frame.Equals(this.framePrototype);
             }
-//<<<<<<< HEAD
-//        }
-             
-
-//        public IFrame Board
-//        {
-//            get { return this.frame; }
-//        }
-
-//=======
-        }        
+        }
 
 
         public bool Move(string tileLabel)

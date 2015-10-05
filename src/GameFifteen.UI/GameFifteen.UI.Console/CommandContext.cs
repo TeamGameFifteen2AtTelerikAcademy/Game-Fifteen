@@ -1,11 +1,9 @@
-﻿using System;
-using GameFifteen.Logic.Commands;
-using GameFifteen.Logic.Frames.Contracts;
-using GameFifteen.Logic.Games.Contracts;
-using GameFifteen.Logic.Scoreboards.Contracts;
-
-namespace GameFifteen.UI.Console
+﻿namespace GameFifteen.UI.Console
 {
+    using GameFifteen.Logic.Commands;
+    using GameFifteen.Logic.Games.Contracts;
+    using GameFifteen.Logic.Scoreboards.Contracts;
+
     public class CommandContext : ICommandContext
     {
         public CommandContext(IGame game, IScoreboard scoreboard)

@@ -1,6 +1,5 @@
 ﻿namespace GameFifteen.UI.Console.Commands
 {
-    using System;
     using GameFifteen.Logic.Commands;
     using Logic.Common;
 

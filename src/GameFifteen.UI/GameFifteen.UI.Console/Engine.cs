@@ -33,54 +33,6 @@
             this.context = new CommandContext(this.game, this.scoreboard);
         }
 
-        //public void Run()
-        //{
-        //    // TODO: Totally refactor this old logic. Think after a good sleep which sub methods Run will call and how
-        //    this.game.Shuffle();
-
-        //    this.printer.PrintLine(Constants.WellcomeMessage);
-        //    this.printer.PrintLine(this.game);
-
-        //    this.printer.Print(Constants.EnterCommandMessage);
-        //    string playerCommand = this.reader.ReadLine();
-        //    Console.WriteLine("Run");
-        //    int playerMovesCount = 0;
-        //    while (!this.game.IsSolved)
-        //    {
-        //        // TODO: Command - Mariya
-        //        this.context.SelectedTileLabel = playerCommand;
-        //        this.commandManager.GetCommand(playerCommand).Execute(this.context);
-
-
-        //        if (this.game.IsSolved)
-        //        {
-        //            this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, playerMovesCount));
-
-        //            if (this.game.Scoreboard.IsInTopScores(playerMovesCount))
-        //            {
-        //                this.printer.Print(Constants.EnterNameMessage);
-        //                string name = this.reader.ReadLine();
-        //                this.game.Scoreboard.Add(playerMovesCount, name);
-        //            }
-
-        //            this.printer.Print(this.game.Scoreboard);
-
-        //            this.game.Shuffle();
-
-        //            this.printer.PrintLine(Constants.WellcomeMessage);
-
-        //            this.printer.PrintLine(this.game.ToString());
-
-        //            playerMovesCount = 0;
-        //        }
-
-        //        this.printer.Print(Constants.EnterCommandMessage);
-        //        playerCommand = this.reader.ReadLine();
-        //    }
-
-        //    this.printer.PrintLine(Constants.GoodbyeMessage);
-        //}
-
         protected override void Welcome()
         {
             this.printer.PrintLine(Constants.WellcomeMessage);
@@ -92,12 +44,11 @@
             int currentMovesCount = 0;
             while (true)
             {
-                this.printer.PrintLine(this.game.Board);
+                this.printer.PrintLine(this.game.Frame);
 
                 if (this.game.IsSolved)
                 {
                     GameOver(currentMovesCount);
-
                     Play();
                 }
 
@@ -106,11 +57,10 @@
                 string userInput = this.reader.ReadLine();
                 // Capitalize the first letter to meet restrictions from the enum...
                 userInput = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userInput);
-
                 this.context.SelectedTileLabel = userInput;
 
                 // If we want to catch the exeption in default state in CommandManager, 
-                // we need to change the command for moving e.g. "move 14", "move ab"
+                // we need to change the command for moving e.g. "move 14", "move ab" 
                 // and split parameters. 
                 try
                 {
@@ -121,11 +71,7 @@
                     printer.PrintLine(Constants.InvalidCommandMessage);
                 }
 
-                if (Enum.IsDefined(typeof(UserCommands), userInput))
-                {
-                    this.printer.PrintLine(this.context.Message);
-                }
-                
+                this.printer.PrintLine(this.context.Message);
             }
         }
 
