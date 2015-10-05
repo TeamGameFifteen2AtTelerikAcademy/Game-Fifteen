@@ -19,9 +19,9 @@
         public const int ScoreboardMaxCount = 5;
 
         // GameInitializator
-        public const string TileTypeQuestion = "What type of tiles would you like: Number or Letter: ";
-        public const string PatternTypeQuestion = "What type of pattern would you like: Classic or Column: ";
-        public const string MoverTypesQuestion = "How would you like to move the tiles: Classic or RowCol: ";
+        public const string TileTypeQuestion = "What type of tiles would you like\n\rNumber or Letter: ";
+        public const string PatternTypeQuestion = "What type of pattern would you like\n\rClassic or Column: ";
+        public const string MoverTypesQuestion = "How would you like to move the tiles\n\rClassic or RowCol: ";
         public const string RowsQuestion = "How many rows would you like: ";
         public const string ColsQuestion = "How many cols would you like: ";
 
