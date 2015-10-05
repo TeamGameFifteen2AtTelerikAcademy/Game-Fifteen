@@ -61,7 +61,6 @@
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\GameWPFViewModel.cs" />
     <Compile Include="ViewModels\PreGameViewModel.cs" />
-    <Compile Include="ViewModels\TileVIewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\GameVIew.xaml.cs">
       <DependentUpon>GameVIew.xaml</DependentUpon>

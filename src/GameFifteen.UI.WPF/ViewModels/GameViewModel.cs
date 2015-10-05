@@ -29,15 +29,15 @@
         private int cols;
         private int moves;
 
-        private ObservableCollection<TileViewModel> tiles;
+        private ObservableCollection<ITile> tiles;
 
-        public ObservableCollection<TileViewModel> Tiles
+        public ObservableCollection<ITile> Tiles
         {
             get
             {
                 if (this.tiles == null)
                 {
-                    this.tiles = new ObservableCollection<TileViewModel>();
+                    this.tiles = new ObservableCollection<ITile>();
                 }
 
                 return this.tiles;
@@ -136,7 +136,7 @@
 
             this.frame = this.game.Frame;
                         this.Moves = 0;
-            this.tiles = new ObservableCollection<TileViewModel>();
+            this.tiles = new ObservableCollection<ITile>();
 
             this.SincFrameTilesWithObservableTiles(this.tiles, this.frame);
             this.OnPropertyChanged("Tiles");
@@ -162,7 +162,7 @@
             }
         }
 
-        private void SincFrameTilesWithObservableTiles(ObservableCollection<TileViewModel> tiles, IFrame frame)
+        private void SincFrameTilesWithObservableTiles(ObservableCollection<ITile> tiles, IFrame frame)
         {
             this.tiles.Clear();
 
@@ -170,13 +170,8 @@
             {
                 for (int col = 0; col < frame.Cols; col++)
                 {
-                    int index = this.CalculateTileIndex(row, col, frame.Cols);
-                    tiles.Add( new TileViewModel()
-                    {
-                        Label = frame.Tiles[row, col].Label,
-                        Row = row,
-                        Col = col
-                    });
+                   // int index = this.CalculateTileIndex(row, col, frame.Cols);
+                    tiles.Add( frame.Tiles[row, col]);
                 }
             }
         }

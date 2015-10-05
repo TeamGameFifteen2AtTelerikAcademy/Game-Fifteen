@@ -78,3 +78,4 @@ MainAlgorithm internal.
 69. Finished refactoring in Logic for now
 70. Moved IPrinter back to UI.Console project
 71. Created ClassicMover
+72. IGame added public get properties IFrame Freame and IFrame FramePrototype; class Game implemented IGame new properties

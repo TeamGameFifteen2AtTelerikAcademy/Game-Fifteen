@@ -1,5 +1,6 @@
 ﻿namespace GameFifteen.Logic.Games
 {
+    using System;
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Frames.Contracts;
     using GameFifteen.Logic.Games.Contracts;
@@ -21,13 +22,29 @@
             this.mover = mover;
         }
 
+        public IFrame Frame
+        {
+            get
+            {
+                return this.frame.Clone(); ;
+            }
+        }
+
+        public IFrame FramePrototype
+        {
+            get
+            {
+                return this.framePrototype.Clone();
+            }
+        }
+
         public bool IsSolved
         {
             get
             {
                 return this.frame.Equals(this.framePrototype);
             }
-        }
+        }        
 
         public bool Move(string tileLabel)
         {
