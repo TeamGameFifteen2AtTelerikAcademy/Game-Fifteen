@@ -19,8 +19,8 @@ namespace GameFifteen.Logic.Memento
 
         public void SaveBoardState(IFrame board)
         {
-            this.boardStates.Insert(++this.currentIndex,(board.Clone()));
-           // this.currentIndex++;
+            this.boardStates.Insert(++this.currentIndex, board.Clone());
+            //this.currentIndex++;
         }
 
         public void ClearHistory()
@@ -29,18 +29,20 @@ namespace GameFifteen.Logic.Memento
             this.currentIndex = -1;
         }
 
-        public IFrame Redo()
-        {
-            IFrame board = this.boardStates[this.currentIndex];
-            this.currentIndex++;
-            return board;
-        }
-
         public IFrame Undo()
         {
             IFrame board = this.boardStates[this.currentIndex];
-            this.boardStates.Remove(board);
-            this.currentIndex--;
+
+            if (this.currentIndex <= 0)
+            {
+                this.currentIndex = 0;
+            }
+            else
+            {
+                this.currentIndex--;
+                this.boardStates.Remove(board);
+            }          
+
             return board;
         }
     }

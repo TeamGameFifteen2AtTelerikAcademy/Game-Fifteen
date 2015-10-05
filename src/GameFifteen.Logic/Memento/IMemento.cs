@@ -9,7 +9,5 @@
         void ClearHistory();
 
         IFrame Undo();
-
-        IFrame Redo();
     }
 }

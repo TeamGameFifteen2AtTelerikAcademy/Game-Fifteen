@@ -6,7 +6,6 @@
         Exit = 300,
         Restart = 301,
         Top = 302,
-        Undo = 303,
-        Redo = 304
+        Undo = 303
     }
 }

@@ -70,8 +70,9 @@
                 {
                     this.commandManager.GetCommand(userInput).Execute(this.context);
                 }
-                catch
+                catch(Exception e)
                 {
+                    Console.WriteLine(e.Message);
                     printer.PrintLine(Constants.InvalidCommandMessage);
                 }
 
