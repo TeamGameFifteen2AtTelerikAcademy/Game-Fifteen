@@ -6,7 +6,8 @@ namespace GameFifteen.Logic.Games.Contracts
     public interface IGame
     {
         bool IsSolved { get; }
-        IFrame Frame { get; }
+
+        IFrame Frame { get; set; }
 
         IFrame FramePrototype { get; }
 

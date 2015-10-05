@@ -1,5 +1,6 @@
 ﻿namespace GameFifteen.UI.Console
 {
+    using Logic.Memento;
     using GameFifteen.Logic.Scoreboards;
 
     internal class Program
@@ -18,7 +19,9 @@
 
             var commandManager = new CommandManager();
 
-            EngineTemplate engine = new Engine(game, scoreboard, printer, reader, commandManager);
+            var boardHistory = new BoardHistory();
+
+            EngineTemplate engine = new Engine(game, scoreboard, printer, reader, commandManager, boardHistory);
 
             engine.Run();
         }

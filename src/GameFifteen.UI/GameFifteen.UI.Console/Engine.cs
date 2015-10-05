@@ -8,6 +8,7 @@
     using GameFifteen.Logic.Scoreboards.Contracts;
     using Logic.Commands;
     using System.Globalization;
+    using Logic.Memento;
 
     internal class Engine : EngineTemplate
     {
@@ -17,8 +18,9 @@
         private readonly IReader reader;
         private readonly ICommandManager commandManager;
         private readonly ICommandContext context;
+        private readonly IMemento boardHistory;
 
-        public Engine(IGame game, IScoreboard scoreboard, IPrinter printer, IReader reader, ICommandManager commandManager)
+        public Engine(IGame game, IScoreboard scoreboard, IPrinter printer, IReader reader, ICommandManager commandManager, IMemento boardHistory)
         {
             Validator.ValidateIsNotNull(game, "gameFifteen");
             Validator.ValidateIsNotNull(scoreboard, "scoreboard");
@@ -30,7 +32,8 @@
             this.printer = printer;
             this.reader = reader;
             this.commandManager = commandManager;
-            this.context = new CommandContext(this.game, this.scoreboard);
+            this.context = new CommandContext(this.game, this.scoreboard, boardHistory);           
+           
         }
 
         protected override void Welcome()
@@ -42,6 +45,7 @@
         {
             this.game.Shuffle();
             int currentMovesCount = 0;
+           
             while (true)
             {
                 this.printer.PrintLine(this.game.Frame);
@@ -49,9 +53,9 @@
                 if (this.game.IsSolved)
                 {
                     GameOver(currentMovesCount);
-                    Play();
+                    Play(); // This recursion will cause a bug - the player will have to execute exit command multiple times - for each call.
                 }
-
+                
                 this.printer.Print(Constants.EnterCommandMessage);
 
                 string userInput = this.reader.ReadLine();

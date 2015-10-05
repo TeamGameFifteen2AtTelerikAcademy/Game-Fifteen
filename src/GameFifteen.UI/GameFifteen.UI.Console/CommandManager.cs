@@ -12,6 +12,7 @@
 
         public ICommand GetCommand(string command)
         {
+            // Enum.IsDefined(typeof(UserCommands), userInput) for parsing numbers 
             UserCommands userCommand = (UserCommands)Enum.Parse(typeof(UserCommands), command);
             switch (userCommand)
             {
@@ -21,6 +22,8 @@
                     return new ShowScoresCommand();
                 case UserCommands.Exit:
                     return new ExitCommand();
+                case UserCommands.Undo:
+                    return new UndoCommand();
                 default:
                     return new MoveCommand();
             }
