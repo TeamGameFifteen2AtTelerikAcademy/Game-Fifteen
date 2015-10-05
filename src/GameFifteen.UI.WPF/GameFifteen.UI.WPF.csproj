@@ -55,15 +55,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\GameSettingsInicialisator.cs" />
+    <Compile Include="Helpers\SettingsKeeper.cs" />
     <Compile Include="Helpers\ViewSelector.cs" />
-    <Compile Include="Models\GameWithPublicFrame.cs" />
-    <Compile Include="Models\TileModel.cs" />
-    <Compile Include="ViewModels\ClassicGameViewModel.cs" />
+    <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="ViewModels\GameWPFViewModel.cs" />
     <Compile Include="ViewModels\PreGameViewModel.cs" />
+    <Compile Include="ViewModels\TileVIewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\ClassicGameVIew.xaml.cs">
-      <DependentUpon>ClassicGameVIew.xaml</DependentUpon>
+    <Compile Include="Views\GameVIew.xaml.cs">
+      <DependentUpon>GameVIew.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GameSettingsView.xaml.cs">
+      <DependentUpon>GameSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\GameSettingsViewModel.cs" />
     <Compile Include="Views\PreGameView.xaml.cs">
       <DependentUpon>PreGameView.xaml</DependentUpon>
     </Compile>
@@ -82,7 +88,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\ClassicGameVIew.xaml">
+    <Page Include="Views\GameVIew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

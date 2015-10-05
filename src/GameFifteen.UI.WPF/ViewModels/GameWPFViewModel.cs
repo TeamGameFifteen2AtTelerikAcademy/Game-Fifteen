@@ -1,23 +1,17 @@
-﻿using GameFifteen.Logic.Games;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameFifteen.Logic.Frames.Contracts;
-using GameFifteen.Logic.Movers.Contracts;
-using GameFifteen.Logic.Games.Contracts;
-using GameFifteen.Logic.Common;
-
-namespace GameFifteen.UI.WPF.Models
+﻿namespace GameFifteen.UI.WPF.ViewModels
 {
-    public class GameWithPublicFrame : IGame
-    {
-        private  readonly IFrame framePrototype;
-        private  IFrame frame;
-        private  readonly IMover mover;
+    using Logic.Frames.Contracts;
+    using Logic.Movers.Contracts;
+    using Logic.Games.Contracts;
+    using Logic.Common;
 
-        public GameWithPublicFrame(IFrame frame, IMover mover)
+    public class GameWPFViewModel : IGame
+    {
+        private readonly IFrame framePrototype;
+        private IFrame frame;
+        private readonly IMover mover;
+
+        public GameWPFViewModel(IFrame frame, IMover mover)
         {
             Validator.ValidateIsNotNull(frame, "frame");
             Validator.ValidateIsNotNull(mover, "mover");
@@ -37,8 +31,8 @@ namespace GameFifteen.UI.WPF.Models
             private set
             {
                 this.frame = value;
-            }            
-        }      
+            }
+        }
 
         public bool IsSolved
         {

@@ -1,35 +1,27 @@
 ﻿namespace GameFifteen.UI.WPF.ViewModels
 {
-    using Commands;
-    using Logic.Games;
-    using Helpers;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
     using Logic.Tiles.Contracts;
-    using Logic.Tiles;
     using Logic.Frames.Contracts;
     using Logic.Frames;
-    using Logic.Movers;
     using Logic.Movers.Contracts;
-    using Logic.Games.Contracts;
-    using Models;
     using System.Collections.ObjectModel;
     using Logic.Scoreboards.Contracts;
     using Logic.Scoreboards;
 
-    public class ClassicGameViewModel : ViewModelBase
+    using Commands;
+    using Helpers;
+
+    public class GameViewModel : ViewModelBase
     {
-        private GameWithPublicFrame game;
+        private GameWPFViewModel game;
         private IScoreboard scoreboard;
         private TileFactory tileFactory;
         private FrameBuilder frameBuilder;
         private FrameDirector director;
+        private GameSettingsInicialisator settingsInicializator;
         private IMover mover;
         private IFrame frame;
         private IFrame targetFrame;
@@ -37,15 +29,15 @@
         private int cols;
         private int moves;
 
-        private ObservableCollection<TileModel> tiles;
+        private ObservableCollection<TileViewModel> tiles;
 
-        public ObservableCollection<TileModel> Tiles
+        public ObservableCollection<TileViewModel> Tiles
         {
             get
             {
                 if (this.tiles == null)
                 {
-                    this.tiles = new ObservableCollection<TileModel>();
+                    this.tiles = new ObservableCollection<TileViewModel>();
                 }
 
                 return this.tiles;
@@ -122,29 +114,34 @@
 
         private void HandelInitializeGameCommand(object parameter)
         {
-            this.tileFactory = new NumberTileFactory();
-            this.frameBuilder = new ClassicPatternFrameBuilder(tileFactory);
-            this.director = new FrameDirector(frameBuilder)
-                ;
-            int rows = 4;
-            int cols = 4;
+            this.settingsInicializator = new GameSettingsInicialisator();
+
+            this.Rows = int.Parse(SettingsKeeper.Rows);
+            this.Cols = int.Parse(SettingsKeeper.Cols);
+            this.tileFactory = settingsInicializator.ChooseTiles(SettingsKeeper.Tile);
+            this.mover = settingsInicializator.ChooseMover(SettingsKeeper.Mover);
+            this.frameBuilder = settingsInicializator.ChoosePattern(this.tileFactory, SettingsKeeper.Pattern);
+            this.OnPropertyChanged("Tiles");
+            this.OnPropertyChanged("Rows");
+            this.OnPropertyChanged("Cols");
+
+            this.director = new FrameDirector(frameBuilder);           
 
             this.targetFrame = director.ConstructFrame(rows, cols);
 
-            this.mover = new RowColMover();
-            this.game = new GameWithPublicFrame(targetFrame, mover);
+            this.game = new GameWPFViewModel(targetFrame, mover);
             this.game.Shuffle();
 
             this.scoreboard = new Scoreboard();
 
             this.frame = this.game.Frame;
-            this.Rows = this.frame.Rows;
-            this.Cols = this.frame.Cols;
-            this.Moves = 0;
-            this.tiles = new ObservableCollection<TileModel>();
+                        this.Moves = 0;
+            this.tiles = new ObservableCollection<TileViewModel>();
 
             this.SincFrameTilesWithObservableTiles(this.tiles, this.frame);
             this.OnPropertyChanged("Tiles");
+            this.OnPropertyChanged("Rows");
+            this.OnPropertyChanged("Cols");
         }
 
         private void HandleMoveTileCommand(object parameter)
@@ -165,7 +162,7 @@
             }
         }
 
-        private void SincFrameTilesWithObservableTiles(ObservableCollection<TileModel> tiles, IFrame frame)
+        private void SincFrameTilesWithObservableTiles(ObservableCollection<TileViewModel> tiles, IFrame frame)
         {
             this.tiles.Clear();
 
@@ -174,7 +171,7 @@
                 for (int col = 0; col < frame.Cols; col++)
                 {
                     int index = this.CalculateTileIndex(row, col, frame.Cols);
-                    tiles.Add( new TileModel()
+                    tiles.Add( new TileViewModel()
                     {
                         Label = frame.Tiles[row, col].Label,
                         Row = row,

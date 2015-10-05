@@ -1,15 +1,16 @@
-﻿<UserControl x:Class="GameFifteen.UI.WPF.Views.ClassicGameVIew"
+﻿<UserControl x:Class="GameFifteen.UI.WPF.Views.GameView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GameFifteen.UI.WPF.Views"
              xmlns:vms="clr-namespace:GameFifteen.UI.WPF.ViewModels"
+             xmlns:helpers="clr-namespace:GameFifteen.UI.WPF.Helpers"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600"
              >
     <UserControl.DataContext>
-        <vms:ClassicGameViewModel/>
+        <vms:GameViewModel/>
     </UserControl.DataContext>
     <Grid>
         <StackPanel>
@@ -22,6 +23,7 @@
                     <Button x:Name="ButtonGoToTarget" Content="Target"  
                             FontSize="20" Padding="10"
                             Command="{Binding SwitchView}" 
+                           
                             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
                     <Button x:Name="ButtonBuildMatrix" Content="New Game"  
                             FontSize="20" Padding="10" 
@@ -40,44 +42,30 @@
             </Grid>
             <Grid>
                 <ItemsControl x:Name="fra" ItemsSource="{Binding Tiles}">
-                    <ItemsControl.ItemsPanel >
+                    <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <Grid                            
+                            <UniformGrid  
                             Width="500"
                             Height="500"
-                            Margin="0 25"                         
-                            >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                            </Grid>
+                            Margin="0 20"
+                            Rows="{Binding Rows}"
+                            Columns="{Binding Cols}"
+                            />
                         </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>                    
+                    </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button  Content="{Binding Label}" Width="100" Height="100"                               
-                                     Command="{Binding Path=DataContext.MoveTile, 
-                                        RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                            <Button     Content="{Binding Label}"   
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        FontSize="25"
+                                        FontWeight="Bold"
+                                        Background="Yellow"                                        
+                                        Command="{Binding Path=DataContext.MoveTile, 
+                                            RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                        CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemContainerStyle>
-                        <Style>
-                            <Style.Setters>
-                                <Setter Property="Grid.Row"  Value="{Binding Row}" />
-                                <Setter Property="Grid.Column" Value="{Binding Col}" />
-                            </Style.Setters>
-                        </Style>
-                    </ItemsControl.ItemContainerStyle>
                 </ItemsControl>
             </Grid>
         </StackPanel>
