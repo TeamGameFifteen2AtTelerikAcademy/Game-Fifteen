@@ -1,4 +1,5 @@
-﻿using GameFifteen.Logic.Scoreboards;
+﻿using GameFifteen.Logic.Frames.Contracts;
+using GameFifteen.Logic.Scoreboards;
 
 namespace GameFifteen.Logic.Games.Contracts
 {
@@ -6,7 +7,11 @@ namespace GameFifteen.Logic.Games.Contracts
     {
         bool IsSolved { get; }
 
-        bool Move(string tileLabel);
+        IFrame Frame { get; }
+
+        IFrame FramePrototype { get; }
+
+        bool Move(string tileLabel);        
 
         void Shuffle();
 

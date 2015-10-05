@@ -1,6 +1,6 @@
 ﻿namespace GameFifteen.Logic.Frames
 {
-    public enum PatternType
+    public enum PatternTypes
     {
         Classic,
         Column

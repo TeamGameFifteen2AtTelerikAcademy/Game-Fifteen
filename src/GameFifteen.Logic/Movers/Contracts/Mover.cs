@@ -1,14 +1,38 @@
 ﻿namespace GameFifteen.Logic.Movers.Contracts
 {
+    using System;
+    using System.Collections.Generic;
+
     using GameFifteen.Logic.Frames.Contracts;
 
     public abstract class Mover : IMover
     {
         protected readonly Position NotFoundPosition = new Position(-1, -1);
 
-        public abstract bool Move(string tileLabel, IFrame frame);
+        public virtual bool Move(string tileLabel, IFrame frame)
+        {
+            var tilePosition = this.FindTilePosition(tileLabel, frame);
+            var nullTilePosition = this.FindTilePosition(string.Empty, frame);
 
-        public abstract void Shuffle(Frames.Contracts.IFrame frame);
+            // Prevent moving the null tile.
+            // If the tile is not found in the frame we cannot move it.
+            // If there isn't null tile in the frame we cannot move anything.
+            return !(string.IsNullOrWhiteSpace(tileLabel) ||
+                this.NotFoundPosition == tilePosition ||
+                this.NotFoundPosition == nullTilePosition);
+        }
+
+        public void Shuffle(Frames.Contracts.IFrame frame)
+        {
+            var random = new Random();
+            int randomMoves = frame.Rows * frame.Cols;
+            for (int i = 0; i < randomMoves; i++)
+            {
+                var movableTileLabels = this.GetCurrentMovableTileLabels(frame);
+                var tileToMove = movableTileLabels[random.Next(movableTileLabels.Count)];
+                this.Move(tileToMove, frame);
+            }
+        }
 
         protected Position FindTilePosition(string tileLabel, IFrame frame)
         {
@@ -35,6 +59,8 @@
 
             frame.Tiles[secondTilePosition.Row, secondTilePosition.Col] = firstTile;
         }
+
+        protected abstract List<string> GetCurrentMovableTileLabels(IFrame frame);
 
         protected class Position
         {

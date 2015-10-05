@@ -30,7 +30,11 @@
                      Command="{Binding SwitchView}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                     />
-            <Button  Content="Custom Game" Margin="0 10"/>
+            <Button  x:Name="ButtonGoToGameSettings" 
+                     Content="Custom Game"  Margin="0 10" 
+                     Command="{Binding SwitchView}" 
+                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                    />
             <Button  Content="How to play"  Margin="0 10"/>
             <Button  Content="About"  Margin="0 10" Command="{Binding MoveTile}"/>
             <Button  Content="Hall of fame"  Margin="0 10"/>
