@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameFifteen.UI.WPF.Helpers
+﻿namespace GameFifteen.UI.WPF.Helpers
 {
+    using Logic.Games.Contracts;
+
     public static class SettingsKeeper
     {
         private static string rows;
@@ -13,6 +9,7 @@ namespace GameFifteen.UI.WPF.Helpers
         private static string tile;
         private static string pattern;
         private static string mover;
+        private static IGame game;
 
 
         public static string Rows
@@ -77,6 +74,19 @@ namespace GameFifteen.UI.WPF.Helpers
             set
             {
                 mover = value;
+            }
+        }
+
+        public static IGame Game
+        {
+            get
+            {
+                return game;
+            }
+
+            set
+            {
+                game = value;
             }
         }
     }
