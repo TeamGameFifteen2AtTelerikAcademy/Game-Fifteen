@@ -6,6 +6,8 @@
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Games.Contracts;
     using GameFifteen.Logic.Scoreboards.Contracts;
+    using Logic.Commands;
+    using System.Globalization;
 
     internal class Engine : EngineTemplate
     {
@@ -13,10 +15,10 @@
         private readonly IScoreboard scoreboard;
         private readonly IPrinter printer;
         private readonly IReader reader;
-        //private readonly ICommandManager commandManager;
-        //private readonly ICommandContext context;
+        private readonly ICommandManager commandManager;
+        private readonly ICommandContext context;
 
-        public Engine(IGame game, IScoreboard scoreboard, IPrinter printer, IReader reader)
+        public Engine(IGame game, IScoreboard scoreboard, IPrinter printer, IReader reader, ICommandManager commandManager)
         {
             Validator.ValidateIsNotNull(game, "gameFifteen");
             Validator.ValidateIsNotNull(scoreboard, "scoreboard");
@@ -27,8 +29,8 @@
             this.scoreboard = scoreboard;
             this.printer = printer;
             this.reader = reader;
-            //this.commandManager = commandManager;
-            //this.context = new CommandContext(this.game, this.printer);
+            this.commandManager = commandManager;
+            this.context = new CommandContext(this.game, this.scoreboard);
         }
 
         //public void Run()
@@ -90,52 +92,53 @@
             int currentMovesCount = 0;
             while (true)
             {
-                this.printer.PrintLine(this.game);
+                this.printer.PrintLine(this.game.Board);
 
                 if (this.game.IsSolved)
                 {
-                    this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, currentMovesCount));
+                    GameOver(currentMovesCount);
 
-                    if (this.scoreboard.IsInTopScores(currentMovesCount))
-                    {
-                        this.printer.Print(Constants.EnterNameMessage);
-                        string userName = this.reader.ReadLine();
-                        this.scoreboard.Add(currentMovesCount, userName);
-                        this.printer.Print(this.scoreboard);
-                    }
-
-                    this.game.Shuffle();
-                    currentMovesCount = 0;
-                    continue;
+                    Play();
                 }
 
                 this.printer.Print(Constants.EnterCommandMessage);
 
                 string userInput = this.reader.ReadLine();
+                // Capitalize the first letter to meet restrictions from the enum...
+                userInput = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userInput);
+
+                this.context.SelectedTileLabel = userInput;
+
+                // If we want to catch the exeption in default state in CommandManager, 
+                // we need to change the command for moving e.g. "move 14", "move ab"
+                // and split parameters. 
+                try
+                {
+                    this.commandManager.GetCommand(userInput).Execute(this.context);
+                }
+                catch
+                {
+                    printer.PrintLine(Constants.InvalidCommandMessage);
+                }
+
                 if (Enum.IsDefined(typeof(UserCommands), userInput))
                 {
-                    var userCommand = (UserCommands)Enum.Parse(typeof(UserCommands), userInput);
-                    switch (userCommand)
-                    {
-                        case UserCommands.Top:
-                            this.printer.PrintLine(this.scoreboard);
-                            break;
-                        case UserCommands.Restart:
-                            this.game.Shuffle();
-                            currentMovesCount = 0;
-                            break;
-                        case UserCommands.Exit:
-                            return;
-                    }
+                    this.printer.PrintLine(this.context.Message);
                 }
-                else if (this.game.Move(userInput))
-                {
-                    currentMovesCount++;
-                }
-                else
-                {
-                    this.printer.PrintLine(Constants.InvalidMoveMessage);                    
-                }
+                
+            }
+        }
+
+        private void GameOver(int currentMovesCount)
+        {
+            this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, currentMovesCount));
+
+            if (this.scoreboard.IsInTopScores(currentMovesCount))
+            {
+                this.printer.Print(Constants.EnterNameMessage);
+                string userName = this.reader.ReadLine();
+                this.scoreboard.Add(currentMovesCount, userName);
+                this.printer.Print(this.scoreboard);
             }
         }
 

@@ -4,6 +4,6 @@
     {
         Exit,
         Restart,
-        Top
+        Top 
     }
 }

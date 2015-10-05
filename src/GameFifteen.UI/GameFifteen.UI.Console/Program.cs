@@ -16,7 +16,9 @@
 
             var scoreboard = new Scoreboard();
 
-            EngineTemplate engine = new Engine(game, scoreboard, printer, reader);
+            var commandManager = new CommandManager();
+
+            EngineTemplate engine = new Engine(game, scoreboard, printer, reader, commandManager);
 
             engine.Run();
         }

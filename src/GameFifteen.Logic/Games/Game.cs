@@ -28,6 +28,13 @@
                 return this.frame.Equals(this.framePrototype);
             }
         }
+             
+
+        public IFrame Board
+        {
+            get { return this.frame; }
+        }
+
 
         public bool Move(string tileLabel)
         {
@@ -41,11 +48,6 @@
                 this.mover.Shuffle(this.frame);
             }
             while (this.IsSolved);
-        }
-
-        public override string ToString()
-        {
-            return this.frame.ToString();
-        }
+        }               
     }
 }

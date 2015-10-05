@@ -8,7 +8,7 @@
     {
         public void Execute(ICommandContext context)
         {
-          context.Printer.PrintLine(Constants.GoodbyeMessage);
+          context.Message = Constants.GoodbyeMessage;
             Environment.Exit(0);     
         }
     }
