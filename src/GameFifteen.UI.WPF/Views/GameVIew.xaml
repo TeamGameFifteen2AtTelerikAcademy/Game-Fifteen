@@ -42,8 +42,14 @@
                         HorizontalAlignment="Stretch"
                         Margin="0 20"
                         >
+                <StackPanel>
+                    <Button x:Name="ButtonUndoMove" Content="⎌"
+                            Style="{StaticResource PlayebleTileButton}"
+                            FontSize="35"
+                            Width="70"
+                            Command="{Binding UndoMove}"  />
 
-                <ItemsControl x:Name="frameTatget" ItemsSource="{Binding TargetTiles}" Grid.Column="0"  HorizontalAlignment="Stretch">
+                    <ItemsControl x:Name="frameTatget" ItemsSource="{Binding TargetTiles}" Grid.Column="0"  HorizontalAlignment="Stretch">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid  HorizontalAlignment="Center"
@@ -64,7 +70,9 @@
                                         />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                    </ItemsControl>
+                </StackPanel>   
+                
                 <ItemsControl x:Name="frame" ItemsSource="{Binding Tiles}"  Grid.Column="1"  HorizontalAlignment="Stretch" >
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>

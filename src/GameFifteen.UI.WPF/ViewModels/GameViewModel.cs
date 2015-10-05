@@ -16,11 +16,11 @@
     using Logic.Games.Contracts;
     using Logic.Games;
     using System;
+    using Logic.Memento;
 
     public class GameViewModel : ViewModelBase
     {
-        private IGame game;
-        private IScoreboard scoreboard;
+        private IGame game;        
         private GameSettingsInicialisator settingsInicializator;
         private int rows;
         private int cols;
@@ -29,12 +29,20 @@
         private ObservableCollection<ITile> tiles;
         private ObservableCollection<ITile> targetTiles;
 
+        
+        private ICommand undoMoveCommand;
         private ICommand initializeGameCommand;
         private ICommand moveTileCommand;
 
+        public IMemento BoardHistory { get; set; }
+        public IScoreboard ScoreboardInfo { get; set; }
+
         public GameViewModel()
         {
+            this.BoardHistory = new BoardHistory();
+            this.ScoreboardInfo = new Scoreboard();
             this.HandelInitializeGameCommand(null);
+           
         }
 
         public ObservableCollection<ITile> Tiles
@@ -61,6 +69,34 @@
 
                 return this.targetTiles;
             }
+        }
+        
+        public ICommand UndoMove
+        {
+            get
+            {
+                if (this.undoMoveCommand == null)
+                {
+                    this.undoMoveCommand = new RelayCommand(this.HandelUndoMoveCommand);
+                }
+
+                return undoMoveCommand;
+            }
+        }
+
+        private void HandelUndoMoveCommand(object parameter)
+        {
+            if (this.Moves > 0)
+            {
+                this.game.Frame = this.BoardHistory.Undo();
+
+                this.SincFrameTilesWithObservableTiles(this.tiles, this.game.Frame);
+                this.Moves -= 1;
+
+                this.OnPropertyChanged("Tiles");
+                this.OnPropertyChanged("Moves");
+            }
+            
         }
 
         public ICommand InitializeGame
@@ -148,12 +184,12 @@
 
             this.game = new Game(newFrame, mover);
             this.game.Shuffle();
-
-            this.scoreboard = new Scoreboard();
+            
             this.Moves = 0;
 
             this.tiles = new ObservableCollection<ITile>();
             this.targetTiles = new ObservableCollection<ITile>();
+            this.BoardHistory.SaveBoardState(this.game.Frame);
 
             this.SincFrameTilesWithObservableTiles(this.tiles, this.game.Frame);
             this.SincFrameTilesWithObservableTiles(this.targetTiles, this.game.FramePrototype);
@@ -166,6 +202,8 @@
 
         private void HandleMoveTileCommand(object parameter)
         {
+            this.BoardHistory.SaveBoardState(this.game.Frame);
+
             var button = parameter as Button;
             var label = button.Content.ToString();
             var moveSucces = this.game.Move(label);
@@ -173,12 +211,15 @@
             if (moveSucces)
             {
                 this.Moves += 1;
+                this.SincFrameTilesWithObservableTiles(this.tiles, this.game.Frame);
+                
+
+                this.OnPropertyChanged("Tiles");
+                this.OnPropertyChanged("Moves");
+
             }
 
-            this.SincFrameTilesWithObservableTiles(this.tiles, this.game.Frame);
-
-            this.OnPropertyChanged("Tiles");
-            this.OnPropertyChanged("Moves");
+            
 
             if (this.game.IsSolved)
             {
