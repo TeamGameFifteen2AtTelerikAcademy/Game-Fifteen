@@ -40,6 +40,22 @@
 
         protected virtual void HandleSwitchViewCommand(object parameter)
         {
+            var buttonClicked = parameter as Button;
+
+            if (buttonClicked != null)
+            {
+                var goToViewName = buttonClicked.Name.ToString();
+
+                switch (goToViewName)
+                {
+                    case "ButtonGoToMainMenu":
+                        // TODO: Switch to MainMenuView when ready
+                        ViewSwitcher.Switch(ViewSelector.PreGame);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }       
     }
 }

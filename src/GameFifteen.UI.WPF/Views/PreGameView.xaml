@@ -26,18 +26,28 @@
                VerticalAlignment="Center"
                 FontSize="20" Height="Auto"/>
             <Button  x:Name="ButtonGoToQuickGame" 
-                     Content="Classic Game"  Margin="0 10" 
+                     Content="Classic Game"  
+                     Style="{StaticResource CommonButton}"
+                     
                      Command="{Binding SwitchView}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                     />
             <Button  x:Name="ButtonGoToGameSettings" 
-                     Content="Custom Game"  Margin="0 10" 
+                     
+                     Style="{StaticResource CommonButton}"
+                     Content="Custom Game"  
                      Command="{Binding SwitchView}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                     />
-            <Button  Content="How to play"  Margin="0 10"/>
-            <Button  Content="About"  Margin="0 10" Command="{Binding MoveTile}"/>
-            <Button  Content="Hall of fame"  Margin="0 10"/>
+            <Button  Content="How to play"
+                     Style="{StaticResource CommonButton}"
+                    />
+            <Button  Content="About"  
+                      Style="{StaticResource CommonButton}"
+                      Command="{Binding MoveTile}"/>
+                <Button  Content="Hall of fame"  
+                     Style="{StaticResource CommonButton}"
+                     />
         </StackPanel>
     </Grid>
 </UserControl>

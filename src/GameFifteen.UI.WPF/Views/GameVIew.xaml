@@ -8,7 +8,7 @@
              xmlns:helpers="clr-namespace:GameFifteen.UI.WPF.Helpers"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="900"
-             >    
+             >
     <UserControl.DataContext>
         <vms:GameViewModel/>
     </UserControl.DataContext>
@@ -16,23 +16,26 @@
         <StackPanel>
             <Grid>
                 <DockPanel LastChildFill="True">
-                    <Button x:Name="ButtonGoToMainMenu" Content="Main menu"  
-                            FontSize="20" Padding="10"
+                    <Button x:Name="ButtonGoToMainMenu" Content="Main menu" 
+                            Style="{StaticResource CommonButton}"
                             Command="{Binding SwitchView}" 
                             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-                    <Button x:Name="ButtonBuildMatrix" Content="New Game"  
-                            FontSize="20" Padding="10" 
+                    <Button x:Name="ButtonBuildMatrix" Content="New Game"
+                            Style="{StaticResource CommonButton}"
                             Command="{Binding InitializeGame}"  />
                     <Label Content="{Binding Moves}"   
                            DockPanel.Dock="Right" 
-                           FontSize="20" Padding="10"/>
+                           Style="{StaticResource GameStatsLabel}"
+                           Margin="0,0,70,13" VerticalAlignment="Bottom"  >
+                        
+                    </Label>
                     <Label Content="Moves: "   
                            DockPanel.Dock="Right" 
-                           FontSize="20" Padding="10"/>
+                           Style="{StaticResource GameStatsLabel}"
+                           />
                     <Label Content="Game 15" 
-                           HorizontalAlignment="Center" 
-                           VerticalAlignment="Center"
-                           FontSize="20"/>
+                           Style="{StaticResource GameStatsLabel}"
+                           />
                 </DockPanel>
             </Grid>
             <StackPanel Orientation="Horizontal"
@@ -55,14 +58,10 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Button     
-                                        Content="{Binding Label}"   
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch"
-                                        FontWeight="Bold"
-                                        Background="Purple"
-                                        Foreground="White"
-                                        Opacity="0.8"
-                                        Margin="2" />
+                                        Content="{Binding Label}"  
+                                       Style="{StaticResource StaticTileButton}"
+                                        FontSize ="12"
+                                        />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -79,17 +78,11 @@
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
-                        <DataTemplate>                           
-                                <Button     
-                                        Content="{Binding Label}"   
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch"
-                                        FontSize="25"
-                                        FontWeight="Bold"
-                                        Background="BlueViolet" 
-                                        Opacity="0.8"
-                                        Foreground="White"
-                                        Margin="2"                                        
+                        <DataTemplate>
+                            <Button     
+                                        Content="{Binding Label}"  
+                                        Style="{StaticResource PlayebleTileButton}"
+                                        FontSize="30"
                                         Command="{Binding Path=DataContext.MoveTile, 
                                             RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                         CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>

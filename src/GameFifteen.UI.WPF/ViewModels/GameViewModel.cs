@@ -138,18 +138,18 @@
             var tileFactory = settingsInicializator.ChooseTiles(SettingsKeeper.Tile);
             var mover = settingsInicializator.ChooseMover(SettingsKeeper.Mover);
             var frameBuilder = settingsInicializator.ChoosePattern(tileFactory, SettingsKeeper.Pattern);
-            
+
             this.OnPropertyChanged("Rows");
             this.OnPropertyChanged("Cols");
 
-            var director = new FrameDirector(frameBuilder);           
+            var director = new FrameDirector(frameBuilder);
 
             var newFrame = director.ConstructFrame(this.Rows, this.Cols);
 
             this.game = new Game(newFrame, mover);
             this.game.Shuffle();
 
-            this.scoreboard = new Scoreboard();            
+            this.scoreboard = new Scoreboard();
             this.Moves = 0;
 
             this.tiles = new ObservableCollection<ITile>();
@@ -166,11 +166,14 @@
 
         private void HandleMoveTileCommand(object parameter)
         {
-            this.Moves += 1;
             var button = parameter as Button;
             var label = button.Content.ToString();
+            var moveSucces = this.game.Move(label);
 
-            this.game.Move(label);
+            if (moveSucces)
+            {
+                this.Moves += 1;
+            }
 
             this.SincFrameTilesWithObservableTiles(this.tiles, this.game.Frame);
 

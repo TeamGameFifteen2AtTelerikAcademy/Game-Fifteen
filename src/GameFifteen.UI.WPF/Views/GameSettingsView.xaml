@@ -6,64 +6,68 @@
              xmlns:local="clr-namespace:GameFifteen.UI.WPF.Views"
              xmlns:vms="clr-namespace:GameFifteen.UI.WPF.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="600" d:DesignWidth="900">
     <UserControl.DataContext>
         <vms:GameSettingsViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <StackPanel>
-            <Label>
+        <StackPanel HorizontalAlignment="Center" Width="450">
+            <Label Style="{StaticResource CommonLabel}">
                 SELECT YOUR CUSTOM GAME SETTINGS
             </Label>
-            <StackPanel Orientation="Horizontal" Margin="10">
-                <Label Content="Select Rows" />
+            <StackPanel Orientation="Horizontal" Margin="10" >
+                <Label Content="Select Rows" Style="{StaticResource CommonLabel}" />
                 <ComboBox x:Name="comboBoxSelectRows" 
-                          HorizontalAlignment="Left" 
-                          VerticalAlignment="Top" 
-                          Width="auto"
+                          Style="{StaticResource CommonComboBox}"
                           ItemsSource="{Binding RowsPossibilities}"
                           SelectedItem="{Binding Rows}">
                 </ComboBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="10">
-                <Label Content="Select Cols" />
+            <StackPanel Orientation="Horizontal" Margin="10" >
+                <Label Content="Select Cols" Style="{StaticResource CommonLabel}"/>
                 <ComboBox x:Name="comboBoxSelectCols" 
-                          HorizontalAlignment="Left" 
-                          VerticalAlignment="Top" 
-                          Width="auto"
+                           
+                          Style="{StaticResource CommonComboBox}"
                           ItemsSource="{Binding ColsPossibilities}"
                           SelectedItem="{Binding Cols}">
                 </ComboBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="10">
-                <Label Content="Select Tile Type" />
+            <StackPanel Orientation="Horizontal" Margin="10" >
+                <Label Content="Select Tile Type" Style="{StaticResource CommonLabel}"/>
                 <ComboBox x:Name="comboBoxSelectTileType" 
-                          HorizontalAlignment="Left" 
-                          VerticalAlignment="Top" 
-                          Width="auto"
+                          Style="{StaticResource CommonComboBox}"
                           ItemsSource="{Binding TileTypes}"
                           SelectedItem="{Binding Tile}">
                 </ComboBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="10">
-                <Label Content="Select Pattern" />
-                <ComboBox x:Name="comboBoxSelectFramePattern" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" 
+            </StackPanel >
+            <StackPanel Orientation="Horizontal" Margin="10" >
+                <Label Content="Select Pattern" Style="{StaticResource CommonLabel}"/>
+                <ComboBox x:Name="comboBoxSelectFramePattern"  
+                          Style="{StaticResource CommonComboBox}"
                           ItemsSource="{Binding PatternTypes}"
                           SelectedItem="{Binding Pattern}">
 
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
-                <Label Content="Select Mover Type" />
-                <ComboBox x:Name="comboBoxSelectMoverType" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" 
+                <Label Content="Select Mover Type" Style="{StaticResource CommonLabel}"/>
+                <ComboBox x:Name="comboBoxSelectMoverType"  
+                          Style="{StaticResource CommonComboBox}"
                           ItemsSource="{Binding MoverTypes}"
                           SelectedItem="{Binding Mover}">
 
                 </ComboBox>
             </StackPanel>
             <Button  x:Name="ButtonGoToNewCustomGame" 
-                     Content="New Custom Game"  Margin="0 10" 
+                     Content="New Custom Game"
+                     Style="{StaticResource CommonButton}"
                      Command="{Binding NewCustomGame}" 
+                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                    />
+            <Button  x:Name="ButtonGoToMainMenu" 
+                     Content="Main Menu"
+                     Style="{StaticResource CommonButton}"
+                     Command="{Binding SwitchView}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                     />
         </StackPanel>
