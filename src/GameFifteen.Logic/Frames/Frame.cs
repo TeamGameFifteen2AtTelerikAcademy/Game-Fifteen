@@ -44,17 +44,17 @@
 
         public IFrame Clone()
         {
-            return new Frame((ITile[,])this.Tiles.Clone());
+            return new ProxyFrame((ITile[,])this.Tiles.Clone());
         }
 
         public override bool Equals(object obj)
         {
-            var other = obj as Frame;
+            var other = obj as ProxyFrame;
 
             return this.Equals(other);
         }
 
-        public bool Equals(Frame other)
+        public bool Equals(ProxyFrame other)
         {
             if (other == null)
             {
