@@ -59,13 +59,15 @@
                 this.printer.Print(Constants.EnterCommandMessage);
 
                 string userInput = this.reader.ReadLine();
-                // Capitalize the first letter to meet restrictions from the enum...
-                userInput = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userInput);
-                this.context.SelectedTileLabel = userInput;
 
-                // If we want to catch the exeption in default state in CommandManager, 
-                // we need to change the command for moving e.g. "move 14", "move ab" 
-                // and split parameters. 
+                var userCommandAndTarget = HandleUserInput(userInput);
+                var userCommand = userCommandAndTarget[0];
+                var userTarget = userCommandAndTarget[1];
+
+                // Capitalize the first letter to meet restrictions from the enum...
+                userInput = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userCommand);
+                this.context.SelectedTileLabel = userTarget;
+
                 try
                 {
                     this.commandManager.GetCommand(userInput).Execute(this.context);
@@ -79,6 +81,23 @@
                 this.printer.PrintLine(this.context.Message);
             }
         }
+
+        private string[] HandleUserInput(string userInput)
+        {
+            string[] handleUserInput = new string[] { string.Empty, string.Empty };
+            var userCommandAndTarget = userInput.Split(' ');
+            string userCommand = userCommandAndTarget[0];
+            handleUserInput[0] = userCommand;
+
+            if (userCommandAndTarget.Length == 2)
+            {
+                string userTarget = userCommandAndTarget[1];
+                handleUserInput[1] = userTarget;
+            }
+
+            return handleUserInput;
+        }
+
 
         private void GameOver(int currentMovesCount)
         {
