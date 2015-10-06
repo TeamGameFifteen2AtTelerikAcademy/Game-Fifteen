@@ -24,11 +24,7 @@
                     return new ExitCommand();
                 case UserCommands.Undo:
                     return new UndoCommand();
-<<<<<<< HEAD
                 case UserCommands.Move:
-=======
-                default:
->>>>>>> a784f799e760ea34e43ef0582b8fcf0f58228e63
                     return new MoveCommand();
                 default:
                     return new IncorrectCommand();
