@@ -12,17 +12,7 @@ namespace Tests_Common
     [TestClass]
     public class ConvertorTest
     {
-        [TestMethod]
-        public void TestConvertLettersToNumber()
-        {
-            const int numberForCheck = 1;
-            const string letterForConvert = "A";
-            int expectNumber = Converter.ConvertLettersToNumber(letterForConvert);
-            Assert.AreEqual(numberForCheck, expectNumber);
-            
-        }
-
-        
+              
         [TestMethod]
         public void TestConvertNumberToLetters()
         {
@@ -30,16 +20,6 @@ namespace Tests_Common
             int numberForConvert = 97;
             string expectLetter = Converter.ConvertNumberToLetters(numberForConvert);
             Assert.AreEqual(letterForCheck, expectLetter);
-
-        }
-
-        [TestMethod]
-        public void EmptyStringLikeParametarInMethodConvertNumberToLetters()
-        {
-            const int numberForCheck = 0;
-            const string letterForConvert = "";
-            int expectNumber = Converter.ConvertLettersToNumber(letterForConvert);
-            Assert.AreEqual(numberForCheck, expectNumber);
 
         }
 
@@ -61,6 +41,54 @@ namespace Tests_Common
             Converter.ConvertNumberToLetters(numberForCheck);
         }
 
+        
+        [TestMethod]
+        public void TestConvertLettersToNumber()
+        {
+            const int numberForCheck = 1;
+            const string letterForConvert = "A";
+            int expectNumber = Converter.ConvertLettersToNumber(letterForConvert);
+            Assert.AreEqual(numberForCheck, expectNumber);
+
+        }
+
+        [TestMethod]
+        public void EmptyStringLikeParametarInMethodConvertLettersToNumber()
+        {
+            const int numberForCheck = 0;
+            const string letterForConvert = "";
+            int expectNumber = Converter.ConvertLettersToNumber(letterForConvert);
+            Assert.AreEqual(numberForCheck, expectNumber);
+
+        }
+
+        [TestMethod]
+        public void StringWithWhiteSpaceLikeParametarInMethodConvertLettersToNumber()
+        {
+            const int numberForCheck = 1;
+            const string letterForConvert = "a ";
+            int expectNumber = Converter.ConvertLettersToNumber(letterForConvert);
+            Assert.AreEqual(numberForCheck, expectNumber);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException),
+          "letterForConvert must be a positive integer")]
+        public void NullLikeParametarInMethodConvertLetterToNumber()
+        {
+            const string letterForConvert = null;
+            Converter.ConvertLettersToNumber(letterForConvert);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException),
+          "letterForConvert must contain only latin letters")]
+        public void TestStringContainsOnlyLatinLettersInMethodConvertLetterToNumber()
+        {
+            const string letterForConvert = "!@##$";
+            Converter.ConvertLettersToNumber(letterForConvert);
+        }
 
     }
 }
