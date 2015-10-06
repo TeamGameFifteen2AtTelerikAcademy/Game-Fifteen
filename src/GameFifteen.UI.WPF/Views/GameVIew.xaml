@@ -7,7 +7,7 @@
              xmlns:vms="clr-namespace:GameFifteen.UI.WPF.ViewModels"
              xmlns:helpers="clr-namespace:GameFifteen.UI.WPF.Helpers"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="600"
+             d:DesignHeight="600" d:DesignWidth="900"
              >
     <UserControl.DataContext>
         <vms:GameViewModel/>
@@ -16,38 +16,40 @@
         <StackPanel>
             <Grid>
                 <DockPanel LastChildFill="True">
-                    <Button x:Name="ButtonGoToMainMenu" Content="Main menu"  
-                            FontSize="20" Padding="10"
+                    <Button x:Name="ButtonGoToMainMenu" Content="Main menu" 
+                            Style="{StaticResource CommonButton}"
                             Command="{Binding SwitchView}" 
                             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-                    <Button x:Name="ButtonGoToTarget" Content="Target"  
-                            FontSize="20" Padding="10"
-                            Command="{Binding SwitchView}" 
-                           
-                            CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-                    <Button x:Name="ButtonBuildMatrix" Content="New Game"  
-                            FontSize="20" Padding="10" 
+                    <Button x:Name="ButtonBuildMatrix" Content="New Game"
+                            Style="{StaticResource CommonButton}"
                             Command="{Binding InitializeGame}"  />
                     <Label Content="{Binding Moves}"   
                            DockPanel.Dock="Right" 
-                           FontSize="20" Padding="10"/>
+                           Style="{StaticResource GameStatsLabel}"
+                           Margin="0,0,70,13" VerticalAlignment="Bottom"  >
+                        
+                    </Label>
                     <Label Content="Moves: "   
                            DockPanel.Dock="Right" 
-                           FontSize="20" Padding="10"/>
+                           Style="{StaticResource GameStatsLabel}"
+                           />
                     <Label Content="Game 15" 
-                           HorizontalAlignment="Center" 
-                           VerticalAlignment="Center"
-                           FontSize="20"/>
+                           Style="{StaticResource GameStatsLabel}"
+                           />
                 </DockPanel>
             </Grid>
-            <Grid>
-                <ItemsControl x:Name="fra" ItemsSource="{Binding Tiles}">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Stretch"
+                        Margin="0 20"
+                        >
+
+                <ItemsControl x:Name="frameTatget" ItemsSource="{Binding TargetTiles}" Grid.Column="0"  HorizontalAlignment="Stretch">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid  
-                            Width="500"
-                            Height="500"
-                            Margin="0 20"
+                            <UniformGrid  HorizontalAlignment="Center"
+                            Width="300"
+                            Height="300"
+                            Margin="25 0"                                
                             Rows="{Binding Rows}"
                             Columns="{Binding Cols}"
                             />
@@ -55,19 +57,39 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button     Content="{Binding Label}"   
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch"
-                                        FontSize="25"
-                                        FontWeight="Bold"
-                                        Background="Yellow"                                        
+                            <Button     
+                                        Content="{Binding Label}"  
+                                       Style="{StaticResource StaticTileButton}"
+                                        FontSize ="12"
+                                        />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <ItemsControl x:Name="frame" ItemsSource="{Binding Tiles}"  Grid.Column="1"  HorizontalAlignment="Stretch" >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid  
+                            Width="500"
+                            Height="500"
+                            Margin="0"
+                            Rows="{Binding Rows}"
+                            Columns="{Binding Cols}"
+                            />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button     
+                                        Content="{Binding Label}"  
+                                        Style="{StaticResource PlayebleTileButton}"
+                                        FontSize="30"
                                         Command="{Binding Path=DataContext.MoveTile, 
                                             RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                         CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-            </Grid>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

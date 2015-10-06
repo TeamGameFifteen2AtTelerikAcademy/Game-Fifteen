@@ -15,22 +15,27 @@
     using Helpers;
     using Logic.Games.Contracts;
     using Logic.Games;
+    using System;
 
     public class GameViewModel : ViewModelBase
     {
         private IGame game;
         private IScoreboard scoreboard;
-        private TileFactory tileFactory;
-        private FrameBuilder frameBuilder;
-        private FrameDirector director;
         private GameSettingsInicialisator settingsInicializator;
-        private IMover mover;
-        private IFrame targetFrame;
         private int rows;
         private int cols;
         private int moves;
 
         private ObservableCollection<ITile> tiles;
+        private ObservableCollection<ITile> targetTiles;
+
+        private ICommand initializeGameCommand;
+        private ICommand moveTileCommand;
+
+        public GameViewModel()
+        {
+            this.HandelInitializeGameCommand(null);
+        }
 
         public ObservableCollection<ITile> Tiles
         {
@@ -45,8 +50,18 @@
             }
         }
 
-        private ICommand initializeGameCommand;
-        private ICommand moveTileCommand;
+        public ObservableCollection<ITile> TargetTiles
+        {
+            get
+            {
+                if (this.targetTiles == null)
+                {
+                    this.targetTiles = new ObservableCollection<ITile>();
+                }
+
+                return this.targetTiles;
+            }
+        }
 
         public ICommand InitializeGame
         {
@@ -72,7 +87,7 @@
 
                 return moveTileCommand;
             }
-        }        
+        }
 
         public int Rows
         {
@@ -119,40 +134,49 @@
 
             this.Rows = int.Parse(SettingsKeeper.Rows);
             this.Cols = int.Parse(SettingsKeeper.Cols);
-            this.tileFactory = settingsInicializator.ChooseTiles(SettingsKeeper.Tile);
-            this.mover = settingsInicializator.ChooseMover(SettingsKeeper.Mover);
-            this.frameBuilder = settingsInicializator.ChoosePattern(this.tileFactory, SettingsKeeper.Pattern);
-            this.OnPropertyChanged("Tiles");
+
+            var tileFactory = settingsInicializator.ChooseTiles(SettingsKeeper.Tile);
+            var mover = settingsInicializator.ChooseMover(SettingsKeeper.Mover);
+            var frameBuilder = settingsInicializator.ChoosePattern(tileFactory, SettingsKeeper.Pattern);
+
             this.OnPropertyChanged("Rows");
             this.OnPropertyChanged("Cols");
 
-            this.director = new FrameDirector(frameBuilder);           
+            var director = new FrameDirector(frameBuilder);
 
-            var newFrame = director.ConstructFrame(rows, cols);
+            var newFrame = director.ConstructFrame(this.Rows, this.Cols);
 
             this.game = new Game(newFrame, mover);
             this.game.Shuffle();
 
-            this.scoreboard = new Scoreboard();            
+            this.scoreboard = new Scoreboard();
             this.Moves = 0;
 
             this.tiles = new ObservableCollection<ITile>();
+            this.targetTiles = new ObservableCollection<ITile>();
 
             this.SincFrameTilesWithObservableTiles(this.tiles, this.game.Frame);
+            this.SincFrameTilesWithObservableTiles(this.targetTiles, this.game.FramePrototype);
             this.OnPropertyChanged("Tiles");
+            this.OnPropertyChanged("TargetTiles");
             this.OnPropertyChanged("Rows");
             this.OnPropertyChanged("Cols");
+            this.OnPropertyChanged("Moves");
         }
 
         private void HandleMoveTileCommand(object parameter)
         {
-            this.Moves += 1;
             var button = parameter as Button;
             var label = button.Content.ToString();
+            var moveSucces = this.game.Move(label);
 
-            this.game.Move(label);
+            if (moveSucces)
+            {
+                this.Moves += 1;
+            }
 
             this.SincFrameTilesWithObservableTiles(this.tiles, this.game.Frame);
+
             this.OnPropertyChanged("Tiles");
             this.OnPropertyChanged("Moves");
 
@@ -162,24 +186,48 @@
             }
         }
 
+        private void HandlSshowFramePrototypeCommand(object parameter)
+        {
+            Window newWindow = new Window();
+            newWindow.Show();
+        }
+
+        protected override void HandleSwitchViewCommand(object parameter)
+        {
+            var buttonClicked = parameter as Button;
+
+            if (buttonClicked != null)
+            {
+                var goToViewName = buttonClicked.Name.ToString();
+
+                switch (goToViewName)
+                {
+                    case "ButtonGoToMainMenu":
+                        // TODO: Switch to MainMenuView when ready
+                        ViewSwitcher.Switch(ViewSelector.PreGame);
+                        this.Tiles.Clear();
+                        this.TargetTiles.Clear();
+                        this.OnPropertyChanged("TargetTiles");
+                        this.OnPropertyChanged("Tiles");
+
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
         private void SincFrameTilesWithObservableTiles(ObservableCollection<ITile> tiles, IFrame frame)
         {
-            this.tiles.Clear();
+            tiles.Clear();
 
             for (int row = 0; row < frame.Rows; row++)
             {
                 for (int col = 0; col < frame.Cols; col++)
                 {
-                   // int index = this.CalculateTileIndex(row, col, frame.Cols);
-                    tiles.Add( frame.Tiles[row, col]);
+                    tiles.Add(frame.Tiles[row, col]);
                 }
             }
-        }
-
-        private int CalculateTileIndex(int tileRow, int tileCol, int frameCols)
-        {
-            int index = (tileCol * frameCols) + tileCol;
-            return index;
         }
     }
 }
