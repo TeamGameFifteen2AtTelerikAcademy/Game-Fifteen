@@ -32,7 +32,6 @@
             var tileFactory = this.ChooseTiles();
             var frameBuilder = this.ChoosePattern(tileFactory);
             var director = new FrameDirector(frameBuilder);
-         //  this.printer.PrintLine(Constants.BoardSizeRestrictionInfo);
             int rows = this.ChooseInteger(Constants.BoardSizeRestrictionInfo + Environment.NewLine +  Constants.RowsQuestion);
             int cols = this.ChooseInteger(Constants.ColsQuestion);
             IFrame frame;
