@@ -9,6 +9,8 @@
         public const string CannotBeNullFormat = "{0} cannot be null!";
         public const string MustBeAPositiveInteger = " must be a positive integer";
         public const string MustBeEqualOrGreaterThanFormat = "{0} must be equal or greater than {1}";
+        public const string StringContainsOnlyLatinLetters = "{0} must contain only latin letters";
+
 
         // Convertor
         public const int EnglishAlphabetLettersCount = 26;
