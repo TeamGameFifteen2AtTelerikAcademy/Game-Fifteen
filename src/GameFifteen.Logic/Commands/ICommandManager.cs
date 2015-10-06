@@ -8,5 +8,7 @@ namespace GameFifteen.Logic.Commands
     public interface ICommandManager
     {
         ICommand GetCommand(string command);
+
+        ICommand GetCommand(Enum command);
     }
 }

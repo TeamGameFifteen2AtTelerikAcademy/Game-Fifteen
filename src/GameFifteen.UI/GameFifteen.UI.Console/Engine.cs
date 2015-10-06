@@ -44,18 +44,17 @@
         protected override void Play()
         {
             this.game.Shuffle();
-            int currentMovesCount = 0;
            
             while (true)
             {
-                this.printer.PrintLine(this.game.Frame);
-
                 if (this.game.IsSolved)
                 {
-                    GameOver(currentMovesCount);
-                    Play(); // This recursion will cause a bug - the player will have to execute exit command multiple times - for each call.
+                    GameOver(this.context.Moves);
+                    this.commandManager.GetCommand(UserCommands.Restart).Execute(this.context);
+
+                   // Play(); // This recursion will cause a bug - the player will have to execute exit command multiple times - for each call.
                 }
-                
+                this.printer.PrintLine(this.game.Frame);
                 this.printer.Print(Constants.EnterCommandMessage);
 
                 string userInput = this.reader.ReadLine();

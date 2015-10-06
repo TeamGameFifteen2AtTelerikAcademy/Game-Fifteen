@@ -14,7 +14,13 @@
         {
             // Enum.IsDefined(typeof(UserCommands), userInput) for parsing numbers 
             UserCommands userCommand = (UserCommands)Enum.Parse(typeof(UserCommands), command);
-            switch (userCommand)
+            return this.GetCommand(userCommand);
+
+        }
+
+        public ICommand GetCommand(Enum command)
+        {
+            switch ((UserCommands)command)
             {
                 case UserCommands.Restart:
                     return new RestartCommand();

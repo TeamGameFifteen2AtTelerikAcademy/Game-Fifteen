@@ -15,5 +15,7 @@
         string Message { get; set; }
 
         string SelectedTileLabel { get; set; }
+
+        int Moves { get; set; }
     }
 }
