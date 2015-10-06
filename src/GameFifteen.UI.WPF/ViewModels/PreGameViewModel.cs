@@ -22,6 +22,9 @@
                     case "ButtonGoToGameSettings":
                         ViewSwitcher.Switch(ViewSelector.GameSettings);
                         break;
+                    case "ButtonGoToAboutPage":
+                        ViewSwitcher.Switch(ViewSelector.About);
+                        break;
                     default:
                         break;
                 }

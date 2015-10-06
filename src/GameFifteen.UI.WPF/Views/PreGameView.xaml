@@ -43,8 +43,10 @@
                      Style="{StaticResource CommonButton}"
                     />
             <Button  Content="About"  
+                     x:Name="ButtonGoToAboutPage"
                       Style="{StaticResource CommonButton}"
-                      Command="{Binding MoveTile}"/>
+                      Command="{Binding SwitchView}"
+                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
                 <Button  Content="Hall of fame"  
                      Style="{StaticResource CommonButton}"
                      />

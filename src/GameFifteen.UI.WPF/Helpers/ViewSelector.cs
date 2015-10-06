@@ -9,7 +9,21 @@
         private static PreGameView preGame;
         private static GameView classicGame;
         private static GameSettingsView gameSetings;
+        private static AboutView about;
 
+
+        public static UserControl About
+        {
+            get
+            {
+                if (about == null)
+                {
+                    about = new AboutView();
+                }
+
+                return about;
+            }
+        }
 
         public static UserControl PreGame
         {

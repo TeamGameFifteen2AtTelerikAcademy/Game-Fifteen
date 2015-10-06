@@ -9,6 +9,8 @@
             <Setter Property="FontFamily" Value="Consolas" />
         </Style>
 
+        <BitmapImage x:Key="LogoImageSource" UriSource="Resources/logo.png" />
+        
         <Style x:Key="CommonButton" TargetType="Button">
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Background" Value="Black" />

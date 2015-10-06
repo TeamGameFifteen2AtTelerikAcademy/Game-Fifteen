@@ -6,6 +6,8 @@
 
     using Helpers;
     using Commands;
+    using System.Windows.Documents;
+    using System.Diagnostics;
 
     public class ViewModelBase : INotifyPropertyChanged
     {
@@ -56,6 +58,29 @@
                         break;
                 }
             }
-        }       
+        }
+
+        private ICommand openExternalLinkCommand;
+
+        public ICommand OpenExternalLinkCommand
+        {
+            get
+            {
+                if (this.openExternalLinkCommand == null)
+                {
+                    this.openExternalLinkCommand = new RelayCommand(this.HandleOpenExternalLinkCommand);
+                }
+
+                return openExternalLinkCommand;
+            }
+        }
+
+        private void HandleOpenExternalLinkCommand(object parameter)
+        {
+            var buttonClicked = parameter as Button;
+            var url = buttonClicked.Content.ToString();
+
+            Process.Start(new ProcessStartInfo(url));
+        }
     }
 }

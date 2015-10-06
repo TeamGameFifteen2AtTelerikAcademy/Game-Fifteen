@@ -11,7 +11,7 @@
         <vms:GameSettingsViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <StackPanel HorizontalAlignment="Center" Width="450">
+        <StackPanel HorizontalAlignment="Center" Width="500">
             <Label Style="{StaticResource CommonLabel}">
                 SELECT YOUR CUSTOM GAME SETTINGS
             </Label>
