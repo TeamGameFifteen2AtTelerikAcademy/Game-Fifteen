@@ -67,6 +67,8 @@
                 userInput = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userCommand);
                 this.context.SelectedTileLabel = userTarget;
 
+
+                // TODO: Remove 
                 try
                 {
                     this.commandManager.GetCommand(userInput).Execute(this.context);

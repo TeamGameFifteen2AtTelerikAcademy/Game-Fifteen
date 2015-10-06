@@ -30,6 +30,7 @@
         public const string MoverTypesQuestion = "How would you like to move the tiles?\n\rClassic or RowCol: ";
         public const string RowsQuestion = "How many rows would you like? ";
         public const string ColsQuestion = "How many cols would you like? ";
+        public const string NegativeRowsCols = "Board dimensions must be positive integers!";
 
         // User messages
         public const string EnterCommandMessage = "Enter a number to move: ";

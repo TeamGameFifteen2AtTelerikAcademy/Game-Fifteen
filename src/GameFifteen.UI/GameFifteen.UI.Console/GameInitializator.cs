@@ -35,7 +35,19 @@
          //  this.printer.PrintLine(Constants.BoardSizeRestrictionInfo);
             int rows = this.ChooseInteger(Constants.BoardSizeRestrictionInfo + Environment.NewLine +  Constants.RowsQuestion);
             int cols = this.ChooseInteger(Constants.ColsQuestion);
-            var frame = director.ConstructFrame(rows, cols);
+            IFrame frame;
+
+            try
+            {
+                frame = director.ConstructFrame(rows, cols);
+            }
+            catch(OverflowException )
+            {               
+                this.printer.PrintLine(Constants.NegativeRowsCols);
+                this.printer.PrintLine(Constants.BoardSizeRestrictionInfo);
+                frame = director.ConstructFrame(Constants.FrameDimensionMin, Constants.FrameDimensionMin);
+
+            }
 
             var mover = this.ChooseMover();
 
