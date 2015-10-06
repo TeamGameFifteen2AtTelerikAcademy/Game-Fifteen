@@ -38,7 +38,7 @@
             }
         }
 
-        private void HandleSwitchViewCommand(object parameter)
+        protected virtual void HandleSwitchViewCommand(object parameter)
         {
             var buttonClicked = parameter as Button;
 
@@ -48,30 +48,14 @@
 
                 switch (goToViewName)
                 {
-                    case "ButtonGoToQuickGame":
-                        this.SetDefautGameSettings();
-                        ViewSwitcher.Switch(ViewSelector.ClassicGame);
-                        break;
                     case "ButtonGoToMainMenu":
                         // TODO: Switch to MainMenuView when ready
                         ViewSwitcher.Switch(ViewSelector.PreGame);
-                        break;
-                    case "ButtonGoToGameSettings":
-                        ViewSwitcher.Switch(ViewSelector.GameSettings);
                         break;
                     default:
                         break;
                 }
             }
-        }
-
-        private void SetDefautGameSettings()
-        {
-            SettingsKeeper.Rows = "4";
-            SettingsKeeper.Cols = "4";
-            SettingsKeeper.Tile = "Number";
-            SettingsKeeper.Pattern = "Classic";
-            SettingsKeeper.Mover = "Classic";
-        }
+        }       
     }
 }

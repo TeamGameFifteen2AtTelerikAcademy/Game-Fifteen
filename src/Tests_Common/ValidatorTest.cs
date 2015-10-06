@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GameFifteen.Logic.Common;
-
-namespace Tests_Common
+﻿namespace Tests_Common
 {
+    using GameFifteen.Logic.Common;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
+
     [TestClass]
     public class ValidatorTest
     {
