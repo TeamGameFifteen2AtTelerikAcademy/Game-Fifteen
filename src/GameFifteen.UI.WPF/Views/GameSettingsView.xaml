@@ -6,10 +6,8 @@
              xmlns:local="clr-namespace:GameFifteen.UI.WPF.Views"
              xmlns:vms="clr-namespace:GameFifteen.UI.WPF.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="900">
-    <UserControl.DataContext>
-        <vms:ViewModels/>
-    </UserControl.DataContext>
+             d:DesignHeight="600" d:DesignWidth="900"
+              DataContext="{x:Static vms:ViewModelsSelector.GameSettingsViewModel}">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Width="500">
             <Label Style="{StaticResource CommonLabel}">
@@ -19,8 +17,8 @@
                 <Label Content="Select Rows" Style="{StaticResource CommonLabel}" />
                 <ComboBox x:Name="comboBoxSelectRows" 
                           Style="{StaticResource CommonComboBox}"
-                          ItemsSource="{Binding GameSettingsViewModel.RowsPossibilities}"
-                          SelectedItem="{Binding GameSettingsViewModel.Rows}">
+                          ItemsSource="{Binding RowsPossibilities}"
+                          SelectedItem="{Binding Rows}">
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10" >
@@ -28,24 +26,24 @@
                 <ComboBox x:Name="comboBoxSelectCols" 
                            
                           Style="{StaticResource CommonComboBox}"
-                          ItemsSource="{Binding GameSettingsViewModel.ColsPossibilities}"
-                          SelectedItem="{Binding GameSettingsViewModel.Cols}">
+                          ItemsSource="{Binding ColsPossibilities}"
+                          SelectedItem="{Binding Cols}">
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10" >
                 <Label Content="Select Tile Type" Style="{StaticResource CommonLabel}"/>
                 <ComboBox x:Name="comboBoxSelectTileType" 
                           Style="{StaticResource CommonComboBox}"
-                          ItemsSource="{Binding GameSettingsViewModel.TileTypes}"
-                          SelectedItem="{Binding GameSettingsViewModel.Tile}">
+                          ItemsSource="{Binding TileTypes}"
+                          SelectedItem="{Binding Tile}">
                 </ComboBox>
             </StackPanel >
             <StackPanel Orientation="Horizontal" Margin="10" >
                 <Label Content="Select Pattern" Style="{StaticResource CommonLabel}"/>
                 <ComboBox x:Name="comboBoxSelectFramePattern"  
                           Style="{StaticResource CommonComboBox}"
-                          ItemsSource="{Binding GameSettingsViewModel.PatternTypes}"
-                          SelectedItem="{Binding GameSettingsViewModel.Pattern}">
+                          ItemsSource="{Binding PatternTypes}"
+                          SelectedItem="{Binding Pattern}">
 
                 </ComboBox>
             </StackPanel>
@@ -53,21 +51,21 @@
                 <Label Content="Select Mover Type" Style="{StaticResource CommonLabel}"/>
                 <ComboBox x:Name="comboBoxSelectMoverType"  
                           Style="{StaticResource CommonComboBox}"
-                          ItemsSource="{Binding GameSettingsViewModel.MoverTypes}"
-                          SelectedItem="{Binding GameSettingsViewModel.Mover}">
+                          ItemsSource="{Binding MoverTypes}"
+                          SelectedItem="{Binding Mover}">
 
                 </ComboBox>
             </StackPanel>
             <Button  x:Name="ButtonGoToNewCustomGame" 
                      Content="New Custom Game"
                      Style="{StaticResource CommonButton}"
-                     Command="{Binding GameSettingsViewModel.NewCustomGame}" 
+                     Command="{Binding NewCustomGame}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                     />
             <Button  x:Name="ButtonGoToMainMenu" 
                      Content="Main Menu"
                      Style="{StaticResource CommonButton}"
-                     Command="{Binding GameSettingsViewModel.SwitchView}" 
+                     Command="{Binding SwitchView}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                     />
         </StackPanel>

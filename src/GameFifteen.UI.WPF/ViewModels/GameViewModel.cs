@@ -1,33 +1,30 @@
 ﻿namespace GameFifteen.UI.WPF.ViewModels
 {
-    using System.Windows;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Windows.Controls;
     using System.Windows.Input;
-    using Logic.Tiles.Contracts;
-    using Logic.Frames.Contracts;
-    using Logic.Frames;
-    using Logic.Movers.Contracts;
-    using System.Collections.ObjectModel;
-    using Logic.Scoreboards.Contracts;
-    using Logic.Scoreboards;
 
     using Commands;
     using Helpers;
-    using Logic.Games.Contracts;
+    using Logic.Frames;
+    using Logic.Frames.Contracts;
     using Logic.Games;
-    using System;
+    using Logic.Games.Contracts;
     using Logic.Memento;
-    using Logic;
-    using System.Collections.Generic;
+    using Logic.Scoreboards;
+    using Logic.Scoreboards.Contracts;
+    using Logic.Tiles.Contracts;    
 
     public class GameViewModel : ViewModelBase
     {
-        private IGame game;        
-        private GameSettingsInicialisator settingsInicializator;
+        private readonly GameSettingsInicialisator settingsInicializator;
+
+        private IGame game;
         private int rows;
         private int cols;
         private int moves;
-
+        private bool isResumeBurronVissible = false;
         private string topPlayerName;
 
         private ObservableCollection<ITile> tiles;
@@ -39,33 +36,86 @@
         private ICommand moveTileCommand;
         private ICommand topPlayerResultCommitCommand;
 
-        private ICommand getTopScores;
-
-        public IMemento BoardHistory { get; set; }
-        public IScoreboard ScoreboardInfo { get; set; }
-
-        public bool isResumeBurronVissible = false;
-
-        public bool IsResumeBurronVissible
-        {
-            get
-            {                
-                return isResumeBurronVissible;
-            }
-
-            set
-            {
-                isResumeBurronVissible = value;
-                OnPropertyChanged("IsResumeBurronVissible");
-            }
-        }
-
         public GameViewModel()
         {
             this.settingsInicializator = new GameSettingsInicialisator();
             this.BoardHistory = new BoardHistory();
             this.ScoreboardInfo = new Scoreboard();
             SettingsKeeper.ScoreBoard = this.ScoreboardInfo;
+        }
+
+        public IMemento BoardHistory { get; set; }
+
+        public IScoreboard ScoreboardInfo { get; set; }        
+
+        public bool IsResumeBurronVissible
+        {
+            get
+            {                
+                return this.isResumeBurronVissible;
+            }
+
+            set
+            {
+                this.isResumeBurronVissible = value;
+                this.OnPropertyChanged("IsResumeBurronVissible");
+            }
+        }
+
+        public string TopPlayerName
+        {
+            get
+            {
+                return this.topPlayerName;
+            }
+
+            set
+            {
+                this.topPlayerName = value;
+                this.OnPropertyChanged("TopPlayerName");
+            }
+        }
+
+        public int Rows
+        {
+            get
+            {
+                return this.rows;
+            }
+
+            set
+            {
+                this.rows = value;
+                this.OnPropertyChanged("Rows");
+            }
+        }
+
+        public int Cols
+        {
+            get
+            {
+                return this.cols;
+            }
+
+            set
+            {
+                this.cols = value;
+                this.OnPropertyChanged("Cols");
+            }
+        }
+
+        public int Moves
+        {
+            get
+            {
+                return this.moves;
+            }
+
+            set
+            {
+                this.moves = value;
+                this.OnPropertyChanged("Moves");
+            }
         }
 
         public ObservableCollection<ITile> Tiles
@@ -116,23 +166,9 @@
                     this.undoMoveCommand = new RelayCommand(this.HandelUndoMoveCommand);
                 }
 
-                return undoMoveCommand;
+                return this.undoMoveCommand;
             }
-        }
-
-        private void HandelUndoMoveCommand(object parameter)
-        {
-            if (this.Moves > 0)
-            {
-                this.game.Frame = this.BoardHistory.Undo();
-
-                this.SincFrameTilesWithObservableTiles(this.tiles, this.game.Frame);
-                this.Moves -= 1;
-
-                this.OnPropertyChanged("Tiles");
-                this.OnPropertyChanged("Moves");
-            }            
-        }
+        }        
 
         public ICommand InitializeGame
         {
@@ -143,7 +179,7 @@
                     this.initializeGameCommand = new RelayCommand(this.HandelInitializeGameCommand);
                 }
 
-                return initializeGameCommand;
+                return this.initializeGameCommand;
             }
         }
 
@@ -156,7 +192,7 @@
                     this.topPlayerResultCommitCommand = new RelayCommand(this.HandelTopPlayerResultCommitCommand);
                 }
 
-                return topPlayerResultCommitCommand;
+                return this.topPlayerResultCommitCommand;
             }
         }
            
@@ -169,76 +205,7 @@
                     this.moveTileCommand = new RelayCommand(this.HandleMoveTileCommand);
                 }
 
-                return moveTileCommand;
-            }
-        }
-
-        public ICommand GetTopScores
-        {
-            get
-            {
-                if (this.getTopScores == null)
-                {
-                    this.getTopScores = new RelayCommand(this.HandlGameCompletedCommand);
-                }
-
-                return getTopScores;
-            }
-        }
-
-        public string TopPlayerName
-        {
-            get
-            {
-                return topPlayerName;
-            }
-
-            set
-            {
-                this.topPlayerName = value;
-                this.OnPropertyChanged("TopPlayerName");
-            }
-        }
-
-        public int Rows
-        {
-            get
-            {
-                return rows;
-            }
-
-            set
-            {
-                this.rows = value;
-                this.OnPropertyChanged("Rows");
-            }
-        }
-
-        public int Cols
-        {
-            get
-            {
-                return cols;
-            }
-
-            set
-            {
-                this.cols = value;
-                this.OnPropertyChanged("Cols");
-            }
-        }
-
-        public int Moves
-        {
-            get
-            {
-                return moves;
-            }
-
-            set
-            {
-                this.moves = value;
-                this.OnPropertyChanged("Moves");
+                return this.moveTileCommand;
             }
         }
 
@@ -248,9 +215,9 @@
             this.Rows = int.Parse(SettingsKeeper.Rows);
             this.Cols = int.Parse(SettingsKeeper.Cols);
 
-            var tileFactory = settingsInicializator.ChooseTiles(SettingsKeeper.Tile);
-            var mover = settingsInicializator.ChooseMover(SettingsKeeper.Mover);
-            var frameBuilder = settingsInicializator.ChoosePattern(tileFactory, SettingsKeeper.Pattern);            
+            var tileFactory = this.settingsInicializator.ChooseTiles(SettingsKeeper.Tile);
+            var mover = this.settingsInicializator.ChooseMover(SettingsKeeper.Mover);
+            var frameBuilder = this.settingsInicializator.ChoosePattern(tileFactory, SettingsKeeper.Pattern);            
 
             var director = new FrameDirector(frameBuilder);
 
@@ -275,6 +242,40 @@
             this.OnPropertyChanged("TargetTiles");
         }
 
+        protected override void HandleSwitchViewCommand(object parameter)
+        {
+            var buttonClicked = parameter as Button;
+
+            if (buttonClicked != null)
+            {
+                string changeToViewName = buttonClicked.Name.ToString();
+
+                switch (changeToViewName)
+                {
+                    case "ButtonResumeCurrentGame":
+                        ViewSwitcher.Switch(ViewSelector.Game);
+                        break;
+                    default:
+                        base.HandleSwitchViewCommand(parameter);
+                        break;
+                }
+            }
+        }
+
+        private void HandelUndoMoveCommand(object parameter)
+        {
+            if (this.Moves > 0)
+            {
+                this.game.Frame = this.BoardHistory.Undo();
+
+                this.SincFrameTilesWithObservableTiles(this.tiles, this.game.Frame);
+                this.Moves -= 1;
+
+                this.OnPropertyChanged("Tiles");
+                this.OnPropertyChanged("Moves");
+            }
+        }
+
         private void HandleMoveTileCommand(object parameter)
         {
             this.BoardHistory.SaveBoardState(this.game.Frame);
@@ -294,30 +295,7 @@
             {
                this.SetGameEnd();
             }
-        }
-
-        private void HandlGameCompletedCommand(object parameter)
-        {           
-            this.OnPropertyChanged("TopScores");
-            this.OnPropertyChanged("TopScores");
-            this.OnPropertyChanged("TopScores");
-        }
-
-        private void SetGameEnd()
-        {
-            this.IsResumeBurronVissible = false;
-            var IsTopResult = this.ScoreboardInfo.IsInTopScores(this.Moves);
-
-            if (IsTopResult)
-            {
-                ViewSwitcher.Switch(ViewSelector.CompleteTopScoreGame);
-            }
-
-            else
-            {
-                ViewSwitcher.Switch(ViewSelector.JustCompletedGame);
-            }
-        }
+        }       
 
         private void HandelTopPlayerResultCommitCommand(object parameter)
         {
@@ -327,23 +305,18 @@
             ViewSwitcher.Switch(ViewSelector.HallOfFame);
         }
 
-        protected override void HandleSwitchViewCommand(object parameter)
+        private void SetGameEnd()
         {
-            var buttonClicked = parameter as Button;
+            this.IsResumeBurronVissible = false;
+            bool isTopResult = this.ScoreboardInfo.IsInTopScores(this.Moves);
 
-            if (buttonClicked != null)
+            if (isTopResult)
             {
-                var goToViewName = buttonClicked.Name.ToString();
-
-                switch (goToViewName)
-                {
-                    case "ButtonGoToMainMenu":
-                        // TODO: Switch to MainMenuView when ready
-                        ViewSwitcher.Switch(ViewSelector.PreGame);
-                        break;
-                    default:
-                        break;
-                }
+                ViewSwitcher.Switch(ViewSelector.CompleteTopScoreGame);
+            }
+            else
+            {
+                ViewSwitcher.Switch(ViewSelector.JustCompletedGame);
             }
         }
 

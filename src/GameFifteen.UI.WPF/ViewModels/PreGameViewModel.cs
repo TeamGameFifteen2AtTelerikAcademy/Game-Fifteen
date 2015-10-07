@@ -1,7 +1,8 @@
 ﻿namespace GameFifteen.UI.WPF.ViewModels
-{
-    using Helpers;
+{    
     using System.Windows.Controls;
+
+    using Helpers;
 
     public class PreGameViewModel : ViewModelBase
     {
@@ -11,13 +12,13 @@
 
             if (buttonClicked != null)
             {
-                var goToViewName = buttonClicked.Name.ToString();
+                var changeToViewName = buttonClicked.Name.ToString();
 
-                switch (goToViewName)
+                switch (changeToViewName)
                 {
                     case "ButtonGoToQuickGame":
                         this.SetDefautGameSettings();
-                        ViewModels.GameViewModel.HandelInitializeGameCommand(null);
+                        ViewModelsSelector.GameViewModel.HandelInitializeGameCommand(null);
                         ViewSwitcher.Switch(ViewSelector.Game);
                         break;
                     case "ButtonGoToGameSettings":
@@ -26,10 +27,8 @@
                     case "ButtonGoToAboutPage":
                         ViewSwitcher.Switch(ViewSelector.About);
                         break;
-                    case "ButtonResumeCurrentGame":
-                        ViewSwitcher.Switch(ViewSelector.Game);
-                        break;
                     default:
+                        base.HandleSwitchViewCommand(parameter);
                         break;
                 }
             }

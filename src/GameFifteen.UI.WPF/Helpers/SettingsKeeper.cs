@@ -1,7 +1,7 @@
 ﻿namespace GameFifteen.UI.WPF.Helpers
 {
-    using Logic.Scoreboards.Contracts;
     using Logic.Games.Contracts;
+    using Logic.Scoreboards.Contracts;
 
     public static class SettingsKeeper
     {
@@ -12,7 +12,6 @@
         private static string mover;
         private static IGame game;
         private static IScoreboard scoreBoard;
-        private static int currentTotalMoves;
         
         public static string Rows
         {
@@ -95,7 +94,6 @@
                     mover = "Classic";
                 }
 
-
                 return mover;
             }
 
@@ -128,24 +126,6 @@
             set
             {
                 scoreBoard = value;
-            }
-        }
-
-        public static int CurrentTotalMoves
-        {
-            get
-            {
-                if (currentTotalMoves == null)
-                {
-                    currentTotalMoves = 0;
-                }
-
-                return currentTotalMoves;
-            }
-
-            set
-            {
-                currentTotalMoves = value;
             }
         }
     }

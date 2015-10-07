@@ -1,11 +1,10 @@
 ﻿namespace GameFifteen.UI.WPF.ViewModels
-{
-    using System.Windows.Input;
+{    
     using System.Collections.ObjectModel;
+    using System.Windows.Input;
 
     using Commands;
     using Helpers;
-    using System.Windows.Controls;
 
     public class GameSettingsViewModel : ViewModelBase
     {
@@ -21,11 +20,13 @@
         private ObservableCollection<string> patternTypes;
         private ObservableCollection<string> moverTypes;
 
+        private ICommand newCustomGameCommand;
+
         public string Rows
         {
             get
             {
-                if( this.rows == null)
+                if (this.rows == null)
                 {
                     return "4";
                 }
@@ -102,7 +103,7 @@
                     return "Classic";
                 }
 
-                return mover;
+                return this.mover;
             }
 
             set
@@ -110,6 +111,7 @@
                 this.mover = value;
             }
         }
+
         public ObservableCollection<string> RowsPossibilities
         {
             get
@@ -142,7 +144,7 @@
             {
                 if (this.tileTypes == null)
                 {
-                    this.tileTypes = new ObservableCollection<string>() {"Number", "Letter" };
+                    this.tileTypes = new ObservableCollection<string>() { "Number", "Letter" };
                 }
 
                 return this.tileTypes;
@@ -161,6 +163,7 @@
                 return this.patternTypes;
             }
         }
+
         public ObservableCollection<string> MoverTypes
         {
             get
@@ -172,11 +175,8 @@
 
                 return this.moverTypes;
             }
-
         }
-
-        private ICommand newCustomGameCommand;
-
+       
         public ICommand NewCustomGame
         {
             get
@@ -186,18 +186,17 @@
                     this.newCustomGameCommand = new RelayCommand(this.HandlenewCustomGameCommand);
                 }
 
-                return newCustomGameCommand;
+                return this.newCustomGameCommand;
             }
         }
 
         private void HandlenewCustomGameCommand(object parameter)
         {
-            OnPropertyChanged("Rows");
-            OnPropertyChanged("Cols");
-            OnPropertyChanged("TileType");
-            OnPropertyChanged("PatternType");
-            OnPropertyChanged("MoverType");
-
+           this.OnPropertyChanged("Rows");
+           this.OnPropertyChanged("Cols");
+           this.OnPropertyChanged("TileType");
+           this.OnPropertyChanged("PatternType");
+           this.OnPropertyChanged("MoverType");
 
             SettingsKeeper.Rows = this.Rows;
             SettingsKeeper.Cols = this.Cols;
@@ -205,9 +204,8 @@
             SettingsKeeper.Pattern = this.Pattern;
             SettingsKeeper.Mover = this.Mover;
 
-            ViewModels.GameViewModel.HandelInitializeGameCommand(null);
-            ViewSwitcher.Switch(ViewSelector.Game);           
-            
+            ViewModelsSelector.GameViewModel.HandelInitializeGameCommand(null);
+            ViewSwitcher.Switch(ViewSelector.Game); 
         }       
     }
 }
