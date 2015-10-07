@@ -6,10 +6,8 @@
              xmlns:local="clr-namespace:GameFifteen.UI.WPF.Views"
              xmlns:vms="clr-namespace:GameFifteen.UI.WPF.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="900">
-    <UserControl.DataContext>
-        <vms:ViewModels/>
-    </UserControl.DataContext>
+             d:DesignHeight="600" d:DesignWidth="900"
+               DataContext="{x:Static vms:ViewModelsSelector.GameViewModel}">
     <Grid>
         <StackPanel 
             HorizontalAlignment="Center" 
@@ -26,7 +24,7 @@
                />
             <Label
                 Style="{StaticResource GameStatsLabel}"
-                Content="{Binding GameViewModel.Moves}"
+                Content="{Binding Moves}"
                />
             <Label
                 Style="{StaticResource GameStatsLabel}"
@@ -49,7 +47,7 @@
                     >
                
                 <TextBox 
-                Text="{Binding GameViewModel.TopPlayerName}"
+                Text="{Binding TopPlayerName}"
                 Height="75"
                 FontSize="50"
                 HorizontalContentAlignment="Center"
@@ -60,7 +58,7 @@
             <Button Content="Write your name " 
                     x:Name="ButtonGoToHallOfFame"
                     Style="{StaticResource CommonButton}"                    
-                    Command="{Binding GameViewModel.TopPlayerResultCommit}"
+                    Command="{Binding TopPlayerResultCommit}"
                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                     Opacity="1"
                      />

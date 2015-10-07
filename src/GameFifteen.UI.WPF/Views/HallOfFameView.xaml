@@ -6,10 +6,8 @@
              xmlns:local="clr-namespace:GameFifteen.UI.WPF.Views"
              xmlns:vms="clr-namespace:GameFifteen.UI.WPF.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="900">
-    <UserControl.DataContext>
-        <vms:ViewModels/>
-    </UserControl.DataContext>
+             d:DesignHeight="600" d:DesignWidth="900"
+              DataContext="{x:Static vms:ViewModelsSelector.GameViewModel}">
     <Grid>
         <StackPanel>
 
@@ -21,7 +19,7 @@
                        Margin="50"
                        Text="HALL OF FAME" />
 
-            <ItemsControl x:Name="topPlayersPanel" ItemsSource="{Binding GameViewModel.TopScores}" >
+            <ItemsControl x:Name="topPlayersPanel" ItemsSource="{Binding TopScores}" >
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel  HorizontalAlignment="Center"
@@ -61,7 +59,7 @@
             <Button  x:Name="ButtonGoToMainMenu" 
                      Content="Main Menu"
                      Style="{StaticResource CommonButton}"
-                     Command="{Binding GameViewModel.SwitchView}" 
+                     Command="{Binding SwitchView}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                      Width="500"
                     />

@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:GameFifteen.UI.WPF.Views"
              xmlns:vms="clr-namespace:GameFifteen.UI.WPF.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="600">
-    <UserControl.DataContext>
-        <vms:ViewModels/>
-    </UserControl.DataContext>
+             d:DesignHeight="600" d:DesignWidth="600"             
+             DataContext="{x:Static vms:ViewModelsSelector.AboutViewModel}"
+             >
+
     <Grid>
         <StackPanel
             Background="White"
@@ -29,13 +29,13 @@
             <Button  
                      Content="https://github.com/TeamGameFifteen2AtTelerikAcademy"
                      Style="{StaticResource CommonButton}"
-                     Command="{Binding AboutViewModel.OpenExternalLinkCommand}" 
+                     Command="{Binding OpenExternalLinkCommand}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                      Width="500"
                 FontSize="15"
                     />
 
-            <ItemsControl x:Name="mastersPanel" ItemsSource="{Binding AboutViewModel.Masters}"  Grid.Column="1"  HorizontalAlignment="Center" >
+            <ItemsControl x:Name="mastersPanel" ItemsSource="{Binding Masters}"  Grid.Column="1"  HorizontalAlignment="Center" >
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel 
@@ -51,7 +51,7 @@
                                 Width="245"
                                     />
                             <Button Style="{StaticResource  PlayebleTileButton}"
-                                Command="{Binding Path=DataContext.AboutViewModel.OpenExternalLinkCommand, 
+                                Command="{Binding Path=DataContext.OpenExternalLinkCommand, 
                                             RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                                 Content="{Binding GithbUrl}"
@@ -64,7 +64,7 @@
             <Button  x:Name="ButtonGoToMainMenu" 
                      Content="Main Menu"
                      Style="{StaticResource CommonButton}"
-                     Command="{Binding AboutViewModel.SwitchView}" 
+                     Command="{Binding SwitchView}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                      Width="500"
                     />

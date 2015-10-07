@@ -9,7 +9,7 @@
     {
         public PreGameView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

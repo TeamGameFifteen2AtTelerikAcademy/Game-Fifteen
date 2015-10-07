@@ -1,26 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace GameFifteen.UI.WPF.Helpers
+{
+    using System;
 
-namespace GameFifteen.UI.WPF.Helpers
-{   
-   using System;
-
-    using GameFifteen.Logic.Common;
-    using GameFifteen.Logic.Frames;
-    using GameFifteen.Logic.Frames.Contracts;
-    using GameFifteen.Logic.Games;
-    using GameFifteen.Logic.Games.Contracts;
-    using GameFifteen.Logic.Movers;
-    using GameFifteen.Logic.Movers.Contracts;
-    using GameFifteen.Logic.Tiles;
-    using GameFifteen.Logic.Tiles.Contracts;
+    using Logic.Frames;
+    using Logic.Frames.Contracts;
+    using Logic.Movers;
+    using Logic.Movers.Contracts;
+    using Logic.Tiles;
+    using Logic.Tiles.Contracts;    
 
     public class GameSettingsInicialisator
     {       
-
         public GameSettingsInicialisator()
         {
         }        
@@ -82,4 +72,3 @@ namespace GameFifteen.UI.WPF.Helpers
         }
     }
 }
-

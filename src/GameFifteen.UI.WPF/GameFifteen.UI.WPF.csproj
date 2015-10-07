@@ -60,10 +60,10 @@
     <Compile Include="Helpers\ViewSelector.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
-    <Compile Include="ViewModels\MasterModel.cs" />
+    <Compile Include="Models\MasterModel.cs" />
     <Compile Include="ViewModels\PreGameViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="ViewModels\ViewModels.cs" />
+    <Compile Include="ViewModels\ViewModelsSelector.cs" />
     <Compile Include="Views\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
@@ -73,8 +73,8 @@
     <Compile Include="Views\CompletedWithTopScoreView.xaml.cs">
       <DependentUpon>CompletedWithTopScoreView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GameVIew.xaml.cs">
-      <DependentUpon>GameVIew.xaml</DependentUpon>
+    <Compile Include="Views\GameView.xaml.cs">
+      <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameSettingsView.xaml.cs">
       <DependentUpon>GameSettingsView.xaml</DependentUpon>
@@ -113,7 +113,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GameVIew.xaml">
+    <Page Include="Views\GameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

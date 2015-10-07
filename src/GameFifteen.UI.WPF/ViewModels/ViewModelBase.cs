@@ -1,31 +1,20 @@
 ﻿namespace GameFifteen.UI.WPF.ViewModels
 {
     using System.ComponentModel;
-    using System.Windows.Input;
-    using System.Windows.Controls;
-
-    using Helpers;
-    using Commands;
-    using System.Windows.Documents;
     using System.Diagnostics;
+    using System.Windows.Controls;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+
+    using Commands;
+    using Helpers;
 
     public class ViewModelBase : INotifyPropertyChanged
     {
-        public ViewModelBase()
-        {
-        }
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+        private ICommand switchWiewCommand;
+        private ICommand openExternalLinkCommand;
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private ICommand switchWiewCommand;
 
         public ICommand SwitchView
         {
@@ -36,7 +25,28 @@
                     this.switchWiewCommand = new RelayCommand(this.HandleSwitchViewCommand);
                 }
 
-                return switchWiewCommand;
+                return this.switchWiewCommand;
+            }
+        }
+
+        public ICommand OpenExternalLinkCommand
+        {
+            get
+            {
+                if (this.openExternalLinkCommand == null)
+                {
+                    this.openExternalLinkCommand = new RelayCommand(this.HandleOpenExternalLinkCommand);
+                }
+
+                return this.openExternalLinkCommand;
+            }
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
 
@@ -46,9 +56,9 @@
 
             if (buttonClicked != null)
             {
-                var goToViewName = buttonClicked.Name.ToString();
+                string changeToViewName = buttonClicked.Name.ToString();
 
-                switch (goToViewName)
+                switch (changeToViewName)
                 {
                     case "ButtonGoToMainMenu":
                         // TODO: Switch to MainMenuView when ready
@@ -60,21 +70,6 @@
                     default:
                         break;
                 }
-            }
-        }
-
-        private ICommand openExternalLinkCommand;
-
-        public ICommand OpenExternalLinkCommand
-        {
-            get
-            {
-                if (this.openExternalLinkCommand == null)
-                {
-                    this.openExternalLinkCommand = new RelayCommand(this.HandleOpenExternalLinkCommand);
-                }
-
-                return openExternalLinkCommand;
             }
         }
 
