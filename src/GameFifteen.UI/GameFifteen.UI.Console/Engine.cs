@@ -44,7 +44,7 @@
 
             this.game.Shuffle();
 
-            while (true)
+            while (!this.game.IsOver)
             {
                 if (this.game.IsSolved)
                 {

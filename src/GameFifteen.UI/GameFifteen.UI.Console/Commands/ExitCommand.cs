@@ -8,8 +8,8 @@
     {
         public void Execute(ICommandContext context)
         {
-            context.Message = Constants.GoodbyeMessage;
-            Environment.Exit(0);
+            context.Game.IsOver = true;
+            context.Message = string.Empty;
         }
     }
 }

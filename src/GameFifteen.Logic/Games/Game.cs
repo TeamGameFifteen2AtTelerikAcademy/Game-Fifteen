@@ -1,5 +1,6 @@
 ﻿namespace GameFifteen.Logic.Games
 {
+    using System;
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Frames.Contracts;
     using GameFifteen.Logic.Games.Contracts;
@@ -49,6 +50,8 @@
                 return this.frame.Equals(this.framePrototype);
             }
         }
+
+        public bool IsOver { get; set; }        
 
         public bool Move(string tileLabel)
         {
