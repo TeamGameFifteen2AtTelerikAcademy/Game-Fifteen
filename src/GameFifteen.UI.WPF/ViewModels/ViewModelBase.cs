@@ -6,6 +6,8 @@
 
     using Helpers;
     using Commands;
+    using System.Windows.Documents;
+    using System.Diagnostics;
 
     public class ViewModelBase : INotifyPropertyChanged
     {
@@ -23,18 +25,18 @@
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private ICommand quickGameCOmmand;
+        private ICommand switchWiewCommand;
 
         public ICommand SwitchView
         {
             get
             {
-                if (this.quickGameCOmmand == null)
+                if (this.switchWiewCommand == null)
                 {
-                    this.quickGameCOmmand = new RelayCommand(this.HandleSwitchViewCommand);
+                    this.switchWiewCommand = new RelayCommand(this.HandleSwitchViewCommand);
                 }
 
-                return quickGameCOmmand;
+                return switchWiewCommand;
             }
         }
 
@@ -52,10 +54,36 @@
                         // TODO: Switch to MainMenuView when ready
                         ViewSwitcher.Switch(ViewSelector.PreGame);
                         break;
+                    case "ButtonGoToHallOfFame":
+                        ViewSwitcher.Switch(ViewSelector.HallOfFame);
+                        break;
                     default:
                         break;
                 }
             }
-        }       
+        }
+
+        private ICommand openExternalLinkCommand;
+
+        public ICommand OpenExternalLinkCommand
+        {
+            get
+            {
+                if (this.openExternalLinkCommand == null)
+                {
+                    this.openExternalLinkCommand = new RelayCommand(this.HandleOpenExternalLinkCommand);
+                }
+
+                return openExternalLinkCommand;
+            }
+        }
+
+        private void HandleOpenExternalLinkCommand(object parameter)
+        {
+            var buttonClicked = parameter as Button;
+            var url = buttonClicked.Content.ToString();
+
+            Process.Start(new ProcessStartInfo(url));
+        }
     }
 }

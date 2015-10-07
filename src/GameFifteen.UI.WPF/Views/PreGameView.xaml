@@ -8,10 +8,10 @@
              xmlns:vms="clr-namespace:GameFifteen.UI.WPF.ViewModels"
              d:DesignHeight="600" d:DesignWidth="600">
     <UserControl.DataContext>
-        <vms:PreGameViewModel/>
+        <vms:ViewModels/>
     </UserControl.DataContext>
     <Grid>
-        <StackPanel Grid.Column="0" 
+        <StackPanel 
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 
                 Width="450" Height="500"
@@ -25,28 +25,75 @@
                HorizontalAlignment="Center" 
                VerticalAlignment="Center"
                 FontSize="20" Height="Auto"/>
+
+            <Button  x:Name="ButtonResumeCurrentGame" 
+                     Content="Resume"
+                     Command="{Binding PreGameViewModel.SwitchView}" 
+                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                    >
+                <Button.Style>
+                    <Style  TargetType="Button">
+                        <Setter Property="Margin" Value="10"/>
+                        <Setter Property="Background" Value="Black" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="Opacity" Value="0.8" />
+                        <Setter Property="FontSize" Value="25" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="10" 
+                                Background="{TemplateBinding Background}"
+                                Padding="10"
+                                BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        </ContentPresenter>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="Opacity" Value="0.8"/>
+                            </Trigger>
+                            <DataTrigger Binding="{Binding GameViewModel.IsResumeBurronVissible}" Value="true">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
             <Button  x:Name="ButtonGoToQuickGame" 
-                     Content="Classic Game"  
+                     Content="New Classic Game"  
                      Style="{StaticResource CommonButton}"
                      
-                     Command="{Binding SwitchView}" 
+                     Command="{Binding PreGameViewModel.SwitchView}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                     />
             <Button  x:Name="ButtonGoToGameSettings" 
                      
                      Style="{StaticResource CommonButton}"
-                     Content="Custom Game"  
-                     Command="{Binding SwitchView}" 
+                     Content="New Custom Game"  
+                     Command="{Binding PreGameViewModel.SwitchView}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                     />
             <Button  Content="How to play"
                      Style="{StaticResource CommonButton}"
                     />
             <Button  Content="About"  
-                      Style="{StaticResource CommonButton}"
-                      Command="{Binding MoveTile}"/>
-                <Button  Content="Hall of fame"  
+                     x:Name="ButtonGoToAboutPage"
                      Style="{StaticResource CommonButton}"
+                     Command="{Binding PreGameViewModel.SwitchView}"
+                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Content="Hall of fame" 
+                    x:Name="ButtonGoToHallOfFame"
+                    Style="{StaticResource CommonButton}"                    
+                    Command="{Binding ViewModelBase.SwitchView}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                      />
         </StackPanel>
     </Grid>

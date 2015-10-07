@@ -1,5 +1,6 @@
 ﻿namespace GameFifteen.UI.WPF.Helpers
 {
+    using Logic.Scoreboards.Contracts;
     using Logic.Games.Contracts;
 
     public static class SettingsKeeper
@@ -10,12 +11,18 @@
         private static string pattern;
         private static string mover;
         private static IGame game;
-
-
+        private static IScoreboard scoreBoard;
+        private static int currentTotalMoves;
+        
         public static string Rows
         {
             get
             {
+                if (rows == null)
+                {
+                    rows = "4";
+                }
+
                 return rows;
             }
 
@@ -29,6 +36,11 @@
         {
             get
             {
+                if (cols == null)
+                {
+                    cols = "4";
+                }
+
                 return cols;
             }
 
@@ -42,6 +54,11 @@
         {
             get
             {
+                if (tile == null)
+                {
+                    tile = "Number";
+                }
+
                 return tile;
             }
 
@@ -55,6 +72,11 @@
         {
             get
             {
+                if (pattern == null)
+                {
+                    pattern = "Classic";
+                }
+
                 return pattern;
             }
 
@@ -68,6 +90,12 @@
         {
             get
             {
+                if (mover == null)
+                {
+                    mover = "Classic";
+                }
+
+
                 return mover;
             }
 
@@ -87,6 +115,37 @@
             set
             {
                 game = value;
+            }
+        }
+
+        public static IScoreboard ScoreBoard
+        {
+            get
+            {
+                return scoreBoard;
+            }
+
+            set
+            {
+                scoreBoard = value;
+            }
+        }
+
+        public static int CurrentTotalMoves
+        {
+            get
+            {
+                if (currentTotalMoves == null)
+                {
+                    currentTotalMoves = 0;
+                }
+
+                return currentTotalMoves;
+            }
+
+            set
+            {
+                currentTotalMoves = value;
             }
         }
     }

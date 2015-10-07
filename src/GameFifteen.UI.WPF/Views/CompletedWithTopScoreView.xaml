@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="GameFifteen.UI.WPF.Views.CompletedGameView"
+﻿<UserControl x:Class="GameFifteen.UI.WPF.Views.CompletedWithTopScoreView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -18,7 +18,7 @@
             Opacity="0.8">
             <Label
                 Style="{StaticResource GameStatsLabel}"
-                Content="Sucess!"
+                Content="Great Sucess!"
                />
             <Label
                 Style="{StaticResource GameStatsLabel}"
@@ -34,27 +34,36 @@
                />
             <Label
                 Style="{StaticResource GameStatsLabel}"
-                Content="but not with top result..."
+                Content="enough to print your name "
                />
-            
-            <Button Content="Check hall of fame" 
-                    x:Name="buttonGoToHallOfFame"
+            <Label
+                Style="{StaticResource GameStatsLabel}"
+                Content="on the hall of fame"
+               />
+            <Border
+                    CornerRadius="10" 
+                    Background="Black"
+                    Padding="4"
+                    BorderThickness="1"
+                    Margin="10"
+                    >
+               
+                <TextBox 
+                Text="{Binding GameViewModel.TopPlayerName}"
+                Height="75"
+                FontSize="50"
+                HorizontalContentAlignment="Center"
+                />
+                
+            </Border>
+
+            <Button Content="Write your name " 
+                    x:Name="ButtonGoToHallOfFame"
                     Style="{StaticResource CommonButton}"                    
-                    Command="{Binding ViewModelBase.SwitchView}"
+                    Command="{Binding GameViewModel.TopPlayerResultCommit}"
                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                     Opacity="1"
                      />
-            
-            <Label
-                Style="{StaticResource GameStatsLabel}"
-                Content="or"
-               />
-            <Button x:Name="ButtonGoToMainMenu" Content="Go to main menu" 
-                            Style="{StaticResource CommonButton}"
-                            Command="{Binding GameViewModel.SwitchView}" 
-                            CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-                    Opacity="1
-                    "/>
         </StackPanel>
     </Grid>
 </UserControl>

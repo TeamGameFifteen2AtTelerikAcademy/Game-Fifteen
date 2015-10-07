@@ -21,7 +21,7 @@
         {
             this.execute = execute;
             this.canExecute = canExecute;
-        }
+        }     
 
         public bool CanExecute(object parameter)
         {

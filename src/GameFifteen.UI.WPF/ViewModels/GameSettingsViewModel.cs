@@ -205,9 +205,8 @@
             SettingsKeeper.Pattern = this.Pattern;
             SettingsKeeper.Mover = this.Mover;
 
-            //  var vm = new ClassicGameViewModel(int.Parse(this.Rows), int.Parse(this.Cols), this.Tile, this.Pattern, this.Mover);
-
-            ViewSwitcher.Switch(ViewSelector.ClassicGame);           
+            ViewModels.GameViewModel.HandelInitializeGameCommand(null);
+            ViewSwitcher.Switch(ViewSelector.Game);           
             
         }       
     }
