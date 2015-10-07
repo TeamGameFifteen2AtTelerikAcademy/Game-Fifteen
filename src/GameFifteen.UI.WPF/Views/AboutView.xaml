@@ -6,23 +6,22 @@
              xmlns:local="clr-namespace:GameFifteen.UI.WPF.Views"
              xmlns:vms="clr-namespace:GameFifteen.UI.WPF.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="600"             
+             d:DesignHeight="600" d:DesignWidth="900"             
              DataContext="{x:Static vms:ViewModelsSelector.AboutViewModel}"
              >
 
     <Grid>
         <StackPanel
             Background="White"
-                       Opacity="0.7">
+                       Opacity="0.8">
             <Image Source="{StaticResource LogoImageSource}"
                    Width="150"
                    Height="150"
                    Margin="20"/>
             <TextBlock Width="500"
-                       Height="100"
                        TextWrapping="Wrap"
                        TextAlignment="Center"
-                       FontSize="20"
+                       FontSize="21"
                         >
                 We are a team which solves any programming puzzle in time and delivers only high quality code. We are also known as the "Gang of five".
             </TextBlock>
@@ -46,16 +45,17 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <Button Style="{StaticResource  StaticTileButton}"                                
-                                Content="{Binding Name}"
-                                    FontSize="20"
-                                Width="245"
+                                    Content="{Binding Name}"
+                                    Height="30"
+                                    Width="245"
                                     />
                             <Button Style="{StaticResource  PlayebleTileButton}"
-                                Command="{Binding Path=DataContext.OpenExternalLinkCommand, 
+                                    Command="{Binding Path=DataContext.OpenExternalLinkCommand, 
                                             RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-                                Content="{Binding GithbUrl}"
-                                Width="245"
+                                    CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                                    Content="{Binding GithbUrl}"
+                                    Width="245"
+                                     Height="30"
                                     />
                         </StackPanel>
                     </DataTemplate>

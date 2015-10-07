@@ -18,6 +18,7 @@
             <Label
                 Style="{StaticResource GameStatsLabel}"
                 Content="Sucess!"
+                Margin="0, 20, 0, 30"
                />
             <Label
                 Style="{StaticResource GameStatsLabel}"
@@ -36,11 +37,12 @@
                 Content="but not with top result..."
                />
 
-            <Button Content="Hall of fame" 
+            <Button Content="Check hall of fame" 
                     x:Name="ButtonGoToHallOfFame"
                     Style="{StaticResource CommonButton}" 
                     Command="{Binding SwitchView}" 
                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                    Margin="10,70,10, 0"
                     Opacity="1"
                      />
 
@@ -48,6 +50,7 @@
                 Style="{StaticResource GameStatsLabel}"
                 Content="or"
                />
+            
             <Button Content="Go to main menu" 
                     x:Name="ButtonGoToMainMenu" 
                     Style="{StaticResource CommonButton}"
@@ -55,6 +58,7 @@
                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                     Opacity="1"
                     />
+            
         </StackPanel>
     </Grid>
 </UserControl>

@@ -3,16 +3,17 @@
     using System.ComponentModel;
     using System.Diagnostics;
     using System.Windows.Controls;
-    using System.Windows.Documents;
     using System.Windows.Input;
 
     using Commands;
     using Helpers;
+    using System.Windows;
 
     public class ViewModelBase : INotifyPropertyChanged
     {
         private ICommand switchWiewCommand;
         private ICommand openExternalLinkCommand;
+        private ICommand quitApplicationCommand;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -40,6 +41,24 @@
 
                 return this.openExternalLinkCommand;
             }
+        }
+
+        public ICommand QuitApplication
+        {
+            get
+            {
+                if (this.openExternalLinkCommand == null)
+                {
+                    this.openExternalLinkCommand = new RelayCommand(this.HandleQuitApplicationCommand);
+                }
+
+                return this.openExternalLinkCommand;
+            }
+        }
+
+        private void HandleQuitApplicationCommand(object parameter)
+        {           
+            Application.Current.MainWindow.Close();
         }
 
         protected void OnPropertyChanged(string propertyName)

@@ -6,23 +6,25 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
+        <SolidColorBrush Color="White" Opacity="0.5" x:Key="WhiteThirdOpacityBrush"/>
+
         <Style x:Key="ConsolasFamilyFont" TargetType="{x:Type Control}">
             <Setter Property="FontFamily" Value="Consolas" />
         </Style>
 
         <BitmapImage x:Key="LogoImageSource" UriSource="Resources/logo.png" />
-        
+
         <Style x:Key="CommonButton" TargetType="Button">
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Background" Value="Black" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Opacity" Value="0.8" />
             <Setter Property="FontSize" Value="25" />
-            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="10" 
+                        <Border CornerRadius="5" 
                                 Background="{TemplateBinding Background}"
                                 Padding="10"
                                 BorderThickness="1">
@@ -41,44 +43,10 @@
             </Style.Triggers>
         </Style>
 
-        <Style x:Key="CommonButtonHidabe" TargetType="Button">
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="Background" Value="Black" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="Opacity" Value="0.8" />
-            <Setter Property="FontSize" Value="25" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="Visibility" Value="Collapsed"/>            
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="10" 
-                                Background="{TemplateBinding Background}"
-                                Padding="10"
-                                BorderThickness="1">
-                          
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                          
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="White"/>
-                    <Setter Property="Foreground" Value="Black"/>
-                    <Setter Property="Opacity" Value="0.8"/>
-                </Trigger>
-                <DataTrigger Binding="{Binding IsHide}" Value="True">
-                    <Setter Property="Visibility" Value="Visible"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-
         <Style x:Key="PlayebleTileButton" TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="VerticalAlignment" Value="Stretch" />
-            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="Background" Value="Black" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Opacity" Value="0.8" />
@@ -86,17 +54,17 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        
-                        <Border CornerRadius="8" 
+
+                        <Border CornerRadius="5" 
                                 Background="{TemplateBinding Background}"
                                 BorderThickness="0"
                                >
                             <Viewbox Stretch="Uniform"
                                       Margin="8">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Viewbox>
                         </Border>
-                       
+
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -117,7 +85,7 @@
         <Style x:Key="StaticTileButton" TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="VerticalAlignment" Value="Stretch" />
-            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="Background" Value="Gray" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Opacity" Value="0.8" />
@@ -128,7 +96,7 @@
                         <Border CornerRadius="5" 
                                 Background="{TemplateBinding Background}"
                                 BorderThickness="0">
-                            
+
                             <Viewbox Stretch="Uniform"
                                      Margin="5">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>

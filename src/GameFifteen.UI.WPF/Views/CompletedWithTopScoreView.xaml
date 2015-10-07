@@ -15,6 +15,7 @@
             Background="White"
             Opacity="0.8">
             <Label
+                Margin="0, 20, 0, 30"
                 Style="{StaticResource GameStatsLabel}"
                 Content="Great Sucess!"
                />
@@ -39,11 +40,11 @@
                 Content="on the hall of fame"
                />
             <Border
-                    CornerRadius="10" 
+                    CornerRadius="5" 
                     Background="Black"
-                    Padding="4"
-                    BorderThickness="1"
-                    Margin="10"
+                    Padding="2"
+                    BorderThickness="10"
+                Margin="0, 60, 0, 10"
                     >
                
                 <TextBox 

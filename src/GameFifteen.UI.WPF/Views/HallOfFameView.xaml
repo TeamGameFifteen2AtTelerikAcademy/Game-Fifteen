@@ -9,7 +9,8 @@
              d:DesignHeight="600" d:DesignWidth="900"
               DataContext="{x:Static vms:ViewModelsSelector.GameViewModel}">
     <Grid>
-        <StackPanel>
+        <StackPanel VerticalAlignment="Top"
+                    Height="600">
 
             <TextBlock Width="500"
                        Height="100"
@@ -34,7 +35,8 @@
                     <DataTemplate>
                         <StackPanel 
                             Orientation="Horizontal"
-                            HorizontalAlignment="Center">
+                            HorizontalAlignment="Center"
+                            >
                             <Label 
                                     Content="{Binding PlayerNeme}"  
                                     Style="{StaticResource GameStatsLabel}"
@@ -62,6 +64,8 @@
                      Command="{Binding SwitchView}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                      Width="500"
+                     Margin="50"
+                     VerticalAlignment="Bottom"
                     />
         </StackPanel>
 

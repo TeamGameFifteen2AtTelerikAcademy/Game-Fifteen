@@ -10,7 +10,10 @@
               DataContext="{x:Static vms:ViewModelsSelector.GameSettingsViewModel}">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Width="500">
-            <Label Style="{StaticResource CommonLabel}">
+            <Label Style="{StaticResource GameStatsLabel}"
+                   Margin="10, 25, 10, 50"
+                   HorizontalAlignment="Left"
+                   FontSize="25">
                 SELECT YOUR CUSTOM GAME SETTINGS
             </Label>
             <StackPanel Orientation="Horizontal" Margin="10" >
@@ -59,6 +62,7 @@
             <Button  x:Name="ButtonGoToNewCustomGame" 
                      Content="New Custom Game"
                      Style="{StaticResource CommonButton}"
+                     Margin="10, 50, 10, 10"
                      Command="{Binding NewCustomGame}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                     />

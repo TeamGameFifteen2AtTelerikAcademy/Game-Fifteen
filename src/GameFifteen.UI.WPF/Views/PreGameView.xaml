@@ -13,17 +13,20 @@
         <StackPanel 
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 
-                Width="450" Height="500"
+                Width="500" 
+                Height="550"
                 >
             <TextBlock Text="Game 15" 
-               x:Name="myLabel"  
-               HorizontalAlignment="Center" 
-               VerticalAlignment="Center"
-               FontSize="50" Height="Auto" />
+                        x:Name="myLabel"  
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        FontSize="50" 
+                        Height="Auto" />
             <TextBlock Text="by Game Fifteen 2 Team" 
-               HorizontalAlignment="Center" 
-               VerticalAlignment="Center"
-                FontSize="20" Height="Auto"/>
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        FontSize="20" Height="Auto"
+                        Margin="0,0,0, 50"/>
 
             <Button  x:Name="ButtonResumeCurrentGame" 
                      DataContext="{x:Static vms:ViewModelsSelector.GameViewModel}"
@@ -38,12 +41,12 @@
                         <Setter Property="Foreground" Value="White" />
                         <Setter Property="Opacity" Value="0.8" />
                         <Setter Property="FontSize" Value="25" />
-                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="FontWeight" Value="Normal" />
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="10" 
+                                    <Border CornerRadius="5" 
                                 Background="{TemplateBinding Background}"
                                 Padding="10"
                                 BorderThickness="1">
@@ -80,21 +83,22 @@
                      Content="New Custom Game"  
                      Command="{Binding SwitchView}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-                    />
-            <Button  Content="How to play"
-                     Style="{StaticResource CommonButton}"
-                    />
-            <Button  Content="About"  
-                     x:Name="ButtonGoToAboutPage"
-                     Style="{StaticResource CommonButton}"
-                     Command="{Binding SwitchView}"
-                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    />            
+           
             <Button Content="Hall of fame" 
                     x:Name="ButtonGoToHallOfFame"
                     Style="{StaticResource CommonButton}"
                     Command="{Binding SwitchView}"
                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                      />
+            <Button  Content="About"  
+                     x:Name="ButtonGoToAboutPage"
+                     Style="{StaticResource CommonButton}"
+                     Command="{Binding SwitchView}"
+                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button  Content="Quit" 
+                     Style="{StaticResource CommonButton}"
+                     Command="{Binding QuitApplication}"/>
         </StackPanel>
     </Grid>
 </UserControl>
