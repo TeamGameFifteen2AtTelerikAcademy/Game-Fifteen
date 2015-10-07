@@ -41,7 +41,7 @@
 
         protected override void Play()
         {
-           
+            this.printer.ClearBoard();
             this.game.Shuffle();
 
             while (true)
@@ -56,8 +56,13 @@
         }
 
         private void ExecuteStep()
-        {                     
+        {
+           
+            this.printer.SetCursorTopBoard();
+            //this.printer.ClearBoard();
+           // this.printer.SetCursorTop();
             this.printer.PrintLine(this.game.Frame);
+            this.printer.ClearLine();
             this.printer.Print(Constants.EnterCommandMessage);
 
             string userInput = this.reader.ReadLine();
@@ -71,6 +76,8 @@
             this.context.SelectedTileLabel = userTarget;
 
             this.commandManager.GetCommand(userInput).Execute(this.context);
+            this.printer.SetCursorBottomBoard();
+            this.printer.ClearMessages();
             this.printer.PrintLine(this.context.Message);
         }
 
