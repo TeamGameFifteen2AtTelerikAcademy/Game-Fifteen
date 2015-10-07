@@ -2,7 +2,7 @@
 {
     using GameFifteen.Logic.Commands;
 
-    class ShowScoresCommand : ICommand
+    public class ShowScoresCommand : ICommand
     {
         public void Execute(ICommandContext context)
         {

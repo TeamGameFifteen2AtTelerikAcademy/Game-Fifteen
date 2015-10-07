@@ -1,13 +1,9 @@
-﻿using GameFifteen.Logic.Frames.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GameFifteen.Logic.Tiles.Contracts;
-using GameFifteen.Logic.Common;
-
-namespace GameFifteen.Logic.Frames
+﻿namespace GameFifteen.Logic.Frames
 {
+    using GameFifteen.Logic.Common;
+    using GameFifteen.Logic.Frames.Contracts;
+    using GameFifteen.Logic.Tiles.Contracts;
+    
     public class ProxyFrame : IFrame
     {
         private IFrame realFrame;
@@ -41,6 +37,7 @@ namespace GameFifteen.Logic.Frames
             {
                 return this.tiles;
             }
+
             private set
             {
                 try

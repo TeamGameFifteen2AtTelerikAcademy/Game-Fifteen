@@ -1,7 +1,7 @@
 ﻿namespace GameFifteen.Logic.Frames
 {
-    using Frames.Contracts;
     using Common;
+    using Frames.Contracts;
 
     public class FrameDirector
     {

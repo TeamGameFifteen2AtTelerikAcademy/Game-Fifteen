@@ -10,7 +10,6 @@
         private static GameView classicGame;
         private static GameSettingsView gameSetings;
 
-
         public static UserControl PreGame
         {
             get

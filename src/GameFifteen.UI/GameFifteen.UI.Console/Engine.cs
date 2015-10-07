@@ -1,13 +1,12 @@
 ﻿namespace GameFifteen.UI.Console
 {
     using System;
-
+    using System.Globalization;
     using GameFifteen.Logic;
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Games.Contracts;
     using GameFifteen.Logic.Scoreboards.Contracts;
     using Logic.Commands;
-    using System.Globalization;
     using Logic.Memento;
 
     internal class Engine : EngineTemplate
@@ -32,8 +31,7 @@
             this.printer = printer;
             this.reader = reader;
             this.commandManager = commandManager;
-            this.context = new CommandContext(this.game, this.scoreboard, boardHistory);           
-           
+            this.context = new CommandContext(this.game, this.scoreboard, boardHistory);
         }
 
         protected override void Welcome()
@@ -44,7 +42,7 @@
         protected override void Play()
         {
             this.game.Shuffle();
-           
+
             while (true)
             {
                 if (this.game.IsSolved)
@@ -52,8 +50,9 @@
                     GameOver(this.context.Moves);
                     this.commandManager.GetCommand(UserCommands.Restart).Execute(this.context);
 
-                   // Play(); // This recursion will cause a bug - the player will have to execute exit command multiple times - for each call.
+                    // Play(); // This recursion will cause a bug - the player will have to execute exit command multiple times - for each call.
                 }
+
                 this.printer.PrintLine(this.game.Frame);
                 this.printer.Print(Constants.EnterCommandMessage);
 
@@ -67,13 +66,12 @@
                 userInput = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userCommand);
                 this.context.SelectedTileLabel = userTarget;
 
-
                 // TODO: Remove 
                 try
                 {
                     this.commandManager.GetCommand(userInput).Execute(this.context);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
                     printer.PrintLine(Constants.InvalidCommandMessage);
@@ -81,6 +79,11 @@
 
                 this.printer.PrintLine(this.context.Message);
             }
+        }
+
+        protected override void Goodbye()
+        {
+            this.printer.PrintLine(Constants.GoodbyeMessage);
         }
 
         private string[] HandleUserInput(string userInput)
@@ -99,7 +102,6 @@
             return handleUserInput;
         }
 
-
         private void GameOver(int currentMovesCount)
         {
             this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, currentMovesCount));
@@ -111,11 +113,6 @@
                 this.scoreboard.Add(currentMovesCount, userName);
                 this.printer.Print(this.scoreboard);
             }
-        }
-
-        protected override void Goodbye()
-        {
-            this.printer.PrintLine(Constants.GoodbyeMessage);
         }
     }
 }

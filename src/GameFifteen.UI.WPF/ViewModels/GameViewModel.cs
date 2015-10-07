@@ -1,21 +1,18 @@
 ﻿namespace GameFifteen.UI.WPF.ViewModels
 {
+    using System.Collections.ObjectModel;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-    using Logic.Tiles.Contracts;
-    using Logic.Frames.Contracts;
-    using Logic.Frames;
-    using Logic.Movers.Contracts;
-    using System.Collections.ObjectModel;
-    using Logic.Scoreboards.Contracts;
-    using Logic.Scoreboards;
-
     using Commands;
     using Helpers;
-    using Logic.Games.Contracts;
+    using Logic.Frames;
+    using Logic.Frames.Contracts;
     using Logic.Games;
-    using System;
+    using Logic.Games.Contracts;
+    using Logic.Scoreboards;
+    using Logic.Scoreboards.Contracts;
+    using Logic.Tiles.Contracts;
 
     public class GameViewModel : ViewModelBase
     {
@@ -128,6 +125,32 @@
             }
         }
 
+        protected override void HandleSwitchViewCommand(object parameter)
+        {
+            var buttonClicked = parameter as Button;
+
+            if (buttonClicked != null)
+            {
+                var goToViewName = buttonClicked.Name.ToString();
+
+                switch (goToViewName)
+                {
+                    case "ButtonGoToMainMenu":
+                        // TODO: Switch to MainMenuView when ready
+                        ViewSwitcher.Switch(ViewSelector.PreGame);
+                        this.Tiles.Clear();
+                        this.TargetTiles.Clear();
+                        this.OnPropertyChanged("TargetTiles");
+                        this.OnPropertyChanged("Tiles");
+
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+
         private void HandelInitializeGameCommand(object parameter)
         {
             this.settingsInicializator = new GameSettingsInicialisator();
@@ -190,31 +213,6 @@
         {
             Window newWindow = new Window();
             newWindow.Show();
-        }
-
-        protected override void HandleSwitchViewCommand(object parameter)
-        {
-            var buttonClicked = parameter as Button;
-
-            if (buttonClicked != null)
-            {
-                var goToViewName = buttonClicked.Name.ToString();
-
-                switch (goToViewName)
-                {
-                    case "ButtonGoToMainMenu":
-                        // TODO: Switch to MainMenuView when ready
-                        ViewSwitcher.Switch(ViewSelector.PreGame);
-                        this.Tiles.Clear();
-                        this.TargetTiles.Clear();
-                        this.OnPropertyChanged("TargetTiles");
-                        this.OnPropertyChanged("Tiles");
-
-                        break;
-                    default:
-                        break;
-                }
-            }
         }
 
         private void SincFrameTilesWithObservableTiles(ObservableCollection<ITile> tiles, IFrame frame)

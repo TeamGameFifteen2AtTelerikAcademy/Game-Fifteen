@@ -4,13 +4,12 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Scoreboards.Contracts;
-
+   
     public class Scoreboard : IScoreboard
     {
-        protected IList<Score> TopScores = new List<Score>();
+        private IList<Score> topScores = new List<Score>();
 
         public void Add(int moves, string playerName)
         {
@@ -21,8 +20,8 @@
 
             var newScore = new Score(moves, playerName);
 
-            this.TopScores.Add(newScore);
-            this.TopScores = this.TopScores
+            this.topScores.Add(newScore);
+            this.topScores = this.topScores
                 .OrderBy(score => score.Moves)
                 .Take(Constants.ScoreboardMaxCount)
                 .ToList();
@@ -30,12 +29,12 @@
 
         public bool IsInTopScores(int moves)
         {
-            if (this.TopScores.Count() < Constants.ScoreboardMaxCount)
+            if (this.topScores.Count() < Constants.ScoreboardMaxCount)
             {
                 return true;
             }
 
-            int mostMovesYet = this.TopScores.Last().Moves;
+            int mostMovesYet = this.topScores.Last().Moves;
 
             if (moves < mostMovesYet)
             {
@@ -47,7 +46,7 @@
 
         public override string ToString()
         {
-            if (this.TopScores.Count == 0)
+            if (this.topScores.Count == 0)
             {
                 return Constants.ScoreboardIsEmpty + Environment.NewLine;
             }
@@ -56,7 +55,7 @@
             result.Append(Environment.NewLine);
 
             int index = 1;
-            foreach (var score in this.TopScores)
+            foreach (var score in this.topScores)
             {
                 result.AppendLine(string.Format(Constants.ScoreboardFormat, index, score.PlayerNeme, score.Moves));
                 index++;

@@ -1,7 +1,7 @@
-﻿using GameFifteen.Logic.Commands;
-
-namespace GameFifteen.UI.Console.Commands
+﻿namespace GameFifteen.UI.Console.Commands
 {
+    using GameFifteen.Logic.Commands;
+
     public class UndoCommand : ICommand
     {
         public void Execute(ICommandContext context)

@@ -1,7 +1,7 @@
 ﻿namespace GameFifteen.Logic.Commands
 {
-    using Memento;
     using Games.Contracts;
+    using Memento;
     using Scoreboards.Contracts;
 
     public interface ICommandContext

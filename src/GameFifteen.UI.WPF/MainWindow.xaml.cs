@@ -1,14 +1,15 @@
-﻿using GameFifteen.UI.WPF.Contracts;
-using GameFifteen.UI.WPF.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-namespace GameFifteen.UI.WPF
+﻿namespace GameFifteen.UI.WPF
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using GameFifteen.UI.WPF.Contracts;
+    using GameFifteen.UI.WPF.Helpers;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -32,10 +33,13 @@ namespace GameFifteen.UI.WPF
             ISwitchable s = nextPage as ISwitchable;
 
             if (s != null)
+            {
                 s.UtilizeState(state);
+            }
             else
-                throw new ArgumentException("NextPage is not ISwitchable! "
-                  + nextPage.Name.ToString());
+            {
+                throw new ArgumentException("NextPage is not ISwitchable! " + nextPage.Name.ToString());
+            }
         }
     }
 }

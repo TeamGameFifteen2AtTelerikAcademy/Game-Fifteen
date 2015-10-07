@@ -4,7 +4,7 @@
     using Logic.Commands;
     using Logic.Common;
 
-    class ExitCommand : ICommand
+    public class ExitCommand : ICommand
     {
         public void Execute(ICommandContext context)
         {

@@ -2,9 +2,9 @@
 {
     using System;
     using System.Text;
+    using Common;
     using Frames.Contracts;
     using Tiles.Contracts;
-    using Common;
 
     public class Frame : IFrame
     {

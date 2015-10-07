@@ -1,11 +1,9 @@
 ﻿namespace GameFifteen.UI.WPF.ViewModels
 {
-    using System.Windows.Input;
     using System.Collections.ObjectModel;
-
+    using System.Windows.Input;
     using Commands;
     using Helpers;
-    using System.Windows.Controls;
 
     public class GameSettingsViewModel : ViewModelBase
     {
@@ -14,7 +12,7 @@
         private string tile;
         private string pattern;
         private string mover;
-        
+
         private ObservableCollection<string> rowsPossibilities;
         private ObservableCollection<string> colsPossibilities;
         private ObservableCollection<string> tileTypes;
@@ -25,7 +23,7 @@
         {
             get
             {
-                if( this.rows == null)
+                if (this.rows == null)
                 {
                     return "4";
                 }
@@ -110,6 +108,7 @@
                 this.mover = value;
             }
         }
+
         public ObservableCollection<string> RowsPossibilities
         {
             get
@@ -142,7 +141,7 @@
             {
                 if (this.tileTypes == null)
                 {
-                    this.tileTypes = new ObservableCollection<string>() {"Number", "Letter" };
+                    this.tileTypes = new ObservableCollection<string>() { "Number", "Letter" };
                 }
 
                 return this.tileTypes;
@@ -161,6 +160,7 @@
                 return this.patternTypes;
             }
         }
+
         public ObservableCollection<string> MoverTypes
         {
             get
@@ -172,7 +172,6 @@
 
                 return this.moverTypes;
             }
-
         }
 
         private ICommand newCustomGameCommand;
@@ -198,17 +197,14 @@
             OnPropertyChanged("PatternType");
             OnPropertyChanged("MoverType");
 
-
             SettingsKeeper.Rows = this.Rows;
             SettingsKeeper.Cols = this.Cols;
             SettingsKeeper.Tile = this.Tile;
             SettingsKeeper.Pattern = this.Pattern;
             SettingsKeeper.Mover = this.Mover;
 
-            //  var vm = new ClassicGameViewModel(int.Parse(this.Rows), int.Parse(this.Cols), this.Tile, this.Pattern, this.Mover);
-
-            ViewSwitcher.Switch(ViewSelector.ClassicGame);           
-            
-        }       
+            // var vm = new ClassicGameViewModel(int.Parse(this.Rows), int.Parse(this.Cols), this.Tile, this.Pattern, this.Mover);
+            ViewSwitcher.Switch(ViewSelector.ClassicGame);
+        }
     }
 }

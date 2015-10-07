@@ -1,8 +1,8 @@
 ﻿namespace GameFifteen.UI.Console
 {
     using System;
-    using GameFifteen.Logic.Commands;
     using Commands;
+    using GameFifteen.Logic.Commands;
 
     internal class CommandManager : ICommandManager
     {
@@ -15,7 +15,6 @@
             // Enum.IsDefined(typeof(UserCommands), userInput) for parsing numbers 
             UserCommands userCommand = (UserCommands)Enum.Parse(typeof(UserCommands), command);
             return this.GetCommand(userCommand);
-
         }
 
         public ICommand GetCommand(Enum command)

@@ -4,6 +4,7 @@
     using System.Windows.Input;
 
     public delegate void ExecuteDelegate(object parameter);
+
     public delegate bool CanExecuteDelegate(object parameter);
 
     public class RelayCommand : ICommand
@@ -23,6 +24,8 @@
             this.canExecute = canExecute;
         }
 
+        public event EventHandler CanExecuteChanged;
+
         public bool CanExecute(object parameter)
         {
             if (this.canExecute == null)
@@ -32,8 +35,6 @@
 
             return this.canExecute(parameter);
         }
-
-        public event EventHandler CanExecuteChanged;
 
         public void Execute(object parameter)
         {

@@ -1,9 +1,9 @@
 ﻿namespace GameFifteen.UI.Console.Commands
 {
-    using Logic.Common;
     using Logic.Commands;
+    using Logic.Common;
 
-    class MoveCommand : ICommand
+    public class MoveCommand : ICommand
     {
         public void Execute(ICommandContext context)
         {

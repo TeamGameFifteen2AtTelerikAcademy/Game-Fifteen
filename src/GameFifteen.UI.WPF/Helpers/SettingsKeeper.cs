@@ -11,7 +11,6 @@
         private static string mover;
         private static IGame game;
 
-
         public static string Rows
         {
             get

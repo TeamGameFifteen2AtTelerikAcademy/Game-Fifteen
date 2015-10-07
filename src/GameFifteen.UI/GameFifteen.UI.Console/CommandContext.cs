@@ -2,8 +2,8 @@
 {
     using GameFifteen.Logic.Commands;
     using GameFifteen.Logic.Games.Contracts;
-    using Logic.Memento;
     using GameFifteen.Logic.Scoreboards.Contracts;
+    using Logic.Memento;
 
     public class CommandContext : ICommandContext
     {

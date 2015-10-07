@@ -1,8 +1,8 @@
 ﻿namespace GameFifteen.UI.WPF.ViewModels
 {
-    using Helpers;
     using System.Windows.Controls;
-
+    using Helpers;
+    
     public class PreGameViewModel : ViewModelBase
     {
         protected override void HandleSwitchViewCommand(object parameter)

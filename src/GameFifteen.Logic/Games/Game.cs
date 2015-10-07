@@ -1,6 +1,5 @@
 ﻿namespace GameFifteen.Logic.Games
 {
-    using System;
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Frames.Contracts;
     using GameFifteen.Logic.Games.Contracts;
@@ -9,9 +8,9 @@
     public class Game : IGame
     {
         private readonly IFrame framePrototype;
-        private IFrame frame;
         private readonly IMover mover;
-
+        private IFrame frame;
+        
         public Game(IFrame frame, IMover mover)
         {
             Validator.ValidateIsNotNull(frame, "frame");
@@ -28,6 +27,7 @@
             {
                 return this.frame;
             }
+
             set
             {
                 this.frame = value;
@@ -50,7 +50,6 @@
             }
         }
 
-
         public bool Move(string tileLabel)
         {
             return this.mover.Move(tileLabel, this.frame);
@@ -63,6 +62,6 @@
                 this.mover.Shuffle(this.frame);
             }
             while (this.IsSolved);
-        }               
+        }
     }
 }

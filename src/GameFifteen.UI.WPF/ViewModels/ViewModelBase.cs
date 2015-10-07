@@ -1,17 +1,18 @@
 ﻿namespace GameFifteen.UI.WPF.ViewModels
 {
     using System.ComponentModel;
-    using System.Windows.Input;
     using System.Windows.Controls;
-
-    using Helpers;
+    using System.Windows.Input;
     using Commands;
+    using Helpers;
 
     public class ViewModelBase : INotifyPropertyChanged
     {
         public ViewModelBase()
         {
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
         {
@@ -20,8 +21,6 @@
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private ICommand quickGameCOmmand;
 
