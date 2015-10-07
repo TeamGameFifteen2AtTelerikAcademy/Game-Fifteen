@@ -58,6 +58,7 @@
     <Compile Include="Tests_Tiles\NullTileTest.cs" />
     <Compile Include="Tests_Tiles\NumberTileFactoryTest.cs" />
     <Compile Include="Tests_Tiles\NumberTileTest.cs" />
+    <Compile Include="Tests_Tiles\TileTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameFifteen.Logic\GameFifteen.Logic.csproj">
