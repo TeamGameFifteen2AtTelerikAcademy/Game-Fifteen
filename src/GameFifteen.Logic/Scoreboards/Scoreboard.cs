@@ -65,17 +65,16 @@
             return result.ToString();
         }
 
-        protected class Score
+        public IList<IScore> GetTopScores()
         {
-            public Score(int moves, string playerName)
+            var publicTopScores = new List<IScore>();
+
+            foreach (var score in this.TopScores)
             {
-                this.Moves = moves;
-                this.PlayerNeme = playerName;
+                publicTopScores.Add(new Score(score.Moves, score.PlayerNeme));
             }
 
-            public int Moves { get; private set; }
-
-            public string PlayerNeme { get; private set; }
+            return publicTopScores;
         }
     }
 }

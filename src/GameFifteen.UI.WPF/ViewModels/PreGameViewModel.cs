@@ -17,13 +17,17 @@
                 {
                     case "ButtonGoToQuickGame":
                         this.SetDefautGameSettings();
-                        ViewSwitcher.Switch(ViewSelector.ClassicGame);                   
+                        ViewModels.GameViewModel.HandelInitializeGameCommand(null);
+                        ViewSwitcher.Switch(ViewSelector.Game);
                         break;
                     case "ButtonGoToGameSettings":
                         ViewSwitcher.Switch(ViewSelector.GameSettings);
                         break;
                     case "ButtonGoToAboutPage":
                         ViewSwitcher.Switch(ViewSelector.About);
+                        break;
+                    case "ButtonResumeCurrentGame":
+                        ViewSwitcher.Switch(ViewSelector.Game);
                         break;
                     default:
                         break;

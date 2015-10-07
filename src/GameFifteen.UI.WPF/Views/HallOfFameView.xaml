@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="GameFifteen.UI.WPF.Views.HallOfFameView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GameFifteen.UI.WPF.Views"
+             xmlns:vms="clr-namespace:GameFifteen.UI.WPF.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <UserControl.DataContext>
+        <vms:ViewModels/>
+    </UserControl.DataContext>
+    <Grid>
+        <StackPanel>
+
+            <TextBlock Width="500"
+                       Height="100"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       FontSize="50"
+                       Margin="50"
+                       Text="HALL OF FAME" />
+
+            <ItemsControl x:Name="topPlayersPanel" ItemsSource="{Binding GameViewModel.TopScores}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel  HorizontalAlignment="Center"
+                            Width="500"
+                            Margin="25 0" 
+                                     Background="White"
+                                     Opacity="0.8"
+                            />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel 
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                            <Label 
+                                    Content="{Binding PlayerNeme}"  
+                                    Style="{StaticResource GameStatsLabel}"
+                                    FontSize ="30"
+                                />
+                            <Label     
+                                    Content=":"  
+                                    Style="{StaticResource GameStatsLabel}"
+                                    FontSize ="30"
+                                />
+                            <Label     
+                                    Content="{Binding Moves}"  
+                                Style="{StaticResource GameStatsLabel}"
+                                    FontSize ="30"
+                                />
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <Button  x:Name="ButtonGoToMainMenu" 
+                     Content="Main Menu"
+                     Style="{StaticResource CommonButton}"
+                     Command="{Binding GameViewModel.SwitchView}" 
+                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                     Width="500"
+                    />
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

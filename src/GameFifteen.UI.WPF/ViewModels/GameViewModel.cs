@@ -17,6 +17,8 @@
     using Logic.Games;
     using System;
     using Logic.Memento;
+    using Logic;
+    using System.Collections.Generic;
 
     public class GameViewModel : ViewModelBase
     {
@@ -26,23 +28,44 @@
         private int cols;
         private int moves;
 
+        private string topPlayerName;
+
         private ObservableCollection<ITile> tiles;
         private ObservableCollection<ITile> targetTiles;
+        private ObservableCollection<IScore> topScores;
 
-        
         private ICommand undoMoveCommand;
         private ICommand initializeGameCommand;
         private ICommand moveTileCommand;
+        private ICommand topPlayerResultCommitCommand;
+
+        private ICommand getTopScores;
 
         public IMemento BoardHistory { get; set; }
         public IScoreboard ScoreboardInfo { get; set; }
 
+        public bool isResumeBurronVissible = false;
+
+        public bool IsResumeBurronVissible
+        {
+            get
+            {                
+                return isResumeBurronVissible;
+            }
+
+            set
+            {
+                isResumeBurronVissible = value;
+                OnPropertyChanged("IsResumeBurronVissible");
+            }
+        }
+
         public GameViewModel()
         {
+            this.settingsInicializator = new GameSettingsInicialisator();
             this.BoardHistory = new BoardHistory();
             this.ScoreboardInfo = new Scoreboard();
-            this.HandelInitializeGameCommand(null);
-           
+            SettingsKeeper.ScoreBoard = this.ScoreboardInfo;
         }
 
         public ObservableCollection<ITile> Tiles
@@ -70,7 +93,20 @@
                 return this.targetTiles;
             }
         }
-        
+
+        public ObservableCollection<IScore> TopScores
+        {
+            get
+            {
+                if (this.topScores == null)
+                {
+                    this.topScores = new ObservableCollection<IScore>();
+                }
+
+                return this.topScores;
+            }
+        }
+
         public ICommand UndoMove
         {
             get
@@ -95,8 +131,7 @@
 
                 this.OnPropertyChanged("Tiles");
                 this.OnPropertyChanged("Moves");
-            }
-            
+            }            
         }
 
         public ICommand InitializeGame
@@ -112,6 +147,19 @@
             }
         }
 
+        public ICommand TopPlayerResultCommit
+        {
+            get
+            {
+                if (this.topPlayerResultCommitCommand == null)
+                {
+                    this.topPlayerResultCommitCommand = new RelayCommand(this.HandelTopPlayerResultCommitCommand);
+                }
+
+                return topPlayerResultCommitCommand;
+            }
+        }
+           
         public ICommand MoveTile
         {
             get
@@ -125,6 +173,33 @@
             }
         }
 
+        public ICommand GetTopScores
+        {
+            get
+            {
+                if (this.getTopScores == null)
+                {
+                    this.getTopScores = new RelayCommand(this.HandlGameCompletedCommand);
+                }
+
+                return getTopScores;
+            }
+        }
+
+        public string TopPlayerName
+        {
+            get
+            {
+                return topPlayerName;
+            }
+
+            set
+            {
+                this.topPlayerName = value;
+                this.OnPropertyChanged("TopPlayerName");
+            }
+        }
+
         public int Rows
         {
             get
@@ -135,6 +210,7 @@
             set
             {
                 this.rows = value;
+                this.OnPropertyChanged("Rows");
             }
         }
 
@@ -148,6 +224,7 @@
             set
             {
                 this.cols = value;
+                this.OnPropertyChanged("Cols");
             }
         }
 
@@ -161,22 +238,19 @@
             set
             {
                 this.moves = value;
+                this.OnPropertyChanged("Moves");
             }
         }
 
-        private void HandelInitializeGameCommand(object parameter)
+        public void HandelInitializeGameCommand(object parameter)
         {
-            this.settingsInicializator = new GameSettingsInicialisator();
-
+            this.TopPlayerName = "Some Player";
             this.Rows = int.Parse(SettingsKeeper.Rows);
             this.Cols = int.Parse(SettingsKeeper.Cols);
 
             var tileFactory = settingsInicializator.ChooseTiles(SettingsKeeper.Tile);
             var mover = settingsInicializator.ChooseMover(SettingsKeeper.Mover);
-            var frameBuilder = settingsInicializator.ChoosePattern(tileFactory, SettingsKeeper.Pattern);
-
-            this.OnPropertyChanged("Rows");
-            this.OnPropertyChanged("Cols");
+            var frameBuilder = settingsInicializator.ChoosePattern(tileFactory, SettingsKeeper.Pattern);            
 
             var director = new FrameDirector(frameBuilder);
 
@@ -187,17 +261,18 @@
             
             this.Moves = 0;
 
+            this.topScores = new ObservableCollection<IScore>();
             this.tiles = new ObservableCollection<ITile>();
             this.targetTiles = new ObservableCollection<ITile>();
             this.BoardHistory.SaveBoardState(this.game.Frame);
 
             this.SincFrameTilesWithObservableTiles(this.tiles, this.game.Frame);
             this.SincFrameTilesWithObservableTiles(this.targetTiles, this.game.FramePrototype);
+
+            this.IsResumeBurronVissible = true;
+
             this.OnPropertyChanged("Tiles");
             this.OnPropertyChanged("TargetTiles");
-            this.OnPropertyChanged("Rows");
-            this.OnPropertyChanged("Cols");
-            this.OnPropertyChanged("Moves");
         }
 
         private void HandleMoveTileCommand(object parameter)
@@ -212,25 +287,44 @@
             {
                 this.Moves += 1;
                 this.SincFrameTilesWithObservableTiles(this.tiles, this.game.Frame);
-                
-
                 this.OnPropertyChanged("Tiles");
-                this.OnPropertyChanged("Moves");
-
-            }
-
-            
+            }            
 
             if (this.game.IsSolved)
             {
-                MessageBox.Show(string.Format("Success - solved with {0} moves!!", this.Moves));
+               this.SetGameEnd();
             }
         }
 
-        private void HandlSshowFramePrototypeCommand(object parameter)
+        private void HandlGameCompletedCommand(object parameter)
+        {           
+            this.OnPropertyChanged("TopScores");
+            this.OnPropertyChanged("TopScores");
+            this.OnPropertyChanged("TopScores");
+        }
+
+        private void SetGameEnd()
         {
-            Window newWindow = new Window();
-            newWindow.Show();
+            this.IsResumeBurronVissible = false;
+            var IsTopResult = this.ScoreboardInfo.IsInTopScores(this.Moves);
+
+            if (IsTopResult)
+            {
+                ViewSwitcher.Switch(ViewSelector.CompleteTopScoreGame);
+            }
+
+            else
+            {
+                ViewSwitcher.Switch(ViewSelector.JustCompletedGame);
+            }
+        }
+
+        private void HandelTopPlayerResultCommitCommand(object parameter)
+        {
+            this.ScoreboardInfo.Add(this.Moves, this.TopPlayerName);
+            this.SincTopScoresWIthsObservableScores(this.topScores, this.ScoreboardInfo.GetTopScores());
+            this.OnPropertyChanged("TopScores");
+            ViewSwitcher.Switch(ViewSelector.HallOfFame);
         }
 
         protected override void HandleSwitchViewCommand(object parameter)
@@ -246,11 +340,6 @@
                     case "ButtonGoToMainMenu":
                         // TODO: Switch to MainMenuView when ready
                         ViewSwitcher.Switch(ViewSelector.PreGame);
-                        this.Tiles.Clear();
-                        this.TargetTiles.Clear();
-                        this.OnPropertyChanged("TargetTiles");
-                        this.OnPropertyChanged("Tiles");
-
                         break;
                     default:
                         break;
@@ -268,6 +357,16 @@
                 {
                     tiles.Add(frame.Tiles[row, col]);
                 }
+            }
+        }
+
+        private void SincTopScoresWIthsObservableScores(ObservableCollection<IScore> observableScore, IList<IScore> scores)
+        {
+            observableScore.Clear();
+
+            foreach (var score in scores)
+            {
+                observableScore.Add(score);
             }
         }
     }

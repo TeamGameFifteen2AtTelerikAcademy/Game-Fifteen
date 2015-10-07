@@ -10,7 +10,48 @@
         private static GameView classicGame;
         private static GameSettingsView gameSetings;
         private static AboutView about;
+        private static HallOfFameView hawOfFame;
+        private static CompletedGameView completeGame;
+        private static CompletedWithTopScoreView completeTopScoreGame;
 
+        public static UserControl CompleteTopScoreGame
+        {
+            get
+            {
+                if (completeTopScoreGame == null)
+                {
+                    completeTopScoreGame = new CompletedWithTopScoreView();
+                }
+
+                return completeTopScoreGame;
+            }
+        }
+
+        public static UserControl JustCompletedGame
+        {
+            get
+            {
+                if (completeGame == null)
+                {
+                    completeGame = new CompletedGameView();
+                }
+
+                return completeGame;
+            }
+        }
+
+        public static UserControl HallOfFame
+        {
+            get
+            {
+                if (hawOfFame == null)
+                {
+                    hawOfFame = new HallOfFameView();
+                }
+
+                return hawOfFame;
+            }
+        }
 
         public static UserControl About
         {
@@ -38,7 +79,7 @@
             }
         }
 
-        public static UserControl ClassicGame
+        public static UserControl Game
         {
             get
             {

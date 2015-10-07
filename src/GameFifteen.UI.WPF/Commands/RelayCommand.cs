@@ -10,7 +10,6 @@
     {
         private ExecuteDelegate execute;
         private CanExecuteDelegate canExecute;
-        private Logic.Commands.ICommand openExternalLinkCommand;
 
         public RelayCommand(ExecuteDelegate execute)
             : this(execute, null)
@@ -22,12 +21,7 @@
         {
             this.execute = execute;
             this.canExecute = canExecute;
-        }
-
-        public RelayCommand(Logic.Commands.ICommand openExternalLinkCommand)
-        {
-            this.openExternalLinkCommand = openExternalLinkCommand;
-        }
+        }     
 
         public bool CanExecute(object parameter)
         {

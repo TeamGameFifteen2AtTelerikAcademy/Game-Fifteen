@@ -1,11 +1,11 @@
-﻿//namespace GameFifteen.Logic.Scoreboards.Contracts
-//{
-//    using System;
+﻿namespace GameFifteen.Logic.Scoreboards.Contracts
+{
+    using System;
 
-//    public interface IScore
-//    {
-//        int Moves { get; }
+    public interface IScore
+    {
+        int Moves { get; }
 
-//        string PlayerNeme { get; }
-//    }
-//}
+        string PlayerNeme { get; }
+    }
+}

@@ -63,11 +63,15 @@
     <Compile Include="ViewModels\MasterModel.cs" />
     <Compile Include="ViewModels\PreGameViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\ViewModels.cs" />
     <Compile Include="Views\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CompletedGameView.xaml.cs">
       <DependentUpon>CompletedGameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CompletedWithTopScoreView.xaml.cs">
+      <DependentUpon>CompletedWithTopScoreView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameVIew.xaml.cs">
       <DependentUpon>GameVIew.xaml</DependentUpon>
@@ -76,6 +80,9 @@
       <DependentUpon>GameSettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\GameSettingsViewModel.cs" />
+    <Compile Include="Views\HallOfFameView.xaml.cs">
+      <DependentUpon>HallOfFameView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PreGameView.xaml.cs">
       <DependentUpon>PreGameView.xaml</DependentUpon>
     </Compile>
@@ -102,11 +109,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\CompletedWithTopScoreView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\GameVIew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\GameSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HallOfFameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
