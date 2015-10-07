@@ -62,12 +62,13 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button     
+                               
+                                    <Button     
                                         Content="{Binding Label}"  
                                        Style="{StaticResource StaticTileButton}"
-                                        FontSize ="12"
                                         />
-                        </DataTemplate>
+                            
+                            </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </StackPanel>
@@ -86,13 +87,14 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
+                            
                             <Button     
                                         Content="{Binding Label}"  
                                         Style="{StaticResource PlayebleTileButton}"
-                                        FontSize="30"
                                         Command="{Binding Path=DataContext.MoveTile, 
                                             RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                         CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                           
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

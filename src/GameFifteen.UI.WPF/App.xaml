@@ -56,8 +56,9 @@
                                 Background="{TemplateBinding Background}"
                                 Padding="10"
                                 BorderThickness="1">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
-                            </ContentPresenter>
+                          
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                          
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
@@ -85,12 +86,17 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
+                        
                         <Border CornerRadius="8" 
                                 Background="{TemplateBinding Background}"
-                                BorderThickness="0">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
-                            </ContentPresenter>
+                                BorderThickness="0"
+                               >
+                            <Viewbox Stretch="Uniform"
+                                      Margin="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Viewbox>
                         </Border>
+                       
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -119,11 +125,15 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="8" 
+                        <Border CornerRadius="5" 
                                 Background="{TemplateBinding Background}"
                                 BorderThickness="0">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
-                            </ContentPresenter>
+                            
+                            <Viewbox Stretch="Uniform"
+                                     Margin="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Viewbox>
+
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
