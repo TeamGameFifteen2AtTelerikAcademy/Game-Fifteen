@@ -1,5 +1,5 @@
 ﻿namespace GameFifteen.UI.WPF
-{ 
+{
     using System;
     using System.Windows;
     using System.Windows.Controls;

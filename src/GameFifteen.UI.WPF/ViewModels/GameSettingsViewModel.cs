@@ -1,5 +1,5 @@
 ﻿namespace GameFifteen.UI.WPF.ViewModels
-{    
+{
     using System.Collections.ObjectModel;
     using System.Windows.Input;
 
@@ -13,7 +13,7 @@
         private string tile;
         private string pattern;
         private string mover;
-        
+
         private ObservableCollection<string> rowsPossibilities;
         private ObservableCollection<string> colsPossibilities;
         private ObservableCollection<string> tileTypes;
@@ -176,7 +176,7 @@
                 return this.moverTypes;
             }
         }
-       
+
         public ICommand NewCustomGame
         {
             get
@@ -192,11 +192,11 @@
 
         private void HandlenewCustomGameCommand(object parameter)
         {
-           this.OnPropertyChanged("Rows");
-           this.OnPropertyChanged("Cols");
-           this.OnPropertyChanged("TileType");
-           this.OnPropertyChanged("PatternType");
-           this.OnPropertyChanged("MoverType");
+            this.OnPropertyChanged("Rows");
+            this.OnPropertyChanged("Cols");
+            this.OnPropertyChanged("TileType");
+            this.OnPropertyChanged("PatternType");
+            this.OnPropertyChanged("MoverType");
 
             SettingsKeeper.Rows = this.Rows;
             SettingsKeeper.Cols = this.Cols;
@@ -205,7 +205,7 @@
             SettingsKeeper.Mover = this.Mover;
 
             ViewModelsSelector.GameViewModel.HandelInitializeGameCommand(null);
-            ViewSwitcher.Switch(ViewSelector.Game); 
-        }       
+            ViewSwitcher.Switch(ViewSelector.Game);
+        }
     }
 }

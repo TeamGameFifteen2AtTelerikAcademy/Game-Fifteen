@@ -1,11 +1,11 @@
-﻿using GameFifteen.Logic.Frames.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace GameFifteen.Logic.Memento
+﻿namespace GameFifteen.Logic.Memento
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using GameFifteen.Logic.Frames.Contracts;
+
     public class BoardHistory : IMemento
     {
         private IList<IFrame> boardStates;
@@ -20,7 +20,8 @@ namespace GameFifteen.Logic.Memento
         public void SaveBoardState(IFrame board)
         {
             this.boardStates.Insert(++this.currentIndex, board.Clone());
-            //this.currentIndex++;
+
+            // this.currentIndex++;
         }
 
         public void ClearHistory()

@@ -32,9 +32,20 @@
             var tileFactory = this.ChooseTiles();
             var frameBuilder = this.ChoosePattern(tileFactory);
             var director = new FrameDirector(frameBuilder);
-            int rows = this.ChooseInteger(Constants.RowsQuestion);
+            int rows = this.ChooseInteger(Constants.BoardSizeRestrictionInfo + Environment.NewLine + Constants.RowsQuestion);
             int cols = this.ChooseInteger(Constants.ColsQuestion);
-            var frame = director.ConstructFrame(rows, cols);
+            IFrame frame;
+
+            try
+            {
+                frame = director.ConstructFrame(rows, cols);
+            }
+            catch (OverflowException)
+            {
+                this.printer.PrintLine(Constants.NegativeRowsCols);
+                this.printer.PrintLine(Constants.BoardSizeRestrictionInfo);
+                frame = director.ConstructFrame(Constants.FrameDimensionMin, Constants.FrameDimensionMin);
+            }
 
             var mover = this.ChooseMover();
 
@@ -47,9 +58,11 @@
             var tileType = this.ChooseType<TileTypes>(Constants.TileTypeQuestion);
             switch (tileType)
             {
-                case TileTypes.Letter: tileFactory = new LetterTileFactory();
+                case TileTypes.Letter:
+                    tileFactory = new LetterTileFactory();
                     break;
-                default: tileFactory = new NumberTileFactory();
+                default:
+                    tileFactory = new NumberTileFactory();
                     break;
             }
 
@@ -63,9 +76,11 @@
 
             switch (moverType)
             {
-                case MoverTypes.RowCol: mover = new RowColMover();
+                case MoverTypes.RowCol:
+                    mover = new RowColMover();
                     break;
-                default: mover = new ClassicMover();
+                default:
+                    mover = new ClassicMover();
                     break;
             }
 
@@ -79,9 +94,11 @@
 
             switch (patterType)
             {
-                case PatternTypes.Column: frameBuilder = new ColumnsPatternFrameBuilder(tileFactory);
+                case PatternTypes.Column:
+                    frameBuilder = new ColumnsPatternFrameBuilder(tileFactory);
                     break;
-                default: frameBuilder = new ClassicPatternFrameBuilder(tileFactory);
+                default:
+                    frameBuilder = new ClassicPatternFrameBuilder(tileFactory);
                     break;
             }
 

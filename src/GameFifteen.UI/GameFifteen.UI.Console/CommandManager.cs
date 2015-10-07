@@ -1,8 +1,8 @@
 ﻿namespace GameFifteen.UI.Console
 {
     using System;
-    using GameFifteen.Logic.Commands;
     using Commands;
+    using GameFifteen.Logic.Commands;
 
     internal class CommandManager : ICommandManager
     {
@@ -12,9 +12,22 @@
 
         public ICommand GetCommand(string command)
         {
-            // Enum.IsDefined(typeof(UserCommands), userInput) for parsing numbers 
-            UserCommands userCommand = (UserCommands)Enum.Parse(typeof(UserCommands), command);
-            switch (userCommand)
+            UserCommands userCommand;
+            if (Enum.IsDefined(typeof(UserCommands), command) &&
+             Enum.TryParse<UserCommands>(command,  out userCommand))
+            {   
+                return this.GetCommand(userCommand);
+            }
+            else
+            {
+                return new IncorrectCommand();
+            }
+
+        }
+
+        public ICommand GetCommand(Enum command)
+        {
+            switch ((UserCommands)command)
             {
                 case UserCommands.Restart:
                     return new RestartCommand();
@@ -24,8 +37,10 @@
                     return new ExitCommand();
                 case UserCommands.Undo:
                     return new UndoCommand();
-                default:
+                case UserCommands.Move:
                     return new MoveCommand();
+                default:
+                    return new IncorrectCommand();
             }
         }
     }

@@ -14,7 +14,7 @@
     using Logic.Memento;
     using Logic.Scoreboards;
     using Logic.Scoreboards.Contracts;
-    using Logic.Tiles.Contracts;    
+    using Logic.Tiles.Contracts;
 
     public class GameViewModel : ViewModelBase
     {
@@ -46,12 +46,12 @@
 
         public IMemento BoardHistory { get; set; }
 
-        public IScoreboard ScoreboardInfo { get; set; }        
+        public IScoreboard ScoreboardInfo { get; set; }
 
         public bool IsResumeBurronVissible
         {
             get
-            {                
+            {
                 return this.isResumeBurronVissible;
             }
 
@@ -168,7 +168,7 @@
 
                 return this.undoMoveCommand;
             }
-        }        
+        }
 
         public ICommand InitializeGame
         {
@@ -195,7 +195,7 @@
                 return this.topPlayerResultCommitCommand;
             }
         }
-           
+
         public ICommand MoveTile
         {
             get
@@ -217,7 +217,7 @@
 
             var tileFactory = this.settingsInicializator.ChooseTiles(SettingsKeeper.Tile);
             var mover = this.settingsInicializator.ChooseMover(SettingsKeeper.Mover);
-            var frameBuilder = this.settingsInicializator.ChoosePattern(tileFactory, SettingsKeeper.Pattern);            
+            var frameBuilder = this.settingsInicializator.ChoosePattern(tileFactory, SettingsKeeper.Pattern);
 
             var director = new FrameDirector(frameBuilder);
 
@@ -225,7 +225,7 @@
 
             this.game = new Game(newFrame, mover);
             this.game.Shuffle();
-            
+
             this.Moves = 0;
 
             this.topScores = new ObservableCollection<IScore>();
@@ -289,13 +289,13 @@
                 this.Moves += 1;
                 this.SincFrameTilesWithObservableTiles(this.tiles, this.game.Frame);
                 this.OnPropertyChanged("Tiles");
-            }            
+            }
 
             if (this.game.IsSolved)
             {
-               this.SetGameEnd();
+                this.SetGameEnd();
             }
-        }       
+        }
 
         private void HandelTopPlayerResultCommitCommand(object parameter)
         {

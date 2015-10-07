@@ -1,7 +1,7 @@
 ﻿namespace GameFifteen.Logic.Commands
 {
-    using Memento;
     using Games.Contracts;
+    using Memento;
     using Scoreboards.Contracts;
 
     public interface ICommandContext
@@ -15,5 +15,7 @@
         string Message { get; set; }
 
         string SelectedTileLabel { get; set; }
+
+        int Moves { get; set; }
     }
 }
