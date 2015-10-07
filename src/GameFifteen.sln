@@ -11,6 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFifteen.Logic", "GameFi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFifteen.UI.WPF", "GameFifteen.UI.WPF\GameFifteen.UI.WPF.csproj", "{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F0D98444-446D-4B55-8C6F-D1D274F48EE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests_GameFifteen.Logic", "Tests_GameFifteen.Logic", "{ED408BB2-C230-429C-9EE6-BF0220E70372}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests_Common", "Tests_Common", "{343C27FD-1D43-412A-914E-E2438FF80288}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests_Common", "Tests_Common\Tests_Common.csproj", "{FB5E1DF6-BC17-4A31-A116-43E6D3898FDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +63,16 @@ Global
 		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Release|x86.ActiveCfg = Release|Any CPU
 		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00}.Release|x86.Build.0 = Release|Any CPU
+		{FB5E1DF6-BC17-4A31-A116-43E6D3898FDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB5E1DF6-BC17-4A31-A116-43E6D3898FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB5E1DF6-BC17-4A31-A116-43E6D3898FDA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FB5E1DF6-BC17-4A31-A116-43E6D3898FDA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{FB5E1DF6-BC17-4A31-A116-43E6D3898FDA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FB5E1DF6-BC17-4A31-A116-43E6D3898FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB5E1DF6-BC17-4A31-A116-43E6D3898FDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB5E1DF6-BC17-4A31-A116-43E6D3898FDA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FB5E1DF6-BC17-4A31-A116-43E6D3898FDA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{FB5E1DF6-BC17-4A31-A116-43E6D3898FDA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,5 +80,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EE3D65DC-FE61-4174-A231-F297BED368F2} = {E6544E15-CD14-4939-A5F2-83E6543C06D2}
 		{4AD0EBDE-5A61-47DF-9D82-1951F0073A00} = {E6544E15-CD14-4939-A5F2-83E6543C06D2}
+		{ED408BB2-C230-429C-9EE6-BF0220E70372} = {F0D98444-446D-4B55-8C6F-D1D274F48EE9}
+		{343C27FD-1D43-412A-914E-E2438FF80288} = {ED408BB2-C230-429C-9EE6-BF0220E70372}
+		{FB5E1DF6-BC17-4A31-A116-43E6D3898FDA} = {343C27FD-1D43-412A-914E-E2438FF80288}
 	EndGlobalSection
 EndGlobal

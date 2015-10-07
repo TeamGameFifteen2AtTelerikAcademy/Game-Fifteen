@@ -2,7 +2,7 @@
 {
     using System;
 
-    internal static class Converter
+    public static class Converter
     {
         /// <summary>
         /// Converts a number to letters representation.<br/>
@@ -40,8 +40,12 @@
         /// <returns></returns>
         public static int ConvertLettersToNumber(string letters)
         {
+            Validator.ValidateIsNotNull(letters, "letters");
+            letters = letters.Trim();
+            Validator.ValidateStringContainsOnlyLatinLetters(letters);
             int number = 0;
             string lowerLetters = letters.ToLower();
+            
             for (int lowerLetterIndex = lowerLetters.Length - 1; lowerLetterIndex >= 0; lowerLetterIndex--)
             {
                 char lowerLetter = lowerLetters[lowerLetterIndex];
