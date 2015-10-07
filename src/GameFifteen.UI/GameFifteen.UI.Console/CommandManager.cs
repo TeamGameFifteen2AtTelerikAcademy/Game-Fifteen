@@ -12,9 +12,17 @@
 
         public ICommand GetCommand(string command)
         {
-            // Enum.IsDefined(typeof(UserCommands), userInput) for parsing numbers 
-            UserCommands userCommand = (UserCommands)Enum.Parse(typeof(UserCommands), command);
-            return this.GetCommand(userCommand);
+            UserCommands userCommand;
+            if (Enum.IsDefined(typeof(UserCommands), command) &&
+             Enum.TryParse<UserCommands>(command,  out userCommand))
+            {   
+                return this.GetCommand(userCommand);
+            }
+            else
+            {
+                return new IncorrectCommand();
+            }
+
         }
 
         public ICommand GetCommand(Enum command)

@@ -41,44 +41,37 @@
 
         protected override void Play()
         {
+           
             this.game.Shuffle();
 
             while (true)
-            {
+            {                
                 if (this.game.IsSolved)
                 {
-                    GameOver(this.context.Moves);
+                    this.GameOver(this.context.Moves);
                     this.commandManager.GetCommand(UserCommands.Restart).Execute(this.context);
-
-                    // Play(); // This recursion will cause a bug - the player will have to execute exit command multiple times - for each call.
                 }
-
-                this.printer.PrintLine(this.game.Frame);
-                this.printer.Print(Constants.EnterCommandMessage);
-
-                string userInput = this.reader.ReadLine();
-
-                var userCommandAndTarget = HandleUserInput(userInput);
-                var userCommand = userCommandAndTarget[0];
-                var userTarget = userCommandAndTarget[1];
-
-                // Capitalize the first letter to meet restrictions from the enum...
-                userInput = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userCommand);
-                this.context.SelectedTileLabel = userTarget;
-
-                // TODO: Remove 
-                try
-                {
-                    this.commandManager.GetCommand(userInput).Execute(this.context);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    printer.PrintLine(Constants.InvalidCommandMessage);
-                }
-
-                this.printer.PrintLine(this.context.Message);
+                this.ExecuteStep();                
             }
+        }
+
+        private void ExecuteStep()
+        {                     
+            this.printer.PrintLine(this.game.Frame);
+            this.printer.Print(Constants.EnterCommandMessage);
+
+            string userInput = this.reader.ReadLine();
+
+            var userCommandAndTarget = this.reader.ParseInput(userInput);
+            var userCommand = userCommandAndTarget[0];
+            var userTarget = userCommandAndTarget[1];
+
+            // Capitalize the first letter to meet restrictions from the enum...
+            userInput = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userCommand);
+            this.context.SelectedTileLabel = userTarget;
+
+            this.commandManager.GetCommand(userInput).Execute(this.context);
+            this.printer.PrintLine(this.context.Message);
         }
 
         protected override void Goodbye()
@@ -86,22 +79,7 @@
             this.printer.PrintLine(Constants.GoodbyeMessage);
         }
 
-        private string[] HandleUserInput(string userInput)
-        {
-            string[] handleUserInput = new string[] { string.Empty, string.Empty };
-            var userCommandAndTarget = userInput.Split(' ');
-            string userCommand = userCommandAndTarget[0];
-            handleUserInput[0] = userCommand;
-
-            if (userCommandAndTarget.Length == 2)
-            {
-                string userTarget = userCommandAndTarget[1];
-                handleUserInput[1] = userTarget;
-            }
-
-            return handleUserInput;
-        }
-
+       
         private void GameOver(int currentMovesCount)
         {
             this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, currentMovesCount));
