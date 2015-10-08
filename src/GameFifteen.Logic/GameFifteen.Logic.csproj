@@ -70,6 +70,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Convertor.cs" />
     <Compile Include="Common\Validator.cs" />
+    <Compile Include="Frames\ProxyFrame.cs" />
     <Compile Include="Memento\IMemento.cs" />
     <Compile Include="Memento\BoardHistory.cs" />
     <Compile Include="Movers\ClassicMover.cs" />

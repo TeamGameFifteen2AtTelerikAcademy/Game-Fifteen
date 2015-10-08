@@ -9,6 +9,9 @@
         {
         }
 
+        /// <summary>
+        /// Method fill frame with tiles classic pattern
+        /// </summary>
         public override void FillFrameWithTiles()
         {
             for (int row = 0; row < this.Frame.Rows; row++)

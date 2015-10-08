@@ -3,5 +3,7 @@
     internal interface IReader
     {
         string ReadLine();
+
+        string[] ParseInput(string input);
     }
 }

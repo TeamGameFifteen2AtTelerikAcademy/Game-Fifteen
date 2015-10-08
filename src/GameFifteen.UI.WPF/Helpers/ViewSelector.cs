@@ -1,5 +1,5 @@
 ﻿namespace GameFifteen.UI.WPF.Helpers
-{    
+{
     using System.Windows.Controls;
 
     using Views;
@@ -90,7 +90,7 @@
 
                 return classicGame;
             }
-        }       
+        }
 
         public static UserControl GameSettings
         {

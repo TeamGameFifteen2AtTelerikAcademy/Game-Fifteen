@@ -12,7 +12,7 @@
         private static string mover;
         private static IGame game;
         private static IScoreboard scoreBoard;
-        
+
         public static string Rows
         {
             get

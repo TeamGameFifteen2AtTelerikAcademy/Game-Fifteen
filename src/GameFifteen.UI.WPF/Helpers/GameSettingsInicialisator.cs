@@ -7,13 +7,13 @@
     using Logic.Movers;
     using Logic.Movers.Contracts;
     using Logic.Tiles;
-    using Logic.Tiles.Contracts;    
+    using Logic.Tiles.Contracts;
 
     public class GameSettingsInicialisator
-    {       
+    {
         public GameSettingsInicialisator()
         {
-        }        
+        }
 
         public TileFactory ChooseTiles(string selecterdTileType)
         {

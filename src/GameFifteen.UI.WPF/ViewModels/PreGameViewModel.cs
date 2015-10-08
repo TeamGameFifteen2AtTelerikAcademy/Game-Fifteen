@@ -1,5 +1,5 @@
 ﻿namespace GameFifteen.UI.WPF.ViewModels
-{    
+{
     using System.Windows.Controls;
 
     using Helpers;

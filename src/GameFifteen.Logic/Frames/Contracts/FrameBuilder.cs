@@ -33,9 +33,11 @@
 
         public void InitializeFrame(int rows, int cols)
         {
+            // TODO: With negative numbers, the next line will throw an exeption and validation in any implementation of 
+            // IFrame is useless :/ 
             var tiles = new ITile[rows, cols];
 
-            this.Frame = new Frame(tiles);
+            this.Frame = new ProxyFrame(tiles);
         }
 
         public abstract void FillFrameWithTiles();

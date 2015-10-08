@@ -3,7 +3,7 @@
     using System;
     using Contracts;
 
-    class NullTile : Tile, ITile
+    public class NullTile : Tile, ITile
     {
         public NullTile(int id) : base(id)
         {

@@ -1,6 +1,6 @@
 ﻿namespace GameFifteen.UI.WPF.Views
 {
-    using System.Windows.Controls; 
+    using System.Windows.Controls;
 
     /// <summary>
     /// Interaction logic for CompletedGameView.xaml

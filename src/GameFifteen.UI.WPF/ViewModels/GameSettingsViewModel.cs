@@ -1,5 +1,5 @@
 ﻿namespace GameFifteen.UI.WPF.ViewModels
-{    
+{
     using System.Collections.ObjectModel;
     using System.Windows.Input;
 
@@ -13,7 +13,7 @@
         private string tile;
         private string pattern;
         private string mover;
-        
+
         private ObservableCollection<string> rowsPossibilities;
         private ObservableCollection<string> colsPossibilities;
         private ObservableCollection<string> tileTypes;
@@ -118,7 +118,7 @@
             {
                 if (this.rowsPossibilities == null)
                 {
-                    this.rowsPossibilities = new ObservableCollection<string>() { "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+                    this.rowsPossibilities = new ObservableCollection<string>() { "3", "4", "5", "6", "7", "8", "9", "10" };
                 }
 
                 return this.rowsPossibilities;
@@ -131,7 +131,7 @@
             {
                 if (this.colsPossibilities == null)
                 {
-                    this.colsPossibilities = new ObservableCollection<string>() { "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+                    this.colsPossibilities = new ObservableCollection<string>() { "3", "4", "5", "6", "7", "8", "9", "10" };
                 }
 
                 return this.colsPossibilities;
@@ -176,7 +176,7 @@
                 return this.moverTypes;
             }
         }
-       
+
         public ICommand NewCustomGame
         {
             get
@@ -192,11 +192,11 @@
 
         private void HandlenewCustomGameCommand(object parameter)
         {
-           this.OnPropertyChanged("Rows");
-           this.OnPropertyChanged("Cols");
-           this.OnPropertyChanged("TileType");
-           this.OnPropertyChanged("PatternType");
-           this.OnPropertyChanged("MoverType");
+            this.OnPropertyChanged("Rows");
+            this.OnPropertyChanged("Cols");
+            this.OnPropertyChanged("TileType");
+            this.OnPropertyChanged("PatternType");
+            this.OnPropertyChanged("MoverType");
 
             SettingsKeeper.Rows = this.Rows;
             SettingsKeeper.Cols = this.Cols;
@@ -205,7 +205,8 @@
             SettingsKeeper.Mover = this.Mover;
 
             ViewModelsSelector.GameViewModel.HandelInitializeGameCommand(null);
-            this.PageSwitcher.Switch(ViewSelector.Game); 
-        }       
+
+            this.PageSwitcher.Switch(ViewSelector.Game);
+        }
     }
 }
