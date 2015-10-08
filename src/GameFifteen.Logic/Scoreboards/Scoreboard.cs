@@ -12,6 +12,11 @@
     {
         protected IList<Score> TopScores = new List<Score>();
 
+        /// <summary>
+        /// Method add score
+        /// </summary>
+        /// <param name="moves">Number of moves</param>
+        /// <param name="playerName">Player name</param>
         public void Add(int moves, string playerName)
         {
             if (!this.IsInTopScores(moves))
@@ -27,7 +32,12 @@
                 .Take(Constants.ScoreboardMaxCount)
                 .ToList();
         }
-
+        
+        /// <summary>
+        /// Method check is player result is in top score
+        /// </summary>
+        /// <param name="moves">Number of moves</param>
+        /// <returns>Is player score is one of the top scores</returns>
         public bool IsInTopScores(int moves)
         {
             if (this.TopScores.Count() < Constants.ScoreboardMaxCount)
@@ -45,6 +55,9 @@
             return false;
         }
 
+        /// <summary>
+        /// Add player score if is in top scores
+        /// </summary>
         public override string ToString()
         {
             if (this.TopScores.Count == 0)
@@ -65,6 +78,9 @@
             return result.ToString();
         }
 
+        /// <summary>
+        /// Get top scores
+        /// </summary>
         public IList<IScore> GetTopScores()
         {
             var publicTopScores = new List<IScore>();
