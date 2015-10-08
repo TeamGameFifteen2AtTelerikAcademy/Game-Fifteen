@@ -9,4 +9,3 @@
         string PlayerNeme { get; }
     }
 }
-

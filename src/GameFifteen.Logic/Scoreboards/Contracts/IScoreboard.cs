@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace GameFifteen.Logic.Scoreboards.Contracts
+﻿namespace GameFifteen.Logic.Scoreboards.Contracts
 {
+    using System.Collections.Generic;
+
     public interface IScoreboard
     {
         bool IsInTopScores(int moves);

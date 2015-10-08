@@ -14,15 +14,14 @@
         {
             UserCommands userCommand;
             if (Enum.IsDefined(typeof(UserCommands), command) &&
-             Enum.TryParse<UserCommands>(command,  out userCommand))
-            {   
+             Enum.TryParse<UserCommands>(command, out userCommand))
+            {
                 return this.GetCommand(userCommand);
             }
             else
             {
                 return new IncorrectCommand();
             }
-
         }
 
         public ICommand GetCommand(Enum command)

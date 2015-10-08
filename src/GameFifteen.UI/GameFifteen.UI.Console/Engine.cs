@@ -41,7 +41,6 @@
 
         protected override void Play()
         {
-
             this.game.Shuffle();
 
             while (!this.game.IsOver)
@@ -51,7 +50,26 @@
                     this.GameOver(this.context.Moves);
                     this.commandManager.GetCommand(UserCommands.Restart).Execute(this.context);
                 }
+
                 this.ExecuteStep();
+            }
+        }
+
+        protected override void Goodbye()
+        {
+            this.printer.PrintLine(Constants.GoodbyeMessage);
+        }
+
+        private void GameOver(int currentMovesCount)
+        {
+            this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, currentMovesCount));
+
+            if (this.scoreboard.IsInTopScores(currentMovesCount))
+            {
+                this.printer.Print(Constants.EnterNameMessage);
+                string userName = this.reader.ReadLine();
+                this.scoreboard.Add(currentMovesCount, userName);
+                this.printer.Print(this.scoreboard);
             }
         }
 
@@ -72,25 +90,6 @@
 
             this.commandManager.GetCommand(userInput).Execute(this.context);
             this.printer.PrintLine(this.context.Message);
-        }
-
-        protected override void Goodbye()
-        {
-            this.printer.PrintLine(Constants.GoodbyeMessage);
-        }
-
-
-        private void GameOver(int currentMovesCount)
-        {
-            this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, currentMovesCount));
-
-            if (this.scoreboard.IsInTopScores(currentMovesCount))
-            {
-                this.printer.Print(Constants.EnterNameMessage);
-                string userName = this.reader.ReadLine();
-                this.scoreboard.Add(currentMovesCount, userName);
-                this.printer.Print(this.scoreboard);
-            }
-        }
+        } 
     }
 }
