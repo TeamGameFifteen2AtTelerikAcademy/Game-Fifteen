@@ -52,6 +52,7 @@
     <Compile Include="Engine.cs" />
     <Compile Include="EngineTemplate.cs" />
     <Compile Include="GameInitializator.cs" />
+    <Compile Include="IGameInitializer.cs" />
     <Compile Include="IPrinter.cs" />
     <Compile Include="IReader.cs" />
     <Compile Include="Printer.cs" />
