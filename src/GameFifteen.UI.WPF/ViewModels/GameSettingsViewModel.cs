@@ -205,7 +205,7 @@
             SettingsKeeper.Mover = this.Mover;
 
             ViewModelsSelector.GameViewModel.HandelInitializeGameCommand(null);
-            ViewSwitcher.Switch(ViewSelector.Game); 
+            this.PageSwitcher.Switch(ViewSelector.Game); 
         }       
     }
 }

@@ -1,5 +1,7 @@
-﻿namespace GameFifteen.UI.WPF.ViewModels
+﻿namespace GameFifteen.UI.WPF.Helpers
 {
+    using ViewModels;
+
     public static class ViewModelsSelector
     {
         public static readonly GameSettingsViewModel GameSettingsViewModel = new GameSettingsViewModel();

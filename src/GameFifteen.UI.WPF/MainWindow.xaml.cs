@@ -15,9 +15,12 @@
         public MainWindow()
         {
             this.InitializeComponent();
-            ViewSwitcher.PageSwitcher = this;
-            ViewSwitcher.Switch(ViewSelector.PreGame);
+            this.PageSwitcher = ViewSwitcher.Instance;
+            this.PageSwitcher.PageSwitcher = this;
+            this.PageSwitcher.Switch(ViewSelector.PreGame);
         }
+
+        private ViewSwitcher PageSwitcher { get; set; }
 
         public void Navigate(UserControl nextPage)
         {

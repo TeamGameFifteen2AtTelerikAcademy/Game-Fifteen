@@ -2,12 +2,12 @@
 {
     using System.ComponentModel;
     using System.Diagnostics;
+    using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Input;
+    using System.Windows.Input;    
 
     using Commands;
-    using Helpers;
-    using System.Windows;
+    using Helpers;    
 
     public class ViewModelBase : INotifyPropertyChanged
     {
@@ -15,7 +15,12 @@
         private ICommand openExternalLinkCommand;
         private ICommand quitApplicationCommand;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public ViewModelBase()
+        {
+            this.PageSwitcher = ViewSwitcher.Instance;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;        
 
         public ICommand SwitchView
         {
@@ -56,11 +61,8 @@
             }
         }
 
-        private void HandleQuitApplicationCommand(object parameter)
-        {           
-            Application.Current.MainWindow.Close();
-        }
-
+        protected ViewSwitcher PageSwitcher { get; set; }
+          
         protected void OnPropertyChanged(string propertyName)
         {
             if (this.PropertyChanged != null)
@@ -81,15 +83,20 @@
                 {
                     case "ButtonGoToMainMenu":
                         // TODO: Switch to MainMenuView when ready
-                        ViewSwitcher.Switch(ViewSelector.PreGame);
+                        this.PageSwitcher.Switch(ViewSelector.PreGame);
                         break;
                     case "ButtonGoToHallOfFame":
-                        ViewSwitcher.Switch(ViewSelector.HallOfFame);
+                        this.PageSwitcher.Switch(ViewSelector.HallOfFame);
                         break;
                     default:
                         break;
                 }
             }
+        }
+
+        private void HandleQuitApplicationCommand(object parameter)
+        {
+            Application.Current.MainWindow.Close();
         }
 
         private void HandleOpenExternalLinkCommand(object parameter)

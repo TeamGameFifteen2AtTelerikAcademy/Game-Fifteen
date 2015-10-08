@@ -64,7 +64,7 @@
     <Compile Include="Models\MasterModel.cs" />
     <Compile Include="ViewModels\PreGameViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="ViewModels\ViewModelsSelector.cs" />
+    <Compile Include="Helpers\ViewModelsSelector.cs" />
     <Compile Include="Views\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>

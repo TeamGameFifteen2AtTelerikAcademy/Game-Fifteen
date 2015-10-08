@@ -253,7 +253,7 @@
                 switch (changeToViewName)
                 {
                     case "ButtonResumeCurrentGame":
-                        ViewSwitcher.Switch(ViewSelector.Game);
+                        this.PageSwitcher.Switch(ViewSelector.Game);
                         break;
                     default:
                         base.HandleSwitchViewCommand(parameter);
@@ -302,7 +302,7 @@
             this.ScoreboardInfo.Add(this.Moves, this.TopPlayerName);
             this.SincTopScoresWIthsObservableScores(this.topScores, this.ScoreboardInfo.GetTopScores());
             this.OnPropertyChanged("TopScores");
-            ViewSwitcher.Switch(ViewSelector.HallOfFame);
+            this.PageSwitcher.Switch(ViewSelector.HallOfFame);
         }
 
         private void SetGameEnd()
@@ -312,11 +312,11 @@
 
             if (isTopResult)
             {
-                ViewSwitcher.Switch(ViewSelector.CompleteTopScoreGame);
+                this.PageSwitcher.Switch(ViewSelector.CompleteTopScoreGame);
             }
             else
             {
-                ViewSwitcher.Switch(ViewSelector.JustCompletedGame);
+                this.PageSwitcher.Switch(ViewSelector.JustCompletedGame);
             }
         }
 

@@ -1,32 +1,52 @@
 ﻿namespace GameFifteen.UI.WPF.Helpers
 {
+    using System;
     using System.Windows.Controls;
-    
-    public static class ViewSwitcher
-    {
-        private static MainWindow pageSwitcher;
 
-        public static MainWindow PageSwitcher
+    public sealed class ViewSwitcher
+    {
+        private static readonly Lazy<ViewSwitcher> Lazy =
+        new Lazy<ViewSwitcher>(
+            () => new ViewSwitcher());
+
+        private MainWindow pageSwitcher;
+
+        private ViewSwitcher()
+        {
+        }
+
+        public static ViewSwitcher Instance
         {
             get
             {
-                return pageSwitcher;
+                return Lazy.Value;
+            }
+        }
+
+        public MainWindow PageSwitcher
+        {
+            get
+            {
+                return this.pageSwitcher;
             }
 
             set
             {
-                pageSwitcher = value;
+                if (this.pageSwitcher == null)
+                {
+                    this.pageSwitcher = value;
+                }
             }
         }
 
-        public static void Switch(UserControl newPage)
+        public void Switch(UserControl newPage)
         {
-            pageSwitcher.Navigate(newPage);
+            this.pageSwitcher.Navigate(newPage);
         }
 
-        public static void Switch(UserControl newPage, object state)
+        public void Switch(UserControl newPage, object state)
         {
-            pageSwitcher.Navigate(newPage, state);
+            this.pageSwitcher.Navigate(newPage, state);
         }
     }
 }
