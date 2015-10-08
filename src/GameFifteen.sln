@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests_GameFifteen.Logic", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests_Common", "Tests_Common", "{343C27FD-1D43-412A-914E-E2438FF80288}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests_Common", "Tests_Common\Tests_Common.csproj", "{FB5E1DF6-BC17-4A31-A116-43E6D3898FDA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests_Common", "GameFifteen.Tests\Tests_GameFifteen.Logic\Tests_Common\Tests_Common.csproj", "{FB5E1DF6-BC17-4A31-A116-43E6D3898FDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

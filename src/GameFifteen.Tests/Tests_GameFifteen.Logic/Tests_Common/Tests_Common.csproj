@@ -57,15 +57,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameFifteen.Logic\GameFifteen.Logic.csproj">
+    <ProjectReference Include="..\..\..\GameFifteen.Logic\GameFifteen.Logic.csproj">
       <Project>{587a134d-d632-4eb1-b343-0b3a11ddddf5}</Project>
       <Name>GameFifteen.Logic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GameFifteen.UI.WPF\GameFifteen.UI.WPF.csproj">
+    <ProjectReference Include="..\..\..\GameFifteen.UI.WPF\GameFifteen.UI.WPF.csproj">
       <Project>{4ad0ebde-5a61-47df-9d82-1951f0073a00}</Project>
       <Name>GameFifteen.UI.WPF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GameFifteen.UI\GameFifteen.UI.Console\GameFifteen.UI.Console.csproj">
+    <ProjectReference Include="..\..\..\GameFifteen.UI\GameFifteen.UI.Console\GameFifteen.UI.Console.csproj">
       <Project>{ee3d65dc-fe61-4174-a231-f297bed368f2}</Project>
       <Name>GameFifteen.UI.Console</Name>
     </ProjectReference>
