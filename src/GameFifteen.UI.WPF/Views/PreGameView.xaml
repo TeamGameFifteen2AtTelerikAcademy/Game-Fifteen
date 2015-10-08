@@ -5,28 +5,73 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GameFifteen.UI.WPF.Views"             
              mc:Ignorable="d" 
-             xmlns:vms="clr-namespace:GameFifteen.UI.WPF.ViewModels"
-             d:DesignHeight="600" d:DesignWidth="600">
-    <UserControl.DataContext>
-        <vms:PreGameViewModel/>
-    </UserControl.DataContext>
+             xmlns:vms="clr-namespace:GameFifteen.UI.WPF.Helpers"
+             d:DesignHeight="600" d:DesignWidth="600"
+             DataContext="{x:Static vms:ViewModelsSelector.PreGameViewModel}"
+             >
     <Grid>
-        <StackPanel Grid.Column="0" 
+        <StackPanel 
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 
-                Width="450" Height="500"
+                Width="500" 
+                Height="550"
                 >
             <TextBlock Text="Game 15" 
-               x:Name="myLabel"  
-               HorizontalAlignment="Center" 
-               VerticalAlignment="Center"
-               FontSize="50" Height="Auto" />
+                        x:Name="myLabel"  
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        FontSize="50" 
+                        Height="Auto" />
             <TextBlock Text="by Game Fifteen 2 Team" 
-               HorizontalAlignment="Center" 
-               VerticalAlignment="Center"
-                FontSize="20" Height="Auto"/>
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        FontSize="20" Height="Auto"
+                        Margin="0,0,0, 50"/>
+
+            <Button  x:Name="ButtonResumeCurrentGame" 
+                     DataContext="{x:Static vms:ViewModelsSelector.GameViewModel}"
+                     Content="Resume"
+                     Command="{Binding SwitchView}" 
+                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                    >
+                <Button.Style>
+                    <Style  TargetType="Button">
+                        <Setter Property="Margin" Value="10"/>
+                        <Setter Property="Background" Value="Black" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="Opacity" Value="0.8" />
+                        <Setter Property="FontSize" Value="25" />
+                        <Setter Property="FontWeight" Value="Normal" />
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="5" 
+                                Background="{TemplateBinding Background}"
+                                Padding="10"
+                                BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        </ContentPresenter>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="Opacity" Value="0.8"/>
+                            </Trigger>
+                            <DataTrigger Binding="{Binding IsResumeBurronVissible}" Value="true">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
             <Button  x:Name="ButtonGoToQuickGame" 
-                     Content="Classic Game"  
+                     Content="New Classic Game"  
                      Style="{StaticResource CommonButton}"
                      
                      Command="{Binding SwitchView}" 
@@ -35,19 +80,25 @@
             <Button  x:Name="ButtonGoToGameSettings" 
                      
                      Style="{StaticResource CommonButton}"
-                     Content="Custom Game"  
+                     Content="New Custom Game"  
                      Command="{Binding SwitchView}" 
                      CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-                    />
-            <Button  Content="How to play"
-                     Style="{StaticResource CommonButton}"
-                    />
-            <Button  Content="About"  
-                      Style="{StaticResource CommonButton}"
-                      Command="{Binding MoveTile}"/>
-                <Button  Content="Hall of fame"  
-                     Style="{StaticResource CommonButton}"
+                    />            
+           
+            <Button Content="Hall of fame" 
+                    x:Name="ButtonGoToHallOfFame"
+                    Style="{StaticResource CommonButton}"
+                    Command="{Binding SwitchView}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                      />
+            <Button  Content="About"  
+                     x:Name="ButtonGoToAboutPage"
+                     Style="{StaticResource CommonButton}"
+                     Command="{Binding SwitchView}"
+                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button  Content="Quit" 
+                     Style="{StaticResource CommonButton}"
+                     Command="{Binding QuitApplication}"/>
         </StackPanel>
     </Grid>
 </UserControl>

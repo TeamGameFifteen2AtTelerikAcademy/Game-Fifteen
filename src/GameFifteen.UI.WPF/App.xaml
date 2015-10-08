@@ -2,12 +2,17 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:GameFifteen.UI.WPF"
+             xmlns:vms="clr-namespace:GameFifteen.UI.WPF.ViewModels"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
+        <SolidColorBrush Color="White" Opacity="0.5" x:Key="WhiteThirdOpacityBrush"/>
 
         <Style x:Key="ConsolasFamilyFont" TargetType="{x:Type Control}">
             <Setter Property="FontFamily" Value="Consolas" />
         </Style>
+
+        <BitmapImage x:Key="LogoImageSource" UriSource="Resources/logo.png" />
 
         <Style x:Key="CommonButton" TargetType="Button">
             <Setter Property="Margin" Value="10"/>
@@ -15,11 +20,11 @@
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Opacity" Value="0.8" />
             <Setter Property="FontSize" Value="25" />
-            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="10" 
+                        <Border CornerRadius="5" 
                                 Background="{TemplateBinding Background}"
                                 Padding="10"
                                 BorderThickness="1">
@@ -41,7 +46,7 @@
         <Style x:Key="PlayebleTileButton" TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="VerticalAlignment" Value="Stretch" />
-            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="Background" Value="Black" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Opacity" Value="0.8" />
@@ -49,12 +54,17 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="8" 
+
+                        <Border CornerRadius="5" 
                                 Background="{TemplateBinding Background}"
-                                BorderThickness="0">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
-                            </ContentPresenter>
+                                BorderThickness="0"
+                               >
+                            <Viewbox Stretch="Uniform"
+                                      Margin="8">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Viewbox>
                         </Border>
+
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -75,7 +85,7 @@
         <Style x:Key="StaticTileButton" TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="VerticalAlignment" Value="Stretch" />
-            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="Background" Value="Gray" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Opacity" Value="0.8" />
@@ -83,11 +93,15 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="8" 
+                        <Border CornerRadius="5" 
                                 Background="{TemplateBinding Background}"
                                 BorderThickness="0">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
-                            </ContentPresenter>
+
+                            <Viewbox Stretch="Uniform"
+                                     Margin="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Viewbox>
+
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>

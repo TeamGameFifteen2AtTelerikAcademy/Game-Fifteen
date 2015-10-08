@@ -9,7 +9,7 @@
     {
         public GameView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

@@ -1,12 +1,13 @@
 ﻿namespace GameFifteen.UI.Console.Commands
 {
     using GameFifteen.Logic.Commands;
+    using Logic.Common;
 
-    public class UndoCommand : ICommand
+    public class IncorrectCommand : ICommand
     {
         public void Execute(ICommandContext context)
         {
-            context.Game.Frame = context.BoardHistory.Undo();
+            context.Message = Constants.InvalidCommandMessage;
         }
     }
 }

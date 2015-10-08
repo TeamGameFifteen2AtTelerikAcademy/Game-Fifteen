@@ -1,7 +1,7 @@
 ﻿namespace GameFifteen.UI.Console
 {
-    using Logic.Memento;
     using GameFifteen.Logic.Scoreboards;
+    using Logic.Memento;
 
     internal class Program
     {

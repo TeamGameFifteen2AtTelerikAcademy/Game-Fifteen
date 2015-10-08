@@ -44,6 +44,7 @@
     <Compile Include="CommandContext.cs" />
     <Compile Include="CommandManager.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
+    <Compile Include="Commands\IncorrectCommand.cs" />
     <Compile Include="Commands\MoveCommand.cs" />
     <Compile Include="Commands\RestartCommand.cs" />
     <Compile Include="Commands\ShowScoresCommand.cs" />

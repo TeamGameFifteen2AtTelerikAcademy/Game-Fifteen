@@ -1,14 +1,12 @@
-﻿using GameFifteen.UI.WPF.Contracts;
-using GameFifteen.UI.WPF.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-namespace GameFifteen.UI.WPF
+﻿namespace GameFifteen.UI.WPF
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Controls;
+
+    using Contracts;
+    using Helpers;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -16,10 +14,13 @@ namespace GameFifteen.UI.WPF
     {
         public MainWindow()
         {
-            InitializeComponent();
-            ViewSwitcher.PageSwitcher = this;
-            ViewSwitcher.Switch(ViewSelector.PreGame);
+            this.InitializeComponent();
+            this.PageSwitcher = ViewSwitcher.Instance;
+            this.PageSwitcher.PageSwitcher = this;
+            this.PageSwitcher.Switch(ViewSelector.PreGame);
         }
+
+        private ViewSwitcher PageSwitcher { get; set; }
 
         public void Navigate(UserControl nextPage)
         {
@@ -29,13 +30,17 @@ namespace GameFifteen.UI.WPF
         public void Navigate(UserControl nextPage, object state)
         {
             this.Content = nextPage;
-            ISwitchable s = nextPage as ISwitchable;
+            ISwitchable stateStatus = nextPage as ISwitchable;
 
-            if (s != null)
-                s.UtilizeState(state);
+            if (stateStatus != null)
+            {
+                stateStatus.UtilizeState(state);
+            }
             else
+            {
                 throw new ArgumentException("NextPage is not ISwitchable! "
                   + nextPage.Name.ToString());
+            }
         }
     }
 }

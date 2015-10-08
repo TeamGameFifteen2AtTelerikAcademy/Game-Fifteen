@@ -9,9 +9,9 @@
     public class Game : IGame
     {
         private readonly IFrame framePrototype;
-        private IFrame frame;
         private readonly IMover mover;
-
+        private IFrame frame;
+        
         public Game(IFrame frame, IMover mover)
         {
             Validator.ValidateIsNotNull(frame, "frame");
@@ -28,6 +28,7 @@
             {
                 return this.frame;
             }
+
             set
             {
                 this.frame = value;
@@ -50,6 +51,7 @@
             }
         }
 
+        public bool IsOver { get; set; }        
 
         public bool Move(string tileLabel)
         {
@@ -63,6 +65,6 @@
                 this.mover.Shuffle(this.frame);
             }
             while (this.IsSolved);
-        }               
+        }
     }
 }

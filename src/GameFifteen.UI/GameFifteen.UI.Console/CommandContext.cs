@@ -2,8 +2,8 @@
 {
     using GameFifteen.Logic.Commands;
     using GameFifteen.Logic.Games.Contracts;
-    using Logic.Memento;
     using GameFifteen.Logic.Scoreboards.Contracts;
+    using Logic.Memento;
 
     public class CommandContext : ICommandContext
     {
@@ -12,6 +12,7 @@
             this.Game = game;
             this.ScoreboardInfo = scoreboard;
             this.BoardHistory = boardHistory;
+            this.Moves = 0;
         }
 
         public IMemento BoardHistory { get; set; }
@@ -22,6 +23,8 @@
 
         public string Message { get; set; }
 
-        public string SelectedTileLabel { get; set; }       
+        public string SelectedTileLabel { get; set; }     
+        
+        public int Moves { get; set; }  
     }
 }

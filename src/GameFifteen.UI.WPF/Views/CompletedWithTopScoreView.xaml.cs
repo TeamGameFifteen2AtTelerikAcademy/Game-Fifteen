@@ -3,11 +3,11 @@
     using System.Windows.Controls;
 
     /// <summary>
-    /// Interaction logic for PreGameView.xaml
+    /// Interaction logic for CompletedWithTopScoreView.xaml
     /// </summary>
-    public partial class PreGameView : UserControl
+    public partial class CompletedWithTopScoreView : UserControl
     {
-        public PreGameView()
+        public CompletedWithTopScoreView()
         {
             this.InitializeComponent();
         }

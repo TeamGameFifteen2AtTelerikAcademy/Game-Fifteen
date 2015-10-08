@@ -3,11 +3,11 @@
     using System.Windows.Controls;
 
     /// <summary>
-    /// Interaction logic for PreGameView.xaml
+    /// Interaction logic for AboutView.xaml
     /// </summary>
-    public partial class PreGameView : UserControl
+    public partial class AboutView : UserControl
     {
-        public PreGameView()
+        public AboutView()
         {
             this.InitializeComponent();
         }

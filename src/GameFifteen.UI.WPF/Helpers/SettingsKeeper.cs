@@ -1,6 +1,7 @@
 ﻿namespace GameFifteen.UI.WPF.Helpers
 {
     using Logic.Games.Contracts;
+    using Logic.Scoreboards.Contracts;
 
     public static class SettingsKeeper
     {
@@ -10,12 +11,17 @@
         private static string pattern;
         private static string mover;
         private static IGame game;
-
+        private static IScoreboard scoreBoard;
 
         public static string Rows
         {
             get
             {
+                if (rows == null)
+                {
+                    rows = "4";
+                }
+
                 return rows;
             }
 
@@ -29,6 +35,11 @@
         {
             get
             {
+                if (cols == null)
+                {
+                    cols = "4";
+                }
+
                 return cols;
             }
 
@@ -42,6 +53,11 @@
         {
             get
             {
+                if (tile == null)
+                {
+                    tile = "Number";
+                }
+
                 return tile;
             }
 
@@ -55,6 +71,11 @@
         {
             get
             {
+                if (pattern == null)
+                {
+                    pattern = "Classic";
+                }
+
                 return pattern;
             }
 
@@ -68,6 +89,11 @@
         {
             get
             {
+                if (mover == null)
+                {
+                    mover = "Classic";
+                }
+
                 return mover;
             }
 
@@ -87,6 +113,19 @@
             set
             {
                 game = value;
+            }
+        }
+
+        public static IScoreboard ScoreBoard
+        {
+            get
+            {
+                return scoreBoard;
+            }
+
+            set
+            {
+                scoreBoard = value;
             }
         }
     }

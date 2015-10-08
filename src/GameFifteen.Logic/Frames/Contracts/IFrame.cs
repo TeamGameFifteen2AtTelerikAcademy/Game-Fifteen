@@ -11,5 +11,7 @@
         int Cols { get; }
 
         IFrame Clone();
+
+        bool Equals(ProxyFrame other);
     }
 }

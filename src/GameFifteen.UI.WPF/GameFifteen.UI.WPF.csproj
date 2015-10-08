@@ -59,19 +59,31 @@
     <Compile Include="Helpers\GameSettingsInicialisator.cs" />
     <Compile Include="Helpers\SettingsKeeper.cs" />
     <Compile Include="Helpers\ViewSelector.cs" />
+    <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="Models\MasterModel.cs" />
     <Compile Include="ViewModels\PreGameViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Helpers\ViewModelsSelector.cs" />
+    <Compile Include="Views\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CompletedGameView.xaml.cs">
       <DependentUpon>CompletedGameView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GameVIew.xaml.cs">
-      <DependentUpon>GameVIew.xaml</DependentUpon>
+    <Compile Include="Views\CompletedWithTopScoreView.xaml.cs">
+      <DependentUpon>CompletedWithTopScoreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameView.xaml.cs">
+      <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameSettingsView.xaml.cs">
       <DependentUpon>GameSettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\GameSettingsViewModel.cs" />
+    <Compile Include="Views\HallOfFameView.xaml.cs">
+      <DependentUpon>HallOfFameView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PreGameView.xaml.cs">
       <DependentUpon>PreGameView.xaml</DependentUpon>
     </Compile>
@@ -89,16 +101,29 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
+    <Page Include="Views\AboutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CompletedGameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GameVIew.xaml">
+    <Page Include="Views\CompletedWithTopScoreView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\GameSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HallOfFameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,11 +165,13 @@
       <Name>GameFifteen.Logic</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Resources\background.jpg">
+    <Resource Include="Resources\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

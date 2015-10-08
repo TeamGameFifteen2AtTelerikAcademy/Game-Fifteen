@@ -1,20 +1,52 @@
 ﻿namespace GameFifteen.UI.WPF.Helpers
 {
+    using System;
     using System.Windows.Controls;
 
-    // TODO: To implement Singleton Pattern for ViewSwitcher
-    public static class ViewSwitcher
+    public sealed class ViewSwitcher
     {
-        public static MainWindow PageSwitcher;
+        private static readonly Lazy<ViewSwitcher> Lazy =
+        new Lazy<ViewSwitcher>(
+            () => new ViewSwitcher());
 
-        public static void Switch(UserControl newPage)
+        private MainWindow pageSwitcher;
+
+        private ViewSwitcher()
         {
-            PageSwitcher.Navigate(newPage);
         }
 
-        public static void Switch(UserControl newPage, object state)
+        public static ViewSwitcher Instance
         {
-            PageSwitcher.Navigate(newPage, state);
+            get
+            {
+                return Lazy.Value;
+            }
+        }
+
+        public MainWindow PageSwitcher
+        {
+            get
+            {
+                return this.pageSwitcher;
+            }
+
+            set
+            {
+                if (this.pageSwitcher == null)
+                {
+                    this.pageSwitcher = value;
+                }
+            }
+        }
+
+        public void Switch(UserControl newPage)
+        {
+            this.pageSwitcher.Navigate(newPage);
+        }
+
+        public void Switch(UserControl newPage, object state)
+        {
+            this.pageSwitcher.Navigate(newPage, state);
         }
     }
 }
