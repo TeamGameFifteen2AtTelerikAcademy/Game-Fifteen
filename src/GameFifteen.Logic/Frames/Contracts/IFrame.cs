@@ -12,6 +12,6 @@
 
         IFrame Clone();
 
-        bool Equals(ProxyFrame other);
+        bool Equals(IFrame other);
     }
 }
