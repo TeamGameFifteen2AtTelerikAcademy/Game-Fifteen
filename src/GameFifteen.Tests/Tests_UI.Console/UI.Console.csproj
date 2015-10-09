@@ -58,7 +58,9 @@
   <ItemGroup>
     <Compile Include="CommandContextTests.cs" />
     <Compile Include="CommandManagerTest.cs" />
+    <Compile Include="EngineTests.cs" />
     <Compile Include="GameInitializeTests.cs" />
+    <Compile Include="MockStorage.cs" />
     <Compile Include="PrinterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
