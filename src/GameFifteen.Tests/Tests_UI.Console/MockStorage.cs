@@ -122,7 +122,7 @@ namespace GameFifteen.Tests.UI.Console
 
             mockedContext.Setup(x => x.BoardHistory)
                 .Returns(() => MockStorage.GetBoardHistory());
-
+                
             mockedContext.Setup(x => x.SelectedTileLabel)
                 .Returns(() => "3");
             return mockedContext.Object;
@@ -134,6 +134,8 @@ namespace GameFifteen.Tests.UI.Console
 
             memento.Setup(x=>x.SaveBoardState(It.IsAny<IFrame>()))
                 .Verifiable();
+
+            memento.Setup(x=>x.Undo()).Verifiable();
 
             return memento.Object;
         }

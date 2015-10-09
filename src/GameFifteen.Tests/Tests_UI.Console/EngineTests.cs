@@ -1,4 +1,5 @@
 ﻿using GameFifteen.Logic.Commands;
+using GameFifteen.Logic.Common;
 using GameFifteen.UI.Console.Commands;
 using Moq;
 
@@ -27,9 +28,9 @@ namespace GameFifteen.Tests.UI.Console
                 reader,
                 new CommandManager(),
                 new BoardHistory()
-                
+
                 );
-            
+
             engine.Run();
         }
 
@@ -129,13 +130,24 @@ namespace GameFifteen.Tests.UI.Console
         }
 
         [TestMethod]
-        public void ExpectToReturnInvalidMoveMessageWhenInvalidMoveCommand()
+        public void ExpectMoveCommandToReachIfStatement()
         {
             var context = MockStorage.GetCommandContext();
 
             var game = MockStorage.GetGameWithInvalidMove();
 
             var moveCommand = new MoveCommand();
+            moveCommand.Execute(context);
+        }
+
+        [TestMethod]
+        public void ExpectUndoCommandToWork()
+        {
+            var context = MockStorage.GetCommandContext();
+
+            var game = MockStorage.GetGameWithInvalidMove();
+
+            var moveCommand = new UndoCommand();
             moveCommand.Execute(context);
 
         }
