@@ -6,7 +6,7 @@
     {
         bool IsSolved { get; }
 
-        bool IsOver { get; set; }
+        
 
         IFrame Frame { get; set; }
 

@@ -50,9 +50,7 @@
                 return this.frame.Equals(this.framePrototype);
             }
         }
-
-        public bool IsOver { get; set; }        
-
+        
         public bool Move(string tileLabel)
         {
             return this.mover.Move(tileLabel, this.frame);

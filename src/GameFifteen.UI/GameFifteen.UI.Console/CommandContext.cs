@@ -21,6 +21,8 @@
 
         public IGame Game { get; set; }        
 
+        public bool IsGameOver { get; set; }
+
         public string Message { get; set; }
 
         public string SelectedTileLabel { get; set; }     
