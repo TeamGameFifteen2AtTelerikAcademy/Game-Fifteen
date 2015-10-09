@@ -41,6 +41,9 @@
 
         protected override void Play()
         {
+
+            this.printer.ClearBoard();
+
             this.game.Shuffle();
 
             while (!this.context.IsGameOver)
@@ -51,8 +54,32 @@
                     this.commandManager.GetCommand(UserCommands.Restart).Execute(this.context);
                 }
 
-                this.ExecuteStep();
+                this.ExecuteStep();                
             }
+        }
+
+        private void ExecuteStep()
+        {
+           
+            this.printer.SetCursorTopBoard();
+            this.printer.PrintLine(this.game.Frame);
+            this.printer.ClearLine();
+            this.printer.Print(Constants.EnterCommandMessage);
+
+            string userInput = this.reader.ReadLine();
+
+            var userCommandAndTarget = this.reader.ParseInput(userInput);
+            var userCommand = userCommandAndTarget[0];
+            var userTarget = userCommandAndTarget[1];
+
+            // Capitalize the first letter to meet restrictions from the enum...
+            userInput = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userCommand);
+            this.context.SelectedTileLabel = userTarget;
+
+            this.commandManager.GetCommand(userInput).Execute(this.context);
+            this.printer.SetCursorBottomBoard();
+            this.printer.ClearMessages();
+            this.printer.PrintLine(this.context.Message);
         }
 
         protected override void Goodbye()
@@ -73,23 +100,6 @@
             }
         }
 
-        private void ExecuteStep()
-        {
-            this.printer.PrintLine(this.game.Frame);
-            this.printer.Print(Constants.EnterCommandMessage);
-
-            string userInput = this.reader.ReadLine();
-
-            var userCommandAndTarget = this.reader.ParseInput(userInput);
-            var userCommand = userCommandAndTarget[0];
-            var userTarget = userCommandAndTarget[1];
-
-            // Capitalize the first letter to meet restrictions from the enum...
-            userInput = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userCommand);
-            this.context.SelectedTileLabel = userTarget;
-
-            this.commandManager.GetCommand(userInput).Execute(this.context);
-            this.printer.PrintLine(this.context.Message);
-        } 
+       
     }
 }
