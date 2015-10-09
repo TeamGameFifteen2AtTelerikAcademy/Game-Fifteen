@@ -53,6 +53,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests_Common\ConvertorTest.cs" />
     <Compile Include="Tests_Common\ValidatorTest.cs" />
+    <Compile Include="Tests_Frames\FrameTest.cs" />
+    <Compile Include="Tests_Frames\FrameDirectorTest.cs" />
     <Compile Include="Tests_Tiles\LetterTileFactoryTest.cs" />
     <Compile Include="Tests_Tiles\LetterTileTest.cs" />
     <Compile Include="Tests_Tiles\NullTileTest.cs" />
