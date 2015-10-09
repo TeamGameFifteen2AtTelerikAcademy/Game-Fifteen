@@ -5,17 +5,17 @@
     using GameFifteen.UI.Console;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
+
     /// <summary>
     /// Summary description for PrinterTests
     /// </summary>
     [TestClass]
     public class PrinterTests
     {
-
         [TestMethod]
         public void ExpectPrintMethodToWorkCorrectlyWithFrame()
         {
-            var frame = new Frame(new ITile[3,3]);
+            var frame = new Frame(new ITile[3, 3]);
             var mockedPrinter = new Mock<IPrinter>();
             var result = string.Empty;
 
@@ -25,7 +25,7 @@
             mockedPrinter.Object.Print(frame);
 
             Assert.AreEqual(frame.ToString(), result);
-            mockedPrinter.Verify(x => x.Print(frame),Times.AtMostOnce);
+            mockedPrinter.Verify(x => x.Print(frame), Times.AtMostOnce);
         }
 
         [TestMethod]

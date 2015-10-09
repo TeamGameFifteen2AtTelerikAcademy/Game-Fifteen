@@ -16,7 +16,7 @@
         [TestMethod]
         public void ExpectGetCommandToReturnRestartCommandWhenValidString()
         {
-            var commandManager= new CommandManager();
+            var commandManager = new CommandManager();
             var result = commandManager.GetCommand("Restart");
 
             Assert.IsInstanceOfType(result, typeof(RestartCommand));

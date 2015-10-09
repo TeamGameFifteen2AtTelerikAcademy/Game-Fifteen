@@ -8,7 +8,7 @@
     {
         public void Execute(ICommandContext context)
         {
-            context.IsGameOver= true;
+            context.IsGameOver = true;
             context.Message = string.Empty;
         }
     }

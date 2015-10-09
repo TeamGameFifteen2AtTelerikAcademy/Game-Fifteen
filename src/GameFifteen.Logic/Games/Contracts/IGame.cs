@@ -6,8 +6,6 @@
     {
         bool IsSolved { get; }
 
-        
-
         IFrame Frame { get; set; }
 
         IFrame FramePrototype { get; }

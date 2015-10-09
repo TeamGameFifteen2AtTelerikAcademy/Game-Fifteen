@@ -7,6 +7,12 @@
 
     public class ClassicMover : Mover
     {
+        /// <summary>
+        /// Override method Move in classic game
+        /// </summary>
+        /// <param name="tileLabel">Tile that will be move</param>
+        /// <param name="frame">Frame</param>
+        /// <returns>Boolean by operation</returns>
         public override bool Move(string tileLabel, IFrame frame)
         {
             if (!base.Move(tileLabel, frame))
@@ -40,6 +46,11 @@
             return false;
         }
 
+        /// <summary>
+        /// Ovveride method GetCurrentMovableTileLabels in classic game
+        /// </summary>
+        /// <param name="frame">Frame</param>
+        /// <returns>Result by selecion of tile</returns>
         protected override List<string> GetCurrentMovableTileLabels(IFrame frame)
         {
             var result = new List<string>();

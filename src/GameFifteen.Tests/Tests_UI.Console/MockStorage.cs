@@ -70,9 +70,8 @@ namespace GameFifteen.Tests.UI.Console
                     }
                     else
                     {
-                        //Result = It.IsAny<string>();
+                        // Result = It.IsAny<string>();
                         numberOfCalls--;
-
                     }
                 })
                 .Returns(() => Result);
@@ -95,7 +94,6 @@ namespace GameFifteen.Tests.UI.Console
             var numberOfCalls = 2;
             bool isOver = false;
 
-
             mockedGame.Setup(x => x.Move(It.IsAny<string>()))
                 .Returns(true);
 
@@ -113,7 +111,6 @@ namespace GameFifteen.Tests.UI.Console
             var mockedGame = new Mock<IGame>();
             var numberOfCalls = 2;
             bool isOver = false;
-
 
             mockedGame.Setup(x => x.Move(It.IsAny<string>()))
                 .Returns(true);
@@ -133,8 +130,6 @@ namespace GameFifteen.Tests.UI.Console
         public static ICommandManager GeCommandManager()
         {
             var mockedManager = new Mock<ICommandManager>();
-
-
 
             return mockedManager.Object;
         }

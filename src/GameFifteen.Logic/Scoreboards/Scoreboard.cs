@@ -10,7 +10,7 @@
 
     public class Scoreboard : IScoreboard
     {
-        protected IList<Score> TopScores = new List<Score>();
+        private IList<Score> TopScores = new List<Score>();
 
         /// <summary>
         /// Method add score

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Security.Cryptography.X509Certificates;
-using GameFifteen.Logic.Memento;
-using GameFifteen.Logic.Scoreboards;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GameFifteen.UI.Console;
-
-namespace GameFifteen.Tests.UI.Console
+﻿namespace GameFifteen.Tests.UI.Console
 {
+    using System;
+    using System.Security.Cryptography.X509Certificates;
+    using GameFifteen.Logic.Memento;
+    using GameFifteen.Logic.Scoreboards;
+    using GameFifteen.UI.Console;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class EngineTests
     {
@@ -23,7 +23,7 @@ namespace GameFifteen.Tests.UI.Console
                 reader,
                 new CommandManager(),
                 new BoardHistory()
-
+                
                 );
             
             engine.Run();

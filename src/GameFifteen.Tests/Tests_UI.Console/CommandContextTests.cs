@@ -1,20 +1,21 @@
 ﻿namespace GameFifteen.Tests.UI.Console
 {
+    using GameFifteen.Logic.Common;
+    using GameFifteen.Logic.Commands;
     using GameFifteen.Logic.Frames;
+    using GameFifteen.Logic.Frames.Contracts;
     using GameFifteen.Logic.Games;
-    using GameFifteen.UI.Console;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using GameFifteen.Logic.Scoreboards;
+    using GameFifteen.Logic.Games.Contracts;
     using GameFifteen.Logic.Memento;
     using GameFifteen.Logic.Movers;
-    using GameFifteen.Logic.Tiles.Contracts;
-    using Moq;
-    using GameFifteen.Logic.Commands;
-    using GameFifteen.Logic.Common;
-    using GameFifteen.Logic.Frames.Contracts;
-    using GameFifteen.Logic.Games.Contracts;
+    using GameFifteen.Logic.Scoreboards;
     using GameFifteen.Logic.Scoreboards.Contracts;
+    using GameFifteen.Logic.Tiles.Contracts;
+    using GameFifteen.UI.Console;
     using GameFifteen.UI.Console.Commands;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+
     /// <summary>
     /// Summary description for CommandContextTests
     /// </summary>
@@ -39,9 +40,8 @@
 
             var boardHistory = new BoardHistory();
 
-            this.Instance =  new CommandContext(game, scoreboard, boardHistory);
+            this.Instance = new CommandContext(game, scoreboard, boardHistory);
         }
-        
 
         [TestMethod]
         public void ExpectCommandContextConstructorToSetMovesToZero()
@@ -52,7 +52,7 @@
 
         [TestMethod]
         public void ExpectConstructorToSetMovesToZeroMoq()
-        { 
+        {
             var context = new Mock<ICommandContext>();
             var moves = context.Object.Moves;
             Assert.AreEqual(0, moves);
@@ -101,7 +101,7 @@
             commandTop.Execute(this.Instance);
             Assert.AreEqual(Constants.InvalidCommandMessage, this.Instance.Message);
         }
-        
+
         [TestMethod]
         public void ExpectMessageToBeCorrectWhenMoveCommandIsExecuted()
         {
@@ -123,7 +123,7 @@
             var moveCommand = new MoveCommand();
             moveCommand.Execute(this.Instance);
 
-            Assert.AreEqual(currentMoves+1, this.Instance.Moves);
+            Assert.AreEqual(currentMoves + 1, this.Instance.Moves);
         }
 
         [TestMethod]

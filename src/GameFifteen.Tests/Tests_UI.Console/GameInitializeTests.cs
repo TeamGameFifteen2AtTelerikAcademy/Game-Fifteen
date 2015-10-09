@@ -6,9 +6,9 @@
     using GameFifteen.Logic.Games.Contracts;
     using GameFifteen.Logic.Movers;
     using GameFifteen.Logic.Tiles.Contracts;
+    using GameFifteen.UI.Console;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-    using GameFifteen.UI.Console;
 
     [TestClass]
     public class GameInitializeTests
@@ -20,6 +20,7 @@
             var printer = new Printer();
             var gameInitializer = new GameInitializator(printer, null);
         }
+
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException), "Expect to throw if priner is null")]
         public void ExpectToThrowWhenNoPrinerIsProvided()

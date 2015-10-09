@@ -26,7 +26,7 @@
         public static void ValidateStringContainsOnlyLatinLetters(string argument, string argumentName = Constants.ArgumentName)
         {
             if (!(Regex.IsMatch(argument, @"^[a-zA-Z]*$")))
-            {  
+            {
                 throw new ArgumentException(argumentName, string.Format(Constants.StringContainsOnlyLatinLetters, argumentName));
             }
         }
