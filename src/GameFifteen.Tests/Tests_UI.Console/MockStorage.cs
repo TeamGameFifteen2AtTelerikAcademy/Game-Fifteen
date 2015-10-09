@@ -3,6 +3,10 @@ using System.Runtime.CompilerServices;
 using GameFifteen.Logic.Commands;
 using GameFifteen.Logic.Frames;
 using GameFifteen.Logic.Frames.Contracts;
+using GameFifteen.Logic.Games;
+using GameFifteen.Logic.Memento;
+using GameFifteen.Logic.Movers;
+using GameFifteen.Logic.Tiles;
 using GameFifteen.Logic.Tiles.Contracts;
 using GameFifteen.UI.Console;
 
@@ -24,35 +28,7 @@ namespace GameFifteen.Tests.UI.Console
                 .Verifiable();
             return mockedPriner.Object;
         }
-
-        /*PEPI
-          string parsedString = "";
-
-            mockedReader.Setup(x => x.ParseInput(It.IsAny<string>())).Callback((string y) =>
-            {
-                var splitInput = y.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToArray();
-
-                if (splitInput.Length == 2)
-                {
-                    if ((splitInput[0] + splitInput[1]).All(char.IsDigit))
-                    {
-                        parsedString = "pop " + splitInput[0] + " " + splitInput[1];
-                    }
-                    else
-                    {
-                        parsedString = "invalidInput";
-                    }
-                }
-                else
-                {
-                    parsedString = y;
-                }
-            })
-            .Returns(() => parsedString);
-            
-            
-            */
-
+        
         public static string Result;
 
         public static IReader GetReader(string value)
@@ -109,7 +85,6 @@ namespace GameFifteen.Tests.UI.Console
         public static IGame GetSolvedGame()
         {
             var mockedGame = new Mock<IGame>();
-            var numberOfCalls = 2;
             bool isOver = false;
 
             mockedGame.Setup(x => x.Move(It.IsAny<string>()))
@@ -125,6 +100,42 @@ namespace GameFifteen.Tests.UI.Console
                 .Returns(true);
 
             return mockedGame.Object;
+        }
+
+        public static IGame GetGameWithInvalidMove()
+        {
+            var mockedGame = new Mock<IGame>();
+            bool isOver = false;
+
+            mockedGame.Setup(x => x.Move(It.IsAny<string>()))
+                .Returns(false);
+         
+            return mockedGame.Object;
+        }
+
+        public static ICommandContext GetCommandContext()
+        {
+            var mockedContext = new Mock<ICommandContext>();
+
+            mockedContext.Setup(x => x.Game)
+                .Returns(() => MockStorage.GetGameWithInvalidMove());
+
+            mockedContext.Setup(x => x.BoardHistory)
+                .Returns(() => MockStorage.GetBoardHistory());
+
+            mockedContext.Setup(x => x.SelectedTileLabel)
+                .Returns(() => "3");
+            return mockedContext.Object;
+        }
+
+        public static IMemento GetBoardHistory()
+        {
+            var memento = new Mock<IMemento>();
+
+            memento.Setup(x=>x.SaveBoardState(It.IsAny<IFrame>()))
+                .Verifiable();
+
+            return memento.Object;
         }
 
         public static ICommandManager GeCommandManager()

@@ -1,4 +1,6 @@
-﻿namespace GameFifteen.Tests.UI.Console
+﻿using System.IO;
+
+namespace GameFifteen.Tests.UI.Console
 {
     using GameFifteen.Logic.Frames;
     using GameFifteen.Logic.Tiles.Contracts;
@@ -12,36 +14,66 @@
     [TestClass]
     public class PrinterTests
     {
-        [TestMethod]
+       [TestMethod]
         public void ExpectPrintMethodToWorkCorrectlyWithFrame()
         {
             var frame = new Frame(new ITile[3, 3]);
-            var mockedPrinter = new Mock<IPrinter>();
-            var result = string.Empty;
-
-            mockedPrinter.Setup(l => l.Print(frame))
-                .Callback<object>((s) => { result = s.ToString(); });
-
-            mockedPrinter.Object.Print(frame);
-
-            Assert.AreEqual(frame.ToString(), result);
-            mockedPrinter.Verify(x => x.Print(frame), Times.AtMostOnce);
+            var printer = new Printer();
+            printer.Print(frame);
         }
 
         [TestMethod]
         public void ExpectPrintLineMethodToWorkCorrectlyWithFrame()
         {
             var frame = new Frame(new ITile[3, 3]);
-            var mockedPriner = new Mock<IPrinter>();
-            var result = string.Empty;
+          
+            var printer = new Printer();
+            printer.PrintLine(frame);
 
-            mockedPriner.Setup(l => l.PrintLine(frame))
-                .Callback<object>((s) => { result = s.ToString(); });
-
-            mockedPriner.Object.PrintLine(frame);
-
-            Assert.AreEqual(frame.ToString(), result);
-            mockedPriner.Verify(x => x.PrintLine(frame), Times.AtMostOnce);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(IOException))]
+        public void ExpectSetCursorBottomBoardToInvokeConsoleSetCursorPositionAndThrow()
+        {
+            var printer = new Printer();
+            printer.SetCursorBottomBoard();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IOException))]
+        public void ExpectSetCursorTopBoardToInvokeConsoleSetCursorPositionAndThrow()
+        {
+            var printer = new Printer();
+            printer.SetCursorTopBoard();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IOException))]
+        public void ExpectClearBoardToInvokeConsoleSClearAndThrow()
+        {
+            var printer = new Printer();
+            printer.ClearBoard();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IOException))]
+        public void ExpectClearLineToInvokeConsoleSetCursorPositionAndThrow()
+        {
+            var printer = new Printer();
+            printer.ClearLine();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IOException))]
+        public void ExpectClearMessagesToInvokeConsoleSetCursorPositionAndThrow()
+        {
+            var printer = new Printer();
+            printer.ClearMessages();
+        }
+
+
+
+
     }
 }
