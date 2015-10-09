@@ -59,16 +59,31 @@
             return this.realFrame.Clone();
         }
 
+
+        /// <summary>
+        /// Override method Equals to check equals between curent user frame and final frame
+        /// </summary>
+        /// <param name="obj">Current user frame</param>
+        /// <returns>Result from comparison</returns>
         public override bool Equals(object obj)
         {
             return this.realFrame.Equals(obj);
         }
 
+        /// <summary>
+        /// Мethod Equals to check equals between curent user frame and final frame
+        /// </summary>
+        /// <param name="other">Current user frame</param>
+        /// <returns>Result from comparison</returns>
         public bool Equals(ProxyFrame other)
         {
             return this.realFrame.Equals(other);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return this.realFrame.ToString();

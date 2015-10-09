@@ -80,6 +80,10 @@
             return true;
         }
 
+        /// <summary>
+        /// Override method ToString with frame that will be rendering
+        /// </summary>
+        /// <returns>Result that will be drow to the console</returns>
         public override string ToString()
         {
             int spaceNeededPerTile = (this.Rows * this.Cols).ToString().Length + 1;
@@ -112,6 +116,10 @@
             return result.ToString();
         }
 
+        /// <summary>
+        /// Override method GetHashCode
+        /// </summary>
+        /// <returns>Result from GetHashCode</returns>
         public override int GetHashCode()
         {
             return base.GetHashCode();

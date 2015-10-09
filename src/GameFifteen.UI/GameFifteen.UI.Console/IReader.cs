@@ -1,6 +1,6 @@
 ﻿namespace GameFifteen.UI.Console
 {
-    internal interface IReader
+    public interface IReader
     {
         string ReadLine();
 

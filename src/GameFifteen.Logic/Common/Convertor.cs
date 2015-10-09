@@ -11,8 +11,8 @@
         /// ...<br/>
         /// 27 -> aa
         /// </summary>
-        /// <param name="number"></param>
-        /// <returns></returns>
+        /// <param name="number">Number that will be convert</param>
+        /// <returns>Letter</returns>
         public static string ConvertNumberToLetters(int number)
         {
             Validator.ValidateIsPositiveInteger(number, "number");
@@ -36,8 +36,8 @@
         /// ...
         /// aa -> 27
         /// </summary>
-        /// <param name="letters"></param>
-        /// <returns></returns>
+        /// <param name="letters">Letter that will be convert</param>
+        /// <returns>Number</returns>
         public static int ConvertLettersToNumber(string letters)
         {
             Validator.ValidateIsNotNull(letters, "letters");

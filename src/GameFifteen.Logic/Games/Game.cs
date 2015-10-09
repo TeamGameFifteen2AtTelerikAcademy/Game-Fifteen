@@ -50,14 +50,21 @@
                 return this.frame.Equals(this.framePrototype);
             }
         }
-
-        public bool IsOver { get; set; }        
-
+        
+        /// <summary>
+        /// Method move tile by lable
+        /// </summary>
+        /// <param name="tileLabel">Tile that will be move</param>
+        /// <returns>Result by moves</returns>
         public bool Move(string tileLabel)
         {
             return this.mover.Move(tileLabel, this.frame);
         }
 
+
+        /// <summary>
+        /// Method shuffle the frame
+        /// </summary>
         public void Shuffle()
         {
             do

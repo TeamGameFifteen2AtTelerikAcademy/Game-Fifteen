@@ -12,6 +12,8 @@
 
         IScoreboard ScoreboardInfo { get; set; }
 
+        bool IsGameOver { get; set; }
+
         string Message { get; set; }
 
         string SelectedTileLabel { get; set; }

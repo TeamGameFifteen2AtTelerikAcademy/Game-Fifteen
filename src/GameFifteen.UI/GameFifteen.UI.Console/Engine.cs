@@ -43,7 +43,7 @@
         {
             this.game.Shuffle();
 
-            while (!this.game.IsOver)
+            while (!this.context.IsGameOver)
             {
                 if (this.game.IsSolved)
                 {
