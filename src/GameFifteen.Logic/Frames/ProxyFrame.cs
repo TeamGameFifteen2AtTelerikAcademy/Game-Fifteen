@@ -6,13 +6,14 @@
     
     public class ProxyFrame : IFrame
     {
-        private IFrame realFrame;
-        private ITile[,] tiles;
+        private readonly IFrame realFrame;
 
-        public ProxyFrame(ITile[,] tiles)
+        public ProxyFrame(IFrame frame)
         {
-            this.Tiles = tiles;
-            this.realFrame = new Frame(this.Tiles);
+            Validator.ValidateIsEqualOrGreaterThan(frame.Rows, Constants.FrameDimensionMin, "frame.Rows");
+            Validator.ValidateIsEqualOrGreaterThan(frame.Cols, Constants.FrameDimensionMin, "frame.Cols");
+
+            realFrame = frame;
         }
 
         public int Cols
@@ -35,22 +36,7 @@
         {
             get
             {
-                return this.tiles;
-            }
-
-            private set
-            {
-                try
-                {
-                    Validator.ValidateIsEqualOrGreaterThan(value.GetLength(0), Constants.FrameDimensionMin, "Tiles.Rows");
-                    Validator.ValidateIsEqualOrGreaterThan(value.GetLength(1), Constants.FrameDimensionMin, "Tiles.Cols");
-
-                    this.tiles = value;
-                }
-                catch
-                {
-                    this.tiles = new ITile[Constants.FrameDimensionMin, Constants.FrameDimensionMin];
-                }
+                return this.realFrame.Tiles;
             }
         }
 
@@ -75,7 +61,7 @@
         /// </summary>
         /// <param name="other">Current user frame</param>
         /// <returns>Result from comparison</returns>
-        public bool Equals(ProxyFrame other)
+        public bool Equals(IFrame other)
         {
             return this.realFrame.Equals(other);
         }

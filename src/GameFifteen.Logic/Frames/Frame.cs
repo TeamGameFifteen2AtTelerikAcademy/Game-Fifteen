@@ -8,29 +8,12 @@
 
     public class Frame : IFrame
     {
-        private ITile[,] tiles;
-
         public Frame(ITile[,] tiles)
         {
             this.Tiles = tiles;
         }
 
-        public ITile[,] Tiles
-        {
-            get
-            {
-                return this.tiles;
-            }
-
-            private set
-            {
-                Validator.ValidateIsNotNull(value, "Tiles");
-                Validator.ValidateIsPositiveInteger(value.GetLength(0), "Tiles.Rows");
-                Validator.ValidateIsPositiveInteger(value.GetLength(1), "Tiles.Cols");
-
-                this.tiles = value;
-            }
-        }
+        public ITile[,] Tiles { get; private set; }
 
         public int Rows
         {
@@ -44,17 +27,17 @@
 
         public IFrame Clone()
         {
-            return new ProxyFrame((ITile[,])this.Tiles.Clone());
+            return new Frame((ITile[,])this.Tiles.Clone());
         }
 
         public override bool Equals(object obj)
         {
-            var other = obj as ProxyFrame;
+            var other = obj as IFrame;
 
             return this.Equals(other);
         }
 
-        public bool Equals(ProxyFrame other)
+        public bool Equals(IFrame other)
         {
             if (other == null)
             {
@@ -114,15 +97,6 @@
             result.Append(topBottomBorder);
 
             return result.ToString();
-        }
-
-        /// <summary>
-        /// Override method GetHashCode
-        /// </summary>
-        /// <returns>Result from GetHashCode</returns>
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
         }
     }
 }
