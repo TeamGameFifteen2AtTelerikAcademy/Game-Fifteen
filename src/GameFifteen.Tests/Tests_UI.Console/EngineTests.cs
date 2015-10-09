@@ -1,4 +1,8 @@
-﻿namespace GameFifteen.Tests.UI.Console
+﻿using GameFifteen.Logic.Commands;
+using GameFifteen.UI.Console.Commands;
+using Moq;
+
+namespace GameFifteen.Tests.UI.Console
 {
     using System;
     using System.Security.Cryptography.X509Certificates;
@@ -122,6 +126,18 @@
                 );
 
             engine.Run();
+        }
+
+        [TestMethod]
+        public void ExpectToReturnInvalidMoveMessageWhenInvalidMoveCommand()
+        {
+            var context = MockStorage.GetCommandContext();
+
+            var game = MockStorage.GetGameWithInvalidMove();
+
+            var moveCommand = new MoveCommand();
+            moveCommand.Execute(context);
+
         }
     }
 }
