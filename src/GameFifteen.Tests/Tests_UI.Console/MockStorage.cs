@@ -25,28 +25,66 @@ namespace GameFifteen.Tests.UI.Console
             return mockedPriner.Object;
         }
 
+        /*PEPI
+          string parsedString = "";
+
+            mockedReader.Setup(x => x.ParseInput(It.IsAny<string>())).Callback((string y) =>
+            {
+                var splitInput = y.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToArray();
+
+                if (splitInput.Length == 2)
+                {
+                    if ((splitInput[0] + splitInput[1]).All(char.IsDigit))
+                    {
+                        parsedString = "pop " + splitInput[0] + " " + splitInput[1];
+                    }
+                    else
+                    {
+                        parsedString = "invalidInput";
+                    }
+                }
+                else
+                {
+                    parsedString = y;
+                }
+            })
+            .Returns(() => parsedString);
+            
+            
+            */
+
+        public static string Result;
+
         public static IReader GetReader(string value)
         {
             var mockedReader = new Mock<IReader>();
-            var numberOfCalls = 2;
+            var numberOfCalls = 1;
+            Result = value;
+            var parsedInput = new string[3];
             mockedReader.Setup(x => x.ReadLine())
                 .Callback(() =>
                 {
                     if (numberOfCalls == 0)
                     {
-                        value = "Exit";
+                        Result = "Exit";
                     }
                     else
                     {
-                        value = It.IsAny<string>();
+                        //Result = It.IsAny<string>();
                         numberOfCalls--;
 
                     }
                 })
-                .Returns(value);
+                .Returns(() => Result);
 
             mockedReader.Setup(x => x.ParseInput(It.IsAny<string>()))
-                .Returns(new Reader().ParseInput(value));
+                .Callback<string>(
+            toparse =>
+            {
+                var simpleReader = new Reader();
+                parsedInput = simpleReader.ParseInput(toparse);
+            })
+                .Returns(() => parsedInput);
 
             return mockedReader.Object;
         }
@@ -66,7 +104,7 @@ namespace GameFifteen.Tests.UI.Console
 
             mockedGame.Setup(x => x.Frame)
                 .Returns(new Frame(new ITile[3, 3]));
-            
+
             return mockedGame.Object;
         }
 

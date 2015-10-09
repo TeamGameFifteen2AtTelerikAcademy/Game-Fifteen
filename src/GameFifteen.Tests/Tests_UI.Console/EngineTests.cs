@@ -30,6 +30,82 @@ namespace GameFifteen.Tests.UI.Console
         }
 
         [TestMethod]
+        public void ExpectEngineToRunProperlyWhenTopCommandIsCalled()
+        {
+            var reader = MockStorage.GetReader("top");
+
+            var engine = new Engine(
+
+                MockStorage.GetGame(),
+                new Scoreboard(),
+                MockStorage.GetPrinter(),
+                reader,
+                new CommandManager(),
+                new BoardHistory()
+
+                );
+
+            engine.Run();
+        }
+
+        [TestMethod]
+        public void ExpectEngineToRunProperlyWhenMoveCommandIsCalled()
+        {
+            var reader = MockStorage.GetReader("move 3");
+
+            var engine = new Engine(
+
+                MockStorage.GetGame(),
+                new Scoreboard(),
+                MockStorage.GetPrinter(),
+                reader,
+                new CommandManager(),
+                new BoardHistory()
+
+                );
+
+            engine.Run();
+        }
+
+        [TestMethod]
+        public void ExpectEngineToRunProperlyWhenInvalidMoveCommandIsCalled()
+        {
+            var reader = MockStorage.GetReader("move -1");
+
+            var engine = new Engine(
+
+                MockStorage.GetGame(),
+                new Scoreboard(),
+                MockStorage.GetPrinter(),
+                reader,
+                new CommandManager(),
+                new BoardHistory()
+
+                );
+
+            engine.Run();
+        }
+
+        [TestMethod]
+        public void ExpectEngineToRunProperlyWhenRestartCommandIsCalled()
+        {
+            var reader = MockStorage.GetReader("restart");
+
+            var engine = new Engine(
+
+                MockStorage.GetGame(),
+                new Scoreboard(),
+                MockStorage.GetPrinter(),
+                reader,
+                new CommandManager(),
+                new BoardHistory()
+
+                );
+
+            engine.Run();
+        }
+
+        [TestMethod]
         public void ExpectToExecuteGameOverWhenGameIsSolved()
         {
             var reader = MockStorage.GetReader("exit");
