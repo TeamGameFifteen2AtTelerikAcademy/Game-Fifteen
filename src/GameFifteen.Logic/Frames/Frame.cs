@@ -2,7 +2,6 @@
 {
     using System;
     using System.Text;
-    using Common;
     using Frames.Contracts;
     using Tiles.Contracts;
 
@@ -53,7 +52,7 @@
             {
                 for (int col = 0; col < this.Cols; col++)
                 {
-                    if (this.Tiles[row, col] != other.Tiles[row, col])
+                    if (!this.Tiles[row, col].Equals(other.Tiles[row, col]))
                     {
                         return false;
                     }
