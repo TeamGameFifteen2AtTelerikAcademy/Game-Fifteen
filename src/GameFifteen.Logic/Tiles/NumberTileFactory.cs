@@ -2,6 +2,9 @@
 {
     using Tiles.Contracts;
 
+    /// <summary>
+    /// The class represents the model of the NumberTileFactory.
+    /// </summary>
     public class NumberTileFactory : TileFactory
     {
         public override ITile CreateTile()

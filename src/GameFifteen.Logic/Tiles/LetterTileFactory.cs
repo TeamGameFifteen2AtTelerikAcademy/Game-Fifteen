@@ -2,6 +2,9 @@
 {
     using Tiles.Contracts;
 
+    /// <summary>
+    /// The class represents the model of the LetterTileFactory.
+    /// </summary>
     public class LetterTileFactory : TileFactory
     {
         public override ITile CreateTile()

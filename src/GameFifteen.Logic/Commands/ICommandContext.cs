@@ -1,47 +1,63 @@
-﻿namespace GameFifteen.Logic.Commands
+﻿// <copyright file="ICommandContext.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Interface for ICommandContext.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.Logic.Commands
 {
     using Games.Contracts;
     using Memento;
     using Scoreboards.Contracts;
 
     /// <summary>
-    /// Interface for ICommandContext
+    /// Interface for ICommandContext.
     /// </summary>
     public interface ICommandContext
     {
         /// <summary>
-        /// Public property Game of typeIGame
+        /// Gets or sets Game of type IGame.
         /// </summary>
+        /// <value>Object of type IGame.</value>
         IGame Game { get; set; }
 
         /// <summary>
-        /// Public property BoardHistory of type IMemento
+        /// Gets or sets BoardHistory of type IMemento.
         /// </summary>
+        /// <value>Object of type IMemento.</value>
         IMemento BoardHistory { get; set; }
 
         /// <summary>
-        /// Public property ScoreboardInfo of type IScoreboard
+        /// Gets or sets ScoreboardInfo of type IScoreboard.
         /// </summary>
+        /// <value>Object of type IScoreboard.</value>
         IScoreboard ScoreboardInfo { get; set; }
 
         /// <summary>
-        /// Public property IsGameOver of type Boolena
+        /// Gets or sets a value indicating whether is the game over.
         /// </summary>
+        /// <value>Object of type Boolean.</value>
         bool IsGameOver { get; set; }
 
         /// <summary>
-        /// Public property Message of type String
+        /// Gets or sets Message of type String.
         /// </summary>
+        /// <value>Object of type String.</value>
         string Message { get; set; }
 
         /// <summary>
-        /// Public property SelectedTileLabel of type String
+        /// Gets or sets SelectedTileLabel of type String.
         /// </summary>
+        /// <value>Object of type String.</value>
         string SelectedTileLabel { get; set; }
 
         /// <summary>
-        /// Public property Moves of type Int32
+        /// Gets or sets Moves of type integer.
         /// </summary>
+        /// <value>Object of type Integer.</value>
         int Moves { get; set; }
     }
 }

@@ -1,5 +1,8 @@
 ﻿namespace GameFifteen.Logic.Tiles.Contracts
 {
+    /// <summary>
+    /// The class represents the model of the Tile.
+    /// </summary>
     public abstract class Tile : ITile
     {
         protected Tile(int id)

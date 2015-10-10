@@ -1,5 +1,8 @@
 ﻿namespace GameFifteen.Logic.Tiles.Contracts
 {
+    /// <summary>
+    /// The class represents the model of the TileFactory.
+    /// </summary>
     public abstract class TileFactory
     {
         private int currentTileId = 1;

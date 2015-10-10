@@ -5,6 +5,9 @@
 
     using GameFifteen.Logic.Frames.Contracts;
 
+    /// <summary>
+    /// The class represents the model of the Mover.
+    /// </summary>
     public abstract class Mover : IMover
     {
         protected readonly Position NotFoundPosition = new Position(-1, -1);
@@ -65,6 +68,9 @@
 
         protected abstract List<string> GetCurrentMovableTileLabels(IFrame frame);
 
+        /// <summary>
+        /// The class represents the model of the protected Position.
+        /// </summary>
         protected class Position
         {
             public Position(int row, int col)

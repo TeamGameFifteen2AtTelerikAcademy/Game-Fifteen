@@ -4,6 +4,9 @@
     using GameFifteen.Logic.Frames.Contracts;
     using GameFifteen.Logic.Tiles.Contracts;
     
+    /// <summary>
+    /// The class is a proxy for the class Frame.
+    /// </summary>
     public class ProxyFrame : IFrame
     {
         private readonly IFrame realFrame;
@@ -13,7 +16,7 @@
             Validator.ValidateIsEqualOrGreaterThan(frame.Rows, Constants.FrameDimensionMin, "frame.Rows");
             Validator.ValidateIsEqualOrGreaterThan(frame.Cols, Constants.FrameDimensionMin, "frame.Cols");
 
-            realFrame = frame;
+            this.realFrame = frame;
         }
 
         public int Cols
@@ -45,31 +48,30 @@
             return this.realFrame.Clone();
         }
 
-
         /// <summary>
-        /// Override method Equals to check equals between curent user frame and final frame
+        /// Override method Equals to check equals between curent user frame and final frame.
         /// </summary>
-        /// <param name="obj">Current user frame</param>
-        /// <returns>Result from comparison</returns>
+        /// <param name="obj">Current user frame.</param>
+        /// <returns>Result from comparison.</returns>
         public override bool Equals(object obj)
         {
             return this.realFrame.Equals(obj);
         }
 
         /// <summary>
-        /// Мethod Equals to check equals between curent user frame and final frame
+        /// Мethod Equals to check equals between curent user frame and final frame.
         /// </summary>
-        /// <param name="other">Current user frame</param>
-        /// <returns>Result from comparison</returns>
+        /// <param name="other">Current user frame.</param>
+        /// <returns>Result from comparison.</returns>
         public bool Equals(IFrame other)
         {
             return this.realFrame.Equals(other);
         }
 
         /// <summary>
-        /// 
+        /// The method overides the default ToStringMethod().
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Specific for the class string.</returns>
         public override string ToString()
         {
             return this.realFrame.ToString();

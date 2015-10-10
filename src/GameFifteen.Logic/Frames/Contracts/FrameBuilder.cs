@@ -53,7 +53,6 @@
             }
 
             this.Frame = proxyFrame;
-
         }
 
         /// <summary>

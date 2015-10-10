@@ -5,13 +5,23 @@
     using Frames.Contracts;
     using Tiles.Contracts;
 
+    /// <summary>
+    /// The class represents the model of Frame
+    /// </summary>
     public class Frame : IFrame
     {
+        /// <summary>
+        /// The constructor of the Frame.
+        /// </summary>
+        /// <param name="tiles">Two dimensional array of ITile.</param>
         public Frame(ITile[,] tiles)
         {
             this.Tiles = tiles;
         }
 
+        /// <summary>
+        /// Gets Two dimensional array of ITile.
+        /// </summary>
         public ITile[,] Tiles { get; private set; }
 
         public int Rows
@@ -63,9 +73,9 @@
         }
 
         /// <summary>
-        /// Override method ToString with frame that will be rendering
+        /// Override method ToString with frame that will be rendering.
         /// </summary>
-        /// <returns>Result that will be drow to the console</returns>
+        /// <returns>Result that will be drow to the console.</returns>
         public override string ToString()
         {
             int spaceNeededPerTile = (this.Rows * this.Cols).ToString().Length + 1;
