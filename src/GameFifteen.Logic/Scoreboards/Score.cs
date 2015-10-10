@@ -2,6 +2,9 @@
 {
     using GameFifteen.Logic.Scoreboards.Contracts;
 
+    /// <summary>
+    /// The class represents the model of the Score.
+    /// </summary>
     public class Score : IScore
     {
         public Score(int moves, string playerName)

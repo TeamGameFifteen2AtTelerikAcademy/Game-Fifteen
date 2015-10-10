@@ -5,6 +5,9 @@
     using GameFifteen.Logic.Frames.Contracts;
     using GameFifteen.Logic.Movers.Contracts;
 
+    /// <summary>
+    /// The class represents the model of the RowColMover.
+    /// </summary>
     public class RowColMover : Mover
     {
         /// <summary>

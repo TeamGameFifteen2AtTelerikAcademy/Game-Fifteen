@@ -9,7 +9,7 @@
         <SolidColorBrush Color="White" Opacity="0.5" x:Key="WhiteThirdOpacityBrush"/>
 
         <Style x:Key="ConsolasFamilyFont" TargetType="{x:Type Control}">
-            <Setter Property="FontFamily" Value="Consolas" />
+            <Setter Property="TextElement.FontFamily" Value="pack://application:,,,/Resources/Fonts/#South park" />
         </Style>
 
         <BitmapImage x:Key="LogoImageSource" UriSource="Resources/logo.png" />
@@ -19,7 +19,7 @@
             <Setter Property="Background" Value="Black" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Opacity" Value="0.8" />
-            <Setter Property="FontSize" Value="25" />
+            <Setter Property="FontSize" Value="22" />
             <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="Template">
                 <Setter.Value>
@@ -120,7 +120,7 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontSize" Value="25" />
             <Setter Property="Foreground" Value="Black" />
         </Style>
 

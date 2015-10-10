@@ -1,7 +1,19 @@
-﻿namespace GameFifteen.Logic.Common
+﻿// <copyright file="Converter.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Static class Converter
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.Logic.Common
 {
     using System;
 
+    /// <summary>
+    /// This static class converts numbers to letters and letters to numbers.
+    /// </summary>
     public static class Converter
     {
         /// <summary>
@@ -9,10 +21,10 @@
         /// 1 -> a<br/>
         /// 2 -> b<br/>
         /// ...<br/>
-        /// 27 -> aa
+        /// 27 -> з.
         /// </summary>
-        /// <param name="number">Number that will be convert</param>
-        /// <returns>Letter</returns>
+        /// <param name="number">Number that will be convert.</param>
+        /// <returns>Letter string.</returns>
         public static string ConvertNumberToLetters(int number)
         {
             Validator.ValidateIsPositiveInteger(number, "number");
@@ -34,10 +46,10 @@
         /// a -> 1<br/>
         /// b -> 2<br/>
         /// ...
-        /// aa -> 27
+        /// z -> 27.
         /// </summary>
-        /// <param name="letters">Letter that will be convert</param>
-        /// <returns>Number</returns>
+        /// <param name="letters">Letter that will be convert.</param>
+        /// <returns>Number string.</returns>
         public static int ConvertLettersToNumber(string letters)
         {
             Validator.ValidateIsNotNull(letters, "letters");

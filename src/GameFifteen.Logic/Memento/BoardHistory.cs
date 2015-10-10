@@ -6,6 +6,9 @@
     using System.Text;
     using GameFifteen.Logic.Frames.Contracts;
 
+    /// <summary>
+    /// The class represents the model of the BoardHistory.
+    /// </summary>
     public class BoardHistory : IMemento
     {
         private IList<IFrame> boardStates;

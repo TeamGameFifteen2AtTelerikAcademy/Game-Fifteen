@@ -25,7 +25,9 @@
             <TextBlock Text="by Game Fifteen 2 Team" 
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Center"
-                        FontSize="20" Height="Auto"
+                        FontSize="20" 
+                        Foreground="Yellow"
+                        Height="Auto"
                         Margin="0,0,0, 50"/>
 
             <Button  x:Name="ButtonResumeCurrentGame" 
@@ -38,7 +40,7 @@
                     <Style  TargetType="Button">
                         <Setter Property="Margin" Value="10"/>
                         <Setter Property="Background" Value="Black" />
-                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="Foreground" Value="Yellow" />
                         <Setter Property="Opacity" Value="0.8" />
                         <Setter Property="FontSize" Value="25" />
                         <Setter Property="FontWeight" Value="Normal" />

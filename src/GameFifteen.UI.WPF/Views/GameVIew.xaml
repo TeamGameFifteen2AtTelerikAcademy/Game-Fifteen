@@ -36,7 +36,6 @@
                            />
                         <Label Content="x" 
                            Style="{StaticResource GameStatsLabel}"
-                           Margin="0,0,0, 6" 
                            />
                         <Label Content="{Binding Cols}" 
                            Style="{StaticResource GameStatsLabel}"
@@ -60,7 +59,7 @@
                         Margin="10 0">
                         <Grid Width="300"
                           Height="70">
-                            <Button x:Name="ButtonUndoMove" Content="⎌"
+                            <Button x:Name="ButtonUndoMove" Content="undo"
                             Style="{StaticResource PlayebleTileButton}"
                             Command="{Binding UndoMove}"  />
                         </Grid>

@@ -6,6 +6,9 @@
     using GameFifteen.Logic.Games.Contracts;
     using GameFifteen.Logic.Movers.Contracts;
 
+    /// <summary>
+    /// The class represents the model of the Game.
+    /// </summary>
     public class Game : IGame
     {
         private readonly IFrame framePrototype;
@@ -52,18 +55,17 @@
         }
         
         /// <summary>
-        /// Method move tile by lable
+        /// Method move tile by lable.
         /// </summary>
-        /// <param name="tileLabel">Tile that will be move</param>
-        /// <returns>Result by moves</returns>
+        /// <param name="tileLabel">Tile that will be move.</param>
+        /// <returns>Result by moves.</returns>
         public bool Move(string tileLabel)
         {
             return this.mover.Move(tileLabel, this.frame);
         }
 
-
         /// <summary>
-        /// Method shuffle the frame
+        /// Method shuffle the frame.
         /// </summary>
         public void Shuffle()
         {

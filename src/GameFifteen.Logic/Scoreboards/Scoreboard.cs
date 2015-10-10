@@ -8,15 +8,18 @@
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Scoreboards.Contracts;
 
+    /// <summary>
+    /// The class represents the model of the Scoreboard.
+    /// </summary>
     public class Scoreboard : IScoreboard
     {
-        private IList<Score> TopScores = new List<Score>();
+        private IList<Score> topScores = new List<Score>();
 
         /// <summary>
-        /// Method add score
+        /// Method add score.
         /// </summary>
-        /// <param name="moves">Number of moves</param>
-        /// <param name="playerName">Player name</param>
+        /// <param name="moves">Number of moves.</param>
+        /// <param name="playerName">Player name.</param>
         public void Add(int moves, string playerName)
         {
             Validator.ValidateIsPositiveInteger(moves, "moves");
@@ -29,26 +32,26 @@
 
             var newScore = new Score(moves, playerName);
 
-            this.TopScores.Add(newScore);
-            this.TopScores = this.TopScores
+            this.topScores.Add(newScore);
+            this.topScores = this.topScores
                 .OrderBy(score => score.Moves)
                 .Take(Constants.ScoreboardMaxCount)
                 .ToList();
         }
         
         /// <summary>
-        /// Method check is player result is in top score
+        /// Method check is player result is in top score.
         /// </summary>
-        /// <param name="moves">Number of moves</param>
-        /// <returns>Is player score is one of the top scores</returns>
+        /// <param name="moves">Number of moves.</param>
+        /// <returns>Is player score is one of the top scores.</returns>
         public bool IsInTopScores(int moves)
         {
-            if (this.TopScores.Count() < Constants.ScoreboardMaxCount)
+            if (this.topScores.Count() < Constants.ScoreboardMaxCount)
             {
                 return true;
             }
 
-            int mostMovesYet = this.TopScores.Last().Moves;
+            int mostMovesYet = this.topScores.Last().Moves;
 
             if (moves < mostMovesYet)
             {
@@ -59,11 +62,11 @@
         }
 
         /// <summary>
-        /// Add player score if is in top scores
+        /// Add player score if is in top scores.
         /// </summary>
         public override string ToString()
         {
-            if (this.TopScores.Count == 0)
+            if (this.topScores.Count == 0)
             {
                 return Constants.ScoreboardIsEmpty + Environment.NewLine;
             }
@@ -72,7 +75,7 @@
             result.Append(Environment.NewLine);
 
             int index = 1;
-            foreach (var score in this.TopScores)
+            foreach (var score in this.topScores)
             {
                 result.AppendLine(string.Format(Constants.ScoreboardFormat, index, score.PlayerNeme, score.Moves));
                 index++;
@@ -82,13 +85,13 @@
         }
 
         /// <summary>
-        /// Get top scores
+        /// Get top scores.
         /// </summary>
         public IList<IScore> GetTopScores()
         {
             var publicTopScores = new List<IScore>();
 
-            foreach (var score in this.TopScores)
+            foreach (var score in this.topScores)
             {
                 publicTopScores.Add(new Score(score.Moves, score.PlayerNeme));
             }
