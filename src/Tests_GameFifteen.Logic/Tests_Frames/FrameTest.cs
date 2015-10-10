@@ -49,5 +49,37 @@ namespace Tests_GameFifteen.Logic.Tests_Frames
 
         }
 
+        [TestMethod]
+        public void ExpectFalseEqualsMethodWhithDiferentIframeWithDiferentColTest()
+        {
+            TileFactory tileFactoryFirst = new NumberTileFactory();
+            TileFactory tileFactorySecond = new NumberTileFactory();
+            FrameBuilder frameBuilderFirst = new ClassicPatternFrameBuilder(tileFactoryFirst);
+            FrameBuilder frameBuilderSecond = new ColumnsPatternFrameBuilder(tileFactorySecond);
+            var frameDirectorFirst = new FrameDirector(frameBuilderFirst);
+            var frameDirectorSecond = new FrameDirector(frameBuilderSecond);
+            var expectetFrameFirst = frameDirectorFirst.ConstructFrame(5, 5);
+            var expectetFrameSecond = frameDirectorSecond.ConstructFrame(5, 5);
+            bool result = expectetFrameFirst.Equals(expectetFrameSecond);
+            Assert.IsFalse(result);
+
+        }
+
+        [TestMethod]
+        public void ExpectFalseEqualsMethodWhithDiferentIframeWithDiferentSizeOfColumnsTest()
+        {
+            TileFactory tileFactoryFirst = new NumberTileFactory();
+            TileFactory tileFactorySecond = new NumberTileFactory();
+            FrameBuilder frameBuilderFirst = new ClassicPatternFrameBuilder(tileFactoryFirst);
+            FrameBuilder frameBuilderSecond = new ColumnsPatternFrameBuilder(tileFactorySecond);
+            var frameDirectorFirst = new FrameDirector(frameBuilderFirst);
+            var frameDirectorSecond = new FrameDirector(frameBuilderSecond);
+            var expectetFrameFirst = frameDirectorFirst.ConstructFrame(5, 5);
+            var expectetFrameSecond = frameDirectorSecond.ConstructFrame(6, 6);
+            bool result = expectetFrameFirst.Equals(expectetFrameSecond);
+            Assert.IsFalse(result);
+
+        }
+
     }
 }
