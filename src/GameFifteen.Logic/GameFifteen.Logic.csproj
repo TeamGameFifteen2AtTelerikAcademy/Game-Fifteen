@@ -68,7 +68,7 @@
     <Compile Include="Commands\ICommandContext.cs" />
     <Compile Include="Commands\ICommandManager.cs" />
     <Compile Include="Common\Constants.cs" />
-    <Compile Include="Common\Converter.cs" />
+    <Compile Include="Common\Convertor.cs" />
     <Compile Include="Common\Validator.cs" />
     <Compile Include="Frames\ProxyFrame.cs" />
     <Compile Include="Memento\IMemento.cs" />
