@@ -1,10 +1,25 @@
-﻿namespace GameFifteen.UI.Console
+﻿// <copyright file="Program.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Program class - let the fun begin.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.UI.Console
 {
     using GameFifteen.Logic.Scoreboards;
     using Logic.Memento;
 
+    /// <summary>
+    /// Program class - let the fun begin.
+    /// </summary>
     internal class Program
     {
+        /// <summary>
+        /// The main method of the Console UI of the game.
+        /// </summary>
         public static void Main()
         {
             var printer = new Printer();

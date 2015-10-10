@@ -1,4 +1,13 @@
-﻿namespace GameFifteen.UI.Console
+﻿// <copyright file="GameInitializator.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// GameInitializator class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.UI.Console
 {
     using System;
 
@@ -12,12 +21,26 @@
     using GameFifteen.Logic.Tiles;
     using GameFifteen.Logic.Tiles.Contracts;
 
+    /// <summary>
+    /// Game Initializer class.
+    /// </summary>
     internal class GameInitializator
     {
+        /// <summary>
+        /// Holds the IPrinter.
+        /// </summary>
         private readonly IPrinter printer;
 
+        /// <summary>
+        /// Holds the IReader.
+        /// </summary>
         private readonly IReader reader;
 
+        /// <summary>
+        /// Initializes a new instance of the GameInitializator class.
+        /// </summary>
+        /// <param name="printer">The IPrinter.</param>
+        /// <param name="reader">The IReader.</param>
         public GameInitializator(IPrinter printer, IReader reader)
         {
             Validator.ValidateIsNotNull(printer);
@@ -27,6 +50,10 @@
             this.reader = reader;
         }
 
+        /// <summary>
+        /// The method initialize IGame.
+        /// </summary>
+        /// <returns>New IGame.</returns>
         public IGame Initialize()
         {
             var tileFactory = this.ChooseTiles();
@@ -47,6 +74,10 @@
             return new Game(frame, mover);
         }
 
+        /// <summary>
+        /// The method selects Tiles factory type.
+        /// </summary>
+        /// <returns>New TileFactory.</returns>
         private TileFactory ChooseTiles()
         {
             TileFactory tileFactory;
@@ -64,6 +95,10 @@
             return tileFactory;
         }
 
+        /// <summary>
+        /// The method selects IMover type.
+        /// </summary>
+        /// <returns>New IMover.</returns>
         private IMover ChooseMover()
         {
             IMover mover;
@@ -82,6 +117,11 @@
             return mover;
         }
 
+        /// <summary>
+        /// The method selects FrameBuilder type.
+        /// </summary>
+        ///  /// <param name="tileFactory">The Tile factory.</param>
+        /// <returns>New FrameBuilder.</returns>
         private FrameBuilder ChoosePattern(TileFactory tileFactory)
         {
             FrameBuilder frameBuilder;
@@ -100,6 +140,12 @@
             return frameBuilder;
         }
 
+        /// <summary>
+        /// The method choose type by readers input.
+        /// </summary>
+        /// <typeparam name="T">Struct of type T.</typeparam>
+        /// <param name="message">String message.</param>
+        /// <returns>Object of type struct.</returns>
         private T ChooseType<T>(string message) where T : struct
         {
             T result;
@@ -112,6 +158,11 @@
             return result;
         }
 
+        /// <summary>
+        /// The method choose integer by readers input.
+        /// </summary>
+        /// <param name="message">String message.</param>
+        /// <returns>Selected integer.</returns>
         private int ChooseInteger(string message)
         {
             int integer;
