@@ -1,38 +1,50 @@
-﻿namespace GameFifteen.Logic.Frames.Contracts
+﻿// <copyright file="IFrame.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Interface for ICommandManager.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.Logic.Frames.Contracts
 {
     using Tiles.Contracts;
 
     /// <summary>
-    /// Interface for IFrame
+    /// Interface for IFrame.
     /// </summary>
     public interface IFrame
     {
         /// <summary>
-        /// The property should return two-dimensional array of ITile
+        /// Gets two-dimensional array of ITile.
         /// </summary>
+        /// <value>Two dimensional array of Tile.</value>
         ITile[,] Tiles { get; }
 
         /// <summary>
-        /// The property should return number of rows of the Tiles
+        /// Gets number of rows of the Tiles.
         /// </summary>
+        /// <value>Frame rows.</value>
         int Rows { get; }
 
         /// <summary>
-        /// The property should return number of columns of the Tiles
+        /// Gets of columns of the Tiles.
         /// </summary>
+        /// <value>Frame columns.</value>
         int Cols { get; }
 
         /// <summary>
-        /// The method should return deep copy of itself
+        /// The method should return deep copy of itself.
         /// </summary>
-        /// <returns>IFram deep copy</returns>
+        /// <returns>IFrame deep copy.</returns>
         IFrame Clone();
 
         /// <summary>
-        /// The method should determinate how to compare two IFrames
+        /// The method should determinate how to compare two IFrames.
         /// </summary>
-        /// <param name="other">acceprs IFrame to be compred with</param>
-        /// <returns>bool</returns>
+        /// <param name="other">Accepts IFrame to be compared with.</param>
+        /// <returns>Returns boolean value.</returns>
         bool Equals(IFrame other);
     }
 }
