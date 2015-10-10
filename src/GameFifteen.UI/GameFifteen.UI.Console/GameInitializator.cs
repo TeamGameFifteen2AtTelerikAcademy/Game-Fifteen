@@ -34,17 +34,12 @@
             var director = new FrameDirector(frameBuilder);
             int rows = this.ChooseInteger(Constants.BoardSizeRestrictionInfo + Environment.NewLine + Constants.RowsQuestion);
             int cols = this.ChooseInteger(Constants.ColsQuestion);
-            IFrame frame;
 
-            try
-            {
-                frame = director.ConstructFrame(rows, cols);
-            }
-            catch (OverflowException)
+            var frame = director.ConstructFrame(rows, cols);
+            if (frame.Rows != rows || frame.Cols != cols)
             {
                 this.printer.PrintLine(Constants.NegativeRowsCols);
                 this.printer.PrintLine(Constants.BoardSizeRestrictionInfo);
-                frame = director.ConstructFrame(Constants.FrameDimensionMin, Constants.FrameDimensionMin);
             }
 
             var mover = this.ChooseMover();
