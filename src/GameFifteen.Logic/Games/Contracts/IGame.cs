@@ -10,7 +10,6 @@
 
         IFrame FramePrototype { get; }
 
-       // IFrame Board { get; }
         bool Move(string tileLabel);
 
         void Shuffle();
