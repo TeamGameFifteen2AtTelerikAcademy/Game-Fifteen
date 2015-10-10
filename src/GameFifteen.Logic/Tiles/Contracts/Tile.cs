@@ -11,16 +11,6 @@
 
         public abstract string Label { get; }
 
-        public static bool operator ==(Tile firstTile, Tile secondTile)
-        {
-            return object.Equals(firstTile, secondTile);
-        }
-
-        public static bool operator !=(Tile firstTile, Tile secondTile)
-        {
-            return !object.Equals(firstTile, secondTile);
-        }
-
         public override bool Equals(object obj)
         {
             var other = obj as ITile;
