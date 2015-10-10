@@ -1,4 +1,13 @@
-﻿namespace GameFifteen.Logic.Frames
+﻿// <copyright file="ProxyFrame.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// ProxyFrame class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.Logic.Frames
 {
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Frames.Contracts;
@@ -9,8 +18,15 @@
     /// </summary>
     public class ProxyFrame : IFrame
     {
+        /// <summary>
+        /// Private field that holds realFrame of type IFrame.
+        /// </summary>
         private readonly IFrame realFrame;
 
+        /// <summary>
+        /// Initializes a new instance of the ProxyFrame class.
+        /// </summary>
+        /// <param name="frame">Frame of type IFrame.</param>
         public ProxyFrame(IFrame frame)
         {
             Validator.ValidateIsEqualOrGreaterThan(frame.Rows, Constants.FrameDimensionMin, "frame.Rows");
@@ -19,6 +35,10 @@
             this.realFrame = frame;
         }
 
+        /// <summary>
+        /// Gets Frame's columns.
+        /// </summary>
+        /// <value>Columns of type integer.</value>
         public int Cols
         {
             get
@@ -27,6 +47,10 @@
             }
         }
 
+        /// <summary>
+        /// Gets Frame's rows.
+        /// </summary>
+        /// <value>Rows of type integer.</value>
         public int Rows
         {
             get
@@ -35,6 +59,10 @@
             }
         }
 
+        /// <summary>
+        /// Gets Two dimensional array of ITile.
+        /// </summary>
+        /// <value>Two dimensional array of ITile.</value>
         public ITile[,] Tiles
         {
             get
@@ -43,13 +71,17 @@
             }
         }
 
+        /// <summary>
+        /// The method returns deep copy of the Frame itself.
+        /// </summary>
+        /// <returns>IFrame copy.</returns>
         public IFrame Clone()
         {
             return this.realFrame.Clone();
         }
 
         /// <summary>
-        /// Override method Equals to check equals between curent user frame and final frame.
+        /// Override method Equals to check equals between current user frame and final frame.
         /// </summary>
         /// <param name="obj">Current user frame.</param>
         /// <returns>Result from comparison.</returns>
@@ -59,7 +91,7 @@
         }
 
         /// <summary>
-        /// Мethod Equals to check equals between curent user frame and final frame.
+        /// Method Equals to check equals between current user frame and final frame.
         /// </summary>
         /// <param name="other">Current user frame.</param>
         /// <returns>Result from comparison.</returns>
@@ -69,7 +101,7 @@
         }
 
         /// <summary>
-        /// The method overides the default ToStringMethod().
+        /// The method overrides the default ToStringMethod().
         /// </summary>
         /// <returns>Specific for the class string.</returns>
         public override string ToString()
@@ -77,6 +109,10 @@
             return this.realFrame.ToString();
         }
 
+        /// <summary>
+        /// The method overrides the default GetHashCode().
+        /// </summary>
+        /// <returns>Unique integer number.</returns>
         public override int GetHashCode()
         {
             return this.realFrame.GetHashCode();

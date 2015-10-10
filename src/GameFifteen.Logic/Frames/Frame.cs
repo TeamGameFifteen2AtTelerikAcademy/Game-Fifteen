@@ -1,4 +1,13 @@
-﻿namespace GameFifteen.Logic.Frames
+﻿// <copyright file="Frame.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Frame class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.Logic.Frames
 {
     using System;
     using System.Text;
@@ -6,12 +15,12 @@
     using Tiles.Contracts;
 
     /// <summary>
-    /// The class represents the model of Frame
+    /// The class represents the model of Frame.
     /// </summary>
     public class Frame : IFrame
     {
         /// <summary>
-        /// The constructor of the Frame.
+        /// Initializes a new instance of the Frame class.
         /// </summary>
         /// <param name="tiles">Two dimensional array of ITile.</param>
         public Frame(ITile[,] tiles)
@@ -22,23 +31,41 @@
         /// <summary>
         /// Gets Two dimensional array of ITile.
         /// </summary>
+        /// <value>Two dimensional array of ITile.</value>
         public ITile[,] Tiles { get; private set; }
 
+        /// <summary>
+        /// Gets Frame's rows.
+        /// </summary>
+        /// <value>Rows of type integer.</value>
         public int Rows
         {
             get { return this.Tiles.GetLength(0); }
         }
 
+        /// <summary>
+        /// Gets Frame's columns.
+        /// </summary>
+        /// <value>Columns of type integer.</value>
         public int Cols
         {
             get { return this.Tiles.GetLength(1); }
         }
 
+        /// <summary>
+        /// The method returns deep copy of the Frame itself.
+        /// </summary>
+        /// <returns>IFrame copy.</returns>
         public IFrame Clone()
         {
             return new Frame((ITile[,])this.Tiles.Clone());
         }
 
+        /// <summary>
+        /// The method overrides default Equals method.
+        /// </summary>
+        /// <param name="obj">Object to compare with.</param>
+        /// <returns>Returns true or false.</returns>
         public override bool Equals(object obj)
         {
             var other = obj as IFrame;
@@ -46,6 +73,11 @@
             return this.Equals(other);
         }
 
+        /// <summary>
+        /// The method overrides default Equals method.
+        /// </summary>
+        /// <param name="other">IFrame to compare with.</param>
+        /// <returns>Returns true or false.</returns>
         public bool Equals(IFrame other)
         {
             if (other == null)
@@ -75,7 +107,7 @@
         /// <summary>
         /// Override method ToString with frame that will be rendering.
         /// </summary>
-        /// <returns>Result that will be drow to the console.</returns>
+        /// <returns>Result that will be drown to the console.</returns>
         public override string ToString()
         {
             int spaceNeededPerTile = (this.Rows * this.Cols).ToString().Length + 1;

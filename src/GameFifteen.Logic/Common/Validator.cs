@@ -3,7 +3,7 @@
 // Copyright(c) 2015 Team "Game-Fifteen-2"
 // </copyright>
 // <summary>
-// Interface for ICommandManager.
+// Static class Validator.
 // </summary>
 // <author>GameFifteen2Team</author>
 
