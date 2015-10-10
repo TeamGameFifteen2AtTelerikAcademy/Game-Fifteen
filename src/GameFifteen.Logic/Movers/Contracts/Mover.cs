@@ -3,7 +3,7 @@
 // Copyright(c) 2015 Team "Game-Fifteen-2"
 // </copyright>
 // <summary>
-// Abstract class Mover.
+// Class Mover.
 // </summary>
 // <author>GameFifteen2Team</author>
 
