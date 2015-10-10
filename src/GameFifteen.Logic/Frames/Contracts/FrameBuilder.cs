@@ -3,6 +3,9 @@
     using Common;
     using Tiles.Contracts;
 
+    /// <summary>
+    /// Abstrac class FrameBuilder that defines main need of its successors
+    /// </summary>
     public abstract class FrameBuilder
     {
         private TileFactory tileFactory;
@@ -31,6 +34,11 @@
             get; private set;
         }
 
+        /// <summary>
+        /// The method initialize frame by given rows and golumns
+        /// </summary>
+        /// <param name="rows">the rows of the fram</param>
+        /// <param name="cols">the columns of the frame</param>
         public void InitializeFrame(int rows, int cols)
         {
             IFrame proxyFrame;
@@ -48,13 +56,25 @@
 
         }
 
+        /// <summary>
+        /// Abstract method to be implemented in the concrete builder
+        /// </summary>
         public abstract void FillFrameWithTiles();
 
+        /// <summary>
+        /// Returns IFrame with 
+        /// </summary>
+        /// <returns>IFrame</returns>
         public IFrame GetFrame()
         {
             return this.Frame;
         }
 
+        /// <summary>
+        /// The method creates new tile in given position in the frame
+        /// </summary>
+        /// <param name="row">the row of the tile</param>
+        /// <param name="col">the column of the tile</param>
         protected virtual void FillTileInFrame(int row, int col)
         {
             bool isThisMostBottomRightPosition = row == this.Frame.Rows - 1 && col == this.Frame.Cols - 1;

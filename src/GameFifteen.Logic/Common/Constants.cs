@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// Public static class that holds all of the needed constants
+    /// </summary>
     public static class Constants
     {
         // Validator

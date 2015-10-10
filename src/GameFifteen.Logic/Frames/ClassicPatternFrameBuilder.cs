@@ -3,6 +3,9 @@
     using Frames.Contracts;
     using Tiles.Contracts;
 
+    /// <summary>
+    /// The class is used to build frames first rows then columns
+    /// </summary>
     public class ClassicPatternFrameBuilder : FrameBuilder
     {
         public ClassicPatternFrameBuilder(TileFactory tileFactory) : base(tileFactory)
