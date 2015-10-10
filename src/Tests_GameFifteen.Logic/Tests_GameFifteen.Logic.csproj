@@ -57,7 +57,9 @@
     <Compile Include="Tests_Common\ValidatorTest.cs" />
     <Compile Include="Tests_Frames\FrameTest.cs" />
     <Compile Include="Tests_Frames\FrameDirectorTest.cs" />
-    <Compile Include="Tests_Mover\Mover.cs" />
+    <Compile Include="Tests_Frames\ProxyFrame.cs" />
+    <Compile Include="Tests_Mover\ClassicMoverTest.cs" />
+    <Compile Include="Tests_Mover\ColRowMoverTest.cs" />
     <Compile Include="Tests_Scoreboard\ScoreboardTests.cs" />
     <Compile Include="Tests_Tiles\LetterTileFactoryTest.cs" />
     <Compile Include="Tests_Tiles\LetterTileTest.cs" />
