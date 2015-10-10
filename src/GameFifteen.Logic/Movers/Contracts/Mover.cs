@@ -12,6 +12,7 @@ namespace GameFifteen.Logic.Movers.Contracts
     using System;
     using System.Collections.Generic;
 
+    using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Frames.Contracts;
 
     /// <summary>
@@ -32,6 +33,7 @@ namespace GameFifteen.Logic.Movers.Contracts
         /// <returns>True or false.</returns>
         public virtual bool Move(string tileLabel, IFrame frame)
         {
+            Validator.ValidateIsNotNull(frame, "frame");
             var tilePosition = this.FindTilePosition(tileLabel, frame);
             var nullTilePosition = this.FindTilePosition(string.Empty, frame);
 
@@ -49,6 +51,7 @@ namespace GameFifteen.Logic.Movers.Contracts
         /// <param name="frame">Frame to  be shuffled.</param>
         public void Shuffle(IFrame frame)
         {
+            Validator.ValidateIsNotNull(frame, "frame");
             var random = new Random();
             int tilesCount = frame.Rows * frame.Cols;
 
@@ -57,6 +60,11 @@ namespace GameFifteen.Logic.Movers.Contracts
             for (int i = 0; i < randomMoves; i++)
             {
                 var movableTileLabels = this.GetCurrentMovableTileLabels(frame);
+                if (movableTileLabels.Count == 0)
+                {
+                    throw new ArgumentException("The frame cannot be shuffled because it does not have a null tile.");
+                }
+
                 var tileToMove = movableTileLabels[random.Next(movableTileLabels.Count)];
                 this.Move(tileToMove, frame);
             }

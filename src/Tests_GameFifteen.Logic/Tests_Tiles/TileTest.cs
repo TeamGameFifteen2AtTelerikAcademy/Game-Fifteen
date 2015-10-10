@@ -46,5 +46,21 @@ namespace Tests_GameFifteen.Logic.Tests_Tiles
             Assert.IsFalse(result);
 
         }
+
+        [TestMethod]
+        public void TestGetHashCodeMethodInTile()
+        {
+            var numberTile = new NumberTile(1);
+            numberTile.GetHashCode();
+
+        }
+
+        [TestMethod]
+        public void TestToStringMethodInTile()
+        {
+            var numberTile = new NumberTile(1);
+            numberTile.ToString();
+
+        }
     }
 }

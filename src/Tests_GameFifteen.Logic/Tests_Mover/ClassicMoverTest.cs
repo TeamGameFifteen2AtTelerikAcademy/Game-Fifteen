@@ -14,7 +14,7 @@ namespace Tests_GameFifteen.Logic.Tests_Mover
     /// Summary description for Mover
     /// </summary>
     [TestClass]
-    public class Mover
+    public class ClassicMoverTest
     {
        
         /// <summary>
@@ -103,6 +103,17 @@ namespace Tests_GameFifteen.Logic.Tests_Mover
             var actualFrame = initialFrame.Clone();
             mover.Shuffle(actualFrame);
             Assert.AreNotEqual(initialFrame, actualFrame, "The frame should be changed when shuffled");
+        }
+
+        [TestMethod]
+        public void TestMoverNotMovingATileWhenInFrameHaveNotNullTileClassicMover()
+        {
+            var mover = new ClassicMover();
+            IFrame initialFrame = new Frame(new ITile[,] { { new NumberTile(1) } });
+            var actualFrame = initialFrame.Clone();
+            bool moveDown = mover.Move("4", actualFrame);
+            Assert.IsFalse(moveDown, "Mover method should return false when the tile can not be moved");
+            Assert.AreEqual(initialFrame, actualFrame, "The frame should not be changed");
         }
     }
 }
