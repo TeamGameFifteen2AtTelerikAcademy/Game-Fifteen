@@ -1,4 +1,13 @@
-﻿namespace GameFifteen.UI.WPF.Helpers
+﻿// <copyright file="GameSettingsInitializer.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// GameSettingsInitializer class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.UI.WPF.Helpers
 {
     using System;
 
@@ -9,12 +18,23 @@
     using Logic.Tiles;
     using Logic.Tiles.Contracts;
 
-    public class GameSettingsInicialisator
+    /// <summary>
+    /// GameSettingsInitializer class.
+    /// </summary>
+    public class GameSettingsInitializer
     {
-        public GameSettingsInicialisator()
+        /// <summary>
+        /// Initializes a new instance of the GameSettingsInitializer class.
+        /// </summary>
+        public GameSettingsInitializer()
         {
         }
 
+        /// <summary>
+        /// The method choose TileFactory by given string.
+        /// </summary>
+        /// <param name="selecterdTileType">Tile factory type.</param>
+        /// <returns>New TileFactory.</returns>
         public TileFactory ChooseTiles(string selecterdTileType)
         {
             TileFactory tileFactory;
@@ -34,6 +54,11 @@
             return tileFactory;
         }
 
+        /// <summary>
+        /// The method choose IMover by given string.
+        /// </summary>
+        /// <param name="selectedMover">IMover type.</param>
+        /// <returns>New TileFactory.</returns>
         public IMover ChooseMover(string selectedMover)
         {
             IMover mover;
@@ -53,6 +78,12 @@
             return mover;
         }
 
+        /// <summary>
+        /// The method choose FrameBuilder.
+        /// </summary>
+        /// <param name="tileFactory">The Tile factory.</param>
+        /// <param name="selectedPattern">The selected pattern.</param>
+        /// <returns>New FrameBuilder.</returns>
         public FrameBuilder ChoosePattern(TileFactory tileFactory, string selectedPattern)
         {
             FrameBuilder frameBuilder;

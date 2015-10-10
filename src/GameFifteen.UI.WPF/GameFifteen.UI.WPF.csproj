@@ -56,8 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helpers\GameSettingsInicialisator.cs" />
-    <Compile Include="Helpers\SettingsKeeper.cs" />
+    <Compile Include="Helpers\GameSettingsInitializer.cs" />
+    <Compile Include="Helpers\SettingsKeeper.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Helpers\ViewSelector.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
@@ -97,7 +99,9 @@
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Contracts\ISwitchable.cs" />
-    <Compile Include="Helpers\ViewSwitcher.cs" />
+    <Compile Include="Helpers\ViewSwitcher.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

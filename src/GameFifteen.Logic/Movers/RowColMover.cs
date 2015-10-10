@@ -1,4 +1,13 @@
-﻿namespace GameFifteen.Logic.Movers
+﻿// <copyright file="RowColMover.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Class RowColMover.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.Logic.Movers
 {
     using System.Collections.Generic;
 
@@ -11,11 +20,11 @@
     public class RowColMover : Mover
     {
         /// <summary>
-        /// Override method Move in RowCol game
+        /// Override method Move in RowCol game.
         /// </summary>
-        /// <param name="tileLabel">Tile that will be move</param>
-        /// <param name="frame">Frame</param>
-        /// <returns>Boolean by operation</returns>
+        /// <param name="tileLabel">Tile that will be move.</param>
+        /// <param name="frame">Frame to be moved.</param>
+        /// <returns>Boolean by operation.</returns>
         public override bool Move(string tileLabel, IFrame frame)
         {
             if (!base.Move(tileLabel, frame))
@@ -42,10 +51,10 @@
         }
 
         /// <summary>
-        /// Ovveride method GetCurrentMovableTileLabels in RowCol game
+        /// Override method GetCurrentMovableTileLabels in RowCol game.
         /// </summary>
-        /// <param name="frame">Frame</param>
-        /// <returns>Result by selecion of tile</returns>
+        /// <param name="frame">The Frame.</param>
+        /// <returns>Result by selection of tile.</returns>
         protected override List<string> GetCurrentMovableTileLabels(IFrame frame)
         {
             var result = new List<string>();
@@ -80,6 +89,12 @@
             return result;
         }
 
+        /// <summary>
+        /// The method moves tiles on row.
+        /// </summary>
+        /// <param name="frame">The Frame.</param>
+        /// <param name="nullTilePosition">The null position of null tile.</param>
+        /// <param name="tilePosition">The position of the tile.</param>
         private void MoveTilesOnRow(IFrame frame, Position nullTilePosition, Position tilePosition)
         {
             if (nullTilePosition.Col < tilePosition.Col)
@@ -92,6 +107,12 @@
             }
         }
 
+        /// <summary>
+        /// The method moves tiles on column.
+        /// </summary>
+        /// <param name="frame">The Frame.</param>
+        /// <param name="nullTilePosition">The null position of null tile.</param>
+        /// <param name="tilePosition">The position of the tile.</param>
         private void MoveTilesOnCol(IFrame frame, Position nullTilePosition, Position tilePosition)
         {
             if (nullTilePosition.Row < tilePosition.Row)
@@ -104,6 +125,12 @@
             }
         }
 
+        /// <summary>
+        /// The method moves tiles left.
+        /// </summary>
+        /// <param name="frame">The Frame.</param>
+        /// <param name="nullTilePosition">The null position of null tile.</param>
+        /// <param name="tilePosition">The position of the tile.</param>
         private void MoveTilesLeft(IFrame frame, Position nullTilePosition, Position tilePosition)
         {
             while (nullTilePosition != tilePosition)
@@ -114,6 +141,12 @@
             }
         }
 
+        /// <summary>
+        /// The method moves tiles on right.
+        /// </summary>
+        /// <param name="frame">The Frame.</param>
+        /// <param name="nullTilePosition">The null position of null tile.</param>
+        /// <param name="tilePosition">The position of the tile.</param>
         private void MoveTilesRight(IFrame frame, Position nullTilePosition, Position tilePosition)
         {
             while (nullTilePosition != tilePosition)
@@ -124,6 +157,12 @@
             }
         }
 
+        /// <summary>
+        /// The method moves tiles on up.
+        /// </summary>
+        /// <param name="frame">The Frame.</param>
+        /// <param name="nullTilePosition">The null position of null tile.</param>
+        /// <param name="tilePosition">The position of the tile.</param>
         private void MoveTilesUp(IFrame frame, Position nullTilePosition, Position tilePosition)
         {
             while (nullTilePosition != tilePosition)
@@ -134,6 +173,12 @@
             }
         }
 
+        /// <summary>
+        /// The method moves tiles on down.
+        /// </summary>
+        /// <param name="frame">The Frame.</param>
+        /// <param name="nullTilePosition">The null position of null tile.</param>
+        /// <param name="tilePosition">The position of the tile.</param>
         private void MoveTilesDown(IFrame frame, Position nullTilePosition, Position tilePosition)
         {
             while (nullTilePosition != tilePosition)

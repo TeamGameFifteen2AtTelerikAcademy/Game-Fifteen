@@ -1,4 +1,13 @@
-﻿namespace GameFifteen.Logic.Scoreboards
+﻿// <copyright file="Scoreboard.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Scoreboard class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.Logic.Scoreboards
 {
     using System;
     using System.Collections.Generic;
@@ -13,6 +22,9 @@
     /// </summary>
     public class Scoreboard : IScoreboard
     {
+        /// <summary>
+        /// Holds the top scores.
+        /// </summary>
         private IList<Score> topScores = new List<Score>();
 
         /// <summary>
@@ -64,6 +76,7 @@
         /// <summary>
         /// Add player score if is in top scores.
         /// </summary>
+        /// <returns>Scoreboard's to string.</returns>
         public override string ToString()
         {
             if (this.topScores.Count == 0)
@@ -87,6 +100,7 @@
         /// <summary>
         /// Get top scores.
         /// </summary>
+        /// <returns>IList of IScore.</returns>
         public IList<IScore> GetTopScores()
         {
             var publicTopScores = new List<IScore>();

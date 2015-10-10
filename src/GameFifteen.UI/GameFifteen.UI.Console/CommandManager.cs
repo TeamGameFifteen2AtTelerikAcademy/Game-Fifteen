@@ -1,15 +1,35 @@
-﻿namespace GameFifteen.UI.Console
+﻿// <copyright file="CommandManager.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// CommandManager class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.UI.Console
 {
     using System;
     using Commands;
     using GameFifteen.Logic.Commands;
 
+    /// <summary>
+    /// CommandManager class.
+    /// </summary>
     internal class CommandManager : ICommandManager
     {
+        /// <summary>
+        /// Initializes a new instance of the CommandManager class.
+        /// </summary>
         public CommandManager()
         {
         }
 
+        /// <summary>
+        /// The method returns ICommand by given string name.
+        /// </summary>
+        /// <param name="command">The name of the command in String format.</param>
+        /// <returns>ICommand command.</returns>
         public ICommand GetCommand(string command)
         {
             UserCommands userCommand;
@@ -24,6 +44,11 @@
             }
         }
 
+        /// <summary>
+        /// The method returns ICommand by given Enum.
+        /// </summary>
+        /// <param name="command">The name of the command of type Enum.</param>
+        /// <returns>ICommand command.</returns>
         public ICommand GetCommand(Enum command)
         {
             switch ((UserCommands)command)

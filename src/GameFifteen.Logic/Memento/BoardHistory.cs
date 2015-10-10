@@ -1,4 +1,13 @@
-﻿namespace GameFifteen.Logic.Memento
+﻿// <copyright file="BoardHistory.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// BoardHistory class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.Logic.Memento
 {
     using System;
     using System.Collections.Generic;
@@ -11,28 +20,47 @@
     /// </summary>
     public class BoardHistory : IMemento
     {
+        /// <summary>
+        /// Private field that holds board states.
+        /// </summary>
         private IList<IFrame> boardStates;
+
+        /// <summary>
+        /// Holds current index.
+        /// </summary>
         private int currentIndex;
 
+        /// <summary>
+        /// Initializes a new instance of the BoardHistory class.
+        /// </summary>
         public BoardHistory()
         {
             this.boardStates = new List<IFrame>();
             this.currentIndex = -1;
         }
 
+        /// <summary>
+        /// Saves board state.
+        /// </summary>
+        /// <param name="board">Board of type IFrame.</param>
         public void SaveBoardState(IFrame board)
         {
             this.boardStates.Insert(++this.currentIndex, board.Clone());
-
-            // this.currentIndex++;
         }
 
+        /// <summary>
+        /// Clears the history.
+        /// </summary>
         public void ClearHistory()
         {
             this.boardStates.Clear();
             this.currentIndex = -1;
         }
 
+        /// <summary>
+        /// Returns last saved board state.
+        /// </summary>
+        /// <returns>Returns IFrame.</returns>
         public IFrame Undo()
         {
             IFrame board = this.boardStates[this.currentIndex];
