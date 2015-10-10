@@ -1,14 +1,35 @@
-﻿namespace GameFifteen.UI.Console
+﻿// <copyright file="Reader.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Reader class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.UI.Console
 {
     using System;
 
+    /// <summary>
+    /// Reader class - reads from the console.
+    /// </summary>
     internal class Reader : IReader
     {
+        /// <summary>
+        /// The method reads line from the console.
+        /// </summary>
+        /// <returns>Console line as string.</returns>
         public string ReadLine()
         {
             return Console.ReadLine();
         }
 
+        /// <summary>
+        /// The methods parses the input from the console.
+        /// </summary>
+        /// <param name="userInput">The user input.</param>
+        /// <returns>Array of strings.</returns>
         public string[] ParseInput(string userInput)
         {
             string[] handleUserInput = new string[] { string.Empty, string.Empty };
