@@ -3,7 +3,9 @@
     using System;
 
     internal class Printer : IPrinter
-    {       
+    {
+        private int currentLineCursor;
+
         public void Print(object obj)
         {
             Console.Write(obj);
@@ -31,7 +33,7 @@
 
         public void ClearLine()
         {
-            int currentLineCursor = Console.CursorTop;
+            this.currentLineCursor = Console.CursorTop;
             Console.SetCursorPosition(0, Console.CursorTop);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, currentLineCursor);
@@ -39,7 +41,7 @@
 
         public void ClearMessages()
         {
-            int currentLineCursor = Console.CursorTop;
+            this.currentLineCursor = Console.CursorTop;
             Console.SetCursorPosition(0, Console.CursorTop);
             for (int i = 0; i < 10; i++)
             {
