@@ -1,108 +1,54 @@
-﻿namespace GameFifteen.UI.WPF.Helpers
-{
-    using System.Windows.Controls;
+﻿// <copyright file="ViewSelector.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// ViewSelector class.
+// </summary>
+// <author>GameFifteen2Team</author>
 
+namespace GameFifteen.UI.WPF.Helpers
+{
     using Views;
 
+    /// <summary>
+    /// ViewSelector class that holds only instances for each view.
+    /// </summary>
     public static class ViewSelector
     {
-        private static PreGameView preGame;
-        private static GameView classicGame;
-        private static GameSettingsView gameSetings;
-        private static AboutView about;
-        private static HallOfFameView hawOfFame;
-        private static CompletedGameView completeGame;
-        private static CompletedWithTopScoreView completeTopScoreGame;
+        /// <summary>
+        /// Holds PreGameView.
+        /// </summary>
+        public static readonly PreGameView PreGame = new PreGameView();
 
-        public static UserControl CompleteTopScoreGame
-        {
-            get
-            {
-                if (completeTopScoreGame == null)
-                {
-                    completeTopScoreGame = new CompletedWithTopScoreView();
-                }
+        /// <summary>
+        /// Holds GameView.
+        /// </summary>
+        public static readonly GameView Game = new GameView();
 
-                return completeTopScoreGame;
-            }
-        }
+        /// <summary>
+        /// Holds GameSettingsView.
+        /// </summary>
+        public static readonly GameSettingsView GameSettings = new GameSettingsView();
 
-        public static UserControl JustCompletedGame
-        {
-            get
-            {
-                if (completeGame == null)
-                {
-                    completeGame = new CompletedGameView();
-                }
+        /// <summary>
+        /// Holds AboutView.
+        /// </summary>
+        public static readonly AboutView About = new AboutView();
 
-                return completeGame;
-            }
-        }
+        /// <summary>
+        /// Holds HallOfFameView.
+        /// </summary>
+        public static readonly HallOfFameView HallOfFame = new HallOfFameView();
 
-        public static UserControl HallOfFame
-        {
-            get
-            {
-                if (hawOfFame == null)
-                {
-                    hawOfFame = new HallOfFameView();
-                }
+        /// <summary>
+        /// Holds CompletedGameView.
+        /// </summary>
+        public static readonly CompletedGameView JustCompletedGame = new CompletedGameView();
 
-                return hawOfFame;
-            }
-        }
-
-        public static UserControl About
-        {
-            get
-            {
-                if (about == null)
-                {
-                    about = new AboutView();
-                }
-
-                return about;
-            }
-        }
-
-        public static UserControl PreGame
-        {
-            get
-            {
-                if (preGame == null)
-                {
-                    preGame = new PreGameView();
-                }
-
-                return preGame;
-            }
-        }
-
-        public static UserControl Game
-        {
-            get
-            {
-                if (classicGame == null)
-                {
-                    classicGame = new GameView();
-                }
-
-                return classicGame;
-            }
-        }
-
-        public static UserControl GameSettings
-        {
-            get
-            {
-                if (gameSetings == null)
-                {
-                    gameSetings = new GameSettingsView();
-                }
-
-                return gameSetings;
-            }
-        }
+        /// <summary>
+        /// Holds CompletedWithTopScoreView.
+        /// </summary>
+        public static readonly CompletedWithTopScoreView CompleteTopScoreGame = new CompletedWithTopScoreView();
     }
 }

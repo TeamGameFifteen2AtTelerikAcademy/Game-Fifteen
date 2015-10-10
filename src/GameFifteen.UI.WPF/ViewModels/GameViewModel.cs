@@ -18,7 +18,7 @@
 
     public class GameViewModel : ViewModelBase
     {
-        private readonly GameSettingsInicialisator settingsInicializator;
+        private readonly GameSettingsInitializer settingsInicializator;
 
         private IGame game;
         private int rows;
@@ -38,7 +38,7 @@
 
         public GameViewModel()
         {
-            this.settingsInicializator = new GameSettingsInicialisator();
+            this.settingsInicializator = new GameSettingsInitializer();
             this.BoardHistory = new BoardHistory();
             this.ScoreboardInfo = new Scoreboard();
             SettingsKeeper.ScoreBoard = this.ScoreboardInfo;
