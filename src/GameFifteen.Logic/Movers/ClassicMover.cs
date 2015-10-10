@@ -1,4 +1,13 @@
-﻿namespace GameFifteen.Logic.Movers
+﻿// <copyright file="ClassicMover.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Class ClassicMover.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.Logic.Movers
 {
     using System.Collections.Generic;
 
@@ -13,9 +22,9 @@
         /// <summary>
         /// Override method Move in classic game.
         /// </summary>
-        /// <param name="tileLabel">Tile that will be move.</param>
-        /// <param name="frame">Frame.</param>
-        /// <returns>Boolean by operation.</returns>
+        /// <param name="tileLabel">Tile of type ITile.</param>
+        /// <param name="frame">Frame of type IFrame.</param>
+        /// <returns>True or false.</returns>
         public override bool Move(string tileLabel, IFrame frame)
         {
             if (!base.Move(tileLabel, frame))
@@ -50,10 +59,10 @@
         }
 
         /// <summary>
-        /// Ovveride method GetCurrentMovableTileLabels in classic game.
+        /// Override method GetCurrentMovableTileLabels in classic game.
         /// </summary>
-        /// <param name="frame">Frame.</param>
-        /// <returns>Result by selecion of tile.</returns>
+        /// <param name="frame">Frame of type IFrame.</param>
+        /// <returns>List of strings.</returns>
         protected override List<string> GetCurrentMovableTileLabels(IFrame frame)
         {
             var result = new List<string>();
