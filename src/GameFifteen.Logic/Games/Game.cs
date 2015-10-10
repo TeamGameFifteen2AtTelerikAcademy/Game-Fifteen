@@ -1,4 +1,13 @@
-﻿namespace GameFifteen.Logic.Games
+﻿// <copyright file="Game.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Game class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.Logic.Games
 {
     using System;
     using GameFifteen.Logic.Common;
@@ -11,10 +20,26 @@
     /// </summary>
     public class Game : IGame
     {
+        /// <summary>
+        /// Private field that holds frame prototype of type IFrame.
+        /// </summary>
         private readonly IFrame framePrototype;
+
+        /// <summary>
+        /// Private field that holds mover prototype of type IMover.
+        /// </summary>
         private readonly IMover mover;
+
+        /// <summary>
+        /// Private field that holds game's frame of type IFrame.
+        /// </summary>
         private IFrame frame;
-        
+
+        /// <summary>
+        /// Initializes a new instance of the Game class.
+        /// </summary>
+        /// <param name="frame">Frame of type IFrame.</param>
+        /// <param name="mover">Mover of type IMover.</param>
         public Game(IFrame frame, IMover mover)
         {
             Validator.ValidateIsNotNull(frame, "frame");
@@ -25,6 +50,10 @@
             this.mover = mover;
         }
 
+        /// <summary>
+        /// Gets or sets game frame.
+        /// </summary>
+        /// <value>Frame of type IFrame.</value>
         public IFrame Frame
         {
             get
@@ -38,6 +67,10 @@
             }
         }
 
+        /// <summary>
+        /// Gets game frame prototype.
+        /// </summary>
+        /// <value>Frame of type IFrame.</value>
         public IFrame FramePrototype
         {
             get
@@ -46,6 +79,10 @@
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether if the game is solved.
+        /// </summary>
+        /// <value>True or false.</value>
         public bool IsSolved
         {
             get
@@ -55,7 +92,7 @@
         }
         
         /// <summary>
-        /// Method move tile by lable.
+        /// Method move tile by label.
         /// </summary>
         /// <param name="tileLabel">Tile that will be move.</param>
         /// <returns>Result by moves.</returns>
