@@ -19,6 +19,9 @@
         /// <param name="playerName">Player name</param>
         public void Add(int moves, string playerName)
         {
+            Validator.ValidateIsPositiveInteger(moves, "moves");
+            Validator.ValidateIsNotNull(playerName, "playerName");
+
             if (!this.IsInTopScores(moves))
             {
                 return;
