@@ -87,6 +87,21 @@
         }
 
         [TestMethod]
+        public void ExpectEngineToRunProperlyWhenGivenInvalidInputForCommand()
+        {
+            var reader = MockStorage.GetReader("theyAreGreen");
+
+            var engine = new Engine(
+                MockStorage.GetGame(),
+                new Scoreboard(),
+                MockStorage.GetPrinter(),
+                reader,
+                new CommandManager(),
+                new BoardHistory());
+            engine.Run();
+        }
+
+        [TestMethod]
         public void ExpectToExecuteGameOverWhenGameIsSolved()
         {
             var reader = MockStorage.GetReader("move 3");
@@ -140,6 +155,8 @@
             engine.Run();
             Assert.AreEqual(1,scoreboard.GetTopScores().First().Moves);
         }
+
+
 
         [TestMethod]
         public void ExpectMoveCommandToReachIfStatement()
