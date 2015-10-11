@@ -6,6 +6,7 @@ using GameFifteen.Logic.Frames.Contracts;
 using GameFifteen.Logic.Games;
 using GameFifteen.Logic.Memento;
 using GameFifteen.Logic.Movers;
+using GameFifteen.Logic.Scoreboards.Contracts;
 using GameFifteen.Logic.Tiles;
 using GameFifteen.Logic.Tiles.Contracts;
 using GameFifteen.UI.Console;
@@ -134,6 +135,15 @@ namespace GameFifteen.Tests.UI.Console
             memento.Setup(x=>x.Undo()).Verifiable();
 
             return memento.Object;
+        }
+
+        public static IScoreboard GetScoreboard()
+        {
+            var mocked = new Mock<IScoreboard>();
+
+            mocked.Setup(x=>x.Add(It.IsAny<int>(),It.IsAny<string>())).Verifiable();
+
+            return mocked.Object;
         }
 
         public static ICommandManager GeCommandManager()

@@ -113,12 +113,12 @@ namespace GameFifteen.Tests.UI.Console
         [TestMethod]
         public void ExpectToExecuteGameOverWhenGameIsSolved()
         {
-            var reader = MockStorage.GetReader("exit");
+            var reader = MockStorage.GetReader("move 3");
 
             var engine = new Engine(
 
                 MockStorage.GetSolvedGame(),
-                new Scoreboard(),
+                MockStorage.GetScoreboard(),
                 MockStorage.GetPrinter(),
                 reader,
                 new CommandManager(),
