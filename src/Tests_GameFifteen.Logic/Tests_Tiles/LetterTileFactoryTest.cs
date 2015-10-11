@@ -1,18 +1,26 @@
-﻿namespace Tests_GameFifteen.Logic.Tests_Tiles
+﻿// <copyright file="LetterTileFactoryTest.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// LetterTileFactoryTest class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace Tests_GameFifteen.Logic.Tests_Tiles
 {
     using GameFifteen.Logic.Tiles;
     using GameFifteen.Logic.Tiles.Contracts;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Summary description for LetterTileFactoryTest
+    /// LetterTileFactoryTest test class tests LetterTileFactory.
     /// </summary>
     [TestClass]
     public class LetterTileFactoryTest
     {
         /// <summary>
-        /// Gets or sets the test context which provides
-        /// information about and functionality for the current test run.
+        /// The method test the tile factory creates tile.
         /// </summary>
         [TestMethod]
         public void TestLetterTileFactoryCreations()
@@ -22,6 +30,9 @@
             Assert.IsInstanceOfType(letterTile, typeof(ITile));
         }
 
+        /// <summary>
+        /// The method test the tile factory creates tile with next ID.
+        /// </summary>
         [TestMethod]
         public void TestNumberTileFactoryCreationsWithNextID()
         {
