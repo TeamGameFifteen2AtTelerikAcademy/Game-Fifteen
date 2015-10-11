@@ -134,10 +134,10 @@ namespace GameFifteen.UI.Console
             var userTarget = userCommandAndTarget[1];
 
             // Capitalize the first letter to meet restrictions from the enum...
-            userInput = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userCommand);
+        
             this.context.SelectedTileLabel = userTarget;
 
-            this.commandManager.GetCommand(userInput).Execute(this.context);
+            this.commandManager.GetCommand(userCommand).Execute(this.context);
             this.printer.SetCursorBottomBoard();
             this.printer.ClearMessages();
             this.printer.PrintLine(this.context.Message);
