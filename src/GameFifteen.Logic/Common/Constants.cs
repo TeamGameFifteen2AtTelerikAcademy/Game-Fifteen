@@ -55,12 +55,22 @@ namespace GameFifteen.Logic.Common
         /// <summary>
         /// Constant for HorizontalBorder.
         /// </summary>
-        public const string HorizontalBorder = " -------------";
+        public const char HorizontalBorder = '-';
 
         /// <summary>
         /// Constant for VerticalBorder.
         /// </summary>
         public const string VerticalBorder = "|";
+
+        /// <summary>
+        /// The first part of the format for the tile representation.
+        /// </summary>
+        public const string TileStringFormatterLeft = "{0,";
+
+        /// <summary>
+        /// The second part of the format for the tile representation.
+        /// </summary>
+        public const string TileStringFormatterRight = "}";
 
         /// <summary>
         /// Constant for FrameDimensionMin.
