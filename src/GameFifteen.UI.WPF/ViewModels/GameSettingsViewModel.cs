@@ -1,4 +1,13 @@
-﻿namespace GameFifteen.UI.WPF.ViewModels
+﻿// <copyright file="GameSettingsViewModel.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// GameSettingsViewModel class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.UI.WPF.ViewModels
 {
     using System.Collections.ObjectModel;
     using System.Windows.Input;
@@ -6,22 +15,70 @@
     using Commands;
     using Helpers;
 
+    /// <summary>
+    /// GameSettingsViewModel class bind with GameSettingsView.
+    /// </summary>
     public class GameSettingsViewModel : ViewModelBase
     {
+        /// <summary>
+        /// Holds selected rows.
+        /// </summary>
         private string rows;
+
+        /// <summary>
+        /// Holds selected columns.
+        /// </summary>
         private string cols;
+
+        /// <summary>
+        /// Holds selected tile type.
+        /// </summary>
         private string tile;
+
+        /// <summary>
+        /// Holds selected pattern.
+        /// </summary>
         private string pattern;
+
+        /// <summary>
+        /// Holds selected mover.
+        /// </summary>
         private string mover;
 
+        /// <summary>
+        /// Holds OC of possible rows.
+        /// </summary>
         private ObservableCollection<string> rowsPossibilities;
+
+        /// <summary>
+        /// Holds OC of possible columns.
+        /// </summary>
         private ObservableCollection<string> colsPossibilities;
+
+        /// <summary>
+        /// Holds OC of possible tile types.
+        /// </summary>
         private ObservableCollection<string> tileTypes;
+
+        /// <summary>
+        /// Holds OC of possible patterns.
+        /// </summary>
         private ObservableCollection<string> patternTypes;
+
+        /// <summary>
+        /// Holds OC of possible mover types.
+        /// </summary>
         private ObservableCollection<string> moverTypes;
 
+        /// <summary>
+        /// Holds ICommand for execute new game command.
+        /// </summary>
         private ICommand newCustomGameCommand;
 
+        /// <summary>
+        /// Gets or sets the rows.
+        /// </summary>
+        /// <value>Rows as string.</value>
         public string Rows
         {
             get
@@ -37,9 +94,15 @@
             set
             {
                 this.rows = value;
+                this.OnPropertyChanged("Rows");
             }
         }
 
+        /// <summary>
+        /// Gets or sets the cols.
+        /// Bind with selected value of the combo box.
+        /// </summary>
+        /// <value>Cols as string.</value>
         public string Cols
         {
             get
@@ -55,9 +118,15 @@
             set
             {
                 this.cols = value;
+                this.OnPropertyChanged("Cols");
             }
         }
 
+        /// <summary>
+        /// Gets or sets the tile type.
+        /// Bind with selected value of the combo box.
+        /// </summary>
+        /// <value>Tile type as string.</value>
         public string Tile
         {
             get
@@ -73,9 +142,15 @@
             set
             {
                 this.tile = value;
+                this.OnPropertyChanged("Tile");
             }
         }
 
+        /// <summary>
+        /// Gets or sets the patter type.
+        /// Bind with selected value of the combo box.
+        /// </summary>
+        /// <value>Pattern type as string.</value>
         public string Pattern
         {
             get
@@ -91,9 +166,19 @@
             set
             {
                 this.pattern = value;
+                this.OnPropertyChanged("Pattern");
             }
         }
 
+        /// <summary>
+        /// Gets or sets the mover type.
+        /// Bind with selected value of the combo box.
+        /// </summary>
+        ///  /// <summary>
+        /// Gets or sets the patter type.
+        /// Bind with selected value of the combo box.
+        /// </summary>
+        /// <value>Mover type as string.</value>
         public string Mover
         {
             get
@@ -109,9 +194,15 @@
             set
             {
                 this.mover = value;
+                this.OnPropertyChanged("Mover");
             }
         }
 
+        /// <summary>
+        /// Gets the possible rows.
+        /// Bind with ComboBox possible values.
+        /// </summary>
+        /// <value>Possible rows as OC.</value>
         public ObservableCollection<string> RowsPossibilities
         {
             get
@@ -125,6 +216,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets the possible cols.
+        /// Bind with ComboBox possible values.
+        /// </summary>
+        /// <value>Possible cols as OC.</value>
         public ObservableCollection<string> ColsPossibilities
         {
             get
@@ -138,6 +234,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets the possible tile types.
+        /// Bind with ComboBox possible values.
+        /// </summary>
+        /// <value>Possible tile types as OC.</value>
         public ObservableCollection<string> TileTypes
         {
             get
@@ -151,6 +252,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets the possible pattern types.
+        /// Bind with ComboBox possible values.
+        /// </summary>
+        /// /// <value>Possible pattern types as OC.</value>
         public ObservableCollection<string> PatternTypes
         {
             get
@@ -164,6 +270,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets the possible mover type.
+        /// Bind with ComboBox possible values.
+        /// </summary>
+        /// /// <value>Possible mover types as OC.</value>
         public ObservableCollection<string> MoverTypes
         {
             get
@@ -177,6 +288,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets the ICommand for new game.
+        /// Bind with button.
+        /// </summary>
+        /// <value>NewCustomGame as ICommand.</value>
         public ICommand NewCustomGame
         {
             get
@@ -190,14 +306,12 @@
             }
         }
 
+        /// <summary>
+        /// The method handles the execution of new custom game.
+        /// </summary>
+        /// <param name="parameter">The sender of the command.</param>
         private void HandlenewCustomGameCommand(object parameter)
         {
-            this.OnPropertyChanged("Rows");
-            this.OnPropertyChanged("Cols");
-            this.OnPropertyChanged("TileType");
-            this.OnPropertyChanged("PatternType");
-            this.OnPropertyChanged("MoverType");
-
             SettingsKeeper.Rows = this.Rows;
             SettingsKeeper.Cols = this.Cols;
             SettingsKeeper.Tile = this.Tile;

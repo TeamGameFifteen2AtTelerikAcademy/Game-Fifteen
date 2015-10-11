@@ -1,4 +1,13 @@
-﻿namespace GameFifteen.UI.WPF.ViewModels
+﻿// <copyright file="GameViewModel.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// GameViewModel class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.UI.WPF.ViewModels
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -16,26 +25,84 @@
     using Logic.Scoreboards.Contracts;
     using Logic.Tiles.Contracts;
 
+    /// <summary>
+    /// GameViewModel class bind with GameView.
+    /// </summary>
     public class GameViewModel : ViewModelBase
     {
+        /// <summary>
+        /// Holds GameSettingsInitializer.
+        /// </summary>
         private readonly GameSettingsInitializer settingsInicializator;
 
+        /// <summary>
+        /// Holds IGame.
+        /// </summary>
         private IGame game;
+
+        /// <summary>
+        /// Holds Frame Rows.
+        /// </summary>
         private int rows;
+
+        /// <summary>
+        /// Holds Frame cols.
+        /// </summary>
         private int cols;
+
+        /// <summary>
+        /// Holds current moves.
+        /// </summary>
         private int moves;
+
+        /// <summary>
+        /// Holds if the game is in progress.
+        /// </summary>
         private bool isResumeBurronVissible = false;
+
+        /// <summary>
+        /// Holds the name of the player which has top result.
+        /// </summary>
         private string topPlayerName;
 
+        /// <summary>
+        /// Holds OC of ITile that represents the game's frame.
+        /// </summary>
         private ObservableCollection<ITile> tiles;
+
+        /// <summary>
+        /// Holds OC of ITile that represents the game's prototype frame.
+        /// </summary>
         private ObservableCollection<ITile> targetTiles;
+
+        /// <summary>
+        /// Holds OC of IScore that represents the IScoreboard's tops scores.
+        /// </summary>
         private ObservableCollection<IScore> topScores;
 
+        /// <summary>
+        /// Holds command for undo move.
+        /// </summary>
         private ICommand undoMoveCommand;
+
+        /// <summary>
+        /// Holds command for initializing game.
+        /// </summary>
         private ICommand initializeGameCommand;
+
+        /// <summary>
+        /// Holds command for moving a tile.
+        /// </summary>
         private ICommand moveTileCommand;
+
+        /// <summary>
+        /// Holds command for commit a top result to the IScoreboard.
+        /// </summary>
         private ICommand topPlayerResultCommitCommand;
 
+        /// <summary>
+        /// Initializes a new instance of the GameViewModel class.
+        /// </summary>
         public GameViewModel()
         {
             this.settingsInicializator = new GameSettingsInitializer();
@@ -44,10 +111,23 @@
             SettingsKeeper.ScoreBoard = this.ScoreboardInfo;
         }
 
+        /// <summary>
+        /// Gets or sets BoardHistory.
+        /// </summary>
+        /// <value>BoardHistory as IMemento.</value>
         public IMemento BoardHistory { get; set; }
 
+        /// <summary>
+        /// Gets or sets ScoreboardInfo.
+        /// </summary>
+        /// <value>BoardHistory as IScoreboard.</value>
         public IScoreboard ScoreboardInfo { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the resume button to be visible.
+        /// Bind with controls.
+        /// </summary>
+        /// <value>The state of the button as boolean.</value>
         public bool IsResumeBurronVissible
         {
             get
@@ -62,6 +142,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets or sets the top player's name.
+        /// Bind with controls.
+        /// </summary>
+        /// <value>The top player's name as string.</value>
         public string TopPlayerName
         {
             get
@@ -76,6 +161,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets or sets the row of the game's frame.
+        /// Bind with controls.
+        /// </summary>
+        /// <value>The rows as integer.</value>
         public int Rows
         {
             get
@@ -90,6 +180,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets or sets the cols of the game's frame.
+        /// Bind with controls.
+        /// </summary>
+        /// <value>The cols as integer.</value>
         public int Cols
         {
             get
@@ -104,6 +199,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets or sets the current moves.
+        /// Bind with controls.
+        /// </summary>
+        /// <value>The moves as integer.</value>
         public int Moves
         {
             get
@@ -118,6 +218,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets the game's frame as OC.
+        /// Bind with controls.
+        /// </summary>
+        /// <value>OC of ITiles.</value>
         public ObservableCollection<ITile> Tiles
         {
             get
@@ -131,6 +236,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets the game's prototype frame as OC.
+        /// Bind with controls.
+        /// </summary>
+        /// <value>OC of ITiles.</value>
         public ObservableCollection<ITile> TargetTiles
         {
             get
@@ -144,6 +254,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets the scoreboard's top scores as OC.
+        /// Bind with controls.
+        /// </summary>
+        /// <value>OC of IScore.</value>
         public ObservableCollection<IScore> TopScores
         {
             get
@@ -157,6 +272,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets the undo move command.
+        /// Bind with controls.
+        /// </summary>
+        /// <value>UndoMove as ICommand.</value>
         public ICommand UndoMove
         {
             get
@@ -170,6 +290,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets the command for initialize.
+        /// Bind with controls.
+        /// </summary>
+        /// <value>InitializeGame as ICommand.</value>
         public ICommand InitializeGame
         {
             get
@@ -183,6 +308,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets the command for commit top result.
+        /// Bind with controls.
+        /// </summary>
+        /// <value>TopPlayerResultCommit as ICommand.</value>
         public ICommand TopPlayerResultCommit
         {
             get
@@ -196,6 +326,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets the command for game's move method.
+        /// Bind with controls.
+        /// </summary>
+        /// <value>MoveTile as ICommand.</value>
         public ICommand MoveTile
         {
             get
@@ -209,6 +344,10 @@
             }
         }
 
+        /// <summary>
+        /// The method handles initializeGameCommand.
+        /// </summary>
+        /// <param name="parameter">The sender of the command.</param>
         public void HandelInitializeGameCommand(object parameter)
         {
             this.TopPlayerName = "Some Player";
@@ -244,6 +383,10 @@
             this.OnPropertyChanged("TargetTiles");
         }
 
+        /// <summary>
+        /// The method handles switchViewCommand.
+        /// </summary>
+        /// <param name="parameter">The sender of the command.</param>
         protected override void HandleSwitchViewCommand(object parameter)
         {
             var buttonClicked = parameter as Button;
@@ -264,6 +407,10 @@
             }
         }
 
+        /// <summary>
+        /// The method handles undoMoveCommand.
+        /// </summary>
+        /// <param name="parameter">The sender of the command.</param>
         private void HandelUndoMoveCommand(object parameter)
         {
             if (this.Moves > 0)
@@ -278,6 +425,10 @@
             }
         }
 
+        /// <summary>
+        /// The method handles moveTileCommand.
+        /// </summary>
+        /// <param name="parameter">The sender of the command.</param>
         private void HandleMoveTileCommand(object parameter)
         {
             this.BoardHistory.SaveBoardState(this.game.Frame);
@@ -299,14 +450,21 @@
             }
         }
 
+        /// <summary>
+        /// The method handles topPlayerResultCommitCommand.
+        /// </summary>
+        /// <param name="parameter">The sender of the command.</param>
         private void HandelTopPlayerResultCommitCommand(object parameter)
         {
             this.ScoreboardInfo.Add(this.Moves, this.TopPlayerName);
-            this.SincTopScoresWIthsObservableScores(this.topScores, this.ScoreboardInfo.GetTopScores());
+            this.SincTopScoresWithsObservableScores(this.topScores, this.ScoreboardInfo.GetTopScores());
             this.OnPropertyChanged("TopScores");
             this.PageSwitcher.Switch(ViewSelector.HallOfFame);
         }
 
+        /// <summary>
+        /// The method set the way it all ends.
+        /// </summary>
         private void SetGameEnd()
         {
             this.IsResumeBurronVissible = false;
@@ -322,6 +480,11 @@
             }
         }
 
+        /// <summary>
+        /// The method synchronizes (adapts) the IGame Frame with OC of ITile for the needs of the WPF binding.
+        /// </summary>
+        /// <param name="tiles">The OC of ITiles.</param>
+        /// <param name="frame">The IFrame.</param>
         private void SincFrameTilesWithObservableTiles(ObservableCollection<ITile> tiles, IFrame frame)
         {
             tiles.Clear();
@@ -335,7 +498,12 @@
             }
         }
 
-        private void SincTopScoresWIthsObservableScores(ObservableCollection<IScore> observableScore, IList<IScore> scores)
+        /// <summary>
+        /// The method synchronizes (adapts) the IList of IScore (result of IFrame.GetTopScores()) with OC of IScore for the needs of the WPF binding.
+        /// </summary>
+        /// <param name="observableScore">The OC of IScore.</param>
+        /// <param name="scores">The IList of IScore.</param>
+        private void SincTopScoresWithsObservableScores(ObservableCollection<IScore> observableScore, IList<IScore> scores)
         {
             observableScore.Clear();
 
