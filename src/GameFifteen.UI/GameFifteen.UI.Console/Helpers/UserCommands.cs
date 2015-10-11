@@ -37,6 +37,11 @@ namespace GameFifteen.UI.Console
         /// <summary>
         /// Move command.
         /// </summary>
-        Move
+        Move,
+
+        /// <summary>
+        /// Invalid command.
+        /// </summary>
+        Invalid
     }
 }
