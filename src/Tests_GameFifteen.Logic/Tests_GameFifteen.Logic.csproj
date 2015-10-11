@@ -62,7 +62,7 @@
     <Compile Include="Tests_Frames\FrameDirectorTest.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="Tests_Frames\ProxyFrame.cs" />
+    <Compile Include="Tests_Frames\ProxyFrameTest.cs" />
     <Compile Include="Tests_Game\GameTests.cs" />
     <Compile Include="Tests_Mover\ClassicMoverTest.cs" />
     <Compile Include="Tests_Mover\ColRowMoverTest.cs" />
