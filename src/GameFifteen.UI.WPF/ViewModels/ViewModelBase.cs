@@ -96,12 +96,12 @@ namespace GameFifteen.UI.WPF.ViewModels
         {
             get
             {
-                if (this.openExternalLinkCommand == null)
+                if (this.quitApplicationCommand == null)
                 {
-                    this.openExternalLinkCommand = new RelayCommand(this.HandleQuitApplicationCommand);
+                    this.quitApplicationCommand = new RelayCommand(this.HandleQuitApplicationCommand);
                 }
 
-                return this.openExternalLinkCommand;
+                return this.quitApplicationCommand;
             }
         }
 

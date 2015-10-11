@@ -1,4 +1,13 @@
-﻿using System.Reflection;
+﻿// <copyright file="AssemblyInfo.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Assembly Info.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
