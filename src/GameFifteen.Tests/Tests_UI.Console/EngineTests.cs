@@ -1,16 +1,13 @@
-﻿using GameFifteen.Logic.Commands;
-using GameFifteen.Logic.Common;
-using GameFifteen.UI.Console.Commands;
-using Moq;
-
-namespace GameFifteen.Tests.UI.Console
+﻿namespace GameFifteen.Tests.UI.Console
 {
-    using System;
-    using System.Security.Cryptography.X509Certificates;
+    using GameFifteen.Logic.Commands;
+    using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Memento;
     using GameFifteen.Logic.Scoreboards;
     using GameFifteen.UI.Console;
+    using GameFifteen.UI.Console.Commands;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
 
     [TestClass]
     public class EngineTests
@@ -21,16 +18,12 @@ namespace GameFifteen.Tests.UI.Console
             var reader = MockStorage.GetReader("exit");
 
             var engine = new Engine(
-
                 MockStorage.GetGame(),
                 new Scoreboard(),
                 MockStorage.GetPrinter(),
                 reader,
                 new CommandManager(),
-                new BoardHistory()
-
-                );
-
+                new BoardHistory());
             engine.Run();
         }
 
@@ -40,16 +33,12 @@ namespace GameFifteen.Tests.UI.Console
             var reader = MockStorage.GetReader("top");
 
             var engine = new Engine(
-
                 MockStorage.GetGame(),
                 new Scoreboard(),
                 MockStorage.GetPrinter(),
                 reader,
                 new CommandManager(),
-                new BoardHistory()
-
-                );
-
+                new BoardHistory());
             engine.Run();
         }
 
@@ -59,16 +48,12 @@ namespace GameFifteen.Tests.UI.Console
             var reader = MockStorage.GetReader("move 3");
 
             var engine = new Engine(
-
                 MockStorage.GetGame(),
                 new Scoreboard(),
                 MockStorage.GetPrinter(),
                 reader,
                 new CommandManager(),
-                new BoardHistory()
-
-                );
-
+                new BoardHistory());
             engine.Run();
         }
 
@@ -78,16 +63,12 @@ namespace GameFifteen.Tests.UI.Console
             var reader = MockStorage.GetReader("move -1");
 
             var engine = new Engine(
-
                 MockStorage.GetGame(),
                 new Scoreboard(),
                 MockStorage.GetPrinter(),
                 reader,
                 new CommandManager(),
-                new BoardHistory()
-
-                );
-
+                new BoardHistory());
             engine.Run();
         }
 
@@ -97,16 +78,12 @@ namespace GameFifteen.Tests.UI.Console
             var reader = MockStorage.GetReader("restart");
 
             var engine = new Engine(
-
                 MockStorage.GetGame(),
                 new Scoreboard(),
                 MockStorage.GetPrinter(),
                 reader,
                 new CommandManager(),
-                new BoardHistory()
-
-                );
-
+                new BoardHistory());
             engine.Run();
         }
 
@@ -116,16 +93,12 @@ namespace GameFifteen.Tests.UI.Console
             var reader = MockStorage.GetReader("exit");
 
             var engine = new Engine(
-
                 MockStorage.GetSolvedGame(),
                 new Scoreboard(),
                 MockStorage.GetPrinter(),
                 reader,
                 new CommandManager(),
-                new BoardHistory()
-
-                );
-
+                new BoardHistory());
             engine.Run();
         }
 
@@ -149,7 +122,6 @@ namespace GameFifteen.Tests.UI.Console
 
             var moveCommand = new UndoCommand();
             moveCommand.Execute(context);
-
         }
     }
 }

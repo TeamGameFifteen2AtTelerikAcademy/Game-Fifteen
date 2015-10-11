@@ -54,7 +54,7 @@
             var frameDirector = new FrameDirector(frameBuilder);
             var initialFrame = frameDirector.ConstructFrame(4, 4);
             var actualFrame = initialFrame.Clone();
-            bool result = mover.Move("", actualFrame);
+            bool result = mover.Move(string.Empty, actualFrame);
             Assert.IsFalse(result, "Mover method should return false when the tile can not be moved");
             Assert.AreEqual(initialFrame, actualFrame, "The frame should not be changed");
         }
