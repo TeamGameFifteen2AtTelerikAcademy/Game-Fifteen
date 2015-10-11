@@ -10,7 +10,7 @@
 namespace GameFifteen.Logic.Frames
 {
     /// <summary>
-    /// Pattern types enum.
+    /// Pattern types enumeration.
     /// </summary>
     public enum PatternTypes
     {

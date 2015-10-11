@@ -56,9 +56,9 @@ namespace GameFifteen.UI.Console
         }
 
         /// <summary>
-        /// The method returns ICommand by given Enum.
+        /// The method returns ICommand by given enumeration.
         /// </summary>
-        /// <param name="command">The name of the command of type Enum.</param>
+        /// <param name="command">The name of the command of type enumeration.</param>
         /// <returns>ICommand command.</returns>
         public ICommand GetCommand(Enum command)
         {

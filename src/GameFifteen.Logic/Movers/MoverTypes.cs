@@ -10,7 +10,7 @@
 namespace GameFifteen.Logic.Movers
 {
     /// <summary>
-    /// Enum MoverTypes.
+    /// Enumeration MoverTypes.
     /// </summary>
     public enum MoverTypes
     {
