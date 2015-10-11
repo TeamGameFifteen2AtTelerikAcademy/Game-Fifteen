@@ -41,25 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandContext.cs" />
-    <Compile Include="CommandManager.cs" />
+    <Compile Include="GameContext\CommandContext.cs" />
+    <Compile Include="CommandFactory\CommandManager.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
     <Compile Include="Commands\IncorrectCommand.cs" />
     <Compile Include="Commands\MoveCommand.cs" />
     <Compile Include="Commands\RestartCommand.cs" />
     <Compile Include="Commands\ShowScoresCommand.cs" />
     <Compile Include="Commands\UndoCommand.cs" />
-    <Compile Include="Engine.cs" />
-    <Compile Include="EngineTemplate.cs" />
-    <Compile Include="GameInitializer.cs" />
-    <Compile Include="IGameInitializer.cs" />
-    <Compile Include="IPrinter.cs" />
-    <Compile Include="IReader.cs" />
-    <Compile Include="Printer.cs" />
+    <Compile Include="Engine\Engine.cs" />
+    <Compile Include="Engine\EngineTemplate.cs" />
+    <Compile Include="GameInitializer\GameInitializer.cs" />
+    <Compile Include="GameInitializer\IGameInitializer.cs" />
+    <Compile Include="ConsoleUserInterfaceIOHandlers\IPrinter.cs" />
+    <Compile Include="ConsoleUserInterfaceIOHandlers\IReader.cs" />
+    <Compile Include="ConsoleUserInterfaceIOHandlers\Printer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reader.cs" />
-    <Compile Include="UserCommands.cs" />
+    <Compile Include="ConsoleUserInterfaceIOHandlers\Reader.cs" />
+    <Compile Include="Helpers\UserCommands.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
