@@ -7,17 +7,24 @@
 // </summary>
 // <author>GameFifteen2Team</author>
 
-namespace GameFifteen.UI.Console
+namespace GameFifteen.UI.Console.CommandFactory
 {
     using System;
-    using Commands;
+    using System.Collections.Generic;
     using GameFifteen.Logic.Commands;
+    using GameFifteen.UI.Console.Commands;
+    using GameFifteen.UI.Console.Helpers;
 
     /// <summary>
     /// CommandManager class.
     /// </summary>
     internal class CommandManager : ICommandManager
     {
+        /// <summary>
+        /// Holds the already created commands. Works like cache provider.
+        /// </summary>
+        private readonly Dictionary<string, ICommand> commandDictionary = new Dictionary<string, ICommand>();
+
         /// <summary>
         /// Initializes a new instance of the CommandManager class.
         /// </summary>
@@ -32,22 +39,29 @@ namespace GameFifteen.UI.Console
         /// <returns>ICommand command.</returns>
         public ICommand GetCommand(string command)
         {
+            if (this.commandDictionary.ContainsKey(command))
+            {
+                return this.commandDictionary[command];
+            }
+
             UserCommands userCommand;
             if (Enum.IsDefined(typeof(UserCommands), command) &&
-             Enum.TryParse<UserCommands>(command, out userCommand))
+                Enum.TryParse<UserCommands>(command, out userCommand))
             {
-                return this.GetCommand(userCommand);
+                ICommand currentCommand = this.GetCommand(userCommand);
+                this.commandDictionary.Add(command, currentCommand);
+                return currentCommand;
             }
             else
             {
-                return new IncorrectCommand();
+                throw new ArgumentException();
             }
         }
 
         /// <summary>
-        /// The method returns ICommand by given Enum.
+        /// The method returns ICommand by given enumeration.
         /// </summary>
-        /// <param name="command">The name of the command of type Enum.</param>
+        /// <param name="command">The name of the command of type enumeration.</param>
         /// <returns>ICommand command.</returns>
         public ICommand GetCommand(Enum command)
         {

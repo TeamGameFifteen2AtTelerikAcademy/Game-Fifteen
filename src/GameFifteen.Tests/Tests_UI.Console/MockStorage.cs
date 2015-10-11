@@ -1,48 +1,31 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using GameFifteen.Logic.Commands;
-using GameFifteen.Logic.Frames;
-using GameFifteen.Logic.Frames.Contracts;
-using GameFifteen.Logic.Games;
-using GameFifteen.Logic.Memento;
-using GameFifteen.Logic.Movers;
-using GameFifteen.Logic.Tiles;
-using GameFifteen.Logic.Tiles.Contracts;
-using GameFifteen.UI.Console;
-
-namespace GameFifteen.Tests.UI.Console
+﻿namespace GameFifteen.Tests.UI.Console
 {
+    using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
+    using Logic.Commands;
+    using Logic.Frames;
+    using Logic.Frames.Contracts;
     using Logic.Games.Contracts;
+    using Logic.Memento;
+    using Logic.Scoreboards.Contracts;
+    using Logic.Tiles.Contracts;
     using Moq;
 
     public class MockStorage
     {
-        public static IPrinter GetPrinter()
-        {
-            var mockedPriner = new Mock<IPrinter>();
-
-            mockedPriner.Setup(x => x.Print(It.IsAny<object>()))
-                .Verifiable();
-
-            mockedPriner.Setup(x => x.PrintLine(It.IsAny<object>()))
-                .Verifiable();
-            return mockedPriner.Object;
-        }
-        
-        public static string Result;
+        private static string result;
 
         public static IReader GetReader(string value)
         {
             var mockedReader = new Mock<IReader>();
-            var numberOfCalls = 1;
-            Result = value;
+            var numberOfCalls = 2;
+            result = value;
             var parsedInput = new string[3];
             mockedReader.Setup(x => x.ReadLine())
                 .Callback(() =>
                 {
                     if (numberOfCalls == 0)
                     {
-                        Result = "Exit";
+                        result = "Exit";
                     }
                     else
                     {
@@ -50,7 +33,7 @@ namespace GameFifteen.Tests.UI.Console
                         numberOfCalls--;
                     }
                 })
-                .Returns(() => Result);
+                .Returns(() => result);
 
             mockedReader.Setup(x => x.ParseInput(It.IsAny<string>()))
                 .Callback<string>(
@@ -62,6 +45,18 @@ namespace GameFifteen.Tests.UI.Console
                 .Returns(() => parsedInput);
 
             return mockedReader.Object;
+        }
+
+        public static IPrinter GetPrinter()
+        {
+            var mockedPriner = new Mock<IPrinter>();
+
+            mockedPriner.Setup(x => x.Print(It.IsAny<object>()))
+                .Verifiable();
+
+            mockedPriner.Setup(x => x.PrintLine(It.IsAny<object>()))
+                .Verifiable();
+            return mockedPriner.Object;
         }
 
         public static IGame GetGame()
@@ -99,13 +94,44 @@ namespace GameFifteen.Tests.UI.Console
             return mockedGame.Object;
         }
 
+        public static IGame GetSelfSolvingGameAfterOneMove()
+        {
+            var mockedGame = new Mock<IGame>();
+            var numberOfCalls = 1;
+
+            mockedGame.Setup(x => x.Move(It.IsAny<string>()))
+                .Returns(true);
+
+            mockedGame.Setup(x => x.Shuffle())
+                .Verifiable();
+
+            mockedGame.Setup(x => x.Frame)
+                .Returns(new Frame(new ITile[3, 3]));
+
+            mockedGame.Setup(x => x.IsSolved)
+                .Returns(() =>
+                {
+                    if (numberOfCalls == 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        numberOfCalls--;
+                        return false;
+                    }
+                });
+
+            return mockedGame.Object;
+        }
+
         public static IGame GetGameWithInvalidMove()
         {
             var mockedGame = new Mock<IGame>();
 
             mockedGame.Setup(x => x.Move(It.IsAny<string>()))
                 .Returns(false);
-         
+
             return mockedGame.Object;
         }
 
@@ -118,7 +144,7 @@ namespace GameFifteen.Tests.UI.Console
 
             mockedContext.Setup(x => x.BoardHistory)
                 .Returns(() => MockStorage.GetBoardHistory());
-                
+
             mockedContext.Setup(x => x.SelectedTileLabel)
                 .Returns(() => "3");
             return mockedContext.Object;
@@ -128,12 +154,21 @@ namespace GameFifteen.Tests.UI.Console
         {
             var memento = new Mock<IMemento>();
 
-            memento.Setup(x=>x.SaveBoardState(It.IsAny<IFrame>()))
+            memento.Setup(x => x.SaveBoardState(It.IsAny<IFrame>()))
                 .Verifiable();
 
-            memento.Setup(x=>x.Undo()).Verifiable();
+            memento.Setup(x => x.Undo()).Verifiable();
 
             return memento.Object;
+        }
+
+        public static IScoreboard GetScoreboard()
+        {
+            var mocked = new Mock<IScoreboard>();
+
+            mocked.Setup(x => x.Add(It.IsAny<int>(), It.IsAny<string>())).Verifiable();
+
+            return mocked.Object;
         }
 
         public static ICommandManager GeCommandManager()

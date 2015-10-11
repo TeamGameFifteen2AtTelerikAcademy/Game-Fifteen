@@ -16,10 +16,9 @@ namespace Tests_GameFifteen.Logic.Tests_Mover
     public class ColRowMoverTest
     {
         /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-
+        /// Gets or sets the test context which provides
+        /// information about and functionality for the current test run.
+        /// </summary>
         [TestMethod]
         public void TestMoverIsMovingATileWhichCanBeMovedRowColMover()
         {
@@ -57,7 +56,7 @@ namespace Tests_GameFifteen.Logic.Tests_Mover
             var frameDirector = new FrameDirector(frameBuilder);
             var initialFrame = frameDirector.ConstructFrame(4, 4);
             var actualFrame = initialFrame.Clone();
-            bool result = mover.Move("", actualFrame);
+            bool result = mover.Move(string.Empty, actualFrame);
             Assert.IsFalse(result, "Mover method should return false when the tile can not be moved");
             Assert.AreEqual(initialFrame, actualFrame, "The frame should not be changed");
         }

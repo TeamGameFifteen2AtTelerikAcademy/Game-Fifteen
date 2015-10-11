@@ -24,9 +24,9 @@ namespace GameFifteen.Logic.Commands
         ICommand GetCommand(string command);
 
         /// <summary>
-        /// The method returns ICommand by given Enum.
+        /// The method returns ICommand by given enumeration.
         /// </summary>
-        /// <param name="command">The name of the command of type Enum.</param>
+        /// <param name="command">The name of the command of type enumeration.</param>
         /// <returns>ICommand command.</returns>
         ICommand GetCommand(Enum command);
     }

@@ -1,10 +1,11 @@
-﻿using System.IO;
-
-namespace GameFifteen.Tests.UI.Console
+﻿namespace GameFifteen.Tests.UI.Console
 {
+    using System.IO;
     using GameFifteen.Logic.Frames;
     using GameFifteen.Logic.Tiles.Contracts;
     using GameFifteen.UI.Console;
+    using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
 
@@ -29,7 +30,6 @@ namespace GameFifteen.Tests.UI.Console
           
             var printer = new Printer();
             printer.PrintLine(frame);
-
         }
 
         [TestMethod]
@@ -71,9 +71,5 @@ namespace GameFifteen.Tests.UI.Console
             var printer = new Printer();
             printer.ClearMessages();
         }
-
-
-
-
     }
 }

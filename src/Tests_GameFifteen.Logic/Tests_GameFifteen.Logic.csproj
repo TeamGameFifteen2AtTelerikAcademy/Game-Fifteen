@@ -59,8 +59,15 @@
     <Compile Include="Tests_Common\ConvertorTest.cs" />
     <Compile Include="Tests_Common\ValidatorTest.cs" />
     <Compile Include="Tests_Frames\FrameTest.cs" />
+<<<<<<< HEAD
     <Compile Include="Tests_Frames\FrameDirectorTest.cs" />
     <Compile Include="Tests_Frames\ProxyFrameTest.cs" />
+=======
+    <Compile Include="Tests_Frames\FrameDirectorTest.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Tests_Frames\ProxyFrame.cs" />
+>>>>>>> 2f71c6cfe817d8e42b24f8fa4ed91c1b447c457b
     <Compile Include="Tests_Game\GameTests.cs" />
     <Compile Include="Tests_Mover\ClassicMoverTest.cs" />
     <Compile Include="Tests_Mover\ColRowMoverTest.cs" />

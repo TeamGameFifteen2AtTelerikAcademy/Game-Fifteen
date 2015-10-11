@@ -2,11 +2,10 @@
 {
     using System;
     using System.Linq;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    using GameFifteen.Logic.Scoreboards;
     using GameFifteen.Logic;
     using GameFifteen.Logic.Common;
+    using GameFifteen.Logic.Scoreboards;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
     /// Covers tests for Scoreboard

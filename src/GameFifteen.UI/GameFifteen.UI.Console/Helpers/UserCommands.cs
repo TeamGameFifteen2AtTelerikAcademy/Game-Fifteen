@@ -7,10 +7,10 @@
 // </summary>
 // <author>GameFifteen2Team</author>
 
-namespace GameFifteen.UI.Console
+namespace GameFifteen.UI.Console.Helpers
 {
     /// <summary>
-    /// UserCommands enum.
+    /// UserCommands enumeration.
     /// </summary>
     internal enum UserCommands
     {       
@@ -37,6 +37,11 @@ namespace GameFifteen.UI.Console
         /// <summary>
         /// Move command.
         /// </summary>
-        Move
+        Move,
+
+        /// <summary>
+        /// Invalid command.
+        /// </summary>
+        Invalid
     }
 }

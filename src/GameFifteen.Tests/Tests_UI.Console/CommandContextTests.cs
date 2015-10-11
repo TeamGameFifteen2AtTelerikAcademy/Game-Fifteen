@@ -1,7 +1,7 @@
 ﻿namespace GameFifteen.Tests.UI.Console
 {
-    using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Commands;
+    using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Frames;
     using GameFifteen.Logic.Frames.Contracts;
     using GameFifteen.Logic.Games;
@@ -12,7 +12,12 @@
     using GameFifteen.Logic.Scoreboards.Contracts;
     using GameFifteen.Logic.Tiles.Contracts;
     using GameFifteen.UI.Console;
+    using GameFifteen.UI.Console.CommandFactory;
     using GameFifteen.UI.Console.Commands;
+    using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
+    using GameFifteen.UI.Console.GameContext;
+    using GameFifteen.UI.Console.GameInitializer;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
 
@@ -22,8 +27,6 @@
     [TestClass]
     public class CommandContextTests
     {
-        public CommandContext Instance { get; set; }
-
         public CommandContextTests()
         {
             var printer = new Printer();
@@ -42,6 +45,8 @@
 
             this.Instance = new CommandContext(game, scoreboard, boardHistory);
         }
+
+        public CommandContext Instance { get; set; }
 
         [TestMethod]
         public void ExpectCommandContextConstructorToSetMovesToZero()
@@ -106,7 +111,7 @@
         public void ExpectMessageToBeCorrectWhenMoveCommandIsExecuted()
         {
             // We cant know how are ordered the tiles and witch can be moved, so we mock the Game.Move() method
-            PrepareMockingGameAndMementoForTestingMoveCommand();
+            this.PrepareMockingGameAndMementoForTestingMoveCommand();
 
             var moveCommand = new MoveCommand();
             moveCommand.Execute(this.Instance);
@@ -117,7 +122,7 @@
         [TestMethod]
         public void ExpectMovesToIncreaseByOneWhenMoveCommandIsExecutedOnce()
         {
-            PrepareMockingGameAndMementoForTestingMoveCommand();
+            this.PrepareMockingGameAndMementoForTestingMoveCommand();
             var currentMoves = this.Instance.Moves;
 
             var moveCommand = new MoveCommand();
@@ -129,7 +134,7 @@
         [TestMethod]
         public void ExpectMovesToIncreaseByFiveWhenMoveCommandIsExecutedFiveTimes()
         {
-            PrepareMockingGameAndMementoForTestingMoveCommand();
+            this.PrepareMockingGameAndMementoForTestingMoveCommand();
             var currentMoves = this.Instance.Moves;
 
             var moveCommand = new MoveCommand();

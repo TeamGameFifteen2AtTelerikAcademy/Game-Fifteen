@@ -7,15 +7,18 @@
 // </summary>
 // <author>GameFifteen2Team</author>
 
-namespace GameFifteen.UI.Console
+namespace GameFifteen.UI.Console.Engine
 {
     using System.Globalization;
 
+    using GameFifteen.Logic.Commands;
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Games.Contracts;
+    using GameFifteen.Logic.Memento;
     using GameFifteen.Logic.Scoreboards.Contracts;
-    using Logic.Commands;
-    using Logic.Memento;
+    using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
+    using GameFifteen.UI.Console.GameContext;
+    using GameFifteen.UI.Console.Helpers;
 
     /// <summary>
     /// Engine class - holds the magic.
@@ -94,9 +97,8 @@ namespace GameFifteen.UI.Console
         /// </summary>
         protected override void Play()
         {
-            // this.printer.ClearBoard();
-
             this.game.Shuffle();
+            this.printer.ClearBoard();
 
             while (!this.context.IsGameOver)
             {
@@ -134,11 +136,9 @@ namespace GameFifteen.UI.Console
             var userCommand = userCommandAndTarget[0];
             var userTarget = userCommandAndTarget[1];
 
-            // Capitalize the first letter to meet restrictions from the enum...
-            userInput = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userCommand);
             this.context.SelectedTileLabel = userTarget;
 
-            this.commandManager.GetCommand(userInput).Execute(this.context);
+            this.commandManager.GetCommand(userCommand).Execute(this.context);
             this.printer.SetCursorBottomBoard();
             this.printer.ClearMessages();
             this.printer.PrintLine(this.context.Message);

@@ -7,7 +7,7 @@
 // </summary>
 // <author>GameFifteen2Team</author>
 
-namespace GameFifteen.UI.Console
+namespace GameFifteen.UI.Console.GameInitializer
 {
     using System;
 
@@ -20,6 +20,7 @@ namespace GameFifteen.UI.Console
     using GameFifteen.Logic.Movers.Contracts;
     using GameFifteen.Logic.Tiles;
     using GameFifteen.Logic.Tiles.Contracts;
+    using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
 
     /// <summary>
     /// Game Initializer class.

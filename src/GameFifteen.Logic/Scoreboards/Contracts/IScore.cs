@@ -9,8 +9,6 @@
 
 namespace GameFifteen.Logic.Scoreboards.Contracts
 {
-    using System;
-
     /// <summary>
     /// Interface for IScore.
     /// </summary>

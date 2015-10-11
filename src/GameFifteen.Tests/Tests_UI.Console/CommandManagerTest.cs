@@ -1,6 +1,8 @@
 ﻿namespace GameFifteen.Tests.UI.Console
 {
+    using System;
     using GameFifteen.UI.Console;
+    using GameFifteen.UI.Console.CommandFactory;
     using GameFifteen.UI.Console.Commands;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -62,9 +64,18 @@
         public void ExpectGetCommandToReturnIncorrectCommandWhenInvalidString()
         {
             var commandManager = new CommandManager();
-            var result = commandManager.GetCommand("42");
+            var result = commandManager.GetCommand("Invalid");
 
             Assert.IsInstanceOfType(result, typeof(IncorrectCommand));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        //// In real life it will never be invoked with invalid string, because of the Parser.
+        public void ExpectGetCommandToThrowIfSomehowPassedInvalidString()
+        {
+            var commandManager = new CommandManager();
+            var result = commandManager.GetCommand("42");
         }
     }
 }

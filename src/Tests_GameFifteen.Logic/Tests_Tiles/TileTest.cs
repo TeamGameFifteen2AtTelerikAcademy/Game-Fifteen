@@ -1,11 +1,9 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using GameFifteen.Logic.Tiles;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Tests_GameFifteen.Logic.Tests_Tiles
+﻿namespace Tests_GameFifteen.Logic.Tests_Tiles
 {
+    using System;
+    using GameFifteen.Logic.Tiles;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     /// <summary>
     /// Summary description for TileTest
     /// </summary>
@@ -13,10 +11,9 @@ namespace Tests_GameFifteen.Logic.Tests_Tiles
     public class TileTest
     {
         /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        
+        /// Gets or sets the test context which provides
+        /// information about and functionality for the current test run.
+        /// </summary>
         [TestMethod]
         public void ExpectTrueEqualsMethodWhithTwoITileObjeckTest()
         {
@@ -24,7 +21,6 @@ namespace Tests_GameFifteen.Logic.Tests_Tiles
             var numberTileSecond = new NumberTile(1);
             bool result = numberTileFirst.Equals(numberTileSecond);
             Assert.IsTrue(result);
-
         }
 
         [TestMethod]
@@ -32,9 +28,8 @@ namespace Tests_GameFifteen.Logic.Tests_Tiles
         {
             var numberTileFirst = new NumberTile(1);
             var numberTileSecond = new NumberTile(1);
-            bool result = numberTileFirst.Equals(numberTileSecond as Object);
+            bool result = numberTileFirst.Equals(numberTileSecond as object);
             Assert.IsTrue(result);
-
         }
 
         [TestMethod]
@@ -44,7 +39,6 @@ namespace Tests_GameFifteen.Logic.Tests_Tiles
             NumberTile numberTileSecond = null;
             bool result = numberTileFirst.Equals(numberTileSecond);
             Assert.IsFalse(result);
-
         }
 
         [TestMethod]
@@ -52,7 +46,6 @@ namespace Tests_GameFifteen.Logic.Tests_Tiles
         {
             var numberTile = new NumberTile(1);
             numberTile.GetHashCode();
-
         }
 
         [TestMethod]
@@ -60,7 +53,6 @@ namespace Tests_GameFifteen.Logic.Tests_Tiles
         {
             var numberTile = new NumberTile(1);
             numberTile.ToString();
-
         }
     }
 }
