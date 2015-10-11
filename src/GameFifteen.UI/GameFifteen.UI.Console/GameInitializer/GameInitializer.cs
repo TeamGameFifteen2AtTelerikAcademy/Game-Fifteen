@@ -72,6 +72,8 @@ namespace GameFifteen.UI.Console.GameInitializer
 
             var mover = this.ChooseMover();
 
+            this.printer.ClearBoard();
+
             return new Game(frame, mover);
         }
 

@@ -26,13 +26,6 @@ namespace GameFifteen.UI.Console.CommandFactory
         private readonly Dictionary<string, ICommand> commandDictionary = new Dictionary<string, ICommand>();
 
         /// <summary>
-        /// Initializes a new instance of the CommandManager class.
-        /// </summary>
-        public CommandManager()
-        {
-        }
-
-        /// <summary>
         /// The method returns ICommand by given string name.
         /// </summary>
         /// <param name="command">The name of the command in String format.</param>

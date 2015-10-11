@@ -35,7 +35,7 @@ namespace GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers
         /// <returns>Array of strings.</returns>
         public string[] ParseInput(string userInput)
         {
-            string[] handleUserInput = new string[] { string.Empty, string.Empty };
+            var handleUserInput = new string[2];
             var userCommandAndTarget = userInput.Split(' ');
             string userCommand = userCommandAndTarget[0];
             userCommand = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userCommand);

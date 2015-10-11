@@ -9,8 +9,6 @@
 
 namespace GameFifteen.UI.Console.Engine
 {
-    using System.Globalization;
-
     using GameFifteen.Logic.Commands;
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Games.Contracts;
@@ -71,10 +69,12 @@ namespace GameFifteen.UI.Console.Engine
         /// <param name="boardHistory">Engine's IMemento.</param>
         public Engine(IGame game, IScoreboard scoreboard, IPrinter printer, IReader reader, ICommandManager commandManager, IMemento boardHistory)
         {
-            Validator.ValidateIsNotNull(game, "gameFifteen");
+            Validator.ValidateIsNotNull(game, "game");
             Validator.ValidateIsNotNull(scoreboard, "scoreboard");
             Validator.ValidateIsNotNull(printer, "printer");
             Validator.ValidateIsNotNull(reader, "reader");
+            Validator.ValidateIsNotNull(commandManager, "commandManager");
+            Validator.ValidateIsNotNull(boardHistory, "boardHistory");
 
             this.game = game;
             this.scoreboard = scoreboard;
@@ -98,7 +98,6 @@ namespace GameFifteen.UI.Console.Engine
         protected override void Play()
         {
             this.game.Shuffle();
-            this.printer.ClearBoard();
 
             while (!this.context.IsGameOver)
             {
@@ -125,12 +124,15 @@ namespace GameFifteen.UI.Console.Engine
         /// </summary>
         private void ExecuteStep()
         {
-            this.printer.SetCursorTopBoard();
             this.printer.PrintLine(this.game.Frame);
-            this.printer.ClearLine();
+
+            this.printer.PrintLine(this.context.Message);
+            this.context.Message = string.Empty;
+
             this.printer.Print(Constants.EnterCommandMessage);
 
             string userInput = this.reader.ReadLine();
+            this.printer.ClearBoard();
 
             var userCommandAndTarget = this.reader.ParseInput(userInput);
             var userCommand = userCommandAndTarget[0];
@@ -139,9 +141,6 @@ namespace GameFifteen.UI.Console.Engine
             this.context.SelectedTileLabel = userTarget;
 
             this.commandManager.GetCommand(userCommand).Execute(this.context);
-            this.printer.SetCursorBottomBoard();
-            this.printer.ClearMessages();
-            this.printer.PrintLine(this.context.Message);
         }
 
         /// <summary>
@@ -150,20 +149,19 @@ namespace GameFifteen.UI.Console.Engine
         /// <param name="currentMovesCount">Current moves.</param>
         private void GameOver(int currentMovesCount)
         {
-            this.printer.SetCursorTopBoard();
             this.printer.PrintLine(this.game.Frame);
-            this.printer.ClearLine();
             this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, currentMovesCount));
 
             if (this.scoreboard.IsInTopScores(currentMovesCount))
             {
                 this.printer.Print(Constants.EnterNameMessage);
                 string userName = this.reader.ReadLine();
-                this.scoreboard.Add(currentMovesCount, userName);
-                this.printer.Print(this.scoreboard);
-            }
+                this.printer.ClearBoard();
 
-            this.printer.ClearBoard();
+                this.scoreboard.Add(currentMovesCount, userName);
+
+                this.context.Message = this.scoreboard.ToString();
+            }
         }
     }
 }
