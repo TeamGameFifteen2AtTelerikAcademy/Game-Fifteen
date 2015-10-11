@@ -10,7 +10,7 @@
 namespace GameFifteen.Logic.Tiles
 {
     /// <summary>
-    /// Enum TileTypes for Tile types.
+    /// Enumeration TileTypes for Tile types.
     /// </summary>
     public enum TileTypes
     {

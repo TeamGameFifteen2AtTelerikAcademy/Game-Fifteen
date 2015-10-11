@@ -10,7 +10,7 @@
 namespace GameFifteen.UI.Console
 {
     /// <summary>
-    /// UserCommands enum.
+    /// UserCommands enumeration.
     /// </summary>
     internal enum UserCommands
     {       
