@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using GameFifteen.Logic.Frames;
-using GameFifteen.Logic.Frames.Contracts;
-using GameFifteen.Logic.Movers;
-using GameFifteen.Logic.Tiles;
-using GameFifteen.Logic.Tiles.Contracts;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests_GameFifteen.Logic.Tests_Mover
 {
+    using GameFifteen.Logic.Frames;
+    using GameFifteen.Logic.Frames.Contracts;
+    using GameFifteen.Logic.Movers;
+    using GameFifteen.Logic.Tiles;
+    using GameFifteen.Logic.Tiles.Contracts;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     /// <summary>
     /// Summary description for Mover
     /// </summary>
@@ -106,6 +105,18 @@ namespace Tests_GameFifteen.Logic.Tests_Mover
         }
 
         [TestMethod]
+         [ExpectedException(typeof(ArgumentException),
+         "The frame cannot be shuffled because it does not have a null tile.")]
+        public void ExpectExseptionsShuffleWithTileWhichCanBeMoved()
+        {
+            var mover = new ClassicMover();
+            IFrame initialFrame = new Frame(new ITile[,] { { new NumberTile(1) } });
+            var actualFrame = initialFrame.Clone();
+            mover.Shuffle(actualFrame);
+            
+        }
+
+        [TestMethod]
         public void TestMoverNotMovingATileWhenInFrameHaveNotNullTileClassicMover()
         {
             var mover = new ClassicMover();
@@ -115,5 +126,7 @@ namespace Tests_GameFifteen.Logic.Tests_Mover
             Assert.IsFalse(moveDown, "Mover method should return false when the tile can not be moved");
             Assert.AreEqual(initialFrame, actualFrame, "The frame should not be changed");
         }
+
+        
     }
 }

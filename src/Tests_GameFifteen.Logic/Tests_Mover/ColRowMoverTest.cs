@@ -1,4 +1,6 @@
-﻿namespace Tests_GameFifteen.Logic.Tests_Mover
+﻿using System;
+
+namespace Tests_GameFifteen.Logic.Tests_Mover
 {
     using GameFifteen.Logic.Frames;
     using GameFifteen.Logic.Frames.Contracts;
@@ -142,6 +144,18 @@
             bool moveDown = mover.Move("4", actualFrame);
             Assert.IsTrue(moveDown, "Mover method should return true when the tile can be moved");
             Assert.AreNotEqual(initialFrame, actualFrame, "The frame should be changed when the mover moves the tile");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException),
+        "The frame cannot be shuffled because it does not have a null tile.")]
+        public void ExpectExseptionsShuffleWithTileWhichCanBeMovedRowColMover()
+        {
+            var mover = new RowColMover();
+            IFrame initialFrame = new Frame(new ITile[,] { { new NumberTile(1) } });
+            var actualFrame = initialFrame.Clone();
+            mover.Shuffle(actualFrame);
+
         }
 
         [TestMethod]
