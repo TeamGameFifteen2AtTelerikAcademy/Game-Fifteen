@@ -41,16 +41,17 @@ namespace GameFifteen.UI.Console
             }
 
             UserCommands userCommand;
-            if (Enum.IsDefined(typeof(UserCommands), command) &&
-             Enum.TryParse<UserCommands>(command, out userCommand))
+            if (Enum.IsDefined(typeof (UserCommands), command) &&
+                Enum.TryParse<UserCommands>(command, out userCommand))
             {
                 ICommand currentCommand = this.GetCommand(userCommand);
                 commandDictionary.Add(command, currentCommand);
                 return currentCommand;
             }
+
             else
             {
-                return new IncorrectCommand();
+                throw new ArgumentException();
             }
         }
 
