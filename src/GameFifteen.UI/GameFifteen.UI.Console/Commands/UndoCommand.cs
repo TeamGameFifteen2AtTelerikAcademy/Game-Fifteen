@@ -22,7 +22,10 @@ namespace GameFifteen.UI.Console.Commands
         /// <param name="context">Context of type ICommandContext.</param>
         public void Execute(ICommandContext context)
         {
-            context.Game.Frame = context.BoardHistory.Undo();
+            if (context.Moves > 0)
+            {
+                context.Game.Frame = context.BoardHistory.Undo();                
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace GameFifteen.Logic.Memento
         /// <summary>
         /// Private field that holds board states.
         /// </summary>
-        private IList<IFrame> boardStates;
+        private readonly IList<IFrame> boardStates;
 
         /// <summary>
         /// Holds current index.
