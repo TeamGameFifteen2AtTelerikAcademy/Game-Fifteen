@@ -9,7 +9,6 @@
 
 namespace GameFifteen.Logic.Games
 {
-    using System;
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Frames.Contracts;
     using GameFifteen.Logic.Games.Contracts;
@@ -42,11 +41,10 @@ namespace GameFifteen.Logic.Games
         /// <param name="mover">Mover of type IMover.</param>
         public Game(IFrame frame, IMover mover)
         {
-            Validator.ValidateIsNotNull(frame, "frame");
-            Validator.ValidateIsNotNull(mover, "mover");
+            this.Frame = frame;
+            this.framePrototype = this.Frame.Clone();
 
-            this.framePrototype = frame;
-            this.frame = this.framePrototype.Clone();
+            Validator.ValidateIsNotNull(mover, "mover");
             this.mover = mover;
         }
 
@@ -63,6 +61,7 @@ namespace GameFifteen.Logic.Games
 
             set
             {
+                Validator.ValidateIsNotNull(value, "Frame");
                 this.frame = value;
             }
         }
