@@ -12,6 +12,9 @@ namespace GameFifteen.Logic.Frames
     using System;
     using System.Text;
     using Frames.Contracts;
+
+    using GameFifteen.Logic.Common;
+
     using Tiles.Contracts;
 
     /// <summary>
@@ -112,25 +115,24 @@ namespace GameFifteen.Logic.Frames
         {
             int spaceNeededPerTile = (this.Rows * this.Cols).ToString().Length + 1;
 
-            string topBottomBorder = new string('-', (spaceNeededPerTile * this.Cols) + 2);
-            string leftRightBorder = "|";
+            string topBottomBorder = new string(Constants.HorizontalBorder, (spaceNeededPerTile * this.Cols) + 2);
 
             var result = new StringBuilder(topBottomBorder);
 
-            string tileStringFormater = "{0," + spaceNeededPerTile + "}";
+            string tileStringFormater = Constants.TileStringFormatterLeft + spaceNeededPerTile + Constants.TileStringFormatterRight;
 
             for (int row = 0; row < this.Rows; row++)
             {
                 result.Append(Environment.NewLine);
 
-                result.Append(leftRightBorder);
+                result.Append(Constants.VerticalBorder);
 
                 for (int col = 0; col < this.Cols; col++)
                 {
                     result.Append(string.Format(tileStringFormater, this.Tiles[row, col]));
                 }
 
-                result.Append(leftRightBorder);
+                result.Append(Constants.VerticalBorder);
             }
 
             result.Append(Environment.NewLine);
