@@ -1,4 +1,13 @@
-﻿namespace Tests_GameFifteen.Logic.Tests_Game
+﻿// <copyright file="GameTests.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// GameTests class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace Tests_GameFifteen.Logic.Tests_Game
 {
     using GameFifteen.Logic.Frames.Contracts;
     using GameFifteen.Logic.Games;
@@ -8,9 +17,15 @@
 
     using Moq;
 
+    /// <summary>
+    /// GameTests test class test Game class. Uses mocking.
+    /// </summary>
     [TestClass]
     public class GameTests
     {
+        /// <summary>
+        /// The method tests if to different frame's prototype instances are equal.
+        /// </summary>
         [TestMethod]
         public void TestGameSetsFramePrototypeWithDifferentInstanceOfFrameButEqualToIt()
         {
@@ -29,6 +44,9 @@
             Assert.IsTrue(game.Frame.Equals(game.FramePrototype));
         }
 
+        /// <summary>
+        /// The method tests if the game is solved when the initial state of the frame is not shuffled.
+        /// </summary>
         [TestMethod]
         public void TestGameIsSolvedWhenCreatedAndNotShuffledYet()
         {
@@ -46,6 +64,9 @@
             Assert.IsTrue(game.IsSolved);
         }
 
+        /// <summary>
+        /// The method tests if game Mover Moves its frame.
+        /// </summary>
         [TestMethod]
         public void TestGameCallsMoverMovePasssingItItsFrame()
         {
@@ -57,6 +78,9 @@
             mockMover.Verify(m => m.Move(It.IsAny<string>(), mockFrame.Object), Times.Once);
         }
 
+        /// <summary>
+        /// The method tests if game Mover shuffles its frame.
+        /// </summary>
         [TestMethod]
         public void TestGameCallsMoverShufflePassingItItsFrame()
         {

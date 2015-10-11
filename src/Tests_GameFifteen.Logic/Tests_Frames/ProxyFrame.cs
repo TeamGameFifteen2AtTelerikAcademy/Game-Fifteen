@@ -1,4 +1,13 @@
-﻿namespace Tests_GameFifteen.Logic.Tests_Frames
+﻿// <copyright file="ProxyFrame.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// ProxyFrame class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace Tests_GameFifteen.Logic.Tests_Frames
 {
     using System;
     using System.Collections.Generic;
@@ -7,14 +16,13 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Summary description for ProxyFrame
+    /// ProxyFrame tests class test ProxyFrame class.
     /// </summary>
     [TestClass]
     public class ProxyFrame
     {
         /// <summary>
-        /// Gets or sets the test context which provides
-        /// information about and functionality for the current test run.
+        /// The test NOT to catch exception when getting hash code of ProxyFrame.
         /// </summary>
         [TestMethod]
         public void ExpectDoNotCatchExaptionsTestGetHeshCodeMetothdInProxyFrame()
@@ -23,6 +31,9 @@
             var hash = proxy.GetHashCode();
         }
 
+        /// <summary>
+        /// The test Equals method of ProxyFrame().
+        /// </summary>
         [TestMethod]
         public void ExpectDoNotCatchExaptionsTestEqualsMethodtInProxyFrame()
         {

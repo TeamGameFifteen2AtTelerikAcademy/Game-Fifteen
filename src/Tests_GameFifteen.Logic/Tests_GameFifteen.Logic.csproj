@@ -60,7 +60,7 @@
     <Compile Include="Tests_Common\ValidatorTest.cs" />
     <Compile Include="Tests_Frames\FrameTest.cs" />
     <Compile Include="Tests_Frames\FrameDirectorTest.cs">
-      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Tests_Frames\ProxyFrame.cs" />
     <Compile Include="Tests_Game\GameTests.cs" />
