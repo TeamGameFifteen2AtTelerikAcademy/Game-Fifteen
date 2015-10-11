@@ -1,21 +1,30 @@
-﻿namespace Tests_GameFifteen.Logic.Tests_Mover
+﻿// <copyright file="ClassicMoverTest.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// ClassicMoverTest class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace Tests_GameFifteen.Logic.Tests_Mover
 {
     using GameFifteen.Logic.Frames;
     using GameFifteen.Logic.Frames.Contracts;
     using GameFifteen.Logic.Movers;
     using GameFifteen.Logic.Tiles;
     using GameFifteen.Logic.Tiles.Contracts;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Summary description for Mover
+    /// ClassicMoverTest test class test ClassicMover class.
     /// </summary>
     [TestClass]
     public class ClassicMoverTest
     {
         /// <summary>
-        /// Gets or sets the test context which provides
-        /// information about and functionality for the current test run.
+        /// The method tests if Mover moves a tile when it is possible.
         /// </summary>
         [TestMethod]
         public void TestMoverIsMovingATileWhichCanBeMoved()
@@ -31,6 +40,9 @@
             Assert.AreNotEqual(initialFrame, actualFrame, "The frame should be changed when the mover moves the tile");
         }
 
+        /// <summary>
+        /// The method tests if Mover NOT  moves a tile when it is NOT possible.
+        /// </summary>
         [TestMethod]
         public void TestMoverNotMovingATileWhichCanNotBeMoved()
         {
@@ -45,6 +57,9 @@
             Assert.AreEqual(initialFrame, actualFrame, "The frame should not be changed");
         }
 
+        /// <summary>
+        /// The method tests if Mover NOT moves an empty string tile.
+        /// </summary>
         [TestMethod]
         public void TestMoverTryMovingAEmptyStringTileAndTileNotBeMoved()
         {
@@ -59,6 +74,9 @@
             Assert.AreEqual(initialFrame, actualFrame, "The frame should not be changed");
         }
 
+        /// <summary>
+        /// The method tests if Mover NOT moves an null tile.
+        /// </summary>
         [TestMethod]
         public void TestMoverTryMovingANullTileAndTileNotBeMoved()
         {
@@ -73,6 +91,9 @@
             Assert.AreEqual(initialFrame, actualFrame, "The frame should not be changed");
         }
 
+        /// <summary>
+        /// The method tests if Mover moves a tile by column when it is possible.
+        /// </summary>
         [TestMethod]
         public void TestMoverIsMovingATileWhichCanBeMovedByColumn()
         {
@@ -87,6 +108,9 @@
             Assert.AreNotEqual(initialFrame, actualFrame, "The frame should be changed when the mover moves the tile");
         }
 
+        /// <summary>
+        /// The method tests if Mover shuffles a tile by column when it is possible.
+        /// </summary>
         [TestMethod]
         public void TestShuffleIsMovingATileWhichCanBeMovedByColumn()
         {
@@ -100,6 +124,9 @@
             Assert.AreNotEqual(initialFrame, actualFrame, "The frame should be changed when shuffled");
         }
 
+        /// <summary>
+        /// The method tests if Mover NOT moving a tile when in frame have not null tile.
+        /// </summary>
         [TestMethod]
         public void TestMoverNotMovingATileWhenInFrameHaveNotNullTileClassicMover()
         {
