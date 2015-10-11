@@ -1,4 +1,5 @@
-﻿using GameFifteen.Logic.Commands;
+﻿using System.Linq;
+using GameFifteen.Logic.Commands;
 using GameFifteen.Logic.Common;
 using GameFifteen.UI.Console.Commands;
 using Moq;
@@ -133,7 +134,7 @@ namespace GameFifteen.Tests.UI.Console
         public void ExpectToExecuteGameOverAndAddToScoreBoard()
         {
             var reader = MockStorage.GetReader("move 3");
-
+            
             var engine = new Engine(
 
                 MockStorage.GetSelfSolvingGameAfterOneMove(),
@@ -146,6 +147,27 @@ namespace GameFifteen.Tests.UI.Console
                 );
 
             engine.Run();
+        }
+
+        [TestMethod]
+        public void ExpectToAddToScoreBoardOneMove()
+        {
+            var reader = MockStorage.GetReader("move 3");
+            var scoreboard = new Scoreboard();
+            
+            var engine = new Engine(
+
+                MockStorage.GetSelfSolvingGameAfterOneMove(),
+               scoreboard,
+                MockStorage.GetPrinter(),
+                reader,
+                new CommandManager(),
+                new BoardHistory()
+
+                );
+
+            engine.Run();
+            Assert.AreEqual(1,scoreboard.GetTopScores().First().Moves);
         }
 
         [TestMethod]
