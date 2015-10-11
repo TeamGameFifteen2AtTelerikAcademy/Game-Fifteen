@@ -1,4 +1,13 @@
-﻿namespace Tests_GameFifteen.Logic.Tests_Frames
+﻿// <copyright file="FrameDirectorTest.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// FrameDirectorTest class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace Tests_GameFifteen.Logic.Tests_Frames
 { 
     using GameFifteen.Logic.Frames;
     using GameFifteen.Logic.Frames.Contracts;
@@ -7,14 +16,13 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Summary description for ClassicPatternFrameBuilderTest
+    /// ClassicPatternFrameBuilderTest class tests ClassicPatternFrameBuilder class.
     /// </summary>
     [TestClass]
     public class FrameDirectorTest
     {
         /// <summary>
-        /// Gets or sets the test context which provides
-        /// information about and functionality for the current test run.
+        /// The method test GetFrame method of ColumnsPatternFrameBuilder returns correct build frame.
         /// </summary>
         [TestMethod]
         public void TestThatGetFrameInFrameBIlderReturnedValueWithColumnsPatternFrameBuilderr()
@@ -26,6 +34,9 @@
             Assert.IsNotNull(actualFrame);
         }
 
+        /// <summary>
+        /// The method test GetFrame method of ColumnsPatternFrameBuilder returns correct build frame.
+        /// </summary>
         [TestMethod]
         public void TestThatGetFrameInFrameBIlderCorectFrameWithColumnsPatternFrameBuilder()
         {
@@ -36,6 +47,9 @@
             Assert.IsInstanceOfType(actualBuilder, typeof(IFrame));
         }
 
+        /// <summary>
+        /// The method test GetFrame method of ClassicPatternFrameBuilder returns correct build frame.
+        /// </summary>
         [TestMethod]
         public void TestThatGetFrameInFrameBIlderReturnedValueWithClassicPatternFrameBuilder()
         {
@@ -46,6 +60,9 @@
             Assert.IsNotNull(actualFrame);
         }
 
+        /// <summary>
+        /// The method test GetFrame method of ClassicPatternFrameBuilder returns correct build frame.
+        /// </summary>
         [TestMethod]
         public void TestThatGetFrameInFrameBIlderCorectFrameWithClassicPatternFrameBuilder()
         {
@@ -56,6 +73,9 @@
             Assert.IsInstanceOfType(actualFrame, typeof(IFrame));
         }
 
+        /// <summary>
+        /// The method test GetFrame method of ClassicPatternFrameBuilder returns correct build frame.
+        /// </summary>
         [TestMethod]
         public void TestThatGetFrameInFrameBIlderCorectFrameWithClassicPatternFrameBuilderGreatFrameDimensionMin()
         {
@@ -66,6 +86,9 @@
             Assert.IsInstanceOfType(actualFrame, typeof(IFrame));
         }
 
+        /// <summary>
+        /// The method test Clone method of ClassicPatternFrameBuilder returns correct deep copy of the frame..
+        /// </summary>
         [TestMethod]
         public void TestThatGetFrameInFrameBIlderCorectFrameWithClassicPatternFrameBuilderClone()
         {

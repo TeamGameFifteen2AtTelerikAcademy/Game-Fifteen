@@ -40,5 +40,10 @@ namespace GameFifteen.UI.WPF.Helpers
         /// Holds AboutViewModel.
         /// </summary>
         public static readonly AboutViewModel AboutViewModel = new AboutViewModel();
+
+        /// <summary>
+        /// Holds AudioNavigationViewModel.
+        /// </summary>
+        public static readonly AudioNavigationViewModel AudioNavViewModel = new AudioNavigationViewModel();
     }
 }

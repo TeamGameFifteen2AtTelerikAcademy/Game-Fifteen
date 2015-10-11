@@ -1,18 +1,31 @@
-﻿namespace Tests_GameFifteen.Logic.Tests_Scoreboards
+﻿// <copyright file="ScoreboardTests.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// ScoreboardTests class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace Tests_GameFifteen.Logic.Tests_Scoreboards
 {
     using System;
     using System.Linq;
-    using GameFifteen.Logic;
+
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Scoreboards;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Covers tests for Scoreboard
+    /// Covers tests for Scoreboard.
     /// </summary>
     [TestClass]
-    public class ScoreboardTest
+    public class ScoreboardTests
     {
+        /// <summary>
+        /// The method tests if exception is thrown when not positive intender is provided as moves count.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException),
           "Parameter must be a positive integer")]
@@ -25,6 +38,9 @@
             scoreboard.Add(moves, playerName);
         }
 
+        /// <summary>
+        /// The method tests if exception is thrown when 0 is provided as moves count.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException),
          "Parameter must be a positive integer")]
@@ -37,6 +53,9 @@
             scoreboard.Add(moves, playerName);
         }
 
+        /// <summary>
+        /// The method tests if exception is thrown when null value is provided as player name.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException),
           "Argument name cannot be null!")]
@@ -49,6 +68,9 @@
             scoreboard.Add(moves, playerName);
         }
 
+        /// <summary>
+        /// The method tests if exception is thrown when null value is provided as player name and non positive integer for moves.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException),
          "Parameter must be a positive integer")]
@@ -61,6 +83,9 @@
             scoreboard.Add(moves, playerName);
         }
 
+        /// <summary>
+        /// The method test if Scoreboard.Add method adds new score.
+        /// </summary>
         [TestMethod]
         public void ExpectScoreboardAddMethodToAddScoreToTopsScores()
         {
@@ -73,6 +98,9 @@
             Assert.IsInstanceOfType(topScore, typeof(Score));
         }
 
+        /// <summary>
+        /// The method test if Scoreboard.IsInTopScores method returns true when it is top score.
+        /// </summary>
         [TestMethod]
         public void ExpectScoreboardIsInTopScoresMethodToToreturnTrueWhenLessThanMaxCountOfScoresAreInTopScores()
         {
@@ -83,6 +111,9 @@
             Assert.IsTrue(expecterIsInTopScore);
         }
 
+        /// <summary>
+        /// The method test if Scoreboard.IsInTopScores method returns false when it is not top score.
+        /// </summary>
         [TestMethod]
         public void ExpectScoreboardIsInTopScoresMethodToToreturnFalseWhenIsOutOfTopScores()
         {
@@ -100,6 +131,9 @@
             Assert.IsFalse(expecterIsInTopScore);
         }
 
+        /// <summary>
+        /// The method test if Scoreboard.IsInTopScores method returns true when it is top score.
+        /// </summary>
         [TestMethod]
         public void ExpectScoreboardIsInTopScoresMethodToToreturnTrueWhenTopScorProvided()
         {
@@ -117,6 +151,9 @@
             Assert.IsTrue(expecterIsInTopScore);
         }
 
+        /// <summary>
+        /// The method test if Scoreboard.Add method NOT to adds new score when it is not top score.
+        /// </summary>
         [TestMethod]
         public void ExpectScoreboardAddMethodNotToAddScoreToTopsScoresWhenIsNotInTopScores()
         {
@@ -140,6 +177,9 @@
             Assert.AreEqual(expectedCountOfScoresOutOfTop, actualCountOfScoresOutOfTop);
         }
 
+        /// <summary>
+        /// The method test if Scoreboard.ToString returns correct value withe no top scores.
+        /// </summary>
         [TestMethod]
         public void ExpectScoreboardToStringReturnsConstanstScoreoardIsEmptyString()
         {
@@ -151,6 +191,9 @@
             Assert.AreEqual(expectedToString, actualToString);
         }
 
+        /// <summary>
+        /// The method test if Scoreboard.ToString returns correct value withe there are top scores.
+        /// </summary>
         [TestMethod]
         public void ExpectScoreboardToStringReturnsCorrectScoreboardString()
         {

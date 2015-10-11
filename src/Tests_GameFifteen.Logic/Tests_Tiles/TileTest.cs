@@ -1,18 +1,25 @@
-﻿namespace Tests_GameFifteen.Logic.Tests_Tiles
+﻿// <copyright file="TileTest.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// TileTest class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace Tests_GameFifteen.Logic.Tests_Tiles
 {
-    using System;
     using GameFifteen.Logic.Tiles;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Summary description for TileTest
+    /// TileTest test class test Tile class.
     /// </summary>
     [TestClass]
     public class TileTest
     {
         /// <summary>
-        /// Gets or sets the test context which provides
-        /// information about and functionality for the current test run.
+        /// The method tests Equals method to return TRUE when two different instances of tiles with equal Id's are compared.
         /// </summary>
         [TestMethod]
         public void ExpectTrueEqualsMethodWhithTwoITileObjeckTest()
@@ -23,6 +30,9 @@
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// The method tests Equals method to return TRUE when two different instances of tiles with equal Id's are compared and one is used as object.
+        /// </summary>
         [TestMethod]
         public void ExpectTrueEqualsMethodWhithOneITileObjeckAndObjecktTest()
         {
@@ -32,6 +42,9 @@
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// The method tests Equals method to return FALSE when two different instances tile compared is compared with null object..
+        /// </summary>
         [TestMethod]
         public void ExpectFalseEqualsMethodWhithNullObjeckTest()
         {
@@ -41,6 +54,9 @@
             Assert.IsFalse(result);
         }
 
+        /// <summary>
+        /// The method tests GetHashCode.
+        /// </summary>
         [TestMethod]
         public void TestGetHashCodeMethodInTile()
         {
@@ -48,6 +64,9 @@
             numberTile.GetHashCode();
         }
 
+        /// <summary>
+        /// The method tests ToString.
+        /// </summary>
         [TestMethod]
         public void TestToStringMethodInTile()
         {

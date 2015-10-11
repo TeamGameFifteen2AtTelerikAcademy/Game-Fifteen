@@ -1,4 +1,13 @@
-﻿namespace Tests_GameFifteen.Logic.Tests_Mover
+﻿// <copyright file="ColRowMoverTest.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// ColRowMoverTest class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace Tests_GameFifteen.Logic.Tests_Mover
 {
     using GameFifteen.Logic.Frames;
     using GameFifteen.Logic.Frames.Contracts;
@@ -8,14 +17,13 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Summary description for ColRowMoverTest
+    /// ColRowMoverTest test class tests RowColMover class.
     /// </summary>
     [TestClass]
     public class ColRowMoverTest
     {
         /// <summary>
-        /// Gets or sets the test context which provides
-        /// information about and functionality for the current test run.
+        /// The method tests if Mover moves a tile when it is possible.
         /// </summary>
         [TestMethod]
         public void TestMoverIsMovingATileWhichCanBeMovedRowColMover()
@@ -31,6 +39,9 @@
             Assert.AreNotEqual(initialFrame, actualFrame, "The frame should be changed when the mover moves the tile");
         }
 
+        /// <summary>
+        /// The method tests if Mover NOT  moves a tile when it is NOT possible.
+        /// </summary>
         [TestMethod]
         public void TestMoverNotMovingATileWhichCanNotBeMovedRowColMover()
         {
@@ -45,6 +56,9 @@
             Assert.AreEqual(initialFrame, actualFrame, "The frame should not be changed");
         }
 
+        /// <summary>
+        /// The method tests if Mover NOT moves an empty string tile.
+        /// </summary>
         [TestMethod]
         public void TestMoverTryMovingAEmptyStringTileAndTileNotBeMovedRowColMover()
         {
@@ -59,6 +73,9 @@
             Assert.AreEqual(initialFrame, actualFrame, "The frame should not be changed");
         }
 
+        /// <summary>
+        /// The method tests if Mover NOT moves an null tile.
+        /// </summary>
         [TestMethod]
         public void TestMoverTryMovingANullTileAndTileNotBeMovedRowColMover()
         {
@@ -73,6 +90,9 @@
             Assert.AreEqual(initialFrame, actualFrame, "The frame should not be changed");
         }
 
+        /// <summary>
+        /// The method tests if Mover moves a all tiles by column when it is possible.
+        /// </summary>
         [TestMethod]
         public void TestMoverIsMovingATileWhichCanBeMovedByColumnRowColMover()
         {
@@ -87,6 +107,9 @@
             Assert.AreNotEqual(initialFrame, actualFrame, "The frame should be changed when the mover moves the tile");
         }
 
+        /// <summary>
+        /// The method tests if Mover shuffles a tiles by column when it is possible.
+        /// </summary>
         [TestMethod]
         public void TestShuffleIsMovingATileWhichCanBeMovedByColumnRowColMover()
         {
@@ -100,6 +123,9 @@
             Assert.AreNotEqual(initialFrame, actualFrame, "The frame should be changed when shuffled");
         }
 
+        /// <summary>
+        /// The method tests if Mover moves a all tiles left by row when it is possible.
+        /// </summary>
         [TestMethod]
         public void TestMoverIsMovingATileWhichCanBeMovedByLeftAllRowRowColMover()
         {
@@ -114,6 +140,9 @@
             Assert.AreNotEqual(initialFrame, actualFrame, "The frame should be changed when the mover moves the tile");
         }
 
+        /// <summary>
+        /// The method tests if Mover moves a all tiles right by row when it is possible.
+        /// </summary>
         [TestMethod]
         public void TestMoverIsMovingATileWhichCanBeMovedByRightAllRowRowColMover()
         {
@@ -129,6 +158,9 @@
             Assert.AreNotEqual(initialFrame, actualFrame, "The frame should be changed when the mover moves the tile");
         }
 
+        /// <summary>
+        /// The method tests if Mover moves a all tiles down by column when it is possible.
+        /// </summary>
         [TestMethod]
         public void TestMoverIsMovingATileWhichCanBeMovedDownAllColumnRowColMover()
         {
@@ -143,6 +175,9 @@
             Assert.AreNotEqual(initialFrame, actualFrame, "The frame should be changed when the mover moves the tile");
         }
 
+        /// <summary>
+        /// The method tests if Mover moves a all tiles up by column when it is possible.
+        /// </summary>
         [TestMethod]
         public void TestMoverNotMovingATileWhenInFrameHaveNotNullTileRowColMover()
         {

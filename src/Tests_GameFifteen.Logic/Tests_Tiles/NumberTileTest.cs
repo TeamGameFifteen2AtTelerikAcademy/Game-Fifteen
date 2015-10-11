@@ -1,17 +1,25 @@
-﻿namespace Tests_GameFifteen.Logic.Tests_Tiles
+﻿// <copyright file="NumberTileTest.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// NumberTileTest class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace Tests_GameFifteen.Logic.Tests_Tiles
 {
     using GameFifteen.Logic.Tiles;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Summary description for NumberTileTest
+    /// NumberTileTest test class tests NumberTile class.
     /// </summary>
     [TestClass]
     public class NumberTileTest
     {
         /// <summary>
-        /// Gets or sets the test context which provides
-        /// information about and functionality for the current test run.
+        /// The method tests the label of the tile.
         /// </summary>
         [TestMethod]
         public void TestLabelOfNumberTile()

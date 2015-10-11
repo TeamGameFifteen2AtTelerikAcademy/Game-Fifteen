@@ -1,4 +1,13 @@
-﻿namespace Tests_GameFifteen.Logic.Tests_Frames
+﻿// <copyright file="FrameTest.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// FrameTest class.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace Tests_GameFifteen.Logic.Tests_Frames
 {
     using GameFifteen.Logic.Frames;
     using GameFifteen.Logic.Frames.Contracts;
@@ -7,14 +16,14 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Summary description for FrameTest
+    /// FrameTest class tests Frame class.
     /// </summary>
     [TestClass]
     public class FrameTest
     {
         /// <summary>
-        /// Gets or sets the test context which provides
-        /// information about and functionality for the current test run.
+        /// The method tests if to different instances of frames are equal depending on their content. 
+        /// Test Equals method overriding.
         /// </summary>
         [TestMethod]
         public void ExpectTrueEqualsMethodWhithTwoIframeTest()
@@ -31,6 +40,10 @@
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// The method tests if null and not null frame are NOT equal. 
+        /// Test Equals method overriding.
+        /// </summary>
         [TestMethod]
         public void ExpectTrueEqualsMethodWhithNullIframeTest()
         {
@@ -43,6 +56,10 @@
             Assert.IsFalse(result);
         }
 
+        /// <summary>
+        /// The method tests if  to different instances of frames are  NOT equal depending on their content.
+        /// Test Equals method overriding.
+        /// </summary>
         [TestMethod]
         public void ExpectFalseEqualsMethodWhithDiferentIframeWithDiferentColTest()
         {
@@ -58,6 +75,10 @@
             Assert.IsFalse(result);
         }
 
+        /// <summary>
+        /// The method tests if  to different instances of frames are  NOT equal depending on their content.
+        /// Test Equals method overriding.
+        /// </summary>
         [TestMethod]
         public void ExpectFalseEqualsMethodWhithDiferentIframeWithDiferentSizeOfColumnsTest()
         {

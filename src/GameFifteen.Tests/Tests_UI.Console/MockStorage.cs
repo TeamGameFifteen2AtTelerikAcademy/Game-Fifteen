@@ -1,4 +1,13 @@
-﻿namespace GameFifteen.Tests.UI.Console
+﻿// <copyright file="MockStorage.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Mocking UI Console.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.Tests.UI.Console
 {
     using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
     using Logic.Commands;
@@ -10,10 +19,21 @@
     using Logic.Tiles.Contracts;
     using Moq;
 
+    /// <summary>
+    /// Class MockStorage.
+    /// </summary>
     public class MockStorage
     {
+        /// <summary>
+        /// Private field result of type string.
+        /// </summary>
         private static string result;
 
+        /// <summary>
+        /// Method get reader.
+        /// </summary>
+        /// <param name="value">Type string.</param>
+        /// <returns>Returns mockedPrinter.</returns>
         public static IReader GetReader(string value)
         {
             var mockedReader = new Mock<IReader>();
@@ -47,6 +67,10 @@
             return mockedReader.Object;
         }
 
+        /// <summary>
+        /// Method get reader.
+        /// </summary>
+        /// <returns>Returns mockedPrinter.</returns>
         public static IPrinter GetPrinter()
         {
             var mockedPriner = new Mock<IPrinter>();
@@ -59,6 +83,10 @@
             return mockedPriner.Object;
         }
 
+        /// <summary>
+        /// Method get game.
+        /// </summary>
+        /// <returns>Returns mockedGame.</returns>
         public static IGame GetGame()
         {
             var mockedGame = new Mock<IGame>();
@@ -75,6 +103,10 @@
             return mockedGame.Object;
         }
 
+        /// <summary>
+        /// Method get solved game.
+        /// </summary>
+        /// <returns>Returns mockedGame.</returns>
         public static IGame GetSolvedGame()
         {
             var mockedGame = new Mock<IGame>();
@@ -94,6 +126,10 @@
             return mockedGame.Object;
         }
 
+        /// <summary>
+        /// Method get solving game after one move.
+        /// </summary>
+        /// <returns>Returns mockedGame.</returns>
         public static IGame GetSelfSolvingGameAfterOneMove()
         {
             var mockedGame = new Mock<IGame>();
@@ -125,6 +161,10 @@
             return mockedGame.Object;
         }
 
+        /// <summary>
+        /// Method get game with invalid move.
+        /// </summary>
+        /// <returns>Returns mockedGame.</returns>
         public static IGame GetGameWithInvalidMove()
         {
             var mockedGame = new Mock<IGame>();
@@ -135,6 +175,10 @@
             return mockedGame.Object;
         }
 
+        /// <summary>
+        /// Method get command context.
+        /// </summary>
+        /// <returns>Returns mockedContext.</returns>
         public static ICommandContext GetCommandContext()
         {
             var mockedContext = new Mock<ICommandContext>();
@@ -150,6 +194,10 @@
             return mockedContext.Object;
         }
 
+        /// <summary>
+        /// Method get board history.
+        /// </summary>
+        /// <returns>Returns memento.</returns>
         public static IMemento GetBoardHistory()
         {
             var memento = new Mock<IMemento>();
@@ -162,6 +210,10 @@
             return memento.Object;
         }
 
+        /// <summary>
+        /// Method get scoreboard.
+        /// </summary>
+        /// <returns>Returns mocked.</returns>
         public static IScoreboard GetScoreboard()
         {
             var mocked = new Mock<IScoreboard>();
@@ -171,6 +223,10 @@
             return mocked.Object;
         }
 
+        /// <summary>
+        /// Method get command manager.
+        /// </summary>
+        /// <returns>Returns mockedManager.</returns>
         public static ICommandManager GeCommandManager()
         {
             var mockedManager = new Mock<ICommandManager>();
