@@ -28,7 +28,7 @@
                             Command="{Binding InitializeGame}"  />
                         <Label Content="Game" 
                            Style="{StaticResource GameStatsLabel}"
-                           Margin="95,0,0,0"
+                           Margin="60,0,0,0"
                            />
                         <Label Content="{Binding Rows}" 
                            Style="{StaticResource GameStatsLabel}"
@@ -49,6 +49,7 @@
                                 VerticalAlignment="Center"
                                 MinWidth="50"
                                 HorizontalAlignment="Right"/>
+                        <local:AudioNavigationView Margin="0"/>
                     </StackPanel>
                 </Grid>
                 <StackPanel Orientation="Horizontal"

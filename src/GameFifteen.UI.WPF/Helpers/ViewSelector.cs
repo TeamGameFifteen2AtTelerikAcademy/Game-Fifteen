@@ -50,5 +50,10 @@ namespace GameFifteen.UI.WPF.Helpers
         /// Holds CompletedWithTopScoreView.
         /// </summary>
         public static readonly CompletedWithTopScoreView CompleteTopScoreGame = new CompletedWithTopScoreView();
+
+        /// <summary>
+        /// Holds AudioNavigationView.
+        /// </summary>
+        public static readonly AudioNavigationView AudioNav = new AudioNavigationView();
     }
 }

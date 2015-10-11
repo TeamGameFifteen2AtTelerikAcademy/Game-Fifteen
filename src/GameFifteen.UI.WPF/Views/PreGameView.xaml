@@ -16,13 +16,16 @@
                 Width="500" 
                 Height="550"
                 >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="70">
             <TextBlock Text="Game 15" 
                         x:Name="myLabel"  
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Center"
                         FontSize="50" 
                         Height="Auto" />
-            <TextBlock Text="by Game Fifteen 2 Team" 
+                <local:AudioNavigationView Margin="25,0,0,15"/>
+        </StackPanel>
+        <TextBlock Text="by Game Fifteen 2 Team" 
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Center"
                         FontSize="20" 
