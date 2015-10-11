@@ -1,17 +1,30 @@
-﻿namespace GameFifteen.Tests.UI.Console
+﻿// <copyright file="GameInitializerTests.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Unit testing UI Console.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.Tests.UI.Console
 {
     using GameFifteen.Logic.Games.Contracts;
     using GameFifteen.UI.Console;
     using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
     using GameFifteen.UI.Console.GameInitializer;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using Moq;
 
+    /// <summary>
+    /// Class test GameInitializerTests.
+    /// </summary>
     [TestClass]
     public class GameInitializerTests
     {
+        /// <summary>
+        /// Test that test method initialize returns a classic game.
+        /// </summary>
         [TestMethod]
         public void TestMethodInitializeReturnsAClassicGame()
         {
@@ -37,6 +50,9 @@
             Assert.IsInstanceOfType(game, typeof(IGame));
         }
 
+        /// <summary>
+        /// Test that test method initialize returns a custom game.
+        /// </summary>
         [TestMethod]
         public void TestMethodInitializeReturnsACustomGame()
         {

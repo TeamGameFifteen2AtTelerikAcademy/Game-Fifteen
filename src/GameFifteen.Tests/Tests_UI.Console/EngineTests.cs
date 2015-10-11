@@ -1,4 +1,13 @@
-﻿namespace GameFifteen.Tests.UI.Console
+﻿// <copyright file="EngineTests.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Unit testing UI Console.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.Tests.UI.Console
 {
     using System.Linq;
     using GameFifteen.Logic.Memento;
@@ -8,9 +17,15 @@
     using GameFifteen.UI.Console.Engine;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Class test EngineTests.
+    /// </summary>
     [TestClass]
     public class EngineTests
     {
+        /// <summary>
+        /// Test that expect engine to return properly and forced exit after two steps.
+        /// </summary>
         [TestMethod]
         public void ExpectEngineToRunProperlyAndForcedExitAfterTwoSteps()
         {
@@ -26,6 +41,9 @@
             engine.Run();
         }
 
+        /// <summary>
+        /// Test that expect engine to run properly when top command is called.
+        /// </summary>
         [TestMethod]
         public void ExpectEngineToRunProperlyWhenTopCommandIsCalled()
         {
@@ -41,6 +59,9 @@
             engine.Run();
         }
 
+        /// <summary>
+        /// Test that expect engine to run properly when move command is called.
+        /// </summary>
         [TestMethod]
         public void ExpectEngineToRunProperlyWhenMoveCommandIsCalled()
         {
@@ -56,6 +77,9 @@
             engine.Run();
         }
 
+        /// <summary>
+        /// Test that expect engine to run properly when invalid move command is called.
+        /// </summary>
         [TestMethod]
         public void ExpectEngineToRunProperlyWhenInvalidMoveCommandIsCalled()
         {
@@ -71,6 +95,9 @@
             engine.Run();
         }
 
+        /// <summary>
+        /// Test that expect engine to run properly when restart command is called.
+        /// </summary>
         [TestMethod]
         public void ExpectEngineToRunProperlyWhenRestartCommandIsCalled()
         {
@@ -86,6 +113,9 @@
             engine.Run();
         }
 
+        /// <summary>
+        /// Test that expect engine to run properly when give invalid input for command.
+        /// </summary>
         [TestMethod]
         public void ExpectEngineToRunProperlyWhenGivenInvalidInputForCommand()
         {
@@ -101,6 +131,9 @@
             engine.Run();
         }
 
+        /// <summary>
+        /// Test that expect to execute game over when game is solved.
+        /// </summary>
         [TestMethod]
         public void ExpectToExecuteGameOverWhenGameIsSolved()
         {
@@ -117,6 +150,9 @@
             engine.Run();
         }
 
+        /// <summary>
+        /// Test that expect to execute game over and add to score board.
+        /// </summary>
         [TestMethod]
         public void ExpectToExecuteGameOverAndAddToScoreBoard()
         {
@@ -133,6 +169,9 @@
             engine.Run();
         }
 
+        /// <summary>
+        /// Test that expect to add to score board one move.
+        /// </summary>
         [TestMethod]
         public void ExpectToAddToScoreBoardOneMove()
         {
@@ -151,6 +190,9 @@
             Assert.AreEqual(1, scoreboard.GetTopScores().First().Moves);
         }
 
+        /// <summary>
+        /// Test that expect move command to reach if statement.
+        /// </summary>
         [TestMethod]
         public void ExpectMoveCommandToReachIfStatement()
         {
@@ -162,6 +204,9 @@
             moveCommand.Execute(context);
         }
 
+        /// <summary>
+        /// Test that expect undo command to work.
+        /// </summary>
         [TestMethod]
         public void ExpectUndoCommandToWork()
         {

@@ -1,4 +1,13 @@
-﻿namespace GameFifteen.Tests.UI.Console
+﻿// <copyright file="CommandContextTests.cs" company="GameFifteen2Team">
+// The MIT License (MIT)
+// Copyright(c) 2015 Team "Game-Fifteen-2"
+// </copyright>
+// <summary>
+// Unit testing UI Console.
+// </summary>
+// <author>GameFifteen2Team</author>
+
+namespace GameFifteen.Tests.UI.Console
 {
     using GameFifteen.Logic.Commands;
     using GameFifteen.Logic.Common;
@@ -17,16 +26,18 @@
     using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
     using GameFifteen.UI.Console.GameContext;
     using GameFifteen.UI.Console.GameInitializer;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
 
     /// <summary>
-    /// Summary description for CommandContextTests
+    /// Class test CommandContextTests.
     /// </summary>
     [TestClass]
     public class CommandContextTests
     {
+        /// <summary>
+        /// Initializes a new instance of the CommandContextTests class.
+        /// </summary>
         public CommandContextTests()
         {
             var printer = new Printer();
@@ -46,8 +57,15 @@
             this.Instance = new CommandContext(game, scoreboard, boardHistory);
         }
 
+        /// <summary>
+        /// Gets or sets Instance.
+        /// </summary>
+        /// <value>Instance of type CommandContext.</value>
         public CommandContext Instance { get; set; }
 
+        /// <summary>
+        /// Test that expect command context constructor to set moves to zero.
+        /// </summary>
         [TestMethod]
         public void ExpectCommandContextConstructorToSetMovesToZero()
         {
@@ -55,6 +73,9 @@
             Assert.AreEqual(0, moves);
         }
 
+        /// <summary>
+        /// Test that expect constructor to set to zero.
+        /// </summary>
         [TestMethod]
         public void ExpectConstructorToSetMovesToZeroMoq()
         {
@@ -63,6 +84,9 @@
             Assert.AreEqual(0, moves);
         }
 
+        /// <summary>
+        /// Test that expect constructor to set to game.
+        /// </summary>
         [TestMethod]
         public void ExpectConstructorToSetGame()
         {
@@ -71,12 +95,19 @@
         }
 
         [TestMethod]
+
+        /// <summary>
+        /// Test that expect constructor to set to scoreboard.
+        /// </summary>
         public void ExpectConstructorToSetScoreboard()
         {
             var scoreboard = this.Instance.ScoreboardInfo;
             Assert.IsInstanceOfType(scoreboard, typeof(IScoreboard));
         }
 
+        /// <summary>
+        /// Test that expect constructor to set to board history.
+        /// </summary>
         [TestMethod]
         public void ExpectConstructorToSetBoardHistory()
         {
@@ -84,6 +115,9 @@
             Assert.IsInstanceOfType(history, typeof(IMemento));
         }
 
+        /// <summary>
+        /// Test that expect message to be empty string before starting the game.
+        /// </summary>
         [TestMethod]
         public void ExpectMessageToBeEmptyStringBeforeStartingTheGame()
         {
@@ -91,6 +125,9 @@
             Assert.AreEqual(null, message);
         }
 
+        /// <summary>
+        /// Test that expect message to be correct when show scores command is executed.
+        /// </summary>
         [TestMethod]
         public void ExpectMessageToBeCorrectWhenShowScoresCommandIsExecuted()
         {
@@ -99,6 +136,9 @@
             Assert.AreEqual(this.Instance.ScoreboardInfo.ToString(), this.Instance.Message);
         }
 
+        /// <summary>
+        /// Test that expect message to be correct when incorrect command is executed.
+        /// </summary>
         [TestMethod]
         public void ExpectMessageToBeCorrectWhenIncorrectCommandIsExecuted()
         {
@@ -107,6 +147,9 @@
             Assert.AreEqual(Constants.InvalidCommandMessage, this.Instance.Message);
         }
 
+        /// <summary>
+        /// Test that expect message to be correct when move command is executed.
+        /// </summary>
         [TestMethod]
         public void ExpectMessageToBeCorrectWhenMoveCommandIsExecuted()
         {
@@ -119,6 +162,9 @@
             Assert.AreEqual(string.Empty, this.Instance.Message);
         }
 
+        /// <summary>
+        /// Test that expect moves to increase by one when move command is executed once.
+        /// </summary>
         [TestMethod]
         public void ExpectMovesToIncreaseByOneWhenMoveCommandIsExecutedOnce()
         {
@@ -131,6 +177,9 @@
             Assert.AreEqual(currentMoves + 1, this.Instance.Moves);
         }
 
+        /// <summary>
+        /// Test that expect moves to increase by five when move command is executed five times.
+        /// </summary>
         [TestMethod]
         public void ExpectMovesToIncreaseByFiveWhenMoveCommandIsExecutedFiveTimes()
         {
@@ -146,6 +195,9 @@
             Assert.AreEqual(currentMoves + 5, this.Instance.Moves);
         }
 
+        /// <summary>
+        /// Method prepare mocking game and memento for testing move command.
+        /// </summary>
         private void PrepareMockingGameAndMementoForTestingMoveCommand()
         {
             var mockedGame = new Mock<IGame>();

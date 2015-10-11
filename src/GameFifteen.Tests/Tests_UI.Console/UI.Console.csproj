@@ -61,7 +61,9 @@
     <Compile Include="EngineTests.cs" />
     <Compile Include="GameInitializerTests.cs" />
     <Compile Include="GameInitializeTests.cs" />
-    <Compile Include="MockStorage.cs" />
+    <Compile Include="MockStorage.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="PrinterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
