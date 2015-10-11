@@ -1,14 +1,11 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using GameFifteen.Logic.Frames;
-using GameFifteen.Logic.Frames.Contracts;
-using GameFifteen.Logic.Tiles;
-using GameFifteen.Logic.Tiles.Contracts;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Tests_GameFifteen.Logic.Tests_Frames
+﻿namespace Tests_GameFifteen.Logic.Tests_Frames
 {
+    using GameFifteen.Logic.Frames;
+    using GameFifteen.Logic.Frames.Contracts;
+    using GameFifteen.Logic.Tiles;
+    using GameFifteen.Logic.Tiles.Contracts;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     /// <summary>
     /// Summary description for FrameTest
     /// </summary>
@@ -16,10 +13,9 @@ namespace Tests_GameFifteen.Logic.Tests_Frames
     public class FrameTest
     {
         /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-
+        /// Gets or sets the test context which provides
+        /// information about and functionality for the current test run.
+        /// </summary>
         [TestMethod]
         public void ExpectTrueEqualsMethodWhithTwoIframeTest()
         {
@@ -33,7 +29,6 @@ namespace Tests_GameFifteen.Logic.Tests_Frames
             var expectetFrameSecond = frameDirectorSecond.ConstructFrame(5, 5);
             bool result = expectetFrameFirst.Equals(expectetFrameSecond);
             Assert.IsTrue(result);
-
         }
 
         [TestMethod]
@@ -46,7 +41,6 @@ namespace Tests_GameFifteen.Logic.Tests_Frames
             IFrame expectetFrameSecond = null;
             bool result = expectetFrameFirst.Equals(expectetFrameSecond);
             Assert.IsFalse(result);
-
         }
 
         [TestMethod]
@@ -62,7 +56,6 @@ namespace Tests_GameFifteen.Logic.Tests_Frames
             var expectetFrameSecond = frameDirectorSecond.ConstructFrame(5, 5);
             bool result = expectetFrameFirst.Equals(expectetFrameSecond);
             Assert.IsFalse(result);
-
         }
 
         [TestMethod]
@@ -78,8 +71,6 @@ namespace Tests_GameFifteen.Logic.Tests_Frames
             var expectetFrameSecond = frameDirectorSecond.ConstructFrame(6, 6);
             bool result = expectetFrameFirst.Equals(expectetFrameSecond);
             Assert.IsFalse(result);
-
         }
-
     }
 }

@@ -14,10 +14,9 @@
     public class ColRowMoverTest
     {
         /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-
+        /// Gets or sets the test context which provides
+        /// information about and functionality for the current test run.
+        /// </summary>
         [TestMethod]
         public void TestMoverIsMovingATileWhichCanBeMovedRowColMover()
         {

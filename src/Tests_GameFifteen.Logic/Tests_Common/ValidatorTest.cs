@@ -1,9 +1,9 @@
 ﻿namespace Tests_Common
 {
+    using System;
     using GameFifteen.Logic.Common;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System;
-
+    
     [TestClass]
     public class ValidatorTest
     {
@@ -42,17 +42,17 @@
         [TestMethod]
         public void ExpectNotToThrowWhenFirstParameterIsGreaterThanSecondInMethodValidateIsEqualOrGreaterThan()
         {
-            const int firstParameter = 4;
-            const int secondParameter = 3;
-            Validator.ValidateIsEqualOrGreaterThan(firstParameter, secondParameter, "Parameter");
+            const int FirstParameter = 4;
+            const int SecondParameter = 3;
+            Validator.ValidateIsEqualOrGreaterThan(FirstParameter, SecondParameter, "Parameter");
         }
 
         [TestMethod]
         public void ExpectNotToThrowWhenFirstParameterIsEqualToSecondInMethodValidateIsEqualOrGreaterThan()
         {
-            const int firstParameter = 4;
-            const int secondParameter = 4;
-            Validator.ValidateIsEqualOrGreaterThan(firstParameter, secondParameter, "Parameter");
+            const int FirstParameter = 4;
+            const int SecondParameter = 4;
+            Validator.ValidateIsEqualOrGreaterThan(FirstParameter, SecondParameter, "Parameter");
         }
 
         [TestMethod]
@@ -60,9 +60,9 @@
           "Parameter must be equal or greater than 3")]
         public void ThrowExeptionsWhenFirstParameterIsGreaterThanSecondInMethodValidateIsEqualOrGreaterThan()
         {
-            const int firstParameter = 2;
-            const int secondParameter = 3;
-            Validator.ValidateIsEqualOrGreaterThan(firstParameter, secondParameter, "Parameter");
+            const int FirstParameter = 2;
+            const int SecondParameter = 3;
+            Validator.ValidateIsEqualOrGreaterThan(FirstParameter, SecondParameter, "Parameter");
         }
     }
 }
