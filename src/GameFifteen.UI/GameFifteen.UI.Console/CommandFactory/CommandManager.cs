@@ -10,6 +10,7 @@
 namespace GameFifteen.UI.Console.CommandFactory
 {
     using System;
+    using System.Collections.Generic;
 
     using GameFifteen.Logic.Commands;
     using GameFifteen.UI.Console.Commands;
@@ -20,6 +21,11 @@ namespace GameFifteen.UI.Console.CommandFactory
     /// </summary>
     internal class CommandManager : ICommandManager
     {
+        /// <summary>
+        /// Holds commands in a dictionary.
+        /// </summary>
+        private readonly Dictionary<string, ICommand> commandDictionary = new Dictionary<string, ICommand>();
+
         /// <summary>
         /// Initializes a new instance of the CommandManager class.
         /// </summary>
@@ -34,15 +40,22 @@ namespace GameFifteen.UI.Console.CommandFactory
         /// <returns>ICommand command.</returns>
         public ICommand GetCommand(string command)
         {
+            if (this.commandDictionary.ContainsKey(command))
+            {
+                return this.commandDictionary[command];
+            }
+
             UserCommands userCommand;
             if (Enum.IsDefined(typeof(UserCommands), command) &&
-             Enum.TryParse<UserCommands>(command, out userCommand))
+                Enum.TryParse<UserCommands>(command, out userCommand))
             {
-                return this.GetCommand(userCommand);
+                ICommand currentCommand = this.GetCommand(userCommand);
+                this.commandDictionary.Add(command, currentCommand);
+                return currentCommand;
             }
             else
             {
-                return new IncorrectCommand();
+                throw new ArgumentException();
             }
         }
 

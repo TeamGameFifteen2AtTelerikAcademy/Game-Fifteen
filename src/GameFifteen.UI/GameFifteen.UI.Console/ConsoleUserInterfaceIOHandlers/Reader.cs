@@ -10,6 +10,9 @@
 namespace GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers
 {
     using System;
+    using System.Globalization;
+
+    using GameFifteen.UI.Console.Helpers;
 
     /// <summary>
     /// Reader class - reads from the console.
@@ -35,7 +38,7 @@ namespace GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers
             string[] handleUserInput = new string[] { string.Empty, string.Empty };
             var userCommandAndTarget = userInput.Split(' ');
             string userCommand = userCommandAndTarget[0];
-            handleUserInput[0] = userCommand;
+            userCommand = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userCommand);
 
             if (userCommandAndTarget.Length == 2)
             {
@@ -43,6 +46,12 @@ namespace GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers
                 handleUserInput[1] = userTarget;
             }
 
+            if (!Enum.IsDefined(typeof(UserCommands), userCommand))
+            {
+                userCommand = "Invalid";
+            }
+
+            handleUserInput[0] = userCommand;
             return handleUserInput;
         }
     }
