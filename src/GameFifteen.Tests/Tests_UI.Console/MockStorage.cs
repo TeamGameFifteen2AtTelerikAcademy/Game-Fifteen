@@ -17,7 +17,7 @@
         public static IReader GetReader(string value)
         {
             var mockedReader = new Mock<IReader>();
-            var numberOfCalls = 1;
+            var numberOfCalls = 2;
             result = value;
             var parsedInput = new string[3];
             mockedReader.Setup(x => x.ReadLine())
