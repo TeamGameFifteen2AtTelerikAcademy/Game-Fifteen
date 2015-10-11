@@ -8,6 +8,9 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Linq;
 
+    using GameFifteen.UI.Console.CommandFactory;
+    using GameFifteen.UI.Console.Engine;
+
     [TestClass]
     public class EngineTests
     {

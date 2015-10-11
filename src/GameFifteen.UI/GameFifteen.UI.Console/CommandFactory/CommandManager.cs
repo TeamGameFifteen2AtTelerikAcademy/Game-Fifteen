@@ -7,11 +7,13 @@
 // </summary>
 // <author>GameFifteen2Team</author>
 
-namespace GameFifteen.UI.Console
+namespace GameFifteen.UI.Console.CommandFactory
 {
     using System;
-    using Commands;
+
     using GameFifteen.Logic.Commands;
+    using GameFifteen.UI.Console.Commands;
+    using GameFifteen.UI.Console.Helpers;
 
     /// <summary>
     /// CommandManager class.

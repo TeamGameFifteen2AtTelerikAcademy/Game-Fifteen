@@ -12,7 +12,12 @@
     using GameFifteen.Logic.Scoreboards.Contracts;
     using GameFifteen.Logic.Tiles.Contracts;
     using GameFifteen.UI.Console;
+    using GameFifteen.UI.Console.CommandFactory;
     using GameFifteen.UI.Console.Commands;
+    using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
+    using GameFifteen.UI.Console.GameContext;
+    using GameFifteen.UI.Console.GameInitializer;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
 

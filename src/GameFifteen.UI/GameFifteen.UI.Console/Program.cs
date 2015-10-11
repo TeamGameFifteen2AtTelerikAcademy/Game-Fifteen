@@ -10,6 +10,10 @@
 namespace GameFifteen.UI.Console
 {
     using GameFifteen.Logic.Scoreboards;
+    using GameFifteen.UI.Console.CommandFactory;
+    using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
+    using GameFifteen.UI.Console.Engine;
+
     using Logic.Memento;
 
     /// <summary>
@@ -26,7 +30,7 @@ namespace GameFifteen.UI.Console
 
             var reader = new Reader();
 
-            var gameInitializator = new GameInitializer(printer, reader);
+            var gameInitializator = new GameInitializer.GameInitializer(printer, reader);
 
             var game = gameInitializator.Initialize();
 
@@ -36,7 +40,7 @@ namespace GameFifteen.UI.Console
 
             var boardHistory = new BoardHistory();
 
-            EngineTemplate engine = new Engine(game, scoreboard, printer, reader, commandManager, boardHistory);
+            EngineTemplate engine = new Engine.Engine(game, scoreboard, printer, reader, commandManager, boardHistory);
 
             engine.Run();
         }

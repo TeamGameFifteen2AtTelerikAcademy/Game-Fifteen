@@ -7,12 +7,12 @@
 // </summary>
 // <author>GameFifteen2Team</author>
 
-namespace GameFifteen.UI.Console
+namespace GameFifteen.UI.Console.GameContext
 {
     using GameFifteen.Logic.Commands;
     using GameFifteen.Logic.Games.Contracts;
+    using GameFifteen.Logic.Memento;
     using GameFifteen.Logic.Scoreboards.Contracts;
-    using Logic.Memento;
 
     /// <summary>
     /// CommandContext class.

@@ -1,6 +1,7 @@
 ﻿namespace GameFifteen.Tests.UI.Console
 {
     using GameFifteen.UI.Console;
+    using GameFifteen.UI.Console.CommandFactory;
     using GameFifteen.UI.Console.Commands;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

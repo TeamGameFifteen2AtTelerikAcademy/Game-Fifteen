@@ -7,7 +7,7 @@
 // </summary>
 // <author>GameFifteen2Team</author>
 
-namespace GameFifteen.UI.Console
+namespace GameFifteen.UI.Console.GameInitializer
 {
     using GameFifteen.Logic.Games.Contracts;
 

@@ -8,6 +8,8 @@
     using Logic.Tiles.Contracts;
     using Logic.Games.Contracts;
     using GameFifteen.UI.Console;
+    using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
+
     using Moq;
 
     public class MockStorage
