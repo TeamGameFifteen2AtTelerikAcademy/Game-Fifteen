@@ -1,13 +1,13 @@
 ﻿namespace GameFifteen.Tests.UI.Console
 {
+    using GameFifteen.UI.Console;
     using Logic.Commands;
     using Logic.Frames;
     using Logic.Frames.Contracts;
+    using Logic.Games.Contracts;
     using Logic.Memento;
     using Logic.Scoreboards.Contracts;
     using Logic.Tiles.Contracts;
-    using Logic.Games.Contracts;
-    using GameFifteen.UI.Console;
     using Moq;
 
     public class MockStorage
@@ -119,7 +119,6 @@
                     {
                         numberOfCalls--;
                         return false;
-
                     }
                 });
 

@@ -1,12 +1,11 @@
 ﻿namespace GameFifteen.Tests.UI.Console
-
 {
+    using System.Linq;
     using GameFifteen.Logic.Memento;
     using GameFifteen.Logic.Scoreboards;
     using GameFifteen.UI.Console;
     using GameFifteen.UI.Console.Commands;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System.Linq;
 
     [TestClass]
     public class EngineTests
@@ -112,9 +111,7 @@
                 MockStorage.GetPrinter(),
                 reader,
                 new CommandManager(),
-                new BoardHistory()
-
-                );
+                new BoardHistory());
 
             engine.Run();
         }
@@ -123,17 +120,14 @@
         public void ExpectToExecuteGameOverAndAddToScoreBoard()
         {
             var reader = MockStorage.GetReader("move 3");
-            
-            var engine = new Engine(
 
+            var engine = new Engine(
                 MockStorage.GetSelfSolvingGameAfterOneMove(),
-               new Scoreboard(), 
+                new Scoreboard(),
                 MockStorage.GetPrinter(),
                 reader,
                 new CommandManager(),
-                new BoardHistory()
-
-                );
+                new BoardHistory());
 
             engine.Run();
         }
@@ -143,20 +137,18 @@
         {
             var reader = MockStorage.GetReader("move 3");
             var scoreboard = new Scoreboard();
-            
-            var engine = new Engine(
 
+            var engine = new Engine(
                 MockStorage.GetSelfSolvingGameAfterOneMove(),
-               scoreboard,
+                scoreboard,
                 MockStorage.GetPrinter(),
                 reader,
                 new CommandManager(),
                 new BoardHistory());
+
             engine.Run();
-            Assert.AreEqual(1,scoreboard.GetTopScores().First().Moves);
+            Assert.AreEqual(1, scoreboard.GetTopScores().First().Moves);
         }
-
-
 
         [TestMethod]
         public void ExpectMoveCommandToReachIfStatement()

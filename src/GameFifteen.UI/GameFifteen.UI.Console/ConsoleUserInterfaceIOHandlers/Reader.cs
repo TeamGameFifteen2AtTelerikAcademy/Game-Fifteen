@@ -44,7 +44,7 @@ namespace GameFifteen.UI.Console
                 handleUserInput[1] = userTarget;
             }
 
-            if (!Enum.IsDefined(typeof (UserCommands), userCommand))
+            if (!Enum.IsDefined(typeof(UserCommands), userCommand))
             {
                 userCommand = "Invalid";
             }

@@ -132,8 +132,6 @@ namespace GameFifteen.UI.Console
             var userCommandAndTarget = this.reader.ParseInput(userInput);
             var userCommand = userCommandAndTarget[0];
             var userTarget = userCommandAndTarget[1];
-
-            // Capitalize the first letter to meet restrictions from the enum...
         
             this.context.SelectedTileLabel = userTarget;
 

@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace GameFifteen.Tests.UI.Console
+﻿namespace GameFifteen.Tests.UI.Console
 {
+    using System;
     using GameFifteen.UI.Console;
     using GameFifteen.UI.Console.Commands;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -71,7 +70,7 @@ namespace GameFifteen.Tests.UI.Console
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        // In real life it will never be invoked with invalid string, because of the Parser.
+        //// In real life it will never be invoked with invalid string, because of the Parser.
         public void ExpectGetCommandToThrowIfSomehowPassedInvalidString()
         {
             var commandManager = new CommandManager();

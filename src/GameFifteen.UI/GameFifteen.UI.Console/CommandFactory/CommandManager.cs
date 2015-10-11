@@ -7,11 +7,10 @@
 // </summary>
 // <author>GameFifteen2Team</author>
 
-using System.Collections.Generic;
-
 namespace GameFifteen.UI.Console
 {
     using System;
+    using System.Collections.Generic;
     using Commands;
     using GameFifteen.Logic.Commands;
 
@@ -20,7 +19,11 @@ namespace GameFifteen.UI.Console
     /// </summary>
     internal class CommandManager : ICommandManager
     {
-        private  readonly Dictionary<string, ICommand> commandDictionary = new Dictionary<string,ICommand>();  
+        /// <summary>
+        /// Holds the already created commands. Works like cache provider.
+        /// </summary>
+        private readonly Dictionary<string, ICommand> commandDictionary = new Dictionary<string, ICommand>();
+
         /// <summary>
         /// Initializes a new instance of the CommandManager class.
         /// </summary>
@@ -35,20 +38,19 @@ namespace GameFifteen.UI.Console
         /// <returns>ICommand command.</returns>
         public ICommand GetCommand(string command)
         {
-            if (commandDictionary.ContainsKey(command))
+            if (this.commandDictionary.ContainsKey(command))
             {
-                return commandDictionary[command];
+                return this.commandDictionary[command];
             }
 
             UserCommands userCommand;
-            if (Enum.IsDefined(typeof (UserCommands), command) &&
+            if (Enum.IsDefined(typeof(UserCommands), command) &&
                 Enum.TryParse<UserCommands>(command, out userCommand))
             {
                 ICommand currentCommand = this.GetCommand(userCommand);
-                commandDictionary.Add(command, currentCommand);
+                this.commandDictionary.Add(command, currentCommand);
                 return currentCommand;
             }
-
             else
             {
                 throw new ArgumentException();
