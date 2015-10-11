@@ -1,6 +1,6 @@
 ﻿namespace GameFifteen.Tests.UI.Console
 {
-    using GameFifteen.UI.Console;
+    using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
     using Logic.Commands;
     using Logic.Frames;
     using Logic.Frames.Contracts;

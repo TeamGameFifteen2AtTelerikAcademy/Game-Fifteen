@@ -7,10 +7,12 @@
 // </summary>
 // <author>GameFifteen2Team</author>
 
-namespace GameFifteen.UI.Console
+namespace GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers
 {
     using System;
     using System.Globalization;
+
+    using GameFifteen.UI.Console.Helpers;
 
     /// <summary>
     /// Reader class - reads from the console.

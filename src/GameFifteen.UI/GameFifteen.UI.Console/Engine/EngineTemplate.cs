@@ -7,7 +7,7 @@
 // </summary>
 // <author>GameFifteen2Team</author>
 
-namespace GameFifteen.UI.Console
+namespace GameFifteen.UI.Console.Engine
 {
     /// <summary>
     /// EngineTemplate abstract class.

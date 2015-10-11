@@ -7,7 +7,7 @@
 // </summary>
 // <author>GameFifteen2Team</author>
 
-namespace GameFifteen.Logic
+namespace GameFifteen.Logic.Scoreboards
 {
     using GameFifteen.Logic.Scoreboards.Contracts;
 

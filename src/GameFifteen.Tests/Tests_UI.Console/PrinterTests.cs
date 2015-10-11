@@ -4,6 +4,8 @@
     using GameFifteen.Logic.Frames;
     using GameFifteen.Logic.Tiles.Contracts;
     using GameFifteen.UI.Console;
+    using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
 

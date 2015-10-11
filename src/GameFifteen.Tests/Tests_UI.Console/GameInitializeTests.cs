@@ -2,6 +2,9 @@
 {
     using System;
     using GameFifteen.UI.Console;
+    using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
+    using GameFifteen.UI.Console.GameInitializer;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]

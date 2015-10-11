@@ -7,15 +7,18 @@
 // </summary>
 // <author>GameFifteen2Team</author>
 
-namespace GameFifteen.UI.Console
+namespace GameFifteen.UI.Console.Engine
 {
     using System.Globalization;
 
+    using GameFifteen.Logic.Commands;
     using GameFifteen.Logic.Common;
     using GameFifteen.Logic.Games.Contracts;
+    using GameFifteen.Logic.Memento;
     using GameFifteen.Logic.Scoreboards.Contracts;
-    using Logic.Commands;
-    using Logic.Memento;
+    using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
+    using GameFifteen.UI.Console.GameContext;
+    using GameFifteen.UI.Console.Helpers;
 
     /// <summary>
     /// Engine class - holds the magic.
@@ -132,7 +135,7 @@ namespace GameFifteen.UI.Console
             var userCommandAndTarget = this.reader.ParseInput(userInput);
             var userCommand = userCommandAndTarget[0];
             var userTarget = userCommandAndTarget[1];
-        
+
             this.context.SelectedTileLabel = userTarget;
 
             this.commandManager.GetCommand(userCommand).Execute(this.context);

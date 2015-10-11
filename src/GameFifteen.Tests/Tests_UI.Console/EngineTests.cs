@@ -3,8 +3,9 @@
     using System.Linq;
     using GameFifteen.Logic.Memento;
     using GameFifteen.Logic.Scoreboards;
-    using GameFifteen.UI.Console;
+    using GameFifteen.UI.Console.CommandFactory;
     using GameFifteen.UI.Console.Commands;
+    using GameFifteen.UI.Console.Engine;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
