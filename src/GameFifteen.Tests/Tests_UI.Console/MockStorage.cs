@@ -100,6 +100,38 @@ namespace GameFifteen.Tests.UI.Console
             return mockedGame.Object;
         }
 
+        public static IGame GetSelfSolvingGameAfterOneMove()
+        {
+            var mockedGame = new Mock<IGame>();
+            var numberOfCalls = 1;
+
+            mockedGame.Setup(x => x.Move(It.IsAny<string>()))
+                .Returns(true);
+
+            mockedGame.Setup(x => x.Shuffle())
+                .Verifiable();
+
+            mockedGame.Setup(x => x.Frame)
+                .Returns(new Frame(new ITile[3, 3]));
+
+            mockedGame.Setup(x => x.IsSolved)
+                .Returns(() =>
+                {
+                    if (numberOfCalls == 0)
+                    {
+                       return true;
+                    }
+                    else
+                    {
+                        numberOfCalls--;
+                        return false;
+                       
+                    }
+                });
+
+            return mockedGame.Object;
+        }
+
         public static IGame GetGameWithInvalidMove()
         {
             var mockedGame = new Mock<IGame>();

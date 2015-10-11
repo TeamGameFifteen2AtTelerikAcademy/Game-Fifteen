@@ -130,6 +130,25 @@ namespace GameFifteen.Tests.UI.Console
         }
 
         [TestMethod]
+        public void ExpectToExecuteGameOverAndAddToScoreBoard()
+        {
+            var reader = MockStorage.GetReader("move 3");
+
+            var engine = new Engine(
+
+                MockStorage.GetSelfSolvingGameAfterOneMove(),
+               new Scoreboard(), 
+                MockStorage.GetPrinter(),
+                reader,
+                new CommandManager(),
+                new BoardHistory()
+
+                );
+
+            engine.Run();
+        }
+
+        [TestMethod]
         public void ExpectMoveCommandToReachIfStatement()
         {
             var context = MockStorage.GetCommandContext();
