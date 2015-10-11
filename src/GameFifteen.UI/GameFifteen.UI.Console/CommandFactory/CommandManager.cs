@@ -13,7 +13,6 @@ namespace GameFifteen.UI.Console.CommandFactory
     using System.Collections.Generic;
     using GameFifteen.Logic.Commands;
     using GameFifteen.UI.Console.Commands;
-    using GameFifteen.UI.Console.Helpers;
 
     /// <summary>
     /// CommandManager class.

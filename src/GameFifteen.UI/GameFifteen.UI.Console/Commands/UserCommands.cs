@@ -7,7 +7,7 @@
 // </summary>
 // <author>GameFifteen2Team</author>
 
-namespace GameFifteen.UI.Console.Helpers
+namespace GameFifteen.UI.Console.Commands
 {
     /// <summary>
     /// UserCommands enumeration.

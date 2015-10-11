@@ -3,7 +3,7 @@
 // Copyright(c) 2015 Team "Game-Fifteen-2"
 // </copyright>
 // <summary>
-// Enum for Pattern Types
+// Enumeration for Pattern Types
 // </summary>
 // <author>GameFifteen2Team</author>
 

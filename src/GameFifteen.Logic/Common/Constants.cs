@@ -43,7 +43,7 @@ namespace GameFifteen.Logic.Common
         /// </summary>
         public const string StringContainsOnlyLatinLetters = "{0} must contain only latin letters";
 
-        // Convertor
+        // Converter
 
         /// <summary>
         /// Constant for EnglishAlphabetLettersCount.
@@ -173,7 +173,7 @@ namespace GameFifteen.Logic.Common
         /// </summary>
         public static readonly string WellcomeMessage =
             "Welcome to the game “15”. Please try to arrange the numbers sequentially." + Environment.NewLine +
-            "Use 'Top' to view the top scoreboard, 'Restart' to start a new game and" + Environment.NewLine +
-            "'Exit' to quit the game.";
+            "Use 'top' to view the top scoreboard, 'restart' to start a new game," + Environment.NewLine +
+            "'exit' to quit the game, 'move' to move a tile and 'undo' to undo a move.";
     }
 }

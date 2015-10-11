@@ -12,7 +12,7 @@ namespace GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers
     using System;
     using System.Globalization;
 
-    using GameFifteen.UI.Console.Helpers;
+    using GameFifteen.UI.Console.Commands;
 
     /// <summary>
     /// Reader class - reads from the console.

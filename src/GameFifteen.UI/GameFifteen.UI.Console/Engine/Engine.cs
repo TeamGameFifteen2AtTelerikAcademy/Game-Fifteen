@@ -14,9 +14,9 @@ namespace GameFifteen.UI.Console.Engine
     using GameFifteen.Logic.Games.Contracts;
     using GameFifteen.Logic.Memento;
     using GameFifteen.Logic.Scoreboards.Contracts;
+    using GameFifteen.UI.Console.Commands;
     using GameFifteen.UI.Console.ConsoleUserInterfaceIOHandlers;
     using GameFifteen.UI.Console.GameContext;
-    using GameFifteen.UI.Console.Helpers;
 
     /// <summary>
     /// Engine class - holds the magic.
@@ -52,11 +52,6 @@ namespace GameFifteen.UI.Console.Engine
         /// Holds Engine's ICommandContext.
         /// </summary>
         private readonly ICommandContext context;
-
-        /// <summary>
-        /// Holds Engine's IMemento.
-        /// </summary>
-        private readonly IMemento boardHistory;
 
         /// <summary>
         /// Initializes a new instance of the Engine class.
