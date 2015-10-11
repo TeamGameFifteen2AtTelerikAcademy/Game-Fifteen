@@ -3,7 +3,7 @@
     using System;
     using GameFifteen.Logic.Common;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+    
     /// <summary>
     /// Summary description for ConvertorTest
     /// </summary>
