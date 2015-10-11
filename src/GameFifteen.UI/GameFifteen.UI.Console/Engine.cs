@@ -94,8 +94,6 @@ namespace GameFifteen.UI.Console
         /// </summary>
         protected override void Play()
         {
-            // this.printer.ClearBoard();
-
             this.game.Shuffle();
 
             while (!this.context.IsGameOver)
