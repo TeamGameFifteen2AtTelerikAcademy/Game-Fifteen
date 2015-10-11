@@ -1,4 +1,4 @@
-﻿// <copyright file="GameInitializator.cs" company="GameFifteen2Team">
+﻿// <copyright file="GameInitializer.cs" company="GameFifteen2Team">
 // The MIT License (MIT)
 // Copyright(c) 2015 Team "Game-Fifteen-2"
 // </copyright>
@@ -24,7 +24,7 @@ namespace GameFifteen.UI.Console
     /// <summary>
     /// Game Initializer class.
     /// </summary>
-    internal class GameInitializator
+    internal class GameInitializer
     {
         /// <summary>
         /// Holds the IPrinter.
@@ -37,11 +37,11 @@ namespace GameFifteen.UI.Console
         private readonly IReader reader;
 
         /// <summary>
-        /// Initializes a new instance of the GameInitializator class.
+        /// Initializes a new instance of the <see cref="GameInitializer" /> class.
         /// </summary>
         /// <param name="printer">The IPrinter.</param>
         /// <param name="reader">The IReader.</param>
-        public GameInitializator(IPrinter printer, IReader reader)
+        public GameInitializer(IPrinter printer, IReader reader)
         {
             Validator.ValidateIsNotNull(printer);
             Validator.ValidateIsNotNull(reader);

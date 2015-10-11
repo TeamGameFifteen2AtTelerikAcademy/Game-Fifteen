@@ -51,7 +51,7 @@
     <Compile Include="Commands\UndoCommand.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="EngineTemplate.cs" />
-    <Compile Include="GameInitializator.cs" />
+    <Compile Include="GameInitializer.cs" />
     <Compile Include="IGameInitializer.cs" />
     <Compile Include="IPrinter.cs" />
     <Compile Include="IReader.cs" />

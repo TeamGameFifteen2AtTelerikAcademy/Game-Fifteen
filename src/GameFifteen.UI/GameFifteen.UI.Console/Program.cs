@@ -26,7 +26,7 @@ namespace GameFifteen.UI.Console
 
             var reader = new Reader();
 
-            var gameInitializator = new GameInitializator(printer, reader);
+            var gameInitializator = new GameInitializer(printer, reader);
 
             var game = gameInitializator.Initialize();
 

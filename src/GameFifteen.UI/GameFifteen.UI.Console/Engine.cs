@@ -94,7 +94,7 @@ namespace GameFifteen.UI.Console
         /// </summary>
         protected override void Play()
         {
-            this.printer.ClearBoard();
+            // this.printer.ClearBoard();
 
             this.game.Shuffle();
 
@@ -150,6 +150,9 @@ namespace GameFifteen.UI.Console
         /// <param name="currentMovesCount">Current moves.</param>
         private void GameOver(int currentMovesCount)
         {
+            this.printer.SetCursorTopBoard();
+            this.printer.PrintLine(this.game.Frame);
+            this.printer.ClearLine();
             this.printer.PrintLine(string.Format(Constants.CongratulationsMessageFormat, currentMovesCount));
 
             if (this.scoreboard.IsInTopScores(currentMovesCount))
@@ -159,6 +162,8 @@ namespace GameFifteen.UI.Console
                 this.scoreboard.Add(currentMovesCount, userName);
                 this.printer.Print(this.scoreboard);
             }
+
+            this.printer.ClearBoard();
         }
     }
 }

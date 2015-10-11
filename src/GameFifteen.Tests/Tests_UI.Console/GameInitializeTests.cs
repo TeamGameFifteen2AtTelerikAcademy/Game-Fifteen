@@ -1,14 +1,8 @@
 ﻿namespace GameFifteen.Tests.UI.Console
 {
     using System;
-    using GameFifteen.Logic.Frames;
-    using GameFifteen.Logic.Games;
-    using GameFifteen.Logic.Games.Contracts;
-    using GameFifteen.Logic.Movers;
-    using GameFifteen.Logic.Tiles.Contracts;
     using GameFifteen.UI.Console;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Moq;
 
     [TestClass]
     public class GameInitializeTests
@@ -18,7 +12,7 @@
         public void ExpectToThrowWhenNoReaderIsProvided()
         {
             var printer = new Printer();
-            var gameInitializer = new GameInitializator(printer, null);
+            var gameInitializer = new GameInitializer(printer, null);
         }
 
         [TestMethod]
@@ -26,7 +20,7 @@
         public void ExpectToThrowWhenNoPrinerIsProvided()
         {
             var reader = new Reader();
-            var gameInitializer = new GameInitializator(null, reader);
+            var gameInitializer = new GameInitializer(null, reader);
         }
 
         [TestMethod]
@@ -34,7 +28,7 @@
         public void ExpectToThrowWhenNoPrinerAndNoReaderAreProvided()
         {
             var reader = new Reader();
-            var gameInitializer = new GameInitializator(null, null);
+            var gameInitializer = new GameInitializer(null, null);
         }
 
         [TestMethod]
@@ -42,7 +36,7 @@
         {
             var printer = new Printer();
             var reader = new Reader();
-            var gameInitializer = new GameInitializator(printer, reader);
+            var gameInitializer = new GameInitializer(printer, reader);
         }
     }
 }

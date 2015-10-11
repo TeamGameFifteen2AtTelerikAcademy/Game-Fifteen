@@ -67,8 +67,6 @@ namespace GameFifteen.Tests.UI.Console
         public static IGame GetGame()
         {
             var mockedGame = new Mock<IGame>();
-            var numberOfCalls = 2;
-            bool isOver = false;
 
             mockedGame.Setup(x => x.Move(It.IsAny<string>()))
                 .Returns(true);
@@ -85,7 +83,6 @@ namespace GameFifteen.Tests.UI.Console
         public static IGame GetSolvedGame()
         {
             var mockedGame = new Mock<IGame>();
-            bool isOver = false;
 
             mockedGame.Setup(x => x.Move(It.IsAny<string>()))
                 .Returns(true);
@@ -105,7 +102,6 @@ namespace GameFifteen.Tests.UI.Console
         public static IGame GetGameWithInvalidMove()
         {
             var mockedGame = new Mock<IGame>();
-            bool isOver = false;
 
             mockedGame.Setup(x => x.Move(It.IsAny<string>()))
                 .Returns(false);
